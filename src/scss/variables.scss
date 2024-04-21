@@ -1,0 +1,24 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+:root {
+    --mainColor: #F50;
+    --mainSubColor: #201F26;
+    --titleBorder: #D9D9D9;
+    --colorText: #BFBFBF;
+    --colorBorder: #EFEFEF;
+    --colorMainSlideBorder: rgba(191, 191, 191, .5);
+    --mainFont: "Montserrat";
+    --content-width: 1268px;
+    --container-offset: 16px;
+    --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+[class*="__container"] {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+body{
+    font-family: "Montserrat";
+}
