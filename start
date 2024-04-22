@@ -1,0 +1,2 @@
+ln -s src/index.php index.php
+service apache2 start
