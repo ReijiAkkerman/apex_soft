@@ -4,7 +4,7 @@
             <div class="header__left">
                 <p class="header__left-text">ООО «Апекс-софт» <br> официальный представитель 1C в Брянске</p>
             </div>
-            <nav class="nav header__nav header__nav--top">
+            <nav class="nav header__nav header__nav--top ">
                 <ul class="nav__list nav__list--top">
                     <li class="nav__item"><a
                             href="https://yandex.ru/maps/org/apeks_soft/1023193342/?indoorLevel=1&ll=34.344219%2C53.243368&z=17.05"
