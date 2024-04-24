@@ -6,6 +6,7 @@
     rel="stylesheet" />
 <link rel="stylesheet" href="/src/css/normalize.css">
 <link rel="stylesheet" href="/src/css/fonts.css">
-<link rel="stylesheet" href="/src/css/header.css">
 <link rel="stylesheet" href="/src/css/style.css">
 <link rel="stylesheet" href="/src/css/variables.css">
+<link rel="stylesheet" href="/src/css/components.css">
+<link rel="stylesheet" href="/src/css/header.css">

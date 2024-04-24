@@ -1,9 +1,8 @@
 <header class="header">
     <div class="header__top">
         <div class="container header__container header__container--top">
-            <div class="header__left">
-                <p class="header__left-text">ООО «Апекс-софт» официальный представитель 1C в Брянске</p>
-            </div>
+            <a href="/" class="logo header__logo" aria-label="Логотип Апекс Софт"><img src="/src/assets/img/logo.png"
+                    alt="Логотип компании «Апекс-софт»"></a>
             <nav class="nav header__nav header__nav--top ">
                 <ul class="nav__list nav__list--top">
                     <li class="nav__item nav__item--top"><a
@@ -16,24 +15,27 @@
                     <li class="nav__item nav__item--top"><a href="mailto:info@1capexsoft.ru"
                             class="nav__link icon-mail">info@1capexsoft.ru</a>
                     </li>
-                    <li class="nav__item nav__item--top"><a href="#" class="nav__link icon-calendar-alt-fill">
+                    <!-- <li class="nav__item nav__item--top"><a href="#" class="nav__link icon-calendar-alt-fill">
                             <p class="nav__link-text">Время работы <span><time datetime="10:00">10:00</time>-<time
                                         datetime="17:00">17:00</time></span> </p>
-                        </a></li>
-                    <li class="nav__item nav__item--top"><a href="#" class="nav__link icon-user">Войти</a></li>
+                        </a></li> -->
+                    <!-- <li class="nav__item nav__item--top"><a href="#" class="nav__link icon-user">Войти</a></li> -->
                 </ul>
             </nav>
+            <div class="header__cabinet">
+                <button class="header__cabinet-button icon-user btn">
+                    Войти
+                </button>
+            </div>
         </div>
     </div>
     <div class="header__fixed">
         <div class="container header__container header__container--fixed">
-            <a href="/" class="logo header__logo" aria-label="Логотип Апекс Софт"><img src="/src/assets/img/logo.png"
-                    alt="Логотип компании «Апекс-софт»"></a>
             <nav class="nav header__nav header__nav--fixed">
                 <ul class="nav__list nav__list--fixed">
                     <li class="nav__item nav__item--fixed">
                         <a href="" class="nav__link nav__link--fixed">Решения</a>
-                        <ul class="nav__list-description description">
+                        <ul class="nav__list-description description description--first">
                             <li class="description-list">
                                 <p class="description-list__title">Базовая</p>
                                 <ul class="description-list__items">
@@ -112,7 +114,9 @@
                     <li class="nav__item nav__item--fixed">
                         <a href="" class="nav__link nav__link--fixed">Информация</a>
                         <ul class="nav__list-description description"></ul>
+
                     </li>
+                    <!-- <li class="nav__item nav__item--fixed">ООО «Апекс-софт» <br> официальный представитель 1C <br> в Брянске</li> -->
                 </ul>
             </nav>
             <!-- <div class="header__right">
@@ -120,3 +124,40 @@
         </div>
     </div>
 </header>
+<div class="header__cabinet-form form-header">
+    <div class="form-header__cabinet form-header__cabinet--left">
+        <form class="form form--left" method="" action="">
+            <h2 class="form__title title">Создайте аккаунт</h2>
+            <span class="form__span">Используйте свою учетную запись <br> электронной почты для регистрации</span>
+            <input class="form__input" type="text" placeholder="Name">
+            <input class="form__input" type="password" placeholder="Password">
+            <button class="form__button button submit">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+        </form>
+    </div>
+    <div class="form-header__cabinet form-header__cabinet--right">
+        <form class="form form--right" method="" action="">
+            <h2 class="form__title title">Войдите на сайт Апекс Софт</h2>
+            <span class="form__span">Используйте свою учетную <br> запись</span>
+            <input class="form__input" type="text" placeholder="Name">
+            <input class="form__input" type="password" placeholder="Password">
+            <a class="form__link">Забыли пароль?</a>
+            <button class="form__button button submit">ВОЙТИ</button>
+        </form>
+    </div>
+    <div class="switch" id="switch-cnt">
+        <div class="switch__circle"></div>
+        <div class="switch__circle switch__circle--t"></div>
+        <div class="switch__container" id="switch-c1">
+            <h2 class="switch__title title">Добро пожаловать!</h2>
+            <p class="switch__description description">Чтобы оставаться на связи с нами, пожалуйста, войдите, используя
+                свои личные данные.</p>
+            <button class="switch__button button switch-btn">ВОЙТИ</button>
+        </div>
+        <div class="switch__container is-hidden" id="switch-c2">
+            <h2 class="switch__title title">Привет, друг !</h2>
+            <p class="switch__description description">Введите свои личные данные и начните путешествие вместе с нами
+            </p>
+            <button class="switch__button button switch-btn">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+        </div>
+    </div>
+</div>
