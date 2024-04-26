@@ -24,7 +24,12 @@
             </nav>
             <div class="header__cabinet">
                 <button class="header__cabinet-button icon-user btn">
-                    Войти
+                    <p id="username"><?php 
+                        if(isset($this->name))
+                            echo $this->name;
+                        else 
+                            echo 'Войти';
+                    ?></p>
                 </button>
             </div>
         </div>
@@ -126,22 +131,23 @@
 </header>
 <div class="header__cabinet-form form-header">
     <div class="form-header__cabinet form-header__cabinet--left">
-        <form class="form form--left" method="" action="">
+        <form class="form form--left registration">
             <h2 class="form__title title">Создайте аккаунт</h2>
             <span class="form__span">Используйте свою учетную запись <br> электронной почты для регистрации</span>
-            <input class="form__input" type="text" placeholder="Name">
-            <input class="form__input" type="password" placeholder="Password">
-            <button class="form__button button submit">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+            <input class="form__input" type="text" name="login" pattern="/^[A-Za-z0-9_]{8,50}$/" placeholder="Login">
+            <input class="form__input" type="text" name="name" pattern="/^[A-Za-z0-9А-Яа-я]{3,100}$/u" placeholder="Name">
+            <input class="form__input" type="password" name="password" pattern="/^[A-Za-z0-9_.]{5,50}$/" placeholder="Password">
+            <button class="form__button button submit" id="registration_button">ЗАРЕГИСТРИРОВАТЬСЯ</button>
         </form>
     </div>
     <div class="form-header__cabinet form-header__cabinet--right">
-        <form class="form form--right" method="" action="">
+        <form class="form form--right login">
             <h2 class="form__title title">Войдите на сайт Апекс Софт</h2>
             <span class="form__span">Используйте свою учетную <br> запись</span>
-            <input class="form__input" type="text" placeholder="Name">
-            <input class="form__input" type="password" placeholder="Password">
+            <input class="form__input" type="text" name="login" pattern="[A-Za-z0-9_]{8,50}" placeholder="Login">
+            <input class="form__input" type="password" name="password" pattern="[A-Za-z0-9_.]{5,50}" placeholder="Password">
             <a class="form__link">Забыли пароль?</a>
-            <button class="form__button button submit">ВОЙТИ</button>
+            <button class="form__button button submit" id="login_button">ВОЙТИ</button>
         </form>
     </div>
     <div class="switch" id="switch-cnt">
@@ -161,3 +167,4 @@
         </div>
     </div>
 </div>
+<script src="/src/js/Reiji/async/form.js"></script>

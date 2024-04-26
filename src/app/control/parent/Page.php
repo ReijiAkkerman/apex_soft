@@ -1,6 +1,316 @@
 <?php
     namespace project\control\parent;
+    
+    use project\control\parent\enum\Regex;
+
+    define('EVERYWHERE', '%');
 
     abstract class Page {
+        private const MYSQL_SERVER = '172.19.0.2';
+        private const CONNECT_FROM = EVERYWHERE;
+
+        protected string $login;
+        protected string $entered_password;
+        protected string $hashed_password;
+        protected string $password_from_DB;
+        protected int $ID;
+        protected int $creation_date;
+
+        public string $name;
+        public string $error_message;
+
+        protected function constructor(): void {
+            $this->isEnteredUser();
+        }
+
         abstract public function view(): void;
+
+        public function registrate(): void {
+            $functions_for_fieldsValidation = [
+                'validateLoginField',
+                'validateNameField',
+                'validatePasswordField'
+            ];
+            foreach($functions_for_fieldsValidation as $function) {
+                $validated = $this->$function();
+                if(!$validated) {
+                    $this->sendData();
+                    exit;
+                }
+            }
+
+            $DB_has_been_used = true;
+            try {
+                $mysql = new \mysqli(Page::MYSQL_SERVER, 'Users', 'secret_of_Users', 'Users');
+            }
+            catch(\mysqli_sql_exception $e) {
+                $this->init();
+                $mysql = new \mysqli(Page::MYSQL_SERVER, 'Users', 'secret_of_Users', 'Users');
+                $DB_has_been_used = false;
+            }
+            if($DB_has_been_used) {
+                if($this->isExistentUser($mysql)) {
+                    $this->error_message = 'login|Указанный логин уже используется!';
+                    $this->sendData();
+                    exit;
+                }
+            }
+            $this->creation_date = time();
+            $query = "INSERT INTO users(
+                login,
+                name,
+                password,
+                creation_date
+            ) VALUES (
+                ?,
+                ?,
+                '{$this->hashed_password}',
+                {$this->creation_date}
+            )";
+            $stmt = $mysql->prepare($query);
+            $stmt->bind_param('ss', $this->login, $this->name);
+            $stmt->execute();
+            $query = "SELECT * FROM users WHERE login='{$this->login}'";
+            $result = $mysql->query($query);
+            foreach($result as $row) {
+                $ID = $row['ID'];
+            }
+            $confirmation = md5($this->login . $this->hashed_password . $this->creation_date);
+
+            setcookie('id', $ID, time() + 3600 * 24 * 7, '/');
+            setcookie('confirmation', $confirmation, time() + 3600 * 24 * 7, '/');
+            $this->sendData();
+        }
+
+        public function login(): void {
+            $functions_for_fieldsValidation = [
+                'validateLoginField',
+                'validatePasswordField'
+            ];
+            foreach($functions_for_fieldsValidation as $function) {
+                $validated = $this->$function();
+                if(!$validated) {
+                    $this->sendData();
+                    exit;
+                }
+            }
+
+            $mysql = new \mysqli(Page::MYSQL_SERVER, 'Users', 'secret_of_Users', 'Users');
+            if($this->isExistentUser($mysql, true)) {
+                if(password_verify($this->entered_password, $this->password_from_DB)) {
+                    $confirmation = md5($this->login . $this->password_from_DB . $this->creation_date);
+                    setcookie('id', $this->ID, time() + 3600 * 24 * 7, '/');
+                    setcookie('confirmation', $confirmation, time() + 3600 * 24 * 7, '/');
+                    $this->sendData();
+                }
+                else {
+                    goto go_to_error_message;
+                }
+            }
+            else {
+                go_to_error_message:
+                $this->error_message = 'login&password|Введен неверный логин или пароль!';
+                $this->sendData();
+                exit;
+            }
+        }
+
+        protected function isEnteredUser(): void {
+            if(isset($_COOKIE['id'])) 
+                if($_COOKIE['id']) 
+                    if(isset($_COOKIE['confirmation'])) 
+                        if($_COOKIE['confirmation']) {
+                            $this->ID = (int)$_COOKIE['id'];
+                            $mysql = new \mysqli(Page::MYSQL_SERVER, 'Users', 'secret_of_Users', 'Users');
+                            $query = "SELECT * FROM users WHERE ID={$this->ID}";
+                            $result = $mysql->query($query);
+                            if($result->num_rows) {
+                                foreach($result as $row) {
+                                    $this->login = $row['login'];
+                                    $this->password_from_DB = $row['password'];
+                                    $this->name = $row['name'];
+                                    $this->creation_date = $row['creation_date'];
+                                }
+                                $confirmation = md5($this->login . $this->password_from_DB . $this->creation_date);
+                                if($_COOKIE['confirmation'] != $confirmation) {
+                                    unset($this->name);
+                                    $this->unsetCookie();
+                                }
+                            }
+                            else 
+                                $this->unsetCookie();
+                        }
+                        else 
+                            $this->unsetCookie();
+                    else 
+                        $this->unsetCookie();
+                else 
+                    $this->unsetCookie();
+            else 
+                $this->unsetCookie();
+        }
+
+        private function init(): void {
+            $functions_of_init = [
+                'createUsersDB'
+            ];
+            $mysql = new \mysqli(Page::MYSQL_SERVER, 'root', 'secret');
+            foreach($functions_of_init as $function) {
+                $this->$function($mysql);
+            }
+            $mysql->close();
+        }
+
+
+
+
+
+        /**
+         * Функции для работы init() метода
+         */
+
+        private function createUsersDB(\mysqli $mysql): void {
+            $connect_from = Page::CONNECT_FROM;
+            $queries = [
+                'CREATE DATABASE IF NOT EXISTS Users',
+                "CREATE USER IF NOT EXISTS 'Users'@'$connect_from' IDENTIFIED WITH mysql_native_password BY 'secret_of_Users'",
+                "GRANT SELECT, INSERT ON Users.* TO 'Users'@'$connect_from'",
+                'USE Users',
+                'CREATE TABLE IF NOT EXISTS users(
+                    ID SERIAL,
+                    login VARCHAR(255) UNIQUE,
+                    name VARCHAR(255),
+                    password VARCHAR(255),
+                    creation_date INT
+                )'
+            ];
+            foreach($queries as $query) {
+                $mysql->query($query);
+            }
+        }
+
+
+
+
+
+        /**
+         * Функции для проверки правильности заполнения полей
+         */
+
+        private function validateLoginField(): bool {
+            if($_POST['login'] ) {
+                $regex = Regex::login->value;
+                $result = preg_match($regex, $_POST['login']);
+                if($result === 1) {
+                    $this->login = $_POST['login'];
+                    return true;
+                }
+                else if($result === 0) {
+                    $this->error_message = 'login|Введенный логин не соответствует допустимому шаблону!';
+                    return false;
+                }
+                else {
+                    $this->error_message = 'Произошла ошибка во время проверки логина!';
+                    return false;
+                }
+            }
+            else if($_POST['login'] === '0') {
+                $this->error_message = 'login|Введенный логин не соответствует допустимому шаблону!';
+                return false;
+            }
+            else {
+                $this->error_message = 'login|Логин не введен!';
+                return false;
+            }
+        }
+
+        private function validateNameField(): bool {
+            if($_POST['name'] ) {
+                $regex = Regex::name->value;
+                $result = preg_match($regex, $_POST['name']);
+                if($result === 1) {
+                    $this->name = $_POST['name'];
+                    return true;
+                }
+                else if($result === 0) {
+                    $this->error_message = 'name|Введенное имя не соответствует допустимому шаблону!';
+                    return false;
+                }
+                else {
+                    $this->error_message = 'Произошла ошибка во время проверки имени!';
+                    return false;
+                }
+            }
+            else if($_POST['name'] === '0') {
+                $this->error_message = 'name|Введенное имя не соответствует допустимому шаблону!';
+                return false;
+            }
+            else {
+                $this->error_message = 'name|Имя не введено!';
+                return false;
+            }
+        }
+
+        private function validatePasswordField(): bool {
+            if($_POST['password']) {
+                $regex = Regex::password->value;
+                $result = preg_match($regex, $_POST['password']);
+                if($result === 1) {
+                    $this->entered_password = $_POST['password'];
+                    $this->hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                    return true;
+                }
+                else if($result === 0) {
+                    $this->error_message = 'password|Введенный пароль не соответствует допустимому шаблону!';
+                    return false;
+                }
+                else {
+                    $this->error_message = 'Произошла ошибка во время проверки пароля!';
+                    return false;
+                }
+            }
+            else if($_POST['password'] === '0') {
+                $this->error_message = 'password|Введенный пароль не соответствует допустимому шаблону!';
+                return false;
+            }
+            else {
+                $this->error_message = 'password|Пароль не введен!';
+                return false;
+            }
+        }
+
+        private function isExistentUser(\mysqli $mysql, bool $password_needed = false): bool {
+            $query = "SELECT * FROM users WHERE login='{$this->login}'";
+            $result = $mysql->query($query);
+            
+            if($result->num_rows) {
+                if($password_needed) {
+                    foreach($result as $row) {
+                        $this->password_from_DB = $row['password'];
+                        $this->name = $row['name'];
+                        $this->ID = (int)$row['ID'];
+                        $this->creation_date = (int)$row['creation_date'];
+                    }
+                }
+                return true;
+            }
+            else 
+                return false;
+        }
+
+        // private function getUserInfo(\mysqli $mysql): void {
+        //     $query = "SELECT * FROM users WHERE ID={$this->ID}";
+        //     $result = $mysql->query($query);
+        //     if()
+        // }
+
+        private function unsetCookie(): void {
+            setcookie('id', '', time() - 1, '/');
+            setcookie('confirmation', '', time() - 1, '/');
+        }
+
+        private function sendData(): void {
+            $data = json_encode($this, JSON_UNESCAPED_UNICODE);
+            echo $data;
+        }
     }

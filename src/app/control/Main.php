@@ -5,5 +5,9 @@
     use project\control\traits\View;
 
     class Main extends Page {
+        public function __construct() {
+            $this->constructor();
+        }
+
         use View;
     }
