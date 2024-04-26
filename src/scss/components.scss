@@ -4,3 +4,41 @@
     border: none;
     cursor: pointer;
 }
+
+//.form__error
+
+.form__error {
+
+    //.form__error-text
+    &-text {
+        text-align: left;
+        font-size: 0.625vw;
+        margin-bottom: 0.26vw;
+        width: 100%;
+        margin-left: 2.344vw;
+    }
+
+    //.form__error-field
+    &-field {
+        background-color: #ffdddd;
+    }
+
+    &-text,
+    &-field {
+        color: #800000;
+    }
+}
+
+
+input:invalid {
+    background-color: #ffdddd;
+}
+
+input:valid {
+    background-color: #ddffdd;
+}
+
+input:required {
+    border-color: #800000;
+    border-width: 3px;
+}

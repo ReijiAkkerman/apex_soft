@@ -29,6 +29,29 @@ body {
   cursor: pointer;
 }
 
+.form__error-text {
+  color: #800000;
+  text-align: left;
+  font-size: 0.625vw;
+  margin-bottom: 0.26vw;
+}
+.form__error-field {
+  background-color: #ffdddd;
+}
+
+input:invalid {
+  background-color: #ffdddd;
+}
+
+input:valid {
+  background-color: #ddffdd;
+}
+
+input:required {
+  border-color: #800000;
+  border-width: 3px;
+}
+
 .header__top {
   padding: 2.083vw 0;
 }
@@ -252,7 +275,8 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  width: -moz-fit-content;
+  width: fit-content;
   height: 100%;
 }
 .form__icon {

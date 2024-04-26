@@ -11,15 +11,15 @@ class Form {
         let xhr = new XMLHttpRequest();
         xhr.open('POST', `../${currentPagename}/registrate`);
         xhr.send(data);
-        xhr.responseType = 'json';
+        xhr.responseType = 'text';
         xhr.onload = () => {
-            // alert(xhr.response);
-            if(xhr.response.hasOwnProperty('error_message')) {
+            alert(xhr.response);
+            // if(xhr.response.hasOwnProperty('error_message')) {
 
-            }
-            else {
+            // }
+            // else {
                 
-            }
+            // }
         };
     }
 
@@ -35,15 +35,15 @@ class Form {
         let xhr = new XMLHttpRequest();
         xhr.open('POST', `../${currentPagename}/login`);
         xhr.send(data);
-        xhr.responseType = 'json';
+        xhr.responseType = 'text';
         xhr.onload = () => {
-            // alert(xhr.response);
-            if(xhr.response.hasOwnProperty('error_message')) {
+            alert(xhr.response);
+            // if(xhr.response.hasOwnProperty('error_message')) {
 
-            }
-            else {
+            // }
+            // else {
 
-            }
+            // }
         };
     }
 }
