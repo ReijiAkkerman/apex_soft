@@ -134,11 +134,11 @@
         <form class="form form--left registration">
             <h2 class="form__title title">Создайте аккаунт</h2>
             <span class="form__span">Используйте свою учетную запись <br> электронной почты для регистрации</span>
-            <p class="form__error-text">qweqweqw</p>
-            <input class="form__input form__error-field" type="text" name="login" pattern="^[A-Za-z0-9_]{8,50}$" placeholder="Login">
-            <p class="form__error"></p>
+            <p class="form__error-text _login"></p>
+            <input class="form__input " type="text" name="login" pattern="^[A-Za-z0-9_]{8,50}$" placeholder="Login">
+            <p class="form__error-text _name"></p>
             <input class="form__input" type="text" name="name" pattern="^[A-Za-z0-9А-Яа-я]{3,100}$" placeholder="Name">
-            <p class="form__error"></p>
+            <p class="form__error-text _password"></p>
             <input class="form__input" type="password" name="password" pattern="^[A-Za-z0-9_.]{5,50}$"
                 placeholder="Password">
             <button class="form__button button submit" id="registration_button">ЗАРЕГИСТРИРОВАТЬСЯ</button>
@@ -148,9 +148,9 @@
         <form class="form form--right login">
             <h2 class="form__title title">Войдите на сайт Апекс Софт</h2>
             <span class="form__span">Используйте свою учетную <br> запись</span>
-            <p class="form__error"></p>
+            <p class="form__error-text _login"></p>
             <input class="form__input" type="text" name="login" pattern="[A-Za-z0-9_]{8,50}" placeholder="Login">
-            <p class="form__error"></p>
+            <p class="form__error-text _password"></p>
             <input class="form__input" type="password" name="password" pattern="[A-Za-z0-9_.]{5,50}"
                 placeholder="Password">
             <a class="form__link">Забыли пароль?</a>

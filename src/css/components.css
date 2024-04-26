@@ -5,20 +5,6 @@
   cursor: pointer;
 }
 
-.form__error-text {
-  text-align: left;
-  font-size: 0.625vw;
-  margin-bottom: 0.26vw;
-  width: 100%;
-  margin-left: 2.344vw;
-}
-.form__error-field {
-  background-color: #ffdddd;
-}
-.form__error-text, .form__error-field {
-  color: #800000;
-}
-
 input:invalid {
   background-color: #ffdddd;
 }
@@ -31,3 +17,20 @@ input:required {
   border-color: #800000;
   border-width: 3px;
 }
+
+.form p.form__error-text {
+  text-align: left;
+  font-size: 0.7vw;
+  margin-bottom: 0.26vw;
+  width: 100%;
+  margin-left: 2.344vw;
+}
+.form input.form__error-field {
+  background-color: #ffdddd;
+}
+.form p.form__error-text,
+.form input.form__error-field {
+  color: #800000;
+}
+
+/*# sourceMappingURL=components.css.map */

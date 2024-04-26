@@ -29,16 +29,6 @@ body {
   cursor: pointer;
 }
 
-.form__error-text {
-  color: #800000;
-  text-align: left;
-  font-size: 0.625vw;
-  margin-bottom: 0.26vw;
-}
-.form__error-field {
-  background-color: #ffdddd;
-}
-
 input:invalid {
   background-color: #ffdddd;
 }
@@ -50,6 +40,21 @@ input:valid {
 input:required {
   border-color: #800000;
   border-width: 3px;
+}
+
+.form p.form__error-text {
+  text-align: left;
+  font-size: 0.7vw;
+  margin-bottom: 0.26vw;
+  width: 100%;
+  margin-left: 2.344vw;
+}
+.form input.form__error-field {
+  background-color: #ffdddd;
+}
+.form p.form__error-text,
+.form input.form__error-field {
+  color: #800000;
 }
 
 .header__top {
@@ -94,7 +99,6 @@ input:required {
 }
 .header__cabinet-button {
   background-color: #013784;
-  width: -moz-fit-content;
   width: fit-content;
   display: flex;
   align-items: center;
@@ -180,8 +184,7 @@ input:required {
 }
 .nav__item--fixed:hover .description, .nav__link--fixed:hover .description {
   pointer-events: all;
-  -webkit-clip-path: inset(0 0 0 0);
-          clip-path: inset(0 0 0 0);
+  clip-path: inset(0 0 0 0);
   opacity: 1;
   margin-left: 6vw;
 }
@@ -200,13 +203,10 @@ input:required {
   pointer-events: none;
   z-index: 999;
   margin-left: -5em;
-  -webkit-clip-path: inset(0 10em 10em 15em);
-          clip-path: inset(0 10em 10em 15em);
+  clip-path: inset(0 10em 10em 15em);
   opacity: 0;
   padding: 1.5em;
-  transition: all 0.25s ease-out, opacity 0.25s ease-in, margin-left 0.25s ease-out, -webkit-clip-path 0.15s ease-out;
   transition: all 0.25s ease-out, opacity 0.25s ease-in, margin-left 0.25s ease-out, clip-path 0.15s ease-out;
-  transition: all 0.25s ease-out, opacity 0.25s ease-in, margin-left 0.25s ease-out, clip-path 0.15s ease-out, -webkit-clip-path 0.15s ease-out;
   background-color: #013784;
 }
 .description--first {
@@ -275,13 +275,11 @@ input:required {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: -moz-fit-content;
   width: fit-content;
   height: 100%;
 }
 .form__icon {
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   width: 30px;
   margin: 0 5px;
   opacity: 0.5;
@@ -455,3 +453,5 @@ input:required {
     width: 500px;
   }
 }
+
+/*# sourceMappingURL=header.css.map */

@@ -5,31 +5,6 @@
     cursor: pointer;
 }
 
-//.form__error
-
-.form__error {
-
-    //.form__error-text
-    &-text {
-        text-align: left;
-        font-size: 0.625vw;
-        margin-bottom: 0.26vw;
-        width: 100%;
-        margin-left: 2.344vw;
-    }
-
-    //.form__error-field
-    &-field {
-        background-color: #ffdddd;
-    }
-
-    &-text,
-    &-field {
-        color: #800000;
-    }
-}
-
-
 input:invalid {
     background-color: #ffdddd;
 }
@@ -41,4 +16,28 @@ input:valid {
 input:required {
     border-color: #800000;
     border-width: 3px;
+}
+
+//.form__error
+
+.form {
+
+    //.form__error-text
+    p.form__error-text {
+        text-align: left;
+        font-size: 0.7vw;
+        margin-bottom: 0.26vw;
+        width: 100%;
+        margin-left: 2.344vw;
+    }
+
+    //.form__error-field
+    input.form__error-field {
+        background-color: #ffdddd;
+    }
+
+    p.form__error-text,
+    input.form__error-field {
+        color: #800000;
+    }
 }

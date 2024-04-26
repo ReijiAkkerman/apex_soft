@@ -53,7 +53,7 @@
             }
         }
 
-        public function getMethod(array $requestElements): string|false {
+        public function getMethod(array $requestElements): string {
             if(!isset($requestElements[2])) {
                 header("Location: ../" . Router::$folder . "/view");
                 exit;
@@ -62,8 +62,10 @@
             $method_exists = method_exists($this->controller, $method);
             if($method_exists) 
                 return $method;
-            else 
-                return false;
+            else {
+                header("Location: ../" . Router::$folder . "/view");
+                exit;
+            }
         }
 
         public function getArgs(array $requestElements): array {

@@ -7,7 +7,7 @@ define('EVERYWHERE', '%');
 
 abstract class Page
 {
-    private const MYSQL_SERVER = 'mysql';
+    private const MYSQL_SERVER = '172.19.0.2';
     private const CONNECT_FROM = EVERYWHERE;
 
     protected string $login;
@@ -111,6 +111,7 @@ abstract class Page
         } else {
             go_to_error_message:
             $this->error_message = 'login&password|Введен неверный логин или пароль!';
+            unset($this->name);
             $this->sendData();
             exit;
         }
@@ -290,12 +291,6 @@ abstract class Page
         } else
             return false;
     }
-
-    // private function getUserInfo(\mysqli $mysql): void {
-    //     $query = "SELECT * FROM users WHERE ID={$this->ID}";
-    //     $result = $mysql->query($query);
-    //     if()
-    // }
 
     private function unsetCookie(): void
     {
