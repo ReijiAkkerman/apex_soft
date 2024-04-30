@@ -1,9 +1,61 @@
-let headerForm = document.querySelector(".header__cabinet-button");
-const userCabinet = document.querySelector(".header__cabinet-form")
-headerForm.addEventListener("click", () => {
-    headerForm.classList.toggle("active")
-    userCabinet.classList.toggle("active")
-})
+const headerForm = document.querySelector(".header__cabinet-button");
+const userCabinet = document.querySelector(".header__cabinet-form");
+const bodyPage = document.querySelector("body");
+const wrapperForm = document.querySelector(".header__cabinet-wrapper");
+const formCloseElements = document.querySelectorAll(".form__close");
+
+function openForm() {
+    headerForm.classList.add("active")
+    userCabinet.classList.add("active")
+    bodyPage.classList.add("active")
+    wrapperForm.classList.add("active")
+}
+
+function closeForm() {
+    headerForm.classList.remove("active")
+    userCabinet.classList.remove("active")
+    bodyPage.classList.remove("active")
+    wrapperForm.classList.remove("active")
+}
+
+function handleFormCloseClick() {
+    closeForm();
+}
+
+function handleEscKeyDown(event) {
+    if (event.key === "Escape") {
+        closeForm();
+    }
+}
+
+formCloseElements.forEach((formClose) => {
+    formClose.addEventListener("click", handleFormCloseClick);
+});
+
+headerForm.addEventListener("click", openForm);
+document.addEventListener("keydown", handleEscKeyDown);
+
+
+const showMoreButtons = document.querySelectorAll(".description-list__button");
+
+showMoreButtons.forEach(button => {
+    const commonAncestor = button.closest('.description-list');
+    const itemsContainers = commonAncestor.querySelectorAll('.description-list__items--more');
+    const items = Array.from(itemsContainers).reduce((acc, container) => [...acc, ...container.querySelectorAll('.description-list__item')], []);
+    const productsLength = items.length;
+    let visibleItemsCount = 5;
+
+    button.addEventListener("click", () => {
+        visibleItemsCount += 2;
+        const visibleItems = items.slice(0, visibleItemsCount);
+
+        visibleItems.forEach(el => el.classList.add("is-visible"));
+
+        if (visibleItems.length === productsLength) {
+            button.style.display = "none";
+        }
+    });
+});
 
 
 let switchCtn = document.querySelector("#switch-cnt");
