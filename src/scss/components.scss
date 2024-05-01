@@ -1,3 +1,8 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+@import "variables.scss";
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 .btn {
     background-color: unset;
     padding: 0;
@@ -40,4 +45,46 @@ input:required {
     input.form__error-field {
         color: #800000;
     }
+}
+
+.page {
+
+    // .page__breadcrumbs
+
+    &__breadcrumbs {}
+}
+
+.breadcrumbs {
+
+    // .breadcrumbs__list
+
+    &__list {
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    // .breadcrumbs__item
+
+    &__item {
+        list-style: none;
+    }
+
+    // .breadcrumbs__link
+
+    &__link {
+        text-decoration: none;
+        color: var(--mainSubColor);
+
+        &:after {
+            content: "|";
+            font-size: 0.833vw;
+            margin: 0 0.26vw;
+
+        }
+    }
+
+    // .breadcrumbs__current
+
+    &__current {}
 }

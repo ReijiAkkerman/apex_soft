@@ -18,9 +18,9 @@
                 </ul>
             </nav>
             <div class="header__basket">
-                <div class="header__basket-icon icon-basket">
+                <a href="../cart/view" class="header__basket-icon icon-basket">
                     <span>0</span>
-                </div>
+                </a>
             </div>
             <div class="header__cabinet">
                 <button class="header__cabinet-button icon-user btn">
@@ -32,6 +32,7 @@
                     ?></p>
                 </button>
             </div>
+            <div class="header__logout icon-log-out"></div>
         </div>
     </div>
     <div class="header__bottom">
@@ -110,7 +111,7 @@
                         </ul>
                     </li>
                     <li class="nav__item nav__item--bottom">
-                        <a href="" class="nav__link nav__link--bottom">Каталог</a>
+                        <a href="../catalog/view" class="nav__link nav__link--bottom">Каталог</a>
                         <ul class="nav__list-description description">
                             <li class="description-list">
                                 <p class="description-list__title">Программы</p>
@@ -227,7 +228,7 @@
                         </ul>
                     </li>
                     <li class="nav__item nav__item--dropdown">
-                        <a href="" class="nav__link nav__link--bottom">Контакы</a>
+                        <a href="" class="nav__link nav__link--bottom">Контакты</a>
                     </li>
                     <li class="nav__item nav__item--bottom">
                         <a href="" class="nav__link nav__link--bottom">Информация</a>

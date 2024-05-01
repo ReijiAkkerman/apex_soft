@@ -1,3 +1,27 @@
+:root {
+  --mainColor: #6F6F6F;
+  --mainColorIcon: #5c5c5c;
+  --mainSubColor: #201F26;
+  --titleBorder: #D9D9D9;
+  --colorText: #BFBFBF;
+  --colorBorder: #EFEFEF;
+  --colorMainSlideBorder: rgba(191, 191, 191, .5);
+  --mainFont: "Montserrat";
+  --content-width: 1468px;
+  --container-offset: 0 16px;
+}
+
+[class*=__container] {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: var(--container-offset);
+}
+
+body {
+  font-family: "Montserrat";
+  box-sizing: border-box;
+}
+
 .btn {
   background-color: unset;
   padding: 0;
@@ -33,4 +57,20 @@ input:required {
   color: #800000;
 }
 
-/*# sourceMappingURL=components.css.map */
+.breadcrumbs__list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.breadcrumbs__item {
+  list-style: none;
+}
+.breadcrumbs__link {
+  text-decoration: none;
+  color: var(--mainSubColor);
+}
+.breadcrumbs__link:after {
+  content: "|";
+  font-size: 0.833vw;
+  margin: 0 0.26vw;
+}
