@@ -1,3 +1,34 @@
+const adminPanel = document.querySelector(".panel__wrapper");
+const adminPanelForm = document.querySelector(".panel__wrapper-form");
+const buttonAdd = document.querySelector(".catalog__control-button");
+const productCards = document.querySelectorAll(".product-card");
+
+function showAdminPanel() {
+    adminPanel.style.display = "flex";
+}
+function closeAdminPanel() {
+    adminPanel.style.display = "none";
+}
+function stop(e) {
+    e.stopPropagation();
+}
+
+function closeAdminPanelEsc(event) {
+    if (event.key === "Escape") {
+        closeAdminPanel();
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    buttonAdd.addEventListener("click", showAdminPanel);
+    adminPanelForm.addEventListener("click", stop);
+    adminPanel.addEventListener("click", closeAdminPanel)
+    productCards.forEach((productCard) => {
+        productCard.addEventListener("click", showAdminPanel);
+    })
+    document.addEventListener("keydown", closeAdminPanelEsc);
+})
+
 const imageInput = document.querySelector(".panel__input-image");
 const imagePreview = document.querySelector(".panel__image-preview");
 
@@ -73,3 +104,5 @@ $(document).click(e => {
         $('.catalog__control-select').removeClass('open');
     }
 })
+
+
