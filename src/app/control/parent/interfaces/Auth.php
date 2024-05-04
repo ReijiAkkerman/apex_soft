@@ -2,8 +2,8 @@
     namespace project\control\parent\interfaces;
 
     interface Auth {
+        public function view(): void;
         public function registrate(): void;
         public function login(): void;
-        public function view(): void;
         public function exit(): void;
     }

@@ -43,16 +43,10 @@
                             <div class="catalog__control-item">
                                 <p>Сортировать по категориям</p>
                                 <select data-menu>
-                                    <option selected>Программы</option>
+                                    <option selected>Все категории</option>
+                                    <option>Программы</option>
                                     <option>Услуги</option>
                                     <option>Сервисы</option>
-                                </select>
-                            </div>
-                            <div class="catalog__control-item">
-                                <p>Сортировать по:</p>
-                                <select data-menu>
-                                    <option selected>Названию</option>
-                                    <option>Дате</option>
                                 </select>
                             </div>
                             <div class="catalog__control-item">

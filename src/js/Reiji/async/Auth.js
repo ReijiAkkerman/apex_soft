@@ -1,4 +1,6 @@
-class Form {
+import {AuthPopup} from './AuthPopup.js';
+
+class Auth {
     static DOM_element;
 
     registrate(event) {
@@ -32,7 +34,7 @@ class Form {
                     }
                 }
                 else {
-                    Form.viewParseError(xhr.response);
+                    Auth.viewParseError(xhr.response);
                 }
             }
             else {
@@ -40,13 +42,16 @@ class Form {
                     if(xhr.response['name']) {
                         let element = document.querySelector('#username');
                         element.textContent = xhr.response['name'];
+                        AuthPopup.showExitButton();
+                        AuthPopup.showCartButton();
+                        // AuthPopup.hideAuthForm();
                     }
                     else {
-                        Form.viewParseError(xhr.response);
+                        Auth.viewParseError(xhr.response);
                     }
                 }
                 else {
-                    Form.viewParseError(xhr.response);
+                    Auth.viewParseError(xhr.response);
                 }
             }
         };
@@ -98,7 +103,7 @@ class Form {
                     }
                 }
                 else {
-                    Form.viewParseError(xhr.response);
+                    Auth.viewParseError(xhr.response);
                 }
             }
             else {
@@ -106,15 +111,37 @@ class Form {
                     if(xhr.response['name']) {
                         let element = document.querySelector('#username');
                         element.textContent = xhr.response['name'];
+                        AuthPopup.showExitButton();
+                        AuthPopup.showCartButton();
+                        // AuthPopup.hideAuthForm();
                     }
                     else {
-                        Form.viewParseError(xhr.response);
+                        Auth.viewParseError(xhr.response);
                     }
                 }
                 else {
-                    Form.viewParseError(xhr.response);
+                    Auth.viewParseError(xhr.response);
                 }
             }
+        };
+    }
+
+    static exit() {
+        let currentPagename = (function() {
+            let path = window.location.pathname;
+            let pagenames_array = path.split('/');
+            let pagename = pagenames_array[1];
+            return pagename;
+        })();
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', `../${currentPagename}/exit`);
+        xhr.send();
+        xhr.responseType = 'text';
+        xhr.onload = () => {
+            let username = document.querySelector('#username');
+            username.textContent = 'Войти';
+            AuthPopup.hideExitButton();
+            AuthPopup.hideCartButton();
         };
     }
 
@@ -128,13 +155,13 @@ class Form {
     }
 }
 
-let form = new Form();
+let auth = new Auth();
 
 document.addEventListener('DOMContentLoaded', function() {
     let element = document.querySelector('#registration_button');
-    element.addEventListener('click', form.registrate);
+    element.addEventListener('click', auth.registrate);
     element = document.querySelector('#login_button');
-    element.addEventListener('click', form.login);
+    element.addEventListener('click', auth.login);
     let elements;
     let elements_array = [
         'login',
@@ -142,9 +169,12 @@ document.addEventListener('DOMContentLoaded', function() {
         'password'
     ];
     for(let i = 0; i < elements_array.length; i++) {
-        elements = document.querySelectorAll(`header ~ div:first-of-type input[name="${elements_array[i]}"]`);
+        elements = document.querySelectorAll(`.Reiji_forms input[name="${elements_array[i]}"]`);
         for(let j = 0; j < elements.length; j++) {
-            elements[j].addEventListener('input', form.applyFormerFieldStyle);
+            elements[j].addEventListener('input', auth.applyFormerFieldStyle);
         }
     }
+    element = document.querySelector('#exit-button');
+    if(typeof element != 'null') 
+        element.addEventListener('click', Auth.exit);
 });

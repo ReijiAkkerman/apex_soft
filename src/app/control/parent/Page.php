@@ -24,6 +24,7 @@ abstract class Page implements Auth
 
     protected function constructor(): void
     {
+        $this->isAdmin = false;
         $this->isEnteredUser();
     }
 
@@ -43,6 +44,7 @@ abstract class Page implements Auth
                 exit;
             }
         }
+        $this->hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
         $DB_has_been_used = true;
         try {
@@ -107,6 +109,8 @@ abstract class Page implements Auth
                 $confirmation = md5($this->login . $this->password_from_DB . $this->creation_date);
                 setcookie('id', $this->ID, time() + 3600 * 24 * 7, '/');
                 setcookie('confirmation', $confirmation, time() + 3600 * 24 * 7, '/');
+                if($this->isAdmin)
+                    setcookie('is_admin', $this->isAdmin, time() + 3600 * 24 * 7, '/');
                 $this->sendData();
             } else {
                 goto go_to_error_message;
@@ -122,7 +126,6 @@ abstract class Page implements Auth
 
     public function exit(): void {
         $this->unsetCookie();
-
     }
 
 
@@ -148,7 +151,8 @@ abstract class Page implements Auth
                                 $this->login = $row['login'];
                                 $this->password_from_DB = $row['password'];
                                 $this->name = $row['name'];
-                                $this->creation_date = $row['creation_date'];
+                                $this->creation_date = (int)$row['creation_date'];
+                                $this->isAdmin = (bool)$row['admin_rights'];
                             }
                             $confirmation = md5($this->login . $this->password_from_DB . $this->creation_date);
                             if ($_COOKIE['confirmation'] != $confirmation) {
@@ -276,7 +280,6 @@ abstract class Page implements Auth
             $result = preg_match($regex, $_POST['password']);
             if ($result === 1) {
                 $this->entered_password = $_POST['password'];
-                $this->hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
                 return true;
             } else if ($result === 0) {
                 $this->error_message = 'password|Введенный пароль не соответствует допустимому шаблону!';
@@ -315,8 +318,9 @@ abstract class Page implements Auth
                 foreach ($result as $row) {
                     $this->password_from_DB = $row['password'];
                     $this->name = $row['name'];
-                    $this->ID = (int) $row['ID'];
-                    $this->creation_date = (int) $row['creation_date'];
+                    $this->ID = (int)$row['ID'];
+                    $this->creation_date = (int)$row['creation_date'];
+                    $this->isAdmin = (bool)$row['admin_rights'];
                 }
             }
             return true;
@@ -328,10 +332,8 @@ abstract class Page implements Auth
     {
         setcookie('id', '', time() - 1, '/');
         setcookie('confirmation', '', time() - 1, '/');
-    }
-
-    private function unsetAdminCookie(): void {
-
+        if($this->isAdmin)
+            setcookie('is_admin', '', time() - 1, '/');
     }
 
     private function sendData(): void

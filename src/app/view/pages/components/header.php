@@ -17,13 +17,13 @@
                     </li>
                 </ul>
             </nav>
-            <div class="header__basket">
+            <div class="header__basket" id="cart-button" <?php if(!isset($this->name)) echo 'style="display:none;"' ?>>
                 <a href="../cart/view" class="header__basket-icon icon-basket">
                     <span>0</span>
                 </a>
             </div>
-            <div class="header__cabinet">
-                <button class="header__cabinet-button icon-user btn">
+            <div class="header__cabinet Reiji_nav_for_exit-button">
+                <button class="header__cabinet-button icon-user btn Reiji_showAuthForm-button">
                     <p id="username"><?php
                     if (isset($this->name))
                         echo $this->name;
@@ -32,7 +32,7 @@
                     ?></p>
                 </button>
             </div>
-            <div class="header__logout icon-log-out"></div>
+            <div class="header__logout icon-log-out" id="exit-button" <?php if(!isset($this->name)) echo 'style="display:none;"' ?>></div>
         </div>
     </div>
     <div class="header__bottom">
@@ -359,4 +359,7 @@
         </div>
     </div>
 </div>
-<script src="/src/js/Reiji/async/form.js"></script>
+<script type="module" src="/src/js/Reiji/async/Auth.js"></script>
+<template class="ReijiTemplate_exit-button">
+    <div class="header__logout icon-log-out Reiji_exit-button"></div>
+</template>
