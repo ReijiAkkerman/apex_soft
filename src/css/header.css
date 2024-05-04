@@ -342,9 +342,9 @@ input:required {
 
 .header__cabinet-form {
   position: absolute;
-  top: 100%;
+  top: -100%;
   left: 50%;
-  transform: translate(-50%, 100%);
+  transform: translate(-50%, 0%);
   z-index: 3;
   width: 60%;
   height: 33.854vw;
@@ -354,11 +354,12 @@ input:required {
   overflow: hidden;
   opacity: 0;
   margin: 0 auto;
+  transition: top 0.4s ease, opacity 0.4s ease;
 }
 .header__cabinet-form.active {
   opacity: 1;
   top: 0%;
-  transform: translate(-50%, 0%);
+  transition: top 0.4s ease, opacity 0.4s ease;
 }
 
 .header__cabinet-wrapper.active {
@@ -368,7 +369,6 @@ input:required {
   background-color: rgba(0, 0, 0, 0.5);
   top: 0;
   left: 0;
-  transition: all 0.8s ease 0s;
   z-index: 5;
 }
 
@@ -457,8 +457,9 @@ input:required {
   line-height: 1.6;
 }
 
-.butto1n {
-  width: 180px;
+.form__button,
+.switch__button {
+  width: 220px;
   height: 50px;
   border-radius: 25px;
   margin-top: 50px;

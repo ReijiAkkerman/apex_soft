@@ -50,7 +50,7 @@
                                 </select>
                             </div>
                             <div class="catalog__control-item">
-                                <button class="catalog__control-button">Добавить</button>
+                                <button class="catalog__control-button btn">Добавить</button>
                             </div>
                         </div>
                         <div class="catalog__products">

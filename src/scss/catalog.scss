@@ -65,12 +65,26 @@
 
     &__control {
         display: flex;
+        align-items: end;
 
         //.catalog__control-item
         &-item {
             &:not(:last-child) {
                 margin-right: 2.083vw;
             }
+        }
+
+        //.catalog__control-button
+        &-button {
+            background-color: #013784;
+            width: -moz-fit-content;
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            padding: 1vw 1.9vw;
+            color: #fff;
+            border-radius: 1.042vw;
+            margin-top: auto;
         }
     }
 
@@ -116,6 +130,18 @@
             width: 20px;
             height: 20px;
             font-size: 20px;
+        }
+    }
+
+    &__icon {
+        transition: scale .1s ease;
+        padding: 20px;
+        margin: -20px;
+
+        &:hover {
+            scale: (1.4);
+            transition: scale .1s ease;
+
         }
     }
 }

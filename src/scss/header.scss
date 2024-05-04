@@ -396,9 +396,9 @@ $transition: 1.25s;
 
 .header__cabinet-form {
     position: absolute;
-    top: 100%;
+    top: -100%;
     left: 50%;
-    transform: translate(-50%, 100%);
+    transform: translate(-50%, 0%);
     z-index: 3;
     width: 60%;
     // min-width: 1000px;
@@ -410,11 +410,12 @@ $transition: 1.25s;
     overflow: hidden;
     opacity: 0;
     margin: 0 auto;
+    transition: top .4s ease, opacity .4s ease;
 
     &.active {
         opacity: 1;
         top: 0%;
-        transform: translate(-50%, 0%);
+        transition: top .4s ease, opacity .4s ease;
     }
 }
 
@@ -425,7 +426,6 @@ $transition: 1.25s;
     background-color: rgba(0, 0, 0, 0.5);
     top: 0;
     left: 0;
-    transition: all 0.8s ease 0s;
     z-index: 5;
 }
 
@@ -532,8 +532,9 @@ $transition: 1.25s;
     line-height: 1.6;
 }
 
-.butto1n {
-    width: 180px;
+.form__button,
+.switch__button {
+    width: 220px;
     height: 50px;
     border-radius: 25px;
     margin-top: 50px;
