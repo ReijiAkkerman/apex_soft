@@ -9,7 +9,7 @@ class Form {
             let pagename = pagenames_array[1];
             return pagename;
         })();
-        let data = new FormData(document.querySelector('header ~ div:first-of-type .registration'));
+        let data = new FormData(document.querySelector('.Reiji_registration'));
         let xhr = new XMLHttpRequest();
         xhr.open('POST', `../${currentPagename}/registrate`);
         xhr.send(data);
@@ -25,8 +25,8 @@ class Form {
                         let str_array = xhr.response['error_message'].split('|');
                         let field = str_array[0];
                         let message = str_array[1];
-                        let error_text = document.querySelector(`header ~ div:first-of-type .registration p._${field}`);
-                        let error_field = document.querySelector(`header ~ div:first-of-type .registration input[name="${field}"]`);
+                        let error_text = document.querySelector(`.Reiji_registration p._${field}`);
+                        let error_field = document.querySelector(`.Reiji_registration input[name="${field}"]`);
                         error_text.textContent = message;
                         error_field.classList.add('form__error-field');
                     }
@@ -60,7 +60,7 @@ class Form {
             let pagename = pagenames_array[1];
             return pagename;
         })();
-        let data = new FormData(document.querySelector('header ~ div:first-of-type .login'));
+        let data = new FormData(document.querySelector('.Reiji_login'));
         let xhr = new XMLHttpRequest();
         xhr.open('POST', `../${currentPagename}/login`);
         xhr.send(data);
@@ -78,8 +78,8 @@ class Form {
                             let str_array = xhr.response['error_message'].split('|');
                             let field = str_array[0];
                             let message = str_array[1];
-                            let error_text = document.querySelector(`header ~ div:first-of-type .login p._${field}`);
-                            let error_field = document.querySelector(`header ~ div:first-of-type .login input[name="${field}"]`);
+                            let error_text = document.querySelector(`.Reiji_login p._${field}`);
+                            let error_field = document.querySelector(`.Reiji_login input[name="${field}"]`);
                             error_text.textContent = message;
                             error_field.classList.add('form__error-field');
                         }
@@ -87,11 +87,11 @@ class Form {
                             let str_array = xhr.response['error_message'].split('|');
                             let labels_array = str_array[0].split('&');
                             let message = str_array[1];
-                            let error_text = document.querySelector('header ~ div:first-of-type .login p._login');
+                            let error_text = document.querySelector('.Reiji_login p._login');
                             let error_field;
                             error_text.textContent = message;
                             for(let i = 0; i < labels_array.length; i++) {
-                                error_field = document.querySelector(`header ~ div:first-of-type .login input[name="${labels_array[i]}"]`);
+                                error_field = document.querySelector(`.Reiji_login input[name="${labels_array[i]}"]`);
                                 error_field.classList.add('form__error-field');
                             }
                         }

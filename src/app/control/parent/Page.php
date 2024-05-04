@@ -1,11 +1,12 @@
 <?php
 namespace project\control\parent;
 
+use project\control\parent\interfaces\Auth;
 use project\control\parent\enum\Regex;
 
 define('EVERYWHERE', '%');
 
-abstract class Page
+abstract class Page implements Auth
 {
     private const MYSQL_SERVER = '172.19.0.2';
     private const CONNECT_FROM = EVERYWHERE;
@@ -16,6 +17,7 @@ abstract class Page
     protected string $password_from_DB;
     protected int $ID;
     protected int $creation_date;
+    protected bool $isAdmin;
 
     public string $name;
     public string $error_message;
@@ -53,6 +55,7 @@ abstract class Page
         if ($DB_has_been_used) {
             if ($this->isExistentUser($mysql)) {
                 $this->error_message = 'login|Указанный логин уже используется!';
+                unset($this->name);
                 $this->sendData();
                 exit;
             }
@@ -117,6 +120,19 @@ abstract class Page
         }
     }
 
+    public function exit(): void {
+        $this->unsetCookie();
+
+    }
+
+
+
+
+
+    /**
+     * Проверяет активен ли пользователь и если нет удаляет все куки с браузера клиента
+     */
+
     protected function isEnteredUser(): void
     {
         if (isset($_COOKIE['id']))
@@ -151,6 +167,10 @@ abstract class Page
             $this->unsetCookie();
     }
 
+
+
+
+
     private function init(): void
     {
         $functions_of_init = [
@@ -184,7 +204,8 @@ abstract class Page
                     login VARCHAR(255) UNIQUE,
                     name VARCHAR(255),
                     password VARCHAR(255),
-                    creation_date INT
+                    creation_date INT,
+                    admin_rights BOOLEAN DEFAULT 0 NOT NULL
                 )'
         ];
         foreach ($queries as $query) {
@@ -273,9 +294,20 @@ abstract class Page
         }
     }
 
+
+
+
+
+    /**
+     * Вспомогательные функции 
+     */
+
     private function isExistentUser(\mysqli $mysql, bool $password_needed = false): bool
     {
-        $query = "SELECT * FROM users WHERE login='{$this->login}'";
+        if($password_needed)
+            $query = "SELECT * FROM users WHERE BINARY login='{$this->login}'";
+        else 
+            $query = "SELECT * FROM users WHERE login='{$this->login}'";
         $result = $mysql->query($query);
 
         if ($result->num_rows) {
@@ -296,6 +328,10 @@ abstract class Page
     {
         setcookie('id', '', time() - 1, '/');
         setcookie('confirmation', '', time() - 1, '/');
+    }
+
+    private function unsetAdminCookie(): void {
+
     }
 
     private function sendData(): void
