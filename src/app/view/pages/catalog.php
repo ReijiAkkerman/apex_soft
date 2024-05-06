@@ -42,19 +42,21 @@
                         <div class="catalog__control">
                             <div class="catalog__control-item">
                                 <p>Сортировать по категориям</p>
-                                <select data-menu>
-                                    <option selected>Все категории</option>
-                                    <option>Программы</option>
-                                    <option>Услуги</option>
-                                    <option>Сервисы</option>
-                                </select>
+                                <div class="dropdown">
+                                    <button class="dropdown__button">Выберите пункт</button>
+                                    <ul class="dropdown__list">
+                                        <li class="dropdown__item" data-filter="programm">Программы</li>
+                                        <li class="dropdown__item" data-filter="uslugi">Услуги</li>
+                                        <li class="dropdown__item" data-filter="services">Сервисы</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="catalog__control-item">
                                 <button class="catalog__control-button btn" id="add-button">Добавить</button>
                             </div>
                         </div>
                         <div class="catalog__products">
-                            <article class="product-card">
+                            <article class="product-card" data-category="programm">
                                 <div class="product-card__checkmark">
                                     <svg class="product-card__icon" width="64" version="1.1"
                                         xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 0 64 64"
@@ -70,10 +72,10 @@
                                     <div class="product-card__picture">
                                         <img src="/src/assets/img/image.jpg" alt="" class="product-card__image">
                                     </div>
-                                    <h3 class="product-card__name"> 1С : Бухгалтерия 8 ПРОФ </h3>
+                                    <h3 class="product-card__name"> 1С : Бухгалтерия 8 ПРОФ Программы</h3>
                                 </div>
                             </article>
-                            <article class="product-card">
+                            <article class="product-card" data-category="uslugi">
                                 <div class="product-card__checkmark">
                                     <svg class="product-card__icon" width="64" version="1.1"
                                         xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 0 64 64"
@@ -89,10 +91,10 @@
                                     <div class="product-card__picture">
                                         <img src="/src/assets/img/image.jpg" alt="" class="product-card__image">
                                     </div>
-                                    <h3 class="product-card__name"> 1С : Бухгалтерия 8 ПРОФ </h3>
+                                    <h3 class="product-card__name"> 1С : Бухгалтерия 8 ПРОФ Услуги</h3>
                                 </div>
                             </article>
-                            <article class="product-card">
+                            <article class="product-card" data-category="services">
                                 <div class="product-card__checkmark">
                                     <svg class="product-card__icon" width="64" version="1.1"
                                         xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 0 64 64"
@@ -108,7 +110,7 @@
                                     <div class="product-card__picture">
                                         <img src="/src/assets/img/image.jpg" alt="" class="product-card__image">
                                     </div>
-                                    <h3 class="product-card__name"> 1С : Бухгалтерия 8 ПРОФ </h3>
+                                    <h3 class="product-card__name"> 1С : Бухгалтерия 8 ПРОФ Сервисы</h3>
                                 </div>
                             </article>
                         </div>
@@ -128,7 +130,16 @@
             <p>Название описание</p>
             <input type="text" name="theme_title">
             <p>Описание</p>
-            <textarea name="theme_description" id="" cols="30" rows="10" class="panel__description"></textarea>
+            <textarea name="" id="" cols="30" rows="10" class="panel__description"></textarea>
+            <p>Название описание</p>
+            <input type="text">
+            <p>Описание</p>
+            <textarea name="" id="" cols="30" rows="10" class="panel__description"></textarea>
+            <p>Название описание</p>
+            <input type="text">
+            <p>Описание</p>
+
+            <textarea name="" id="" cols="30" rows="10" class="panel__description"></textarea>
             <div class="panel__buttons">
                 <button class="panel__button btn" id="save-button" formenctype="multipart/form-data">Сохранить</button>
             </div>
