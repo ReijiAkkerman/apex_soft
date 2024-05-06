@@ -44,65 +44,33 @@ imageInput.addEventListener("change", function () {
 });
 
 
-$('select[data-menu]').each(function () {
+const dropdownButton = document.querySelector('.dropdown__button');
+const dropdownList = document.querySelector('.dropdown__list');
+const dropdownItems = document.querySelectorAll('.dropdown__item');
 
-    let select = $(this),
-        options = select.find('option'),
-        menu = $('<div />').addClass('catalog__control-select'),
-        button = $('<div />').addClass('catalog__control-button'),
-        list = $('<ul />'),
-        arrow = $('<em />').prependTo(button);
+dropdownButton.addEventListener('click', function () {
+    dropdownList.classList.toggle('show');
+});
 
-    options.each(function (i) {
-        let option = $(this);
-        list.append($('<li />').text(option.text()));
+dropdownItems.forEach(function (item) {
+    item.addEventListener('click', function () {
+        const currentActiveItem = document.querySelector('.dropdown__item.active');
+        if (currentActiveItem) {
+            currentActiveItem.classList.remove('active');
+        }
+        this.classList.add('active');
+        dropdownButton.textContent = this.textContent;
+        dropdownList.classList.remove('show');
     });
-
-    menu.css('--t', select.find(':selected').index() * -41 + 'px');
-
-    select.wrap(menu);
-
-    button.append(list).insertAfter(select);
-
-    list.clone().insertAfter(button);
-
 });
 
-$(document).on('click', '.catalog__control-select', function (e) {
-
-    let menu = $(this);
-
-    if (!menu.hasClass('open')) {
-        menu.addClass('open');
-    }
-
+dropdownList.addEventListener('click', function (event) {
+    const filter = event.target.dataset.filter;
+    productCards.forEach(function (card) {
+        if (filter === card.dataset.category) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
 });
-
-$(document).on('click', '.catalog__control-select > ul > li', function (e) {
-
-    let li = $(this),
-        menu = li.parent().parent(),
-        select = menu.children('select'),
-        selected = select.find('option:selected'),
-        index = li.index();
-
-    menu.css('--t', index * -41 + 'px');
-    selected.attr('selected', false);
-    select.find('option').eq(index).attr('selected', true);
-
-    menu.addClass(index > selected.index() ? 'tilt-down' : 'tilt-up');
-
-    setTimeout(() => {
-        menu.removeClass('open tilt-up tilt-down');
-    }, 500);
-
-});
-
-$(document).click(e => {
-    e.stopPropagation();
-    if ($('.catalog__control-select').has(e.target).length === 0) {
-        $('.catalog__control-select').removeClass('open');
-    }
-})
-
-
