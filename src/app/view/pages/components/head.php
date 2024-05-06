@@ -12,3 +12,4 @@
 <link rel="stylesheet" href="/src/css/components.css">
 <link rel="stylesheet" href="/src/css/header.css">
 <link rel="stylesheet" href="/src/css/catalog.css">
+<link rel="stylesheet" href="/src/css/product.css">
