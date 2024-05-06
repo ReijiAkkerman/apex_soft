@@ -8,8 +8,8 @@ define('EVERYWHERE', '%');
 
 abstract class Page implements Auth
 {
-    private const MYSQL_SERVER = '172.19.0.2';
-    private const CONNECT_FROM = EVERYWHERE;
+    public const MYSQL_SERVER = '172.19.0.2';
+    public const CONNECT_FROM = EVERYWHERE;
 
     protected string $login;
     protected string $entered_password;
@@ -17,14 +17,14 @@ abstract class Page implements Auth
     protected string $password_from_DB;
     protected int $ID;
     protected int $creation_date;
-    protected bool $isAdmin;
+    protected bool $admin;
 
     public string $name;
     public string $error_message;
 
     protected function constructor(): void
     {
-        $this->isAdmin = false;
+        $this->admin = false;
         $this->isEnteredUser();
     }
 
@@ -109,8 +109,8 @@ abstract class Page implements Auth
                 $confirmation = md5($this->login . $this->password_from_DB . $this->creation_date);
                 setcookie('id', $this->ID, time() + 3600 * 24 * 7, '/');
                 setcookie('confirmation', $confirmation, time() + 3600 * 24 * 7, '/');
-                if($this->isAdmin)
-                    setcookie('is_admin', $this->isAdmin, time() + 3600 * 24 * 7, '/');
+                if($this->admin)
+                    setcookie('is_admin', $this->admin, time() + 3600 * 24 * 7, '/');
                 $this->sendData();
             } else {
                 goto go_to_error_message;
@@ -152,7 +152,7 @@ abstract class Page implements Auth
                                 $this->password_from_DB = $row['password'];
                                 $this->name = $row['name'];
                                 $this->creation_date = (int)$row['creation_date'];
-                                $this->isAdmin = (bool)$row['admin_rights'];
+                                $this->admin = (bool)$row['admin_rights'];
                             }
                             $confirmation = md5($this->login . $this->password_from_DB . $this->creation_date);
                             if ($_COOKIE['confirmation'] != $confirmation) {
@@ -178,7 +178,8 @@ abstract class Page implements Auth
     private function init(): void
     {
         $functions_of_init = [
-            'createUsersDB'
+            'createUsersDB',
+            'createProductsDB'
         ];
         $mysql = new \mysqli(Page::MYSQL_SERVER, 'root', 'secret');
         foreach ($functions_of_init as $function) {
@@ -205,14 +206,35 @@ abstract class Page implements Auth
             'USE Users',
             'CREATE TABLE IF NOT EXISTS users(
                     ID SERIAL,
-                    login VARCHAR(255) UNIQUE,
-                    name VARCHAR(255),
-                    password VARCHAR(255),
-                    creation_date INT,
+                    login VARCHAR(255) UNIQUE NOT NULL,
+                    name VARCHAR(255) NOT NULL,
+                    password VARCHAR(255) NOT NULL,
+                    creation_date INT NOT NULL,
                     admin_rights BOOLEAN DEFAULT 0 NOT NULL
                 )'
         ];
         foreach ($queries as $query) {
+            $mysql->query($query);
+        }
+    }
+
+    private function createProductsDB(\mysqli $mysql): void {
+        $connect_from = Page::CONNECT_FROM;
+        $queries = [
+            'CREATE DATABASE IF NOT EXISTS Products',
+            "CREATE USER IF NOT EXISTS 'Admin'@'$connect_from' IDENTIFIED WITH mysql_native_password BY 'secret_of_Admin'",
+            'USE Products',
+            'CREATE TABLE IF NOT EXISTS all_products(
+                ID SERIAL,
+                product_name VARCHAR(255) UNIQUE NOT NULL,
+                theme_title VARCHAR(255),
+                theme_description TEXT
+            )',
+            "GRANT SELECT, INSERT, UPDATE, DELETE ON Products.* TO 'Admin'@'$connect_from'",
+            "CREATE USER IF NOT EXISTS 'Visitor'@'$connect_from' IDENTIFIED WITH mysql_native_password BY 'secret_of_Visitor'",
+            "GRANT SELECT ON Products.all_products TO 'Visitor'@'$connect_from'"
+        ];
+        foreach($queries as $query) {
             $mysql->query($query);
         }
     }
@@ -320,7 +342,7 @@ abstract class Page implements Auth
                     $this->name = $row['name'];
                     $this->ID = (int)$row['ID'];
                     $this->creation_date = (int)$row['creation_date'];
-                    $this->isAdmin = (bool)$row['admin_rights'];
+                    $this->admin = (bool)$row['admin_rights'];
                 }
             }
             return true;
@@ -332,11 +354,11 @@ abstract class Page implements Auth
     {
         setcookie('id', '', time() - 1, '/');
         setcookie('confirmation', '', time() - 1, '/');
-        if($this->isAdmin)
+        if($this->admin)
             setcookie('is_admin', '', time() - 1, '/');
     }
 
-    private function sendData(): void
+    protected function sendData(): void
     {
         $data = json_encode($this, JSON_UNESCAPED_UNICODE);
         echo $data;

@@ -50,7 +50,7 @@
                                 </select>
                             </div>
                             <div class="catalog__control-item">
-                                <button class="catalog__control-button btn">Добавить</button>
+                                <button class="catalog__control-button btn" id="add-button">Добавить</button>
                             </div>
                         </div>
                         <div class="catalog__products">
@@ -118,24 +118,26 @@
         </section>
     </main>
     <section class="panel__wrapper">
-        <form action="" class="panel__wrapper-form">
+        <form action="" id="admin_form" class="panel__wrapper-form">
             <p>Название продукта</p>
             <input type="text" name="title" class="panel__name">
             <p>Выберите фотографию</p>
+            <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
             <input type="file" name="image" class="panel__input-image">
             <img src="" alt="Предпросмотр фотографии" class="panel__image-preview">
             <p>Название описание</p>
-            <input type="text">
+            <input type="text" name="theme_title">
             <p>Описание</p>
-            <textarea name="" id="" cols="30" rows="10" class="panel__description"></textarea>
+            <textarea name="theme_description" id="" cols="30" rows="10" class="panel__description"></textarea>
             <div class="panel__buttons">
-                <button class="panel__button btn">Сохранить</button>
+                <button class="panel__button btn" id="save-button" formenctype="multipart/form-data">Сохранить</button>
             </div>
         </form>
         <div class="panel__wrapper">
         </div>
     </section>
     <footer></footer>
+    <script type="module" src="/src/js/Reiji/async/AdminForm.js"></script>
 </body>
 
 </html>
