@@ -32,45 +32,49 @@ document.addEventListener("DOMContentLoaded", () => {
 const imageInput = document.querySelector(".panel__input-image");
 const imagePreview = document.querySelector(".panel__image-preview");
 
-imageInput.addEventListener("change", function () {
-    const file = this.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.addEventListener("load", function () {
-            imagePreview.setAttribute("src", this.result);
-        });
-        reader.readAsDataURL(file);
-    }
-});
+if (imageInput) {
+    imageInput.addEventListener("change", function () {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.addEventListener("load", function () {
+                imagePreview.setAttribute("src", this.result);
+            });
+            reader.readAsDataURL(file);
+        }
+    });
+}
 
 
 const dropdownButton = document.querySelector('.dropdown__button');
 const dropdownList = document.querySelector('.dropdown__list');
 const dropdownItems = document.querySelectorAll('.dropdown__item');
 
-dropdownButton.addEventListener('click', function () {
-    dropdownList.classList.toggle('show');
-});
-
-dropdownItems.forEach(function (item) {
-    item.addEventListener('click', function () {
-        const currentActiveItem = document.querySelector('.dropdown__item.active');
-        if (currentActiveItem) {
-            currentActiveItem.classList.remove('active');
-        }
-        this.classList.add('active');
-        dropdownButton.textContent = this.textContent;
-        dropdownList.classList.remove('show');
+if (dropdownButton) {
+    dropdownButton.addEventListener('click', function () {
+        dropdownList.classList.toggle('show');
     });
-});
 
-dropdownList.addEventListener('click', function (event) {
-    const filter = event.target.dataset.filter;
-    productCards.forEach(function (card) {
-        if (filter === card.dataset.category) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
+    dropdownItems.forEach(function (item) {
+        item.addEventListener('click', function () {
+            const currentActiveItem = document.querySelector('.dropdown__item.active');
+            if (currentActiveItem) {
+                currentActiveItem.classList.remove('active');
+            }
+            this.classList.add('active');
+            dropdownButton.textContent = this.textContent;
+            dropdownList.classList.remove('show');
+        });
     });
-});
+    dropdownList.addEventListener('click', function (event) {
+        const filter = event.target.dataset.filter;
+        productCards.forEach(function (card) {
+            if (filter === card.dataset.category) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+}
+

@@ -8,7 +8,7 @@
 
 <body>
     <?php require_once __DIR__ . '/components/header.php' ?>
-    <main class="page">
+    <main class="page page--catalog">
         <div class="page__header">
             <div class="page__container">
                 <nav class="page__breadcrumbs breadcrumbs">
@@ -137,7 +137,6 @@
             <p>Название описание</p>
             <input type="text">
             <p>Описание</p>
-
             <textarea name="" id="" cols="30" rows="10" class="panel__description"></textarea>
             <div class="panel__buttons">
                 <button class="panel__button btn">Сохранить</button>
