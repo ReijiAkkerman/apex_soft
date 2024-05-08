@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                             <div class="catalog__control-item">
-                                <button class="catalog__control-button btn" id="add-button">Добавить</button>
+                                <button class="catalog__control-button btn"><a href="../product/view?id=0">Добавить</a></button>
                             </div>
                         </div>
                         <div class="catalog__products">

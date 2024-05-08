@@ -4,7 +4,7 @@
     use project\control\parent\Page;
     use project\control\traits\View;
 
-    use project\model\Products;
+    use project\model\Product;
 
     final class Catalog extends Page {
         public string $error_message;

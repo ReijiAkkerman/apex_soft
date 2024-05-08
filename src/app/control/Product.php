@@ -12,7 +12,17 @@
             $this->constructor();
         }
 
-        use View;
+        public function view(): void {
+            if(isset($_GET['id']) && $_GET['id']) {
+                $product_id = (int)$_GET['id'];
+                $product = new model_Product();
+                $product->getProduct($product_id);
+            }
+            $classname = __CLASS__;
+            $class_array = explode('\\', $classname);
+            $class = end($class_array);
+            require_once __DIR__ . '/../view/pages/' . lcfirst($class) . '.php';
+        }
 
         public function createProduct(): void {
             $access_permitted = $this->checkAccessRights();

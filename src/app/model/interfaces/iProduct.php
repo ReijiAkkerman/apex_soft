@@ -6,5 +6,5 @@
         public function updateProduct(): void;
         public function deleteProduct(): void;
         public function getAllProducts(): void;
-        public function getProduct(): void;
+        public function getProduct(int $product_id): void;
     }

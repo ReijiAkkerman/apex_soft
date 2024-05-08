@@ -22,11 +22,29 @@
                         </li>
                     </ul>
                 </nav>
+                <?php if($this->admin) { ?>
                 <button id="for_theme">Тема</button>
                 <button id="for_paragraph">Описание</button>
                 <button id="for_list">Список</button>
-                <h1 class="page__title" contenteditable="true" id="product_name">Название товара</h1>
-                <h2 contenteditable="true" id="product_type">Тип товара</h2>
+                <?php } ?>
+                <h1 class="page__title" <?php if($this->admin) echo 'contenteditable="true"' ?> id="product_name"><?php 
+                    if(isset($product))
+                        if(isset($product->error_message))
+                            echo $product->error_message;
+                        else 
+                            echo $product->name;
+                    else 
+                        echo 'Название товара';
+                ?></h1>
+                <h2 <?php if($this->admin) echo 'contenteditable="true"' ?> id="product_type"><?php
+                    if(isset($product))
+                        if(isset($product->error_message))
+                            ;
+                        else 
+                            echo $product->type;
+                    else 
+                        echo 'Тип товара';
+                ?></h2>
             </div>
         </div>
         <div class="cart">
@@ -34,11 +52,26 @@
                 <div class="cart__wrapper">
                     <div class="cart__content">
                         <div class="cart__content-picture" id="add_image">
-                            <img src="/src/assets/img/cart.jpg" alt="" class="cart__content-image">
+                            <img src="/images/<?php
+                                if(isset($product))
+                                    echo $product->ID;
+                                else 
+                                    echo '0';
+                            ?>.png" alt="" class="cart__content-image">
                         </div>
-                        <div class="cart__content-body" id="product_description" contenteditable="true">
+                        <div class="cart__content-body" id="product_description" <?php if($this->admin) echo 'contenteditable="true"' ?>>
+                            <?php
+                                if(isset($product))
+                                    if(isset($product->error_message))
+                                        ;
+                                    else
+                                        echo $product->description;
+                                else {
+                            ?>
                             <h3>Введите текст</h3>
+                            <?php } ?>
                         </div>
+                        <?php if($this->admin) { ?>
                         <form id="admin_form">
                             <input type="text" name="product_name">
                             <input type="text" name="product_type">
@@ -46,6 +79,7 @@
                             <input type="file" name="image">
                             <button id="save-button">Сохранить</button>
                         </form>
+                        <?php } ?>
                     </div>
                     <div class="cart__filter catalog__filter filter">
                         <div class="filter__item">

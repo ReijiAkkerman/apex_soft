@@ -6,10 +6,10 @@
     use project\model\interfaces\iProduct;
 
     class Product implements iProduct {
-        public int $productID;
-        public string $productName;
-        public string $productType;
-        public string $productDescription;
+        public int $ID;
+        public string $name;
+        public string $type;
+        public string $description;
 
         private string $imageFormat;
 
@@ -35,7 +35,7 @@
                     exit;
                 }
             }
-            $this->productDescription = $_POST['product_description'];
+            $this->description = $_POST['product_description'];
 
             try {
                 $mysql = new \mysqli(Page::MYSQL_SERVER, 'Admin', 'secret_of_Admin', 'Products');
@@ -72,8 +72,22 @@
 
         }
 
-        public function getProduct(): void {
-
+        public function getProduct(int $product_id): void {
+            $mysql = new \mysqli(Page::MYSQL_SERVER, 'Visitor', 'secret_of_Visitor', 'Products');
+            $query = "SELECT * FROM all_products WHERE ID=$product_id";
+            $result = $mysql->query($query);
+            if($result->num_rows) {
+                foreach($result as $row) {
+                    $this->ID = (int)$row['ID'];
+                    $this->name = $row['product_name'];
+                    $this->type = $row['product_type'];
+                    $this->description = $row['product_description'];
+                }
+            }
+            else {
+                $this->error_message = "Запрашиваемый товар не найден!";
+            }
+            $mysql->close();
         }
 
 
@@ -120,7 +134,7 @@
                 $regex = Regex::product_name->value;
                 $result = preg_match($regex, $_POST['product_name']);
                 if($result === 1) {
-                    $this->productName = $_POST['product_name'];
+                    $this->name = $_POST['product_name'];
                     return true;
                 }
                 else if($result === 0) {
@@ -147,7 +161,7 @@
                 $regex = Regex::product_type->value;
                 $result = preg_match($regex, $_POST['product_type']);
                 if($result === 1) {
-                    $this->productType = $_POST['product_type'];
+                    $this->type = $_POST['product_type'];
                     return true;
                 }
                 else if($result === 0) {
@@ -220,7 +234,7 @@
                 ?
             )";
             $stmt = $mysql->prepare($query);
-            $stmt->bind_param('sss', $this->productName, $this->productType, $this->productDescription);
+            $stmt->bind_param('sss', $this->name, $this->type, $this->description);
             $stmt->execute();
         }
 
