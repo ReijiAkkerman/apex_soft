@@ -10,6 +10,7 @@
         public string $name;
         public string $type;
         public string $description;
+        public string $imageName;
 
         private string $imageFormat;
 
@@ -44,7 +45,7 @@
                 echo $e->getMessage();
                 exit;
             }
-            $this->productID = ($this->getLastProductID($mysql) + 1);
+            $this->ID = ($this->getLastProductID($mysql) + 1);
             $imageSaved = $this->saveGotImageToFilesystem($mysql);
             if($imageSaved) {
                 $this->writeProductData($mysql);
@@ -82,6 +83,7 @@
                     $this->name = $row['product_name'];
                     $this->type = $row['product_type'];
                     $this->description = $row['product_description'];
+                    $this->imageName = $row['image_name'];
                 }
             }
             else {
@@ -98,7 +100,8 @@
          */
 
         private function saveGotImageToFilesystem(\mysqli $mysql): bool {
-            $filename = (string)$this->productID;
+            $filename = (string)$this->ID;
+            $this->imageName = $filename . '.' . $this->imageFormat;
             $dirname = __DIR__ . '/../../../images/';
             $full_path = $dirname . $filename . '.' . $this->imageFormat;
             try {
@@ -108,7 +111,7 @@
                 echo $e;
                 exit;
             }
-            $this->produictID = $filename;
+            $this->ID = $filename;
             return $result;
         }
 
@@ -227,14 +230,22 @@
             $query = "INSERT INTO all_products(
                 product_name,
                 product_type,
-                product_description
+                product_description,
+                image_name
             ) VALUES (
+                ?,
                 ?,
                 ?,
                 ?
             )";
             $stmt = $mysql->prepare($query);
-            $stmt->bind_param('sss', $this->name, $this->type, $this->description);
+            $stmt->bind_param(
+                'ssss',
+                $this->name,
+                $this->type,
+                $this->description,
+                $this->imageName
+            );
             $stmt->execute();
         }
 

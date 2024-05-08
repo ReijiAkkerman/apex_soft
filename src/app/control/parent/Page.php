@@ -228,7 +228,8 @@ abstract class Page implements Auth
                 ID SERIAL,
                 product_name VARCHAR(255) UNIQUE NOT NULL,
                 product_type VARCHAR(255) NOT NULL,
-                product_description TEXT
+                product_description TEXT,
+                image_name TEXT
             )',
             "GRANT SELECT, INSERT, UPDATE, DELETE ON Products.* TO 'Admin'@'$connect_from'",
             "CREATE USER IF NOT EXISTS 'Visitor'@'$connect_from' IDENTIFIED WITH mysql_native_password BY 'secret_of_Visitor'",

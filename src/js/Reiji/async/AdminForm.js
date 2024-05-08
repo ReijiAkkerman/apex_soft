@@ -86,17 +86,20 @@ class AdminForm {
 
 export {AdminForm};
 
-
-
 document.addEventListener('DOMContentLoaded', function() {
     let element = document.querySelector('#save-button');
-    element.addEventListener('click', AdminForm.sendData);
+    if(element !== null)
+        element.addEventListener('click', AdminForm.sendData);
     element = document.querySelector('#add_image');
-    element.addEventListener('click', AdminForm.addImage);
+    if(element !== null)
+        element.addEventListener('click', AdminForm.addImage);
     element = document.querySelector('#for_list');
-    element.addEventListener('click', AdminForm.insertList);
+    if(element !== null)
+        element.addEventListener('click', AdminForm.insertList);
     element = document.querySelector('#for_theme');
-    element.addEventListener('click', AdminForm.insertTheme);
+    if(element !== null)
+        element.addEventListener('click', AdminForm.insertTheme);
     element = document.querySelector('#for_paragraph');
-    element.addEventListener('click', AdminForm.insertParagraph);
+    if(element !== null)
+        element.addEventListener('click', AdminForm.insertParagraph);
 });

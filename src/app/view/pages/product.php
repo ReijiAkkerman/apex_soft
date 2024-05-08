@@ -22,12 +22,12 @@
                         </li>
                     </ul>
                 </nav>
-                <?php if($this->admin) { ?>
+                <?php if($this->admin && !isset($product->error_message)) { ?>
                 <button id="for_theme">Тема</button>
                 <button id="for_paragraph">Описание</button>
                 <button id="for_list">Список</button>
                 <?php } ?>
-                <h1 class="page__title" <?php if($this->admin) echo 'contenteditable="true"' ?> id="product_name"><?php 
+                <h1 class="page__title" <?php if($this->admin && !isset($product->error_message)) echo 'contenteditable="true"' ?> id="product_name"><?php 
                     if(isset($product))
                         if(isset($product->error_message))
                             echo $product->error_message;
@@ -36,6 +36,7 @@
                     else 
                         echo 'Название товара';
                 ?></h1>
+                <?php if(!isset($product->error_message)) { ?>
                 <h2 <?php if($this->admin) echo 'contenteditable="true"' ?> id="product_type"><?php
                     if(isset($product))
                         if(isset($product->error_message))
@@ -45,20 +46,24 @@
                     else 
                         echo 'Тип товара';
                 ?></h2>
+                <?php } ?>
             </div>
         </div>
         <div class="cart">
             <div class="cart__container">
                 <div class="cart__wrapper">
                     <div class="cart__content">
+                        <?php if(!isset($product->error_message)) { ?>
                         <div class="cart__content-picture" id="add_image">
                             <img src="/images/<?php
-                                if(isset($product))
-                                    echo $product->ID;
+                                if(isset($product->imageName))
+                                    echo $product->imageName;
                                 else 
-                                    echo '0';
-                            ?>.png" alt="" class="cart__content-image">
+                                    echo '0.png';
+                            ?>" alt="" class="cart__content-image">
                         </div>
+                        <?php } ?>
+                        <?php if(!isset($product->error_message)) { ?>
                         <div class="cart__content-body" id="product_description" <?php if($this->admin) echo 'contenteditable="true"' ?>>
                             <?php
                                 if(isset($product))
@@ -71,7 +76,8 @@
                             <h3>Введите текст</h3>
                             <?php } ?>
                         </div>
-                        <?php if($this->admin) { ?>
+                        <?php } ?>
+                        <?php if($this->admin && !isset($product->error_message)) { ?>
                         <form id="admin_form">
                             <input type="text" name="product_name">
                             <input type="text" name="product_type">
@@ -99,18 +105,18 @@
     <footer></footer>
     <script type="module" src="/src/js/Reiji/async/AdminForm.js"></script>
     <template class="Reiji_list">
-        <ul>
+        <ul class="some_class">
             <li>текст</li>
         </ul>
     </template>
     <template class="Reiji_list_item">
-        <li>текст</li>
+        <li class="some_class">текст</li>
     </template>
     <template class="Reiji_paragraph">
-        <p>Введите описание</p>
+        <p class="some_class">Введите описание</p>
     </template>
     <template class="Reiji_theme">
-        <h3>Введите тему</h3>
+        <h3 class="some_class">Введите тему</h3>
     </template>
 </body>
 
