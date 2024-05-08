@@ -14,7 +14,7 @@ class Auth {
         })();
         let data = new FormData(document.querySelector('.Reiji_registration'));
         let xhr = new XMLHttpRequest();
-        xhr.open('POST', `../${currentPagename}/registrate`);
+        xhr.open('POST', `/${currentPagename}/registrate`);
         xhr.send(data);
         xhr.responseType = 'json';
         xhr.onload = () => {
@@ -70,7 +70,7 @@ class Auth {
         })();
         let data = new FormData(document.querySelector('.Reiji_login'));
         let xhr = new XMLHttpRequest();
-        xhr.open('POST', `../${currentPagename}/login`);
+        xhr.open('POST', `/${currentPagename}/login`);
         xhr.send(data);
         xhr.responseType = 'json';
         xhr.onload = () => {
@@ -139,7 +139,7 @@ class Auth {
             return pagename;
         })();
         let xhr = new XMLHttpRequest();
-        xhr.open('POST', `../${currentPagename}/exit`);
+        xhr.open('POST', `/${currentPagename}/exit`);
         xhr.send();
         xhr.responseType = 'text';
         xhr.onload = () => {

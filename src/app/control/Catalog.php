@@ -14,4 +14,12 @@
         }
 
         use View;
+
+        public function view(): void {
+            (new Product)->getAllProducts();
+            $classname = __CLASS__;
+            $class_array = explode('\\', $classname);
+            $class = end($class_array);
+            require_once __DIR__ . '/../view/pages/' . lcfirst($class) . '.php';
+        }
     }

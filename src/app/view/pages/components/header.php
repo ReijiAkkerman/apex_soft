@@ -111,7 +111,7 @@
                         </ul>
                     </li>
                     <li class="nav__item nav__item--bottom">
-                        <a href="../catalog/view" class="nav__link nav__link--bottom">Каталог</a>
+                        <a href="/catalog/view" class="nav__link nav__link--bottom">Каталог</a>
                         <ul class="nav__list-description description">
                             <li class="description-list">
                                 <p class="description-list__title">Программы</p>

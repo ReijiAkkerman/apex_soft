@@ -9,7 +9,7 @@ class AdminForm {
         AdminForm.insertData();
         let data = new FormData(document.querySelector('#admin_form'));
         let xhr = new XMLHttpRequest();
-        xhr.open('POST', '../product/createProduct');
+        xhr.open('POST', '/product/createProduct');
         xhr.send(data);
         xhr.responseType = 'text';
         xhr.onload = () => {

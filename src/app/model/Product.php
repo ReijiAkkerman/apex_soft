@@ -70,7 +70,20 @@
         }
 
         public function getAllProducts(): void {
-
+            $GLOBALS['products'] = [];
+            $mysql = new \mysqli(Page::MYSQL_SERVER, 'Visitor', 'secret_of_Visitor', 'Products');
+            $query = "SELECT * FROM all_products";
+            $result = $mysql->query($query);
+            if($result->num_rows) {
+                foreach($result as $row) {
+                    $this->ID = (int)$row['ID'];
+                    $this->name = $row['product_name'];
+                    $this->type = $row['product_type'];
+                    $this->imageName = $row['image_name'];
+                    $GLOBALS['products'][] = clone $this;
+                }
+            }
+            $mysql->close();
         }
 
         public function getProduct(int $product_id): void {

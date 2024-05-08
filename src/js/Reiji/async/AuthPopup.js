@@ -18,11 +18,6 @@ class AuthPopup {
         let cart_button = document.querySelector('#cart-button');
         cart_button.style.display = 'none';
     }
-
-    static hideAuthForm() {
-        let form = document.querySelector('.Reiji_forms');
-        form.style.display = 'none';
-    }
 }
 
 export {AuthPopup};
