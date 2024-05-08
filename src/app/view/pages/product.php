@@ -12,7 +12,7 @@
     <main class="page page--cart">
         <div class="page__header">
             <div class="page__container">
-                <nav class="page__breadcrumbs breadcrumbs">
+                <nav class="page__breadcrumbs breadcrumbs Reiji_place_for_buttons" >
                     <ul class="breadcrumbs__list">
                         <li class="breadcrumbs__item">
                             <a href="../main/view" class="breadcrumbs__link">Главная</a>
@@ -23,9 +23,9 @@
                     </ul>
                 </nav>
                 <?php if($this->admin && !isset($product->error_message)) { ?>
-                <button id="for_theme">Тема</button>
-                <button id="for_paragraph">Описание</button>
-                <button id="for_list">Список</button>
+                <button class="Reiji_admin-button" id="for_theme">Тема</button>
+                <button class="Reiji_admin-button" id="for_paragraph">Описание</button>
+                <button class="Reiji_admin-button" id="for_list">Список</button>
                 <?php } ?>
                 <h1 class="page__title" <?php if($this->admin && !isset($product->error_message)) echo 'contenteditable="true"' ?> id="product_name"><?php 
                     if(isset($product))
@@ -117,6 +117,20 @@
     </template>
     <template class="Reiji_theme">
         <h3 class="some_class">Введите тему</h3>
+    </template>
+    <template class="Reiji_admin-buttons">
+        <button class="Reiji_admin-button" id="for_theme">Тема</button>
+        <button class="Reiji_admin-button" id="for_paragraph">Описание</button>
+        <button class="Reiji_admin-button" id="for_list">Список</button>
+    </template>
+    <template class="Reiji_admin-form">
+        <form id="admin_form">
+            <input type="text" name="product_name">
+            <input type="text" name="product_type">
+            <input type="text" name="product_description">
+            <input type="file" name="image">
+            <button id="save-button">Сохранить</button>
+        </form>
     </template>
 </body>
 

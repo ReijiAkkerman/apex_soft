@@ -1,4 +1,5 @@
 import {AuthPopup} from './AuthPopup.js';
+import {AdminForm} from './AdminForm.js';
 
 class Auth {
     static DOM_element;
@@ -44,7 +45,9 @@ class Auth {
                         element.textContent = xhr.response['name'];
                         AuthPopup.showExitButton();
                         AuthPopup.showCartButton();
-                        // AuthPopup.hideAuthForm();
+                        let admin = Auth.getCookie('is_admin');
+                        if(admin) 
+                            AdminForm.showAdminFunctions();
                     }
                     else {
                         Auth.viewParseError(xhr.response);
@@ -113,7 +116,9 @@ class Auth {
                         element.textContent = xhr.response['name'];
                         AuthPopup.showExitButton();
                         AuthPopup.showCartButton();
-                        // AuthPopup.hideAuthForm();
+                        let admin = Auth.getCookie('is_admin');
+                        if(admin) 
+                            AdminForm.showAdminFunctions();
                     }
                     else {
                         Auth.viewParseError(xhr.response);
@@ -153,7 +158,22 @@ class Auth {
         let got_data = JSON.stringify(data);
         alert(`Произошла ошибка во время обработки полученных данных!\n${got_data}`);
     }
+
+    static getCookie(name) {
+        let cookieArray = [];
+        let temp_array = document.cookie.split('; ');
+        for(let i = 0; i < temp_array.length; i++) {
+            let temp_data = temp_array[i].split('=');
+            cookieArray[temp_data[0]] = temp_data[1]; 
+        }
+        if(typeof cookieArray[name] === 'undefined')
+            return false;
+        else 
+            return cookieArray[name];
+    }
 }
+
+export {Auth};
 
 let auth = new Auth();
 

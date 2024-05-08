@@ -1,6 +1,0 @@
-git restore --staged src/app/control/parent/Page.php
-git restore --staged src/app/view/pages/components/header.php
-git restore --staged src/css/components.css
-git restore --staged src/css/header.css
-git restore --staged src/js/Reiji/async/form.js
-git restore --staged src/scss/components.scss
