@@ -140,3 +140,7 @@
 .dropdown__item.active {
   background-color: #ccc;
 }
+
+.panel__input-image {
+  min-height: 25px;
+}

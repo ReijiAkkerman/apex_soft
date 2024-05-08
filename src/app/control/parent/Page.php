@@ -227,8 +227,8 @@ abstract class Page implements Auth
             'CREATE TABLE IF NOT EXISTS all_products(
                 ID SERIAL,
                 product_name VARCHAR(255) UNIQUE NOT NULL,
-                theme_title VARCHAR(255),
-                theme_description TEXT
+                product_type VARCHAR(255) NOT NULL,
+                product_description TEXT
             )',
             "GRANT SELECT, INSERT, UPDATE, DELETE ON Products.* TO 'Admin'@'$connect_from'",
             "CREATE USER IF NOT EXISTS 'Visitor'@'$connect_from' IDENTIFIED WITH mysql_native_password BY 'secret_of_Visitor'",

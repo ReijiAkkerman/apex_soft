@@ -9,6 +9,7 @@
 .cart__content-image {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
+
+/*# sourceMappingURL=product.css.map */

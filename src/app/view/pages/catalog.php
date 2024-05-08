@@ -122,23 +122,15 @@
     <section class="panel__wrapper">
         <form action="" id="admin_form" class="panel__wrapper-form">
             <p>Название продукта</p>
-            <input type="text" name="title" class="panel__name">
+            <input type="text" name="product_name" class="panel__name">
             <p>Выберите фотографию</p>
             <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
             <input type="file" name="image" class="panel__input-image">
             <img src="" alt="Предпросмотр фотографии" class="panel__image-preview">
-            <p>Название описание</p>
+            <p>Тема описания или целевая аудитория</p>
             <input type="text" name="theme_title">
             <p>Описание</p>
-            <textarea name="" id="" cols="30" rows="10" class="panel__description"></textarea>
-            <p>Название описание</p>
-            <input type="text">
-            <p>Описание</p>
-            <textarea name="" id="" cols="30" rows="10" class="panel__description"></textarea>
-            <p>Название описание</p>
-            <input type="text">
-            <p>Описание</p>
-            <textarea name="" id="" cols="30" rows="10" class="panel__description"></textarea>
+            <textarea name=""  cols="30" rows="10" class="panel__description"></textarea>
             <div class="panel__buttons">
                 <button class="panel__button btn" id="save-button" formenctype="multipart/form-data">Сохранить</button>
             </div>
@@ -147,7 +139,6 @@
         </div>
     </section>
     <footer></footer>
-    <script type="module" src="/src/js/Reiji/async/AdminForm.js"></script>
 </body>
 
 </html>

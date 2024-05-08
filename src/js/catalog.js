@@ -19,15 +19,16 @@ function closeAdminPanelEsc(event) {
     }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    buttonAdd.addEventListener("click", showAdminPanel);
-    adminPanelForm.addEventListener("click", stop);
-    adminPanel.addEventListener("click", closeAdminPanel)
-    productCards.forEach((productCard) => {
-        productCard.addEventListener("click", showAdminPanel);
+if(adminPanel)
+    document.addEventListener("DOMContentLoaded", () => {
+        buttonAdd.addEventListener("click", showAdminPanel);
+        adminPanelForm.addEventListener("click", stop);
+        adminPanel.addEventListener("click", closeAdminPanel)
+        productCards.forEach((productCard) => {
+            productCard.addEventListener("click", showAdminPanel);
+        })
+        document.addEventListener("keydown", closeAdminPanelEsc);
     })
-    document.addEventListener("keydown", closeAdminPanelEsc);
-})
 
 const imageInput = document.querySelector(".panel__input-image");
 const imagePreview = document.querySelector(".panel__image-preview");

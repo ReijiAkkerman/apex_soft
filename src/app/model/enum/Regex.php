@@ -2,8 +2,7 @@
     namespace project\model\enum;
 
     enum Regex: string {
-        case title = '#^[a-zA-Z0-9а-яА-Я _.,-]{5,100}$#';
+        case product_name = '#^[a-zA-Z0-9а-яА-Я\040_-]{5,100}$#u';
+        case product_type = '#^[a-zA-Z0-9а-яА-Я\040]{3,50}$#u';
         case image_format = '#^(jpg|jpeg|bmp|png|gif)$#';
-        case theme_title = '#^[a-zA-Z0-9А-Яа-я _.,-]{5,100}$#';
-        case theme_description = '#^[a-zA-Z0-9А-Яа-я _.,-]{10,2000}$#';
     }

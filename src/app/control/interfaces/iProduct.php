@@ -1,7 +1,7 @@
 <?php
-    namespace project\model\interfaces;
+    namespace project\control\interfaces;
 
-    interface iAdminForm {
+    interface iProduct {
         public function createProduct(): void;
         public function updateProduct(): void;
         public function deleteProduct(): void;
