@@ -3,6 +3,6 @@
 
     interface iProduct {
         public function createProduct(): void;
-        public function updateProduct(): void;
-        public function deleteProduct(): void;
+        public function updateProduct(array $args): void;
+        public function deleteProduct(array $args): void;
     }

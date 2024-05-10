@@ -4,16 +4,56 @@ class AdminForm {
     static list_status = false;
     static ul_counter = 0;
 
-    static sendData(event) {
+    static saveProductData(event) {
         event.preventDefault();
         AdminForm.insertData();
         let data = new FormData(document.querySelector('#admin_form'));
+        let element = document.querySelector('#save-button');
+        let action = (function(element) {
+            let classname;
+            for(let i = 0; i < element.classList.length; i++) {
+                if(/action_/.test(element.classList[i]))
+                    classname = element.classList[i];
+            }
+            let action = classname.split('_')[1];
+            return action;
+        })(element);
+        let id = (function(element) {
+            let classname;
+            for(let i = 0; i < element.classList.length; i++) {
+                if(/Reiji_id/.test(element.classList[i]))
+                    classname = element.classList[i];
+            }
+            let id = classname.split('-')[1];
+            return id;
+        })(element);
         let xhr = new XMLHttpRequest();
-        xhr.open('POST', '/product/createProduct');
+        xhr.open('POST', `/product/${action}Product/${id}`);
         xhr.send(data);
         xhr.responseType = 'text';
         xhr.onload = () => {
             alert(xhr.response);
+            // window.location.href = '/catalog/view';
+        };
+    }
+
+    deleteProduct(event) {
+        event.preventDefault();
+        let id = (function(element) {
+            let classname;
+            for(let i = 0; i < element.classList.length; i++) {
+                if(/Reiji_id/.test(element.classList[i]))
+                    classname = element.classList[i];
+            }
+            let id = classname.split('-')[1];
+            return id;
+        })(this);
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', `/product/deleteProduct/${id}`);
+        xhr.send();
+        xhr.responseType = 'text';
+        xhr.onload = () => {
+            window.location.href = '/catalog/view';
         };
     }
 
@@ -110,7 +150,7 @@ class AdminForm {
         let paragraph = document.querySelector('#for_paragraph');
         let theme = document.querySelector('#for_theme');
 
-        send_button.addEventListener('click', AdminForm.sendData);
+        send_button.addEventListener('click', AdminForm.saveProductData);
         list.addEventListener('click', AdminForm.insertList);
         paragraph.addEventListener('click', AdminForm.insertParagraph);
         theme.addEventListener('click', AdminForm.insertTheme);
@@ -133,27 +173,65 @@ class AdminForm {
             buttons[i].remove();
         }
     }
+
+    static hideAddButton() {
+        let element = document.querySelector('#add_button');
+        element.remove();
+    }
+
+    static showAddButton() {
+        let element_template = document.querySelector('.Reiji_add_button');
+        let element = element_template.content.cloneNode(true);
+        let insertion_place = document.querySelector('.Reiji_place_for_add_button');
+        insertion_place.after(element);
+    }
+
+    addId() {
+        this.id = 'delete-button';
+    }
+
+    deleteId() {
+        this.id = '';
+    }
 }
 
 export {AdminForm};
 
-document.addEventListener('DOMContentLoaded', function() {
-    let element = document.querySelector('#save-button');
-    if(element !== null)
-        element.addEventListener('click', AdminForm.sendData);
-    element = document.querySelector('#add_image');
-    if(element !== null)
-        element.addEventListener('click', AdminForm.addImage);
-    element = document.querySelector('#for_list');
-    if(element !== null)
-        element.addEventListener('click', AdminForm.insertList);
-    element = document.querySelector('#for_theme');
-    if(element !== null)
-        element.addEventListener('click', AdminForm.insertTheme);
-    element = document.querySelector('#for_paragraph');
-    if(element !== null)
-        element.addEventListener('click', AdminForm.insertParagraph);
-    element = document.querySelector('#exit-button');
-    if(element !== null)
-        element.addEventListener('click', AdminForm.hideAdminFunctions);
-});
+var admin = new AdminForm();
+
+if((window.location.pathname.split('/')[1]) == 'product') {
+    document.addEventListener('DOMContentLoaded', function() {
+        let element = document.querySelector('#save-button');
+        if(element !== null)
+            element.addEventListener('click', AdminForm.saveProductData);
+        element = document.querySelector('#add_image');
+        if(element !== null)
+            element.addEventListener('click', AdminForm.addImage);
+        element = document.querySelector('#for_list');
+        if(element !== null)
+            element.addEventListener('click', AdminForm.insertList);
+        element = document.querySelector('#for_theme');
+        if(element !== null)
+            element.addEventListener('click', AdminForm.insertTheme);
+        element = document.querySelector('#for_paragraph');
+        if(element !== null)
+            element.addEventListener('click', AdminForm.insertParagraph);
+        element = document.querySelector('#exit-button');
+        if(element !== null)
+            element.addEventListener('click', AdminForm.hideAdminFunctions);
+        element = document.querySelector('.Reiji_delete-button');
+        if(element !== null)
+            element.addEventListener('click', AdminForm.deleteProduct);
+    });
+}
+
+if((window.location.pathname.split('/')[1]) == 'catalog') {
+    let elements = document.querySelectorAll('.Reiji_delete-button');
+    for(let i = 0; i < elements.length; i++) {
+        if(elements !== null) {
+            elements[i].addEventListener('click', admin.deleteProduct);
+            elements[i].addEventListener('mouseover', admin.addId);
+            elements[i].addEventListener('mouseout', admin.deleteId);
+        }
+    }
+}

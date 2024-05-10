@@ -14,7 +14,7 @@
                 <nav class="page__breadcrumbs breadcrumbs">
                     <ul class="breadcrumbs__list">
                         <li class="breadcrumbs__item">
-                            <a href="../main/view" class="breadcrumbs__link">Главная</a>
+                            <a href="/main/view" class="breadcrumbs__link">Главная</a>
                         </li>
                         <li class="breadcrumbs__item">
                             <span class="breadcrumbs__current">Каталог</span>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="catalog__content">
                         <div class="catalog__control">
-                            <div class="catalog__control-item">
+                            <div class="catalog__control-item Reiji_place_for_add_button">
                                 <p>Сортировать по категориям</p>
                                 <div class="dropdown">
                                     <button class="dropdown__button">Выберите пункт</button>
@@ -52,8 +52,8 @@
                                 </div>
                             </div>
                             <?php if($this->admin) { ?>
-                            <div class="catalog__control-item">
-                                <button class="catalog__control-button btn"><a href="../product/view?id=0">Добавить</a></button>
+                            <div class="catalog__control-item" id="add_button">
+                                <button class="catalog__control-button btn"><a href="/product/view?default_action=create">Добавить</a></button>
                             </div>
                             <?php } ?>
                         </div>
@@ -61,7 +61,7 @@
                             <?php foreach($GLOBALS['products'] as $product) { ?>
                             <article class="product-card" data-category="programm" data-type="<?= $product->type ?>">
                                 <?php if($this->admin) { ?>
-                                <div class="product-card__checkmark">
+                                <div class="product-card__checkmark Reiji_id-<?= $product->ID ?> Reiji_delete-button" id="delete-button">
                                     <svg class="product-card__icon" width="64" version="1.1"
                                         xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 0 64 64"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64">
@@ -74,12 +74,12 @@
                                 </div>
                                 <?php } ?>
                                 <div class="product-card__body">
-                                    <a href="/product/view/?id=<?= $product->ID ?>">
+                                    <a href="/product/view?default_action=update&id=<?= $product->ID ?>">
                                         <div class="product-card__picture">
                                             <img src="/images/<?= $product->imageName ?>" alt="" class="product-card__image">
                                         </div>
                                     </a>
-                                    <a href="/product/view/?id=<?= $product->ID ?>">
+                                    <a href="/product/view/?default_action=update&id=<?= $product->ID ?>">
                                         <h3 class="product-card__name"><?= $product->name ?></h3>
                                     </a>
                                 </div>
@@ -91,26 +91,13 @@
             </div>
         </section>
     </main>
-    <section class="panel__wrapper">
-        <form action="" id="admin_form" class="panel__wrapper-form">
-            <p>Название продукта</p>
-            <input type="text" name="product_name" class="panel__name">
-            <p>Выберите фотографию</p>
-            <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
-            <input type="file" name="image" class="panel__input-image">
-            <img src="" alt="Предпросмотр фотографии" class="panel__image-preview">
-            <p>Тема описания или целевая аудитория</p>
-            <input type="text" name="theme_title">
-            <p>Описание</p>
-            <textarea name=""  cols="30" rows="10" class="panel__description"></textarea>
-            <div class="panel__buttons">
-                <button class="panel__button btn" id="save-button" formenctype="multipart/form-data">Сохранить</button>
-            </div>
-        </form>
-        <div class="panel__wrapper">
-        </div>
-    </section>
     <footer></footer>
+    <script type="module" src="/src/js/Reiji/async/AdminForm.js"></script>
+    <template class="Reiji_add_button">
+        <div class="catalog__control-item" id="add_button">
+            <button class="catalog__control-button btn"><a href="/product/view">Добавить</a></button>
+        </div>
+    </template>
 </body>
 
 </html>

@@ -46,8 +46,12 @@ class Auth {
                         AuthPopup.showExitButton();
                         AuthPopup.showCartButton();
                         let admin = Auth.getCookie('is_admin');
-                        if(admin) 
-                            AdminForm.showAdminFunctions();
+                        if(admin) {
+                            if((window.location.pathname.split('/')[1]) == 'product')
+                                AdminForm.showAdminFunctions();
+                            if((window.location.pathname.split('/')[1]) == 'catalog')
+                                AdminForm.showAddButton();
+                        }
                     }
                     else {
                         Auth.viewParseError(xhr.response);
@@ -117,8 +121,12 @@ class Auth {
                         AuthPopup.showExitButton();
                         AuthPopup.showCartButton();
                         let admin = Auth.getCookie('is_admin');
-                        if(admin) 
-                            AdminForm.showAdminFunctions();
+                        if(admin) {
+                            if((window.location.pathname.split('/')[1]) == 'product')
+                                AdminForm.showAdminFunctions();
+                            if((window.location.pathname.split('/')[1]) == 'catalog')
+                                AdminForm.showAddButton();
+                        }
                     }
                     else {
                         Auth.viewParseError(xhr.response);
@@ -147,6 +155,8 @@ class Auth {
             username.textContent = 'Войти';
             AuthPopup.hideExitButton();
             AuthPopup.hideCartButton();
+            if((window.location.pathname.split('/')[1]) == 'catalog')
+                AdminForm.hideAddButton();
         };
     }
 

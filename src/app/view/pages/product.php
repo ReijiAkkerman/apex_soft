@@ -60,7 +60,7 @@
                                     echo $product->imageName;
                                 else 
                                     echo '0.png';
-                            ?>" alt="" class="cart__content-image">
+                            ?>" alt="" class="cart__content-image" id="image">
                         </div>
                         <?php } ?>
                         <?php if(!isset($product->error_message)) { ?>
@@ -78,12 +78,21 @@
                         </div>
                         <?php } ?>
                         <?php if($this->admin && !isset($product->error_message)) { ?>
-                        <form id="admin_form">
+                        <form id="admin_form" enctype="multipart/form-data">
                             <input type="text" name="product_name">
                             <input type="text" name="product_type">
                             <input type="text" name="product_description">
+                            <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
                             <input type="file" name="image">
-                            <button id="save-button">Сохранить</button>
+                            <button class="action_<?php
+                                if(isset($product->default_action))
+                                    echo $product->default_action;
+                                else 
+                                    echo 'create';
+                            ?> Reiji_id-<?php if(isset($product->ID)) echo $product->ID ?>" id="save-button">Сохранить</button>
+                            <?php if(isset($product)) { ?>
+                            <button class="Reiji_id-<?= $product->ID ?>" id="delete-button">Удалить</button>
+                            <?php } ?>
                         </form>
                         <?php } ?>
                     </div>
@@ -128,8 +137,12 @@
             <input type="text" name="product_name">
             <input type="text" name="product_type">
             <input type="text" name="product_description">
+            <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
             <input type="file" name="image">
             <button id="save-button">Сохранить</button>
+            <?php if(isset($product)) { ?>
+            <button class="Reiji_id-<?= $product->ID ?>" id="delete-button">Удалить</button>
+            <?php } ?>
         </form>
     </template>
 </body>
