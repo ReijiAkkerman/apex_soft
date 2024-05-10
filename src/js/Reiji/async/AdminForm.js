@@ -221,7 +221,7 @@ if((window.location.pathname.split('/')[1]) == 'product') {
             element.addEventListener('click', AdminForm.hideAdminFunctions);
         element = document.querySelector('.Reiji_delete-button');
         if(element !== null)
-            element.addEventListener('click', AdminForm.deleteProduct);
+            element.addEventListener('click', admin.deleteProduct);
     });
 }
 

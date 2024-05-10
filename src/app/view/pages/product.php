@@ -91,7 +91,7 @@
                                     echo 'create';
                             ?> Reiji_id-<?php if(isset($product->ID)) echo $product->ID ?>" id="save-button">Сохранить</button>
                             <?php if(isset($product)) { ?>
-                            <button class="Reiji_id-<?= $product->ID ?>" id="delete-button">Удалить</button>
+                            <button class="Reiji_id-<?= $product->ID ?> Reiji_delete-button" id="delete-button">Удалить</button>
                             <?php } ?>
                         </form>
                         <?php } ?>
@@ -141,7 +141,7 @@
             <input type="file" name="image">
             <button id="save-button">Сохранить</button>
             <?php if(isset($product)) { ?>
-            <button class="Reiji_id-<?= $product->ID ?>" id="delete-button">Удалить</button>
+            <button class="Reiji_id-<?= $product->ID ?> Reiji_delete-button" id="delete-button">Удалить</button>
             <?php } ?>
         </form>
     </template>
