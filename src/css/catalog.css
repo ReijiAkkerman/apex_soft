@@ -59,11 +59,13 @@
   color: #fff;
   border-radius: 1.042vw;
   margin-top: auto;
+  text-decoration: none;
 }
 .catalog__products {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(33%, 1fr));
-  margin-top: 30px;
+  grid-template-columns: repeat(3, minmax(10.417vw, 1fr));
+  gap: 1.563vw;
+  margin-top: 1.563vw;
 }
 
 .product-card {
@@ -85,15 +87,54 @@
   width: 20px;
   height: 20px;
   font-size: 20px;
+  background-color: #fff;
 }
 .product-card__icon {
   transition: scale 0.1s ease;
-  padding: 20px;
-  margin: -20px;
 }
 .product-card__icon:hover {
   scale: 1.4;
   transition: scale 0.1s ease;
+}
+.product-card__link {
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+.product-card__name {
+  font-size: 0.938vw;
+  line-height: 1.25vw;
+  color: var(--mainSubColor);
+  margin: 20px 0 0 0;
+}
+.product-card__picture {
+  max-width: 350px;
+  max-height: 350px;
+  height: 300px;
+  display: block;
+}
+.product-card__image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.product-card__add {
+  background-color: #013784;
+  border: none;
+  padding: 1vw 1.9vw;
+  cursor: pointer;
+  border-radius: 1.042vw;
+  font-size: 0.833vw;
+  line-height: 0.938vw;
+  color: #fff;
+  width: 100%;
+}
+.product-card__quantity {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 1.563vw;
+  margin-top: 1.563vw;
 }
 
 .dropdown {
@@ -101,20 +142,27 @@
 }
 
 .dropdown__button {
-  background-color: #ccc;
+  background-color: #013784;
   border: none;
-  padding: 10px 20px;
+  padding: 1vw 1.9vw;
   cursor: pointer;
+  border-radius: 1.042vw;
+  font-size: 0.833vw;
+  line-height: 0.938vw;
+  color: #fff;
+  width: 100%;
 }
 
 .dropdown__list {
+  width: 100%;
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #fff;
-  border: 1px solid #ccc;
+  background-color: #054aad;
+  color: #fff;
+  border-radius: 1.042vw;
   list-style-type: none;
-  margin: 0;
+  margin: 10px 0 0 0;
   padding: 0;
   opacity: 0;
   visibility: hidden;
@@ -134,13 +182,15 @@
 }
 
 .dropdown__item:hover {
-  background-color: #ccc;
+  background-color: #0653c0;
+  border-radius: 1.042vw;
 }
 
 .dropdown__item.active {
-  background-color: #ccc;
+  background-color: #0653c0;
+  border-radius: 1.042vw;
 }
 
-.panel__input-image {
-  min-height: 25px;
+.quantity__control {
+  padding: 15px;
 }

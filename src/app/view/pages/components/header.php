@@ -19,7 +19,7 @@
             </nav>
             <div class="header__basket" id="cart-button" <?php if(!isset($this->name)) echo 'style="display:none;"' ?>>
                 <a href="../cart/view" class="header__basket-icon icon-basket">
-                    <span>0</span>
+                    <span class="header__basket-count">0</span>
                 </a>
             </div>
             <div class="header__cabinet Reiji_nav_for_exit-button">

@@ -12,7 +12,7 @@
     <main class="page page--cart">
         <div class="page__header">
             <div class="page__container">
-                <nav class="page__breadcrumbs breadcrumbs Reiji_place_for_buttons" >
+                <nav class="page__breadcrumbs breadcrumbs Reiji_place_for_buttons">
                     <ul class="breadcrumbs__list">
                         <li class="breadcrumbs__item">
                             <a href="../main/view" class="breadcrumbs__link">Главная</a>
@@ -22,79 +22,88 @@
                         </li>
                     </ul>
                 </nav>
-                <?php if($this->admin && !isset($product->error_message)) { ?>
-                <button class="Reiji_admin-button" id="for_theme">Тема</button>
-                <button class="Reiji_admin-button" id="for_paragraph">Описание</button>
-                <button class="Reiji_admin-button" id="for_list">Список</button>
+                <?php if ($this->admin && !isset($product->error_message)) { ?>
+                    <button class="Reiji_admin-button" id="for_theme">Тема</button>
+                    <button class="Reiji_admin-button" id="for_paragraph">Описание</button>
+                    <button class="Reiji_admin-button" id="for_list">Список</button>
                 <?php } ?>
-                <h1 class="page__title" <?php if($this->admin && !isset($product->error_message)) echo 'contenteditable="true"' ?> id="product_name"><?php 
-                    if(isset($product))
-                        if(isset($product->error_message))
-                            echo $product->error_message;
-                        else 
-                            echo $product->name;
-                    else 
-                        echo 'Название товара';
+                <h1 class="page__title" <?php if ($this->admin && !isset($product->error_message))
+                    echo 'contenteditable="true"' ?> id="product_name"><?php
+                if (isset($product))
+                    if (isset($product->error_message))
+                        echo $product->error_message;
+                    else
+                        echo $product->name;
+                else
+                    echo 'Название товара';
                 ?></h1>
-                <?php if(!isset($product->error_message)) { ?>
-                <h2 <?php if($this->admin) echo 'contenteditable="true"' ?> id="product_type"><?php
-                    if(isset($product))
-                        if(isset($product->error_message))
+                <?php if (!isset($product->error_message)) { ?>
+                    <h2 <?php if ($this->admin)
+                        echo 'contenteditable="true"' ?> id="product_type"><?php
+                    if (isset($product))
+                        if (isset($product->error_message))
                             ;
-                        else 
+                        else
                             echo $product->type;
-                    else 
+                    else
                         echo 'Тип товара';
-                ?></h2>
+                    ?></h2>
                 <?php } ?>
+
             </div>
         </div>
         <div class="cart">
             <div class="cart__container">
                 <div class="cart__wrapper">
                     <div class="cart__content">
-                        <?php if(!isset($product->error_message)) { ?>
-                        <div class="cart__content-picture" id="add_image">
-                            <img src="/images/<?php
-                                if(isset($product->imageName))
+                        <?php if (!isset($product->error_message)) { ?>
+                            <div class="cart__content-picture" id="add_image">
+                                <img src="/images/<?php
+                                if (isset($product->imageName))
                                     echo $product->imageName;
-                                else 
+                                else
                                     echo '0.png';
-                            ?>" alt="" class="cart__content-image" id="image">
-                        </div>
+                                ?>" alt="" class="cart__content-image" id="image">
+                            </div>
                         <?php } ?>
-                        <?php if(!isset($product->error_message)) { ?>
-                        <div class="cart__content-body" id="product_description" <?php if($this->admin) echo 'contenteditable="true"' ?>>
-                            <?php
-                                if(isset($product))
-                                    if(isset($product->error_message))
-                                        ;
-                                    else
-                                        echo $product->description;
-                                else {
-                            ?>
-                            <h3>Введите текст</h3>
-                            <?php } ?>
-                        </div>
+                        <?php if (!isset($product->error_message)) { ?>
+                            <div class="cart__content-body" id="product_description" <?php if ($this->admin)
+                                echo 'contenteditable="true"' ?>>
+                                    <?php
+                            if (isset($product))
+                                if (isset($product->error_message))
+                                    ;
+                                else
+                                    echo $product->description;
+                            else {
+                                ?>
+                                    <h3>Введите текст</h3>
+                                <?php } ?>
+                            </div>
                         <?php } ?>
-                        <?php if($this->admin && !isset($product->error_message)) { ?>
-                        <form id="admin_form" enctype="multipart/form-data">
-                            <input type="text" name="product_name">
-                            <input type="text" name="product_type">
-                            <input type="text" name="product_description">
-                            <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
-                            <input type="file" name="image">
-                            <button class="action_<?php
-                                if(isset($product->default_action))
+                        <h4 id="product_price" contenteditable="true"></h4>
+                        <p id="product_article" contenteditable="true"></p>
+                        <?php if ($this->admin && !isset($product->error_message)) { ?>
+                            <form id="admin_form" enctype="multipart/form-data">
+                                <input type="text" name="product_name">
+                                <input type="text" name="product_type">
+                                <input type="text" name="product_description">
+                                <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
+                                <input type="file" name="image">
+                                <button class="action_<?php
+                                if (isset($product->default_action))
                                     echo $product->default_action;
-                                else 
+                                else
                                     echo 'create';
-                            ?> Reiji_id-<?php if(isset($product->ID)) echo $product->ID ?>" id="save-button">Сохранить</button>
-                            <?php if(isset($product)) { ?>
-                            <button class="Reiji_id-<?= $product->ID ?> Reiji_delete-button" id="delete-button">Удалить</button>
-                            <?php } ?>
-                        </form>
+                                ?> Reiji_id-<?php if (isset($product->ID))
+                                     echo $product->ID ?>" id="save-button">Сохранить</button>
+                                <?php if (isset($product)) { ?>
+                                    <button class="Reiji_id-<?= $product->ID ?> Reiji_delete-button"
+                                        id="delete-button">Удалить</button>
+                                <?php } ?>
+                            </form>
                         <?php } ?>
+
                     </div>
                     <div class="cart__filter catalog__filter filter">
                         <div class="filter__item">
@@ -140,8 +149,8 @@
             <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
             <input type="file" name="image">
             <button id="save-button">Сохранить</button>
-            <?php if(isset($product)) { ?>
-            <button class="Reiji_id-<?= $product->ID ?> Reiji_delete-button" id="delete-button">Удалить</button>
+            <?php if (isset($product)) { ?>
+                <button class="Reiji_id-<?= $product->ID ?> Reiji_delete-button" id="delete-button">Удалить</button>
             <?php } ?>
         </form>
     </template>

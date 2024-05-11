@@ -1,0 +1,216 @@
+.basket {
+
+    // .basket__container
+
+    &__container {
+        display: grid;
+        grid-template-columns: 78% 20%;
+        gap: 1.563vw;
+    }
+
+    // .basket__labels
+
+    &__labels {
+        margin-bottom: 30px;
+    }
+
+    // .basket__items
+
+    &__items {
+        display: grid;
+        grid-template-columns: 65% 9% 8% 11%;
+        gap: 1.4vw;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        border-top: 0.052vw solid var(--mainSubColor);
+        border-bottom: 0.052vw solid var(--mainSubColor);
+        padding: 0.781vw 0;
+    }
+
+    // .basket__item
+
+    &__item {
+        list-style: none;
+        // .basket__item--name
+
+        &--name {}
+
+        // .basket__item--price
+
+        &--price {}
+
+        // .basket__item--quantity
+
+        &--quantity {}
+
+        // .basket__item--subtotal
+
+        &--subtotal {
+            text-align: right;
+        }
+    }
+
+    // .basket__product
+
+    &__product {
+        display: grid;
+        grid-template-columns: 65% 9% 8% 11%;
+        gap: 0 1.4vw;
+        border-bottom: 0.052vw solid var(--mainSubColor);
+
+        &:not(:last-child){
+            padding-bottom: 1.563vw;
+            margin-bottom: 1.563vw;
+        }
+
+        // .basket__product-description
+
+        &-description {
+            display: flex;
+            gap: 1.563vw;
+        }
+
+        // .basket__product-price
+
+        &-price {}
+
+        // .basket__product-quantity
+
+        &-quantity {}
+
+        // .basket__product-subtotal
+
+        &-subtotal {}
+
+        // .basket__product-remove
+
+        &-remove {
+
+            grid-column: 4;
+        }
+
+        //.basket__product-wrapper
+        &-wrapper{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
+
+    // .basket__picture
+
+    &__picture {
+        max-width: 350px;
+        max-height: 350px;
+    }
+
+    // .basket__image
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    // .basket__details
+
+    &__details {
+
+        // .basket__details-quantity
+
+        &-quantity {}
+
+        //.basket__details-text
+        &-text {
+            font-size: 1.25vw;
+            line-height: 1.458vw;
+            font-weight: 600;
+            margin: 0 0 1.042vw 0;
+        }
+
+        //.basket__details-article
+        &-article {
+            font-size: 0.938vw;
+            line-height: 1.25vw;
+            margin: 0;
+        }
+    }
+
+
+}
+
+.left {
+
+    // .left__column
+
+    &__column {}
+}
+
+.item {}
+
+.item-heading {}
+
+.price {}
+
+.quantity {}
+
+.subtotal {}
+
+.quantity-field {
+    width: 100%;
+    padding: 0;
+    height: auto;
+    border: 1px solid var(--mainSubColor);
+}
+
+.right {
+
+    // .right__column
+
+    &__column {}
+}
+
+.summary {
+    background-color: #013784;
+    padding: 0.521vw;
+    border-radius: 1.042vw;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.summary-total-items {}
+
+.total-items {}
+
+.summary-subtotal {}
+
+.subtotal-title {}
+
+.subtotal-value {}
+
+.final-value {}
+
+.summary-promo {}
+
+.hide {}
+
+.promo-title {}
+
+.promo-value {}
+
+.summary-delivery {}
+
+.summary-delivery-selection {}
+
+.summary-total {}
+
+.total-title {}
+
+.total-value {}
+
+.summary-checkout {}
+
+.checkout-cta {}

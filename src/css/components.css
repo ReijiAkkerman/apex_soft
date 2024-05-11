@@ -29,15 +29,13 @@ body {
   cursor: pointer;
 }
 
-input:invalid {
+.form input:invalid {
   background-color: #ffdddd;
 }
-
-input:valid {
+.form input:valid {
   background-color: #ddffdd;
 }
-
-input:required {
+.form input:required {
   border-color: #800000;
   border-width: 3px;
 }

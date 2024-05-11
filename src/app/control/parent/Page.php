@@ -8,7 +8,7 @@ define('EVERYWHERE', '%');
 
 abstract class Page implements Auth
 {
-    public const MYSQL_SERVER = '172.19.0.2';
+    public const MYSQL_SERVER = 'mysql';
     public const CONNECT_FROM = EVERYWHERE;
 
     protected string $login;
