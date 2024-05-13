@@ -15,10 +15,18 @@
                 <nav class="page__breadcrumbs breadcrumbs Reiji_place_for_buttons">
                     <ul class="breadcrumbs__list">
                         <li class="breadcrumbs__item">
-                            <a href="../main/view" class="breadcrumbs__link">Главная</a>
+                            <a href="/main/view" class="breadcrumbs__link">Главная</a>
                         </li>
                         <li class="breadcrumbs__item">
-                            <span class="breadcrumbs__current">Карточка товара</span>
+                            <a href="/catalog/view" class="breadcrumbs__link">Каталог</a>
+                        </li>
+                        <li class="breadcrumbs__item">
+                            <span class="breadcrumbs__current"><?php
+                                if(isset($product->name))
+                                    echo $product->name;
+                                else 
+                                    echo 'Новый товар';
+                            ?></span>
                         </li>
                     </ul>
                 </nav>
@@ -81,13 +89,27 @@
                                 <?php } ?>
                             </div>
                         <?php } ?>
-                        <h4 id="product_price" contenteditable="true"></h4>
-                        <p id="product_article" contenteditable="true"></p>
+                        <h4 class="Reiji_place_for_price">Цена:</h4>
+                        <h4 id="product_price" contenteditable="true"><?php
+                            if(isset($product->price))
+                                echo $product->price;
+                            else 
+                                echo '0';
+                        ?></h4>
+                        <p class="Reiji_place_for_articul">Артикул:</p>
+                        <p id="product_articul" contenteditable="true"><?php
+                            if(isset($product->articul)) 
+                                echo $product->articul;
+                            else 
+                                echo '0000000000';
+                        ?></p>
                         <?php if ($this->admin && !isset($product->error_message)) { ?>
                             <form id="admin_form" enctype="multipart/form-data">
                                 <input type="text" name="product_name">
                                 <input type="text" name="product_type">
                                 <input type="text" name="product_description">
+                                <input type="text" name="product_articul">
+                                <input type="text" name="product_price">
                                 <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
                                 <input type="file" name="image">
                                 <button class="action_<?php

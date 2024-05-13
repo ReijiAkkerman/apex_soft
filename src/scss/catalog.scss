@@ -266,3 +266,21 @@
 .quantity__control {
     padding: 15px;
 }
+
+
+
+.filter__item-price{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.filter__item-price > button{
+    width: fit-content;
+}
+
+.filter__item-price > input{
+    width: fit-content;
+    height: auto;
+    border: 1px solid var(--mainSubColor);
+}

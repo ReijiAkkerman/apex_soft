@@ -92,8 +92,8 @@
                                         <a href="/product/view/?default_action=update&id=<?= $product->ID ?>">
                                             <h3 class="product-card__name"><?= $product->name ?></h3>
                                         </a>
-                                        <p class="product-card__price" data-price="5000">5000</p>
-                                        <p class="product-card__article">123121231</p>
+                                        <p class="product-card__price" data-price="<?= $product->price ?>"><?= $product->price ?></p>
+                                        <p class="product-card__article"><?= $product->articul ?></p>
                                         <div class="product-card__quantity">
                                             <div class="quantity__control" data-quantity="minus">-</div>
                                             <div class="quantity__current">1</div>

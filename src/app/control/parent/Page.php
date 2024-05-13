@@ -8,7 +8,7 @@ define('EVERYWHERE', '%');
 
 abstract class Page implements Auth
 {
-    public const MYSQL_SERVER = 'mysql';
+    public const MYSQL_SERVER = '172.19.0.2';
     public const CONNECT_FROM = EVERYWHERE;
 
     protected string $login;
@@ -229,7 +229,9 @@ abstract class Page implements Auth
                 product_name VARCHAR(255) UNIQUE NOT NULL,
                 product_type VARCHAR(255) NOT NULL,
                 product_description TEXT,
-                image_name TEXT
+                product_articul VARCHAR(255) UNIQUE NOT NULL,
+                product_price INT NOT NULL,
+                image_name TEXT NOT NULL
             )',
             "GRANT SELECT, INSERT, UPDATE, DELETE ON Products.* TO 'Admin'@'$connect_from'",
             "CREATE USER IF NOT EXISTS 'Visitor'@'$connect_from' IDENTIFIED WITH mysql_native_password BY 'secret_of_Visitor'",

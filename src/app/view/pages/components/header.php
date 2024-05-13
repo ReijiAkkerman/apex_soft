@@ -40,7 +40,7 @@
             <nav class="nav header__nav header__nav--bottom">
                 <ul class="nav__list nav__list--bottom">
                     <li class="nav__item nav__item--bottom">
-                        <a href="" class="nav__link nav__link--bottom">Решения</a>
+                        <a href="#" class="nav__link nav__link--bottom">Решения</a>
                         <ul class="nav__list-description description">
                             <li class="description-list">
                                 <p class="description-list__title">Базовая</p>
@@ -228,10 +228,10 @@
                         </ul>
                     </li>
                     <li class="nav__item nav__item--dropdown">
-                        <a href="" class="nav__link nav__link--bottom">Контакты</a>
+                        <a href="/contacts/view" class="nav__link nav__link--bottom">Контакты</a>
                     </li>
                     <li class="nav__item nav__item--bottom">
-                        <a href="" class="nav__link nav__link--bottom">Информация</a>
+                        <a href="/info/view" class="nav__link nav__link--bottom">Информация</a>
                         <ul class="nav__list-description description description--info">
                             <li class="description-list">
                                 <p class="description-list__title">Статьи</p>
