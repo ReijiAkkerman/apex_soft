@@ -23,11 +23,13 @@
                     </ul>
                 </nav>
                 <?php if ($this->admin && !isset($product->error_message)) { ?>
-                    <button class="Reiji_admin-button" id="for_theme">Тема</button>
-                    <button class="Reiji_admin-button" id="for_paragraph">Описание</button>
-                    <button class="Reiji_admin-button" id="for_list">Список</button>
+                    <div class="admin__buttons">
+                        <button class="Reiji_admin-button admin__button btn" id="for_theme">Тема</button>
+                        <button class="Reiji_admin-button admin__button btn" id="for_paragraph">Описание</button>
+                        <button class="Reiji_admin-button admin__button btn" id="for_list">Список</button>
+                    </div>
                 <?php } ?>
-                <h1 class="page__title" <?php if ($this->admin && !isset($product->error_message))
+                <h1 class="page__title cart__name" <?php if ($this->admin && !isset($product->error_message))
                     echo 'contenteditable="true"' ?> id="product_name"><?php
                 if (isset($product))
                     if (isset($product->error_message))
@@ -39,7 +41,7 @@
                 ?></h1>
                 <?php if (!isset($product->error_message)) { ?>
                     <h2 <?php if ($this->admin)
-                        echo 'contenteditable="true"' ?> id="product_type"><?php
+                        echo 'contenteditable="true"' ?> class="cart__category" id="product_type"><?php
                     if (isset($product))
                         if (isset($product->error_message))
                             ;
@@ -81,10 +83,12 @@
                                 <?php } ?>
                             </div>
                         <?php } ?>
-                        <h4 id="product_price" contenteditable="true"></h4>
-                        <p id="product_article" contenteditable="true"></p>
+                        <div class="card__content-inner">
+                            <h4 id="product_price" contenteditable="true"></h4>
+                            <p id="product_article" contenteditable="true"></p>
+                        </div>
                         <?php if ($this->admin && !isset($product->error_message)) { ?>
-                            <form id="admin_form" enctype="multipart/form-data">
+                            <form id="admin_form" class="card__content-form" enctype="multipart/form-data">
                                 <input type="text" name="product_name">
                                 <input type="text" name="product_type">
                                 <input type="text" name="product_description">
@@ -106,14 +110,20 @@
 
                     </div>
                     <div class="cart__filter catalog__filter filter">
-                        <div class="filter__item">
-                            <p class="filter__item-name">Программы</p>
+                        <div class="filter__item" data-filter="Коммерческие решения 1C">
+                            <p class="filter__item-name">Коммерческие решения 1C</p>
                         </div>
-                        <div class="filter__item">
-                            <p class="filter__item-name">Услуги</p>
+                        <div class="filter__item" data-filter="Антивирусное программное обеспечение">
+                            <p class="filter__item-name">Антивирусное программное обеспечение</p>
                         </div>
-                        <div class="filter__item">
-                            <p class="filter__item-name">Сервисы</p>
+                        <div class="filter__item" data-filter="Отраслевые решения 1С">
+                            <p class="filter__item-name">Отраслевые решения 1С</p>
+                        </div>
+                        <div class="filter__item" data-filter="Программы 1С для бюджетных учреждений">
+                            <p class="filter__item-name">Программы 1С для бюджетных учреждений</p>
+                        </div>
+                        <div class="filter__item" data-filter="Торговое оборудование">
+                            <p class="filter__item-name">Торговое оборудование</p>
                         </div>
                     </div>
                 </div>
