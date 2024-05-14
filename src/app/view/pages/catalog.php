@@ -29,20 +29,14 @@
                 <div class="catalog__body">
                     <div class="catalog__filter filter">
                         <div class="filter__wrapper">
-                            <div class="filter__item" data-filter="Коммерческие решения 1C">
-                                <p class="filter__item-name">Коммерческие решения 1C</p>
+                            <div class="filter__item" data-category="Программы">
+                                <p class="filter__item-name">Программы</p>
                             </div>
-                            <div class="filter__item" data-filter="Антивирусное программное обеспечение">
-                                <p class="filter__item-name">Антивирусное программное обеспечение</p>
+                            <div class="filter__item" data-category="Услуги">
+                                <p class="filter__item-name">Услуги</p>
                             </div>
-                            <div class="filter__item" data-filter="Отраслевые решения 1С">
-                                <p class="filter__item-name">Отраслевые решения 1С</p>
-                            </div>
-                            <div class="filter__item" data-filter="Программы 1С для бюджетных учреждений">
-                                <p class="filter__item-name">Программы 1С для бюджетных учреждений</p>
-                            </div>
-                            <div class="filter__item" data-filter="Торговое оборудование">
-                                <p class="filter__item-name">Торговое оборудование</p>
+                            <div class="filter__item" data-category="Сервисы">
+                                <p class="filter__item-name">Сервисы</p>
                             </div>
                         </div>
                         <div class="filter__item-price">
@@ -105,15 +99,16 @@
                                             href="/product/view/?default_action=update&id=<?= $product->ID ?>">
                                             <h3><?= $product->name ?></h3>
                                         </a>
-                                        <p class="product-card__price" data-price="5000">5000</p>
-                                        <p class="product-card__article">123121231</p>
+                                        <p class="product-card__price" data-price="<?= $product->price ?>">
+                                            <?= $product->price ?></p>
+                                        <p class="product-card__article"><?= $product->articul ?></p>
                                         <div class="product-card__quantity">
                                             <div class="quantity__control" data-quantity="minus">-</div>
-                                            <div class="quantity__current">1</div>
+                                            <input class="quantity__current" type="text" value="1"></input>
                                             <div class="quantity__control" data-quantity="plus">+</div>
                                         </div>
-                                        <button class="product-card__add btn">Добавить</button>
                                     </div>
+                                    <button class="product-card__add btn">Добавить</button>
                                 </article>
                             <?php } ?>
                         </div>

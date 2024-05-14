@@ -78,7 +78,7 @@ addButtons.forEach((addButton) => {
 
 quantityControls.forEach((quantityControl) => {
     quantityControl.addEventListener('click', () => {
-        const currentQuantity = parseInt(quantityControl.parentElement.querySelector('.quantity__current').textContent);
+        const currentQuantity = parseInt(quantityControl.parentElement.querySelector('.quantity__current').value);
         const operation = quantityControl.dataset.quantity;
 
         let newQuantity;
@@ -94,13 +94,13 @@ quantityControls.forEach((quantityControl) => {
             }
         }
 
-        quantityControl.parentElement.querySelector('.quantity__current').textContent = newQuantity;
+        quantityControl.parentElement.querySelector('.quantity__current').value = newQuantity;
 
         // обновляем сумму всех значений из .quantity__current у которых открыта .product-card__quantity
         let totalQuantity = 0;
         quantityCurrentArray.forEach((quantity) => {
             if (quantity.parentElement.style.display === 'flex') {
-                totalQuantity += parseInt(quantity.textContent);
+                totalQuantity += parseInt(quantity.value);
             }
         });
         basketCount.textContent = totalQuantity;

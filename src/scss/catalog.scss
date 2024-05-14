@@ -59,7 +59,7 @@
     &__body {
         display: grid;
         grid-template-columns: 25% 1fr;
-        gap: 2.344vw;
+        gap: 3vw;
     }
 
     // .catalog__filter
@@ -154,6 +154,8 @@
             &-min,
             &-max {
                 width: 100%;
+                height: auto;
+                border: 1px solid var(--mainSubColor);
             }
 
             //.filter__item-price-min
@@ -194,6 +196,8 @@
 
 
 .product-card {
+    display: flex;
+    flex-direction: column;
     cursor: pointer;
 
     &__checkmark {
@@ -230,7 +234,12 @@
     }
 
     //.product-card__body
-    &__body {}
+    &__body {
+        align-items: start;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
 
     //.product-card__link
     &__link {
@@ -243,8 +252,16 @@
         font-size: 0.938vw;
         line-height: 1.25vw;
         color: var(--mainSubColor);
-        margin: 20px 0 0 0;
+        margin: 0;
         text-decoration: none;
+        align-items: start;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        h3 {
+            margin: 0;
+        }
     }
 
     //.product-card__picture
@@ -252,14 +269,15 @@
         max-width: 350px;
         max-height: 350px;
         height: 300px;
-        display: block;
+        display: flex;
+        margin: 0 0 20px 0;
     }
 
     //.product-card__image
     &__image {
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
     }
 
     //.product-card__add
@@ -273,6 +291,7 @@
         line-height: 0.938vw;
         color: #fff;
         width: 100%;
+        margin-top: 20px;
     }
 
     //product-card__quantity
@@ -282,6 +301,10 @@
         justify-content: center;
         gap: 1.563vw;
         margin-top: 1.563vw;
+    }
+
+    &__article {
+        margin: 0;
     }
 }
 
@@ -346,6 +369,12 @@
     color: #fff;
 }
 
+.quantity__current {
+    width: 20px;
+    border: none;
+}
+
+
 .quantity__current,
 .quantity__control {
     font-size: 0.833vw;
@@ -362,4 +391,18 @@
     &:before {
         background-color: #fff;
     }
+}
+
+
+
+.filter__item-price {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.filter__item-price>input {
+    width: fit-content;
+    height: auto;
+    border: 1px solid var(--mainSubColor);
 }

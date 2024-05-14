@@ -53,7 +53,8 @@ class AdminForm {
         xhr.send();
         xhr.responseType = 'text';
         xhr.onload = () => {
-            window.location.href = '/catalog/view';
+            alert(xhr.response);
+            // window.location.href = '/catalog/view';
         };
     }
 
@@ -113,6 +114,8 @@ class AdminForm {
         let array = [
             'product_name',
             'product_type',
+            'product_articul',
+            'product_price'
         ];
         let element;
         let input;
@@ -130,17 +133,21 @@ class AdminForm {
         let product_name = document.querySelector('#product_name');
         let product_type = document.querySelector('#product_type');
         let product_description = document.querySelector('#product_description');
+        let product_articul = document.querySelector('#product_articul');
+        let product_price = document.querySelector('#product_price');
         let image = document.querySelector('#add_image');
         let form_template = document.querySelector('.Reiji_admin-form');
         let buttons_template = document.querySelector('.Reiji_admin-buttons');
         let form = form_template.content.cloneNode(true);
         let buttons = buttons_template.content.cloneNode(true);
-        let place_for_form = document.querySelector('#product_description');
+        let place_for_form = document.querySelector('#product_articul');
         let place_for_buttons = document.querySelector('.Reiji_place_for_buttons');
 
         product_name.setAttribute('contenteditable', 'true');
         product_type.setAttribute('contenteditable', 'true');
         product_description.setAttribute('contenteditable', 'true');
+        product_articul.setAttribute('contenteditable', 'true');
+        product_price.setAttribute('contenteditable', 'true');
         place_for_form.after(form);
         place_for_buttons.after(buttons);
         image.addEventListener('click', AdminForm.addImage);
@@ -160,6 +167,8 @@ class AdminForm {
         let product_name = document.querySelector('#product_name');
         let product_type = document.querySelector('#product_type');
         let product_description = document.querySelector('#product_description');
+        let product_articul = document.querySelector('#product_articul');
+        let product_price = document.querySelector('#product_price');
         let image = document.querySelector('#add_image');
         let form = document.querySelector('#admin_form');
         let buttons = document.querySelectorAll('.Reiji_admin-button');
@@ -167,6 +176,8 @@ class AdminForm {
         product_name.removeAttribute('contenteditable');
         product_type.removeAttribute('contenteditable');
         product_description.removeAttribute('contenteditable');
+        product_articul.removeAttribute('contenteditable');
+        product_price.removeAttribute('contenteditable');
         image.removeEventListener('click', AdminForm.addImage);
         form.remove();
         for(let i = 0; i < buttons.length; i++) {

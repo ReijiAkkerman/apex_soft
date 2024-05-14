@@ -15,10 +15,18 @@
                 <nav class="page__breadcrumbs breadcrumbs Reiji_place_for_buttons">
                     <ul class="breadcrumbs__list">
                         <li class="breadcrumbs__item">
-                            <a href="../main/view" class="breadcrumbs__link">Главная</a>
+                            <a href="/main/view" class="breadcrumbs__link">Главная</a>
                         </li>
                         <li class="breadcrumbs__item">
-                            <span class="breadcrumbs__current">Карточка товара</span>
+                            <a href="/catalog/view" class="breadcrumbs__link">Каталог</a>
+                        </li>
+                        <li class="breadcrumbs__item">
+                            <span class="breadcrumbs__current"><?php
+                            if (isset($product->name))
+                                echo $product->name;
+                            else
+                                echo 'Новый товар';
+                            ?></span>
                         </li>
                     </ul>
                 </nav>
@@ -83,48 +91,47 @@
                                 <?php } ?>
                             </div>
                         <?php } ?>
-                        <div class="card__content-inner">
-                            <h4 id="product_price" contenteditable="true"></h4>
-                            <p id="product_article" contenteditable="true"></p>
+                        <div class="cart__content-price">
+                            <h4 class="cart__content-price-title Reiji_place_for_price">Цена:</h4>
+                            <h4 class="cart__content-price-value" id="product_price" contenteditable="true"><?php
+                            if (isset($product->price))
+                                echo $product->price;
+                            else
+                                echo '0';
+                            ?></h4>
+                        </div>
+                        <div class="cart__content-articul">
+                            <p class="Reiji_place_for_articul">Артикул:</p>
+                            <p id="product_articul" contenteditable="true"><?php
+                            if (isset($product->articul))
+                                echo $product->articul;
+                            else
+                                echo '0000000000';
+                            ?></p>
                         </div>
                         <?php if ($this->admin && !isset($product->error_message)) { ?>
                             <form id="admin_form" class="card__content-form" enctype="multipart/form-data">
                                 <input type="text" name="product_name">
                                 <input type="text" name="product_type">
                                 <input type="text" name="product_description">
+                                <input type="text" name="product_articul">
+                                <input type="text" name="product_price">
                                 <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
                                 <input type="file" name="image">
-                                <button class="action_<?php
+                                <button class="btn action_<?php
                                 if (isset($product->default_action))
                                     echo $product->default_action;
                                 else
                                     echo 'create';
                                 ?> Reiji_id-<?php if (isset($product->ID))
-                                     echo $product->ID ?>" id="save-button">Сохранить</button>
+                                     echo $product->ID ?> " id="save-button">Сохранить</button>
                                 <?php if (isset($product)) { ?>
-                                    <button class="Reiji_id-<?= $product->ID ?> Reiji_delete-button"
+                                    <button class="btn Reiji_id-<?= $product->ID ?> Reiji_delete-button btn"
                                         id="delete-button">Удалить</button>
                                 <?php } ?>
                             </form>
                         <?php } ?>
 
-                    </div>
-                    <div class="cart__filter catalog__filter filter">
-                        <div class="filter__item" data-filter="Коммерческие решения 1C">
-                            <p class="filter__item-name">Коммерческие решения 1C</p>
-                        </div>
-                        <div class="filter__item" data-filter="Антивирусное программное обеспечение">
-                            <p class="filter__item-name">Антивирусное программное обеспечение</p>
-                        </div>
-                        <div class="filter__item" data-filter="Отраслевые решения 1С">
-                            <p class="filter__item-name">Отраслевые решения 1С</p>
-                        </div>
-                        <div class="filter__item" data-filter="Программы 1С для бюджетных учреждений">
-                            <p class="filter__item-name">Программы 1С для бюджетных учреждений</p>
-                        </div>
-                        <div class="filter__item" data-filter="Торговое оборудование">
-                            <p class="filter__item-name">Торговое оборудование</p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -158,9 +165,9 @@
             <input type="text" name="product_description">
             <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
             <input type="file" name="image">
-            <button id="save-button">Сохранить</button>
+            <button id="save-button" class="btn">Сохранить</button>
             <?php if (isset($product)) { ?>
-                <button class="Reiji_id-<?= $product->ID ?> Reiji_delete-button" id="delete-button">Удалить</button>
+                <button class="Reiji_id-<?= $product->ID ?> Reiji_delete-button btn" id="delete-button">Удалить</button>
             <?php } ?>
         </form>
     </template>
