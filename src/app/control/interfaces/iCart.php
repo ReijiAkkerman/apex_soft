@@ -1,7 +1,7 @@
 <?php
-    namespace project\control;
+    namespace project\control\interfaces;
 
-    interface i_Cart {
+    interface iCart {
         public function setProductAmount(array $args): void;
         public function deleteProduct(array $args): void;
     }

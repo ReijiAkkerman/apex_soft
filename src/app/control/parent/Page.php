@@ -8,7 +8,7 @@
 
     abstract class Page implements Auth
     {
-        public const MYSQL_SERVER = '172.19.0.2';
+        public const MYSQL_SERVER = '172.18.0.2';
         public const CONNECT_FROM = EVERYWHERE;
 
         protected string $login;
@@ -265,7 +265,7 @@
          */
 
         private function createUserCart(): void {
-            $mysql = new \mysqli(Page::MYSQL_SERVER, 'Cart', 'secret_of_Carts', 'Carts');
+            $mysql = new \mysqli(Page::MYSQL_SERVER, 'Cart', 'secret_of_Cart', 'Carts');
             $query = "CREATE TABLE {$this->login}(
                 productID INT NOT NULL,
                 amount INT NOT NULL

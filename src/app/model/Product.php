@@ -9,15 +9,6 @@ namespace project\model;
     class Product extends ProductData implements iProduct {
         private const DEFAULT_IMAGE_NAME = '0.png';
 
-        // public int $ID;
-        // public string $name;
-        // public string $type;
-        // public string $description;
-        // public string $imageName;
-        // public string $articul;
-        // public int $price;
-        // public int $amount;
-
         private string $imageFormat;
         private array $data = [];
         private \mysqli $mysql_connection;
@@ -95,7 +86,7 @@ namespace project\model;
             $this->mysql_connection->close();
         }
 
-        public function getAllProducts(string $user): void {
+        public function getAllProducts(string $user = ''): void {
             $cart = new Cart;
             $GLOBALS['products'] = [];
             $this->createMysqlConnection('Visitor');
@@ -109,7 +100,8 @@ namespace project\model;
                     $this->imageName = $row['image_name'];
                     $this->articul = $row['product_articul'];
                     $this->price = (int)$row['product_price'];
-                    $this->amount = $cart->getProductAmount($user, $this->ID);
+                    if($user)
+                        $this->amount = $cart->getProductAmount($user, $this->ID);
                     $GLOBALS['products'][] = clone $this;
                 }
             }
