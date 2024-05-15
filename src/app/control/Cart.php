@@ -3,10 +3,10 @@
 
     use project\control\parent\Page;
     use project\control\traits\View;
-    use project\control\interfaces\iCart;
     use project\model\Cart as model_Cart;
+    use project\control\interfaces\i_Cart;
 
-    class Cart extends Page implements iCart {
+    class Cart extends Page implements i_Cart {
         public function __construct() {
             $this->constructor();
         }

@@ -3,10 +3,4 @@ input {
   height: 0;
   border: none;
   outline: none;
-};
-  overflow: hidden;
-}
-
-* {
-  box-sizing: border-box;
 }

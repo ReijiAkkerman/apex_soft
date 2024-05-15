@@ -28,22 +28,28 @@
             <div class="catalog__container">
                 <div class="catalog__body">
                     <div class="catalog__filter filter">
-                        <div class="filter__item">
-                            <p class="filter__item-name">Программы</p>
+                        <div class="filter__wrapper">
+                            <div class="filter__item" data-category="Программы">
+                                <p class="filter__item-name">Программы</p>
+                            </div>
+                            <div class="filter__item" data-category="Услуги">
+                                <p class="filter__item-name">Услуги</p>
+                            </div>
+                            <div class="filter__item" data-category="Сервисы">
+                                <p class="filter__item-name">Сервисы</p>
+                            </div>
                         </div>
-                        <div class="filter__item">
-                            <p class="filter__item-name">Услуги</p>
-                        </div>
-                        <div class="filter__item">
-                            <p class="filter__item-name">Сервисы</p>
-                        </div>
-                        <div class="filter__item">
-                            <form action="" class="filter__item-price">
-                                <input type="number">
-                                <input type="number">
-                                <button>Показать</button>
+                        <div class="filter__item-price">
+                            <p class="filter__item-name">Фильтровать по цене</p>
+                            <form action="" class="filter__item-form">
+                                <input class="filter__item-price-min" type="text" min="1000" max="999999"
+                                    placeholder="1000">
+                                <input class="filter__item-price-max" type="text" min="1000" max="999999"
+                                    placeholder="999999">
                             </form>
-                        </div>       
+                            <div class="filter__item-slider"></div>
+                            <button class="filter__item-button btn">Показать</button>
+                        </div>
                     </div>
                     <div class="catalog__content">
                         <div class="catalog__control">
@@ -52,10 +58,10 @@
                                 <div class="dropdown">
                                     <button class="dropdown__button">Выберите пункт</button>
                                     <ul class="dropdown__list">
-                                        <li class="dropdown__item" data-filter="Показать все">Показать все</li>
-                                        <li class="dropdown__item" data-filter="Программы">Программы</li>
-                                        <li class="dropdown__item" data-filter="Услуги">Услуги</li>
-                                        <li class="dropdown__item" data-filter="Сервисы">Сервисы</li>
+                                        <li class="dropdown__item" data-category="Показать все">Показать все</li>
+                                        <li class="dropdown__item" data-category="Программы">Программы</li>
+                                        <li class="dropdown__item" data-category="Услуги">Услуги</li>
+                                        <li class="dropdown__item" data-category="Сервисы">Сервисы</li>
                                     </ul>
                                 </div>
                             </div>
@@ -89,19 +95,20 @@
                                             <img src="/images/<?= $product->imageName ?>" alt=""
                                                 class="product-card__image">
                                         </a>
-                                        <a href="/product/view/?default_action=update&id=<?= $product->ID ?>">
-                                            <h3 class="product-card__name"><?= $product->name ?></h3>
+                                        <a class="product-card__name"
+                                            href="/product/view/?default_action=update&id=<?= $product->ID ?>">
+                                            <h3><?= $product->name ?></h3>
                                         </a>
-                                        <p class="product-card__price" data-price="<?= $product->price ?>"><?= $product->price ?></p>
+                                        <p class="product-card__price" data-price="<?= $product->price ?>">
+                                            <?= $product->price ?></p>
                                         <p class="product-card__article"><?= $product->articul ?></p>
                                         <div class="product-card__quantity">
                                             <div class="quantity__control" data-quantity="minus">-</div>
-                                            <div class="quantity__current Reiji_product_amount">1</div>
-                                            <!-- <input class="quantity__current Reiji_product_amount"> -->
+                                            <input class="quantity__current" type="text" value="1"></input>
                                             <div class="quantity__control" data-quantity="plus">+</div>
                                         </div>
-                                        <button class="product-card__add btn">Добавить</button>
                                     </div>
+                                    <button class="product-card__add btn">Добавить</button>
                                 </article>
                             <?php } ?>
                         </div>

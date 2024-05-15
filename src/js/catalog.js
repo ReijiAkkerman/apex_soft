@@ -26,17 +26,17 @@ if (dropdownButton) {
             dropdownList.classList.remove('show');
 
             // Store the clicked item's dataset.filter value in a variable
-            const selectedFilter = this.dataset.filter;
+            const selectedCategory = this.dataset.category;
 
             // Check if the clicked item is "Показать все" and show all product cards accordingly
-            if (selectedFilter === "Показать все") {
+            if (selectedCategory === "Показать все") {
                 productCards.forEach(function (card) {
                     card.style.display = 'block';
                 });
             } else {
                 productCards.forEach(function (card) {
-                    // Use the selectedFilter variable instead of this.dataset.filter
-                    if (selectedFilter === card.dataset.type) {
+                    // Use the selectedCategory variable instead of this.dataset.filter
+                    if (selectedCategory === card.dataset.type) {
                         card.style.display = 'block';
                     } else {
                         card.style.display = 'none';
@@ -44,6 +44,13 @@ if (dropdownButton) {
                 });
             }
         });
+    });
+
+    // Close the dropdown list when clicking outside the dropdown button
+    document.addEventListener('click', function (event) {
+        if (!dropdownButton.contains(event.target) && !dropdownList.contains(event.target)) {
+            dropdownList.classList.remove('show');
+        }
     });
 }
 
@@ -71,7 +78,7 @@ addButtons.forEach((addButton) => {
 
 quantityControls.forEach((quantityControl) => {
     quantityControl.addEventListener('click', () => {
-        const currentQuantity = parseInt(quantityControl.parentElement.querySelector('.quantity__current').textContent);
+        const currentQuantity = parseInt(quantityControl.parentElement.querySelector('.quantity__current').value);
         const operation = quantityControl.dataset.quantity;
 
         let newQuantity;
@@ -87,13 +94,13 @@ quantityControls.forEach((quantityControl) => {
             }
         }
 
-        quantityControl.parentElement.querySelector('.quantity__current').textContent = newQuantity;
+        quantityControl.parentElement.querySelector('.quantity__current').value = newQuantity;
 
         // обновляем сумму всех значений из .quantity__current у которых открыта .product-card__quantity
         let totalQuantity = 0;
         quantityCurrentArray.forEach((quantity) => {
             if (quantity.parentElement.style.display === 'flex') {
-                totalQuantity += parseInt(quantity.textContent);
+                totalQuantity += parseInt(quantity.value);
             }
         });
         basketCount.textContent = totalQuantity;
@@ -108,6 +115,63 @@ quantityControls.forEach((quantityControl) => {
         }
     });
 });
+
+const rangeSlider = document.querySelector(".filter__item-slider");
+const filterButton = document.querySelector(".filter__item-button");
+if (rangeSlider) {
+    noUiSlider.create(rangeSlider, {
+        start: [500, 999999],
+        connect: true,
+        tooltips: [true, true],
+        step: 1,
+        range: {
+            min: [500],
+            max: [999999],
+        },
+    });
+
+    const inputMin = document.querySelector(".filter__item-price-min");
+    const inputMax = document.querySelector(".filter__item-price-max");
+    const inputs = [inputMin, inputMax];
+
+    rangeSlider.noUiSlider.on("update", function (values, handle) {
+        inputs[handle].value = Math.round(values[handle]);
+    });
+
+    const setRangeSlider = (i, value) => {
+        let arr = [null, null];
+        arr[i] = value;
+
+        console.log(arr);
+
+        rangeSlider.noUiSlider.set(arr);
+    };
+
+    inputs.forEach((el, index) => {
+        el.addEventListener("change", (e) => {
+            console.log(index);
+            setRangeSlider(index, e.currentTarget.value);
+        });
+    });
+
+    // Filter products by price on button click
+    filterButton.addEventListener("click", () => {
+        const minPrice = parseInt(inputMin.value);
+        const maxPrice = parseInt(inputMax.value);
+
+        productCards.forEach((card) => {
+            const cardPrice = parseInt(card.querySelector(".product-card__price").dataset.price);
+
+            if (cardPrice >= minPrice && cardPrice <= maxPrice) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    });
+}
+
+
 // const adminPanel = document.querySelector(".panel__wrapper");
 // const adminPanelForm = document.querySelector(".panel__wrapper-form");
 // const buttonAdd = document.querySelector(".catalog__control-button");
