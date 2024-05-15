@@ -52,6 +52,15 @@ class Auth {
                             if((window.location.pathname.split('/')[1]) == 'catalog')
                                 AdminForm.showAddButton();
                         }
+                        let array = [
+                            '.header__cabinet-form',
+                            '.header__cabinet-wrapper',
+                            'body'
+                        ];
+                        for(let i = 0; i < array.length; i++) {
+                            let element = document.querySelector(array[i]);
+                            element.classList.remove('active');
+                        }
                     }
                     else {
                         Auth.viewParseError(xhr.response);
@@ -126,6 +135,15 @@ class Auth {
                                 AdminForm.showAdminFunctions();
                             if((window.location.pathname.split('/')[1]) == 'catalog')
                                 AdminForm.showAddButton();
+                        }
+                        let array = [
+                            '.header__cabinet-form',
+                            '.header__cabinet-wrapper',
+                            'body'
+                        ];
+                        for(let i = 0; i < array.length; i++) {
+                            let element = document.querySelector(array[i]);
+                            element.classList.remove('active');
                         }
                     }
                     else {

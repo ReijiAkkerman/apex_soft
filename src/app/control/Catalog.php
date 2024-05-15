@@ -15,7 +15,7 @@
         }
 
         public function view(): void {
-            (new Product)->getAllProducts();
+            (new Product)->getAllProducts($this->login);
             $classname = __CLASS__;
             $class_array = explode('\\', $classname);
             $class = end($class_array);
@@ -31,6 +31,12 @@
                 $this->sendData();
                 exit;
             }
+        }
+
+        public function setProductAmount(array $args): void {
+            $product_id = (int)$args[0];
+            $amount = (int)$args[1];
+            (new model_Cart)->setProductAmount($this->login, $product_id, $amount);
         }
 
 

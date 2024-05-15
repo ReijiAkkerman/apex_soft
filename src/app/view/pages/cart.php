@@ -35,6 +35,7 @@
                             <li class="basket__item basket__item--subtotal  subtotal">Итоговая цена</li>
                         </ul>
                     </div>
+                    <?php foreach($GLOBALS['products'] as $product) { ?>
                     <div class="basket__product">
                         <div class="basket__product-description item">
                             <div class="basket__picture">
@@ -48,33 +49,14 @@
                         </div>
                         <div class="basket__product-price">2600</div>
                         <form class="basket__product-quantity">
-                            <input type="number" value="" min="1" class="quantity-field">
+                            <input type="number" value="" min="1" step="1" class="quantity-field">
                         </form>
                         <div class="basket__product-wrapper">
                             <span class="basket__product-subtotal">2600</span>
                             <button class="basket__product-remove btn">Удалить товар</button>
                         </div>
                     </div>
-                    <div class="basket__product">
-                        <div class="basket__product-description item">
-                            <div class="basket__picture">
-                                <img src="../src/assets/img/cart.jpg" alt="Placholder Image 2" class="basket__image">
-                            </div>
-                            <div class="basket__details">
-                                <p class="basket__details-text"><span class="basket__details-quantity"></span> x 1С :
-                                    Бухгалтерия 8 ПРОФ</p>
-                                <p class="basket__details-article">Артикул - 232321939</p>
-                            </div>
-                        </div>
-                        <div class="basket__product-price">2600</div>
-                        <form class="basket__product-quantity">
-                            <input type="number" value="" min="1" class="quantity-field">
-                        </form>
-                        <div class="basket__product-wrapper">
-                            <span class="basket__product-subtotal">2600</span>
-                            <button class="basket__product-remove btn">Удалить товар</button>
-                        </div>
-                    </div>
+                    <?php } ?>
                 </div>
                 <aside class="right__column">
                     <div class="summary">

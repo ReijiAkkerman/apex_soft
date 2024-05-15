@@ -96,7 +96,8 @@
                                         <p class="product-card__article"><?= $product->articul ?></p>
                                         <div class="product-card__quantity">
                                             <div class="quantity__control" data-quantity="minus">-</div>
-                                            <div class="quantity__current">1</div>
+                                            <div class="quantity__current Reiji_product_amount">1</div>
+                                            <!-- <input class="quantity__current Reiji_product_amount"> -->
                                             <div class="quantity__control" data-quantity="plus">+</div>
                                         </div>
                                         <button class="product-card__add btn">Добавить</button>

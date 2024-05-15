@@ -77,6 +77,7 @@ abstract class Page implements Auth
         $stmt = $mysql->prepare($query);
         $stmt->bind_param('ss', $this->login, $this->name);
         $stmt->execute();
+        $this->createUserCart();
         $query = "SELECT * FROM users WHERE login='{$this->login}'";
         $result = $mysql->query($query);
         foreach ($result as $row) {
@@ -179,7 +180,8 @@ abstract class Page implements Auth
     {
         $functions_of_init = [
             'createUsersDB',
-            'createProductsDB'
+            'createProductsDB',
+            'createCartsDB'
         ];
         $mysql = new \mysqli(Page::MYSQL_SERVER, 'root', 'secret');
         foreach ($functions_of_init as $function) {
@@ -240,6 +242,36 @@ abstract class Page implements Auth
         foreach($queries as $query) {
             $mysql->query($query);
         }
+    }
+
+    private function createCartsDB(\mysqli $mysql): void {
+        $connect_from = Page::CONNECT_FROM;
+        $queries = [
+            'CREATE DATABASE IF NOT EXISTS Carts',
+            "CREATE USER IF NOT EXISTS 'Cart'@'$connect_from' IDENTIFIED WITH mysql_native_password BY 'secret_of_Cart'",
+            "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP ON Carts.* TO 'Cart'@'$connect_from'"
+        ];
+        foreach($queries as $query) {
+            $mysql->query($query);
+        }
+    }
+
+
+
+
+
+    /**
+     * Метод отвечающий за создание таблицы для товаров 
+     */
+
+    private function createUserCart(): void {
+        $mysql = new \mysqli(Page::MYSQL_SERVER, 'Cart', 'secret_of_Carts', 'Carts');
+        $query = "CREATE TABLE {$this->login}(
+            productID INT NOT NULL,
+            amount INT NOT NULL
+        )";
+        $mysql->query($query);
+        $mysql->close();
     }
 
 

@@ -4,17 +4,19 @@
     use project\control\parent\Page;
     use project\model\enum\Regex;
     use project\model\interfaces\iProduct;
+    use project\model\ProductData;
 
-    class Product implements iProduct {
+    class Product extends ProductData implements iProduct {
         private const DEFAULT_IMAGE_NAME = '0.png';
 
-        public int $ID;
-        public string $name;
-        public string $type;
-        public string $description;
-        public string $imageName;
-        public string $articul;
-        public int $price;
+        // public int $ID;
+        // public string $name;
+        // public string $type;
+        // public string $description;
+        // public string $imageName;
+        // public string $articul;
+        // public int $price;
+        // public int $amount;
 
         private string $imageFormat;
         private array $data = [];
@@ -95,7 +97,8 @@
             $this->mysql_connection->close();
         }
 
-        public function getAllProducts(): void {
+        public function getAllProducts(string $user): void {
+            $cart = new Cart;
             $GLOBALS['products'] = [];
             $this->createMysqlConnection('Visitor');
             $query = "SELECT * FROM all_products";
@@ -108,15 +111,16 @@
                     $this->imageName = $row['image_name'];
                     $this->articul = $row['product_articul'];
                     $this->price = (int)$row['product_price'];
+                    $this->amount = $cart->getProductAmount($user, $this->ID);
                     $GLOBALS['products'][] = clone $this;
                 }
             }
             $this->mysql_connection->close();
         }
 
-        public function getProduct(int $product_id): void {
+        public function getProduct(int $id): void {
             $this->createMysqlConnection('Visitor');
-            $query = "SELECT * FROM all_products WHERE ID=$product_id";
+            $query = "SELECT * FROM all_products WHERE ID=$id";
             $result = $this->mysql_connection->query($query);
             if($result->num_rows) {
                 foreach($result as $row) {

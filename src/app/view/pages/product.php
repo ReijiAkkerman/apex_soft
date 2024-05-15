@@ -168,6 +168,8 @@
             <input type="text" name="product_name">
             <input type="text" name="product_type">
             <input type="text" name="product_description">
+            <input type="text" name="product_articul">
+            <input type="text" name="product_price">
             <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
             <input type="file" name="image">
             <button id="save-button">Сохранить</button>
