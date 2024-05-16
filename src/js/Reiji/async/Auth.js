@@ -1,5 +1,8 @@
 import {AuthPopup} from './AuthPopup.js';
 import {AdminForm} from './AdminForm.js';
+import {Cart} from './Cart.js';
+import {Header} from './../../_Header.js';
+// import {openForm} from '../../header.js';
 
 class Auth {
     static DOM_element;
@@ -61,6 +64,9 @@ class Auth {
                             let element = document.querySelector(array[i]);
                             element.classList.remove('active');
                         }
+                        Cart.showCartButtons();
+                        let login = document.querySelector('.Reiji_showAuthForm-button');
+                        login.removeEventListener('click', Header.openForm);
                     }
                     else {
                         Auth.viewParseError(xhr.response);
@@ -145,6 +151,9 @@ class Auth {
                             let element = document.querySelector(array[i]);
                             element.classList.remove('active');
                         }
+                        Cart.showCartButtons();
+                        let login = document.querySelector('.Reiji_showAuthForm-button');
+                        login.removeEventListener('click', Header.openForm);
                     }
                     else {
                         Auth.viewParseError(xhr.response);
@@ -176,6 +185,10 @@ class Auth {
             if((window.location.pathname.split('/')[1]) == 'catalog')
                 AdminForm.hideAddButton();
         };
+        Cart.hideCartButtons();
+        let login = document.querySelector('.Reiji_showAuthForm-button');
+        login.addEventListener('click', Header.openForm);
+        window.location.href = '/main/view';
     }
 
     applyFormerFieldStyle() {

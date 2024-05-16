@@ -6,6 +6,7 @@
     use project\control\interfaces\iCatalog;
 
     use project\model\Product;
+    use project\model\Cart;
 
     final class Catalog extends Page implements iCatalog {
         public string $error_message;
@@ -15,7 +16,10 @@
         }
 
         public function view(): void {
-            (new Product)->getAllProducts($this->login);
+            if(isset($this->login))
+                (new Product)->getAllProducts($this->login);
+            else 
+                (new Product)->getAllProducts();
             $classname = __CLASS__;
             $class_array = explode('\\', $classname);
             $class = end($class_array);
@@ -26,7 +30,7 @@
             $id = (int)$args[0];
             $access_permitted = $this->checkAccessRights();
             if($access_permitted) 
-                (new model_Product)->deleteProduct($id);
+                (new Product)->deleteProduct($id);
             else {
                 $this->sendData();
                 exit;
@@ -36,7 +40,11 @@
         public function setProductAmount(array $args): void {
             $product_id = (int)$args[0];
             $amount = (int)$args[1];
-            (new model_Cart)->setProductAmount($this->login, $product_id, $amount);
+            (new Cart)->setProductAmount($this->login, $product_id, $amount);
+        }
+
+        public function getProductsNumbers(): void {
+            (new Cart)->getProductsNumbers($this->login);
         }
 
 

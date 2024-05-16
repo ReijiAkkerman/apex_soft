@@ -1,3 +1,8 @@
+.page__title {
+  font-size: 1.875vw;
+  line-height: 2.188vw;
+}
+
 .panel__wrapper {
   position: fixed;
   top: 0;
@@ -40,11 +45,20 @@
 
 .catalog__body {
   display: grid;
-  grid-template-columns: 30% 1fr;
+  grid-template-columns: 25% 1fr;
+  gap: 3vw;
 }
 .catalog__control {
   display: flex;
   align-items: end;
+}
+.catalog__control-item {
+  flex: 0 1 14.583vw;
+}
+.catalog__control-item p {
+  font-size: 0.938vw;
+  line-height: 1.25vw;
+  margin: 0 0 1.042vw 0;
 }
 .catalog__control-item:not(:last-child) {
   margin-right: 2.083vw;
@@ -56,9 +70,13 @@
   display: flex;
   align-items: center;
   padding: 1vw 1.9vw;
-  color: #fff;
   border-radius: 1.042vw;
   margin-top: auto;
+}
+.catalog__control-button a {
+  color: #fff;
+  font-size: 0.833vw;
+  line-height: 0.938vw;
   text-decoration: none;
 }
 .catalog__products {
@@ -68,7 +86,66 @@
   margin-top: 1.563vw;
 }
 
+.filter__wrapper {
+  display: grid;
+  gap: 1.042vw;
+  grid-auto-rows: min-content;
+  margin-bottom: 1.563vw;
+}
+.filter__item {
+  cursor: pointer;
+}
+.filter__item-name {
+  font-size: 0.833vw;
+  line-height: 0.938vw;
+  font-weight: 500;
+  margin: 0;
+}
+.filter__item-price {
+  display: flex;
+  flex-direction: column;
+  gap: 1.563vw;
+  border-top: 1px solid var(--mainSubColor);
+  border-bottom: 1px solid var(--mainSubColor);
+  padding: 1.042vw 0;
+}
+.filter__item-price > input {
+  width: fit-content;
+  height: auto;
+  border: 0.052vw solid var(--mainSubColor);
+}
+.filter__item-price-min, .filter__item-price-max {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--mainSubColor);
+}
+.filter__item-price-min {
+  margin-right: 1.042vw;
+}
+.filter__item-form {
+  display: flex;
+  margin-bottom: 1.563vw;
+  font-size: 0.833vw;
+  line-height: 0.938vw;
+}
+.filter__item-slider {
+  margin-bottom: 1.563vw;
+}
+.filter__item-button {
+  background-color: #013784;
+  border: none;
+  padding: 1vw 1.9vw;
+  cursor: pointer;
+  border-radius: 1.042vw;
+  font-size: 0.833vw;
+  line-height: 0.938vw;
+  color: #fff;
+  width: 100%;
+}
+
 .product-card {
+  display: flex;
+  flex-direction: column;
   cursor: pointer;
 }
 .product-card__checkmark {
@@ -96,6 +173,12 @@
   scale: 1.4;
   transition: scale 0.1s ease;
 }
+.product-card__body {
+  align-items: start;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 .product-card__link {
   text-decoration: none;
   margin-bottom: 20px;
@@ -104,18 +187,26 @@
   font-size: 0.938vw;
   line-height: 1.25vw;
   color: var(--mainSubColor);
-  margin: 20px 0 0 0;
+  margin: 0;
+  text-decoration: none;
+  align-items: start;
+  flex-direction: column;
+  flex: 1;
+}
+.product-card__name h3 {
+  margin: 0;
 }
 .product-card__picture {
-  max-width: 350px;
-  max-height: 350px;
-  height: 300px;
-  display: block;
+  max-width: 18.229vw;
+  max-height: 18.229vw;
+  height: 15.625vw;
+  display: flex;
+  margin: 0 0 1.042vw 0;
 }
 .product-card__image {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 .product-card__add {
   background-color: #013784;
@@ -127,6 +218,7 @@
   line-height: 0.938vw;
   color: #fff;
   width: 100%;
+  margin-top: 20px;
 }
 .product-card__quantity {
   display: none;
@@ -134,6 +226,13 @@
   justify-content: center;
   gap: 1.563vw;
   margin-top: 1.563vw;
+}
+.product-card__price, .product-card__article {
+  font-size: 0.938vw;
+  line-height: 1.146vw;
+}
+.product-card__article {
+  margin: 0;
 }
 
 .dropdown {
@@ -191,23 +290,38 @@
 }
 
 .quantity__control {
-  padding: 15px;
+  padding: 0.833vw 1.406vw;
+  background-color: #013784;
+  border-radius: 1.042vw;
+  color: #fff;
 }
 
-.filter__item-price {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-.filter__item-price > button {
-  width: fit-content;
-}
-
-.filter__item-price > input {
-  width: fit-content;
+.quantity__current {
+  width: 20px;
   height: auto;
-  border: 1px solid var(--mainSubColor);
+  border: none;
+}
+
+.quantity__current,
+.quantity__control {
+  font-size: 0.833vw;
+  line-height: 0.938vw;
+}
+
+.noUi-target {
+  background: #0653c0;
+}
+
+.noUi-handle {
+  background: #013784;
+}
+.noUi-handle:before {
+  background-color: #fff;
+}
+
+.noUi-tooltip {
+  font-size: 0.833vw;
+  line-height: 0.938vw;
 }
 
 /*# sourceMappingURL=catalog.css.map */

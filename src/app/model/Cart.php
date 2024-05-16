@@ -9,14 +9,11 @@
     class Cart extends ProductData implements iCart {
         private \mysqli $mysql_connection;
 
-        public function __construct() {
-            $this->mysql_connection = new \mysqli(Page::MYSQL_SERVER, 'Cart', 'secret_of_Carts', 'Carts');
-        }
-
         public function setProductAmount(string $user, int $product_id, int $amount = 1): void {
-            $new_product = $this->isNewProductForUser();
+            $this->createMysqlConnection();
+            $new_product = $this->isNewProductForUser($user, $product_id);
             if($new_product) 
-                $query = "INSERT INTO $user(amount) VALUES ($amount) WHERE productID=$product_id";
+                $query = "INSERT INTO $user(productID, amount) VALUES ($product_id, $amount)";
             else 
                 $query = "UPDATE $user SET amount=$amount WHERE productID=$product_id";
             $this->mysql_connection->query($query);
@@ -24,17 +21,19 @@
         }
 
         public function deleteProduct(string $user, int $product_id): void {
+            $this->createMysqlConnection();
             $query = "DELETE FROM $user WHERE productID=$product_id";
             $this->mysql_connection->query($query);
             $this->mysql_connection->close();
         }
 
         public function getProductAmount(string $user, int $product_id): int {
+            $this->createMysqlConnection();
             $query = "SELECT amount FROM $user WHERE productID=$product_id";
             $result = $this->mysql_connection->query($query);
             $this->mysql_connection->close();
             if($result->num_rows) {
-                foreach($result as $row['amount']) {
+                foreach($result as $row) {
                     return $row['amount'];
                 }
             }
@@ -43,14 +42,41 @@
         }
 
         public function getAllProducts(string $user): void {
+            $this->createMysqlConnection();
             $product = new Product();
             $GLOBALS['products'] = [];
             $query = "SELECT productID FROM $user";
             $result = $this->mysql_connection->query($query);
+            $this->mysql_connection->close();
             foreach($result as $row) {
                 $product->getProduct($row['productID']);
+                $this->ID = $product->ID;
+                $this->name = $product->name;
+                $this->type = $product->type;
+                $this->description = $product->description;
+                $this->imageName = $product->imageName;
+                $this->articul = $product->articul;
+                $this->price = $product->price;
+                $this->amount = $this->getProductAmount($user, $row['productID']);
                 $GLOBALS['products'][] = clone $this;
             }
+        }
+
+        public function getProductsNumbers(string $user): void {
+            $this->createMysqlConnection();
+            $GLOBALS['products'] = [];
+            $query = "SELECT * FROM $user";
+            $result = $this->mysql_connection->query($query);
+            foreach($result as $row) {
+                $this->ID = $row['productID'];
+                $this->amount = $row['amount'];
+                $GLOBALS['products'][] = clone $this;
+            }
+            $this->mysql_connection->close();
+            $this->sortProducts();
+            $data = json_encode($GLOBALS['products']);
+            echo $data;
+            exit;
         }
 
 
@@ -64,5 +90,23 @@
                 return false;
             else 
                 return true;
+        }
+
+        private function sortProducts(): void {
+            for($i = 0; $i < sizeof($GLOBALS['products']) - 1; $i++) {
+                $swapped = false;
+                for($j = 0; $j < sizeof($GLOBALS['products']) - $i - 1; $j++) {
+                    if($GLOBALS['products'][$j]->ID > $GLOBALS['products'][$j + 1]->ID) {
+                        [$GLOBALS['products'][$j], $GLOBALS['products'][$j + 1]] = [$GLOBALS['products'][$j + 1], $GLOBALS['products'][$j]];
+                        $swapped = true;    
+                    }
+                }
+                if($swapped == false)
+                    break;
+            }
+        }
+
+        private function createMysqlConnection(): void {
+            $this->mysql_connection = new \mysqli(Page::MYSQL_SERVER, 'Cart', 'secret_of_Cart', 'Carts');
         }
     }

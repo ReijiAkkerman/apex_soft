@@ -1,4 +1,4 @@
-import {Auth} from './Auth.js';
+import { Auth } from './Auth.js';
 
 class AdminForm {
     static list_status = false;
@@ -9,19 +9,19 @@ class AdminForm {
         AdminForm.insertData();
         let data = new FormData(document.querySelector('#admin_form'));
         let element = document.querySelector('#save-button');
-        let action = (function(element) {
+        let action = (function (element) {
             let classname;
-            for(let i = 0; i < element.classList.length; i++) {
-                if(/action_/.test(element.classList[i]))
+            for (let i = 0; i < element.classList.length; i++) {
+                if (/action_/.test(element.classList[i]))
                     classname = element.classList[i];
             }
             let action = classname.split('_')[1];
             return action;
         })(element);
-        let id = (function(element) {
+        let id = (function (element) {
             let classname;
-            for(let i = 0; i < element.classList.length; i++) {
-                if(/Reiji_id/.test(element.classList[i]))
+            for (let i = 0; i < element.classList.length; i++) {
+                if (/Reiji_id/.test(element.classList[i]))
                     classname = element.classList[i];
             }
             let id = classname.split('-')[1];
@@ -32,17 +32,16 @@ class AdminForm {
         xhr.send(data);
         xhr.responseType = 'text';
         xhr.onload = () => {
-            alert(xhr.response);
-            // window.location.href = '/catalog/view';
+            window.location.href = '/catalog/view';
         };
     }
 
     deleteProduct(event) {
         event.preventDefault();
-        let id = (function(element) {
+        let id = (function (element) {
             let classname;
-            for(let i = 0; i < element.classList.length; i++) {
-                if(/Reiji_id/.test(element.classList[i]))
+            for (let i = 0; i < element.classList.length; i++) {
+                if (/Reiji_id/.test(element.classList[i]))
                     classname = element.classList[i];
             }
             let id = classname.split('-')[1];
@@ -53,8 +52,7 @@ class AdminForm {
         xhr.send();
         xhr.responseType = 'text';
         xhr.onload = () => {
-            alert(xhr.response);
-            // window.location.href = '/catalog/view';
+            window.location.href = '/catalog/view';
         };
     }
 
@@ -76,24 +74,24 @@ class AdminForm {
 
     static insertList() {
         let element_template;
-        if(AdminForm.list_status) {
+        if (AdminForm.list_status) {
             let list = document.querySelector('#list' + (AdminForm.ul_counter - 1));
-            if(list === null) {
+            if (list === null) {
                 AdminForm.ul_counter--;
                 AdminForm.list_status = false;
                 element_template = document.querySelector('.Reiji_list');
             }
-            else 
+            else
                 element_template = document.querySelector('.Reiji_list_item');
         }
-        else 
+        else
             element_template = document.querySelector('.Reiji_list');
         let element = element_template.content.cloneNode(true);
         let ul = element.querySelector('ul');
-        if(AdminForm.list_status == false)
+        if (AdminForm.list_status == false)
             ul.id = 'list' + AdminForm.ul_counter;
         let insertion_place;
-        if(AdminForm.list_status) {
+        if (AdminForm.list_status) {
             insertion_place = document.querySelector('#list' + (AdminForm.ul_counter - 1));
         }
         else {
@@ -106,7 +104,7 @@ class AdminForm {
 
     static addImage() {
         let element = document.querySelector('[name="image"]');
-        if(element !== null)
+        if (element !== null)
             element.click();
     }
 
@@ -119,7 +117,7 @@ class AdminForm {
         ];
         let element;
         let input;
-        for(let i = 0; i < array.length; i++) {
+        for (let i = 0; i < array.length; i++) {
             let element = document.querySelector(`#${array[i]}`);
             let input = document.querySelector(`[name="${array[i]}"]`);
             input.value = element.textContent;
@@ -180,14 +178,15 @@ class AdminForm {
         product_price.removeAttribute('contenteditable');
         image.removeEventListener('click', AdminForm.addImage);
         form.remove();
-        for(let i = 0; i < buttons.length; i++) {
+        for (let i = 0; i < buttons.length; i++) {
             buttons[i].remove();
         }
     }
 
     static hideAddButton() {
         let element = document.querySelector('#add_button');
-        element.remove();
+        if(element !== null)
+            element.remove();
     }
 
     static showAddButton() {
@@ -206,43 +205,60 @@ class AdminForm {
     }
 }
 
-export {AdminForm};
+export { AdminForm };
 
 var admin = new AdminForm();
 
-if((window.location.pathname.split('/')[1]) == 'product') {
-    document.addEventListener('DOMContentLoaded', function() {
+if ((window.location.pathname.split('/')[1]) == 'product') {
+    document.addEventListener('DOMContentLoaded', function () {
         let element = document.querySelector('#save-button');
-        if(element !== null)
+        if (element !== null)
             element.addEventListener('click', AdminForm.saveProductData);
         element = document.querySelector('#add_image');
-        if(element !== null)
+        if (element !== null)
             element.addEventListener('click', AdminForm.addImage);
         element = document.querySelector('#for_list');
-        if(element !== null)
+        if (element !== null)
             element.addEventListener('click', AdminForm.insertList);
         element = document.querySelector('#for_theme');
-        if(element !== null)
+        if (element !== null)
             element.addEventListener('click', AdminForm.insertTheme);
         element = document.querySelector('#for_paragraph');
-        if(element !== null)
+        if (element !== null)
             element.addEventListener('click', AdminForm.insertParagraph);
         element = document.querySelector('#exit-button');
-        if(element !== null)
+        if (element !== null)
             element.addEventListener('click', AdminForm.hideAdminFunctions);
         element = document.querySelector('.Reiji_delete-button');
-        if(element !== null)
+        if (element !== null)
             element.addEventListener('click', admin.deleteProduct);
     });
 }
 
-if((window.location.pathname.split('/')[1]) == 'catalog') {
+if ((window.location.pathname.split('/')[1]) == 'catalog') {
     let elements = document.querySelectorAll('.Reiji_delete-button');
-    for(let i = 0; i < elements.length; i++) {
-        if(elements !== null) {
+    for (let i = 0; i < elements.length; i++) {
+        if (elements !== null) {
             elements[i].addEventListener('click', admin.deleteProduct);
             elements[i].addEventListener('mouseover', admin.addId);
             elements[i].addEventListener('mouseout', admin.deleteId);
         }
     }
+}
+let fileInput = document.querySelector('input[type="file"]');
+let imagePreview = document.querySelector('#image');
+
+if (fileInput) {
+    document.addEventListener('DOMContentLoaded', function () {
+        fileInput.addEventListener('change', function () {
+            let file = this.files[0];
+            let reader = new FileReader();
+
+            reader.onload = function () {
+                imagePreview.src = reader.result;
+            };
+
+            reader.readAsDataURL(file);
+        });
+    });
 }

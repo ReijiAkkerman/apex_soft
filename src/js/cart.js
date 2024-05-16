@@ -1,19 +1,9 @@
+
+
 const quantityFields = document.querySelectorAll('.quantity-field');
 const totalItemsElement = document.querySelector('.total-items');
+
 if (quantityFields && totalItemsElement) {
-
-    quantityFields.forEach(function (quantityField) {
-        quantityField.value = 1;
-    });
-
-    const productElements = document.querySelectorAll('.basket__product');
-
-    productElements.forEach(function (product) {
-        const detailsQuantityElement = product.querySelector('.basket__details-quantity');
-
-        detailsQuantityElement.textContent = 1;
-    });
-
     
     totalItemsElement.textContent = quantityFields.length;
     const removeButtons = document.querySelectorAll('.basket__product-remove');

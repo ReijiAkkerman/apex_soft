@@ -1,5 +1,5 @@
 <?php
-    namespace project\control;
+    namespace project\control\interfaces;
 
     interface iCart {
         public function setProductAmount(array $args): void;

@@ -2,9 +2,8 @@
     namespace project\control;
 
     use project\control\parent\Page;
-    use project\control\traits\View;
-    use project\control\interfaces\iCart;
     use project\model\Cart as model_Cart;
+    use project\control\interfaces\iCart;
 
     class Cart extends Page implements iCart {
         public function __construct() {
