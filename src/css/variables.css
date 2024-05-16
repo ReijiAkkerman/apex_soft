@@ -7,8 +7,8 @@
   --colorBorder: #EFEFEF;
   --colorMainSlideBorder: rgba(191, 191, 191, .5);
   --mainFont: "Montserrat";
-  --content-width: 1468px;
-  --container-offset: 0 16px;
+  --content-width: 76.458vw;
+  --container-offset: 0 0.833vw;
 }
 
 [class*=__container] {

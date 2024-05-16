@@ -1,7 +1,10 @@
+
+
 const quantityFields = document.querySelectorAll('.quantity-field');
 const totalItemsElement = document.querySelector('.total-items');
-if (quantityFields && totalItemsElement) {
 
+if (quantityFields && totalItemsElement) {
+    
     quantityFields.forEach(function (quantityField) {
         quantityField.value = 1;
     });

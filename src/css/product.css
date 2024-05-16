@@ -89,6 +89,11 @@
   padding: 1vw 1.9vw;
   color: #fff;
   border-radius: 1.042vw;
-  font-size: 0.833vw;
-  line-height: 0.938vw;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+#product_price,
+#product_articul {
+  width: 100%;
 }

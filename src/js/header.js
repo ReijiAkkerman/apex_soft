@@ -1,3 +1,4 @@
+
 const headerForm = document.querySelector(".header__cabinet-button");
 const userCabinet = document.querySelector(".header__cabinet-form");
 const bodyPage = document.querySelector("body");

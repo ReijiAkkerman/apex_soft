@@ -29,6 +29,9 @@
                 <div class="catalog__body">
                     <div class="catalog__filter filter">
                         <div class="filter__wrapper">
+                        <div class="filter__item" data-category="Показать все">
+                                <p class="filter__item-name">Показать все</p>
+                            </div>
                             <div class="filter__item" data-category="Программы">
                                 <p class="filter__item-name">Программы</p>
                             </div>

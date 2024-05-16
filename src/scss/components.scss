@@ -9,15 +9,16 @@
     border: none;
     cursor: pointer;
 }
-.form{
+
+.form {
     input:invalid {
         background-color: #ffdddd;
     }
-    
+
     input:valid {
         background-color: #ddffdd;
     }
-    
+
     input:required {
         border-color: #800000;
         border-width: 3px;
@@ -71,6 +72,8 @@
 
     &__item {
         list-style: none;
+        font-size: 0.938vw;
+        line-height: 1.25vw;
     }
 
     // .breadcrumbs__link
