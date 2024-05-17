@@ -1,13 +1,9 @@
-.cart__wrapper {
-  display: grid;
-  grid-template-columns: 70% 30%;
-}
 .cart__content {
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.563vw;
-  grid-template-areas: "i1 i2" "i3 i2" "i4 i2" "i5 i2";
+  grid-template-areas: "i1 i2" "i3 i2" "i4 i4" "i5 i5";
 }
 .cart__content-picture {
   max-height: 350px;

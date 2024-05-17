@@ -6,10 +6,7 @@
 
     // .cart__wrapper
 
-    &__wrapper {
-        display: grid;
-        grid-template-columns: 70% 30%;
-    }
+    &__wrapper {}
 
     // .cart__content
 
@@ -22,8 +19,8 @@
         grid-template-areas:
             "i1 i2"
             "i3 i2"
-            "i4 i2"
-            "i5 i2";
+            "i4 i4"
+            "i5 i5";
         // .cart__content-picture
 
         &-picture {
@@ -161,7 +158,7 @@
 }
 
 #product_price,
-#product_articul{
+#product_articul {
     width: 100%;
 }
 

@@ -33,12 +33,12 @@ if (dropdownButton) {
 
             if (selectedCategory === "Показать все") {
                 productCards.forEach(function (card) {
-                    card.style.display = 'block';
+                    card.style.display = 'flex';
                 });
             } else {
                 productCards.forEach(function (card) {
                     if (selectedCategory === card.dataset.type) {
-                        card.style.display = 'block';
+                        card.style.display = 'flex';
                     } else {
                         card.style.display = 'none';
                     }
@@ -109,7 +109,7 @@ quantityControls.forEach((quantityControl) => {
         const productCardAdd = productCard.querySelector('.product-card__add');
         if (newQuantity === 0) {
             productCardQuantity.style.display = 'none';
-            productCardAdd.style.display = 'block';
+            productCardAdd.style.display = 'flex';
         } else {
             productCardQuantity.style.display = 'flex';
             productCardAdd.style.display = 'none';
@@ -161,7 +161,7 @@ if (rangeSlider) {
             const cardPrice = parseInt(card.querySelector(".product-card__price").dataset.price);
 
             if (cardPrice >= minPrice && cardPrice <= maxPrice) {
-                card.style.display = "block";
+                card.style.display = "flex";
             } else {
                 card.style.display = "none";
             }

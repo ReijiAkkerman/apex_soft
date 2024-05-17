@@ -304,7 +304,9 @@
         line-height: 0.938vw;
         color: #fff;
         width: 100%;
-        margin-top: 20px;
+        justify-content: center;
+        align-items: center;
+        margin: 1.042vw auto 0 auto;
     }
 
     //.product-card__quantity
@@ -313,7 +315,7 @@
         align-items: center;
         justify-content: center;
         gap: 1.563vw;
-        margin-top: 1.563vw;
+        margin: 1.042vw auto 0 auto;
     }
 
     &__price,
@@ -323,7 +325,12 @@
     }
 
     //.product-card__price
-    &__price {}
+    &__price {
+        &:after{
+            content: "₽";
+            margin-left: 0.26vw;
+        }
+    }
 
     //.product-card__article
 
@@ -392,7 +399,10 @@
     background-color: #013784;
     border-radius: 1.042vw;
     color: #fff;
+    font-size: 1.7vw;
+    line-height: 0.938vw;
 }
+
 
 .quantity__current {
     width: 20px;
@@ -401,8 +411,7 @@
 }
 
 
-.quantity__current,
-.quantity__control {
+.quantity__current {
     font-size: 0.833vw;
     line-height: 0.938vw;
 }

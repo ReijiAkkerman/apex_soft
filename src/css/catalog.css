@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .page__title {
   font-size: 1.875vw;
   line-height: 2.188vw;
@@ -220,18 +221,24 @@
   line-height: 0.938vw;
   color: #fff;
   width: 100%;
-  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  margin: 1.042vw auto 0 auto;
 }
 .product-card__quantity {
   display: none;
   align-items: center;
   justify-content: center;
   gap: 1.563vw;
-  margin-top: 1.563vw;
+  margin: 1.042vw auto 0 auto;
 }
 .product-card__price, .product-card__article {
   font-size: 0.938vw;
   line-height: 1.146vw;
+}
+.product-card__price:after {
+  content: "₽";
+  margin-left: 0.26vw;
 }
 .product-card__article {
   margin: 0;
@@ -296,6 +303,8 @@
   background-color: #013784;
   border-radius: 1.042vw;
   color: #fff;
+  font-size: 1.7vw;
+  line-height: 0.938vw;
 }
 
 .quantity__current {
@@ -304,8 +313,7 @@
   border: none;
 }
 
-.quantity__current,
-.quantity__control {
+.quantity__current {
   font-size: 0.833vw;
   line-height: 0.938vw;
 }

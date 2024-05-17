@@ -21,3 +21,4 @@
 <link rel="stylesheet" href="/src/css/catalog.css">
 <link rel="stylesheet" href="/src/css/product.css">
 <link rel="stylesheet" href="/src/css/cart.css">
+<link rel="stylesheet" href="/src/css/contacts.css">
