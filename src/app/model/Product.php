@@ -28,7 +28,7 @@ namespace project\model;
         }
 
         public function createProduct(): void {
-            $this->createMysqlConnection('Admin');
+            $this->createMysqlConnection(Page::HOSTING_USER . 'Admin');
 
             $this->getName();
             $this->getType();
@@ -43,7 +43,7 @@ namespace project\model;
         }
 
         public function updateProduct(int $id): void {
-            $this->createMysqlConnection('Admin');
+            $this->createMysqlConnection(Page::HOSTING_USER . 'Admin');
 
             $this->getID($id);
             $this->getName();
@@ -69,7 +69,7 @@ namespace project\model;
                     return false;
             };
 
-            $this->createMysqlConnection('Admin');
+            $this->createMysqlConnection(Page::HOSTING_USER . 'Admin');
 
             $this->getID($id);
             $this->imageName = $getImageName($this->mysql_connection, $this->ID);
@@ -89,7 +89,7 @@ namespace project\model;
         public function getAllProducts(string $user = ''): void {
             $cart = new Cart;
             $GLOBALS['products'] = [];
-            $this->createMysqlConnection('Visitor');
+            $this->createMysqlConnection(Page::HOSTING_USER . 'Visitor');
             $query = "SELECT * FROM all_products";
             $result = $this->mysql_connection->query($query);
             if($result->num_rows) {
@@ -109,7 +109,7 @@ namespace project\model;
         }
 
         public function getProduct(int $id): void {
-            $this->createMysqlConnection('Visitor');
+            $this->createMysqlConnection(Page::HOSTING_USER . 'Visitor');
             $query = "SELECT * FROM all_products WHERE ID=$id";
             $result = $this->mysql_connection->query($query);
             if($result->num_rows) {
@@ -138,7 +138,7 @@ namespace project\model;
 
         private function createMysqlConnection(string $for): void {
             try {
-                $this->mysql_connection = new \mysqli(Page::MYSQL_SERVER, $for, 'secret_of_' . $for, 'Products');
+                $this->mysql_connection = new \mysqli(Page::MYSQL_SERVER, $for, 'secret_of_' . $for, Page::HOSTING_USER . 'Products');
             } catch (\mysqli_sql_exception $e) {
                 echo $e->getMessage();
                 exit;
@@ -245,7 +245,9 @@ namespace project\model;
                     exit;
                 }
             } else {
-                $this->imageName = Product::DEFAULT_IMAGE_NAME;
+                $this->imageName = $this->getProductImageName();
+                if($this->imageName === false) 
+                    $this->imageName = Product::DEFAULT_IMAGE_NAME;
             }
         }
 
@@ -458,6 +460,19 @@ namespace project\model;
         /**
          * Функции для записи данных
          */
+
+        private function getProductImageName(): string {
+            $query = "SELECT image_name FROM all_products WHERE ID={$this->ID}";
+            $result = $this->mysql_connection->query($query);
+            if($result->num_rows) {
+                foreach($result as $row) {
+                    return $row['image_name'];
+                }
+            }
+            else {
+                return false;
+            }
+        }
 
         private function saveImage(): void {
             $dirname = __DIR__ . '/../../../images/';

@@ -184,11 +184,13 @@ class Auth {
             AuthPopup.hideCartButton();
             if((window.location.pathname.split('/')[1]) == 'catalog')
                 AdminForm.hideAddButton();
+            Cart.hideCartButtons();
+            let login = document.querySelector('.Reiji_showAuthForm-button');
+            login.addEventListener('click', Header.openForm);
         };
-        Cart.hideCartButtons();
-        let login = document.querySelector('.Reiji_showAuthForm-button');
-        login.addEventListener('click', Header.openForm);
-        window.location.href = '/main/view';
+        xhr.onloadend = () => { 
+            window.location.href = '/main/view';
+        };
     }
 
     applyFormerFieldStyle() {

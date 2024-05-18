@@ -10,6 +10,7 @@
     {
         public const MYSQL_SERVER = '172.19.0.2';
         public const CONNECT_FROM = EVERYWHERE;
+        public const HOSTING_USER = '';
 
         protected string $login;
         protected string $entered_password;
@@ -48,10 +49,10 @@
 
             $DB_has_been_used = true;
             try {
-                $mysql = new \mysqli(Page::MYSQL_SERVER, 'Users', 'secret_of_Users', 'Users');
+                $mysql = new \mysqli(Page::MYSQL_SERVER, Page::HOSTING_USER . 'Users', 'secret_of_Users', Page::HOSTING_USER . 'Users');
             } catch (\mysqli_sql_exception $e) {
                 $this->init();
-                $mysql = new \mysqli(Page::MYSQL_SERVER, 'Users', 'secret_of_Users', 'Users');
+                $mysql = new \mysqli(Page::MYSQL_SERVER, Page::HOSTING_USER . 'Users', 'secret_of_Users', Page::HOSTING_USER . 'Users');
                 $DB_has_been_used = false;
             }
             if ($DB_has_been_used) {
@@ -104,7 +105,7 @@
                 }
             }
 
-            $mysql = new \mysqli(Page::MYSQL_SERVER, 'Users', 'secret_of_Users', 'Users');
+            $mysql = new \mysqli(Page::MYSQL_SERVER, Page::HOSTING_USER . 'Users', 'secret_of_Users', Page::HOSTING_USER . 'Users');
             if ($this->isExistentUser($mysql, true)) {
                 if (password_verify($this->entered_password, $this->password_from_DB)) {
                     $confirmation = md5($this->login . $this->password_from_DB . $this->creation_date);
@@ -144,7 +145,7 @@
                     if (isset($_COOKIE['confirmation']))
                         if ($_COOKIE['confirmation']) {
                             $this->ID = (int) $_COOKIE['id'];
-                            $mysql = new \mysqli(Page::MYSQL_SERVER, 'Users', 'secret_of_Users', 'Users');
+                            $mysql = new \mysqli(Page::MYSQL_SERVER, Page::HOSTING_USER . 'Users', 'secret_of_Users', Page::HOSTING_USER . 'Users');
                             $query = "SELECT * FROM users WHERE ID={$this->ID}";
                             $result = $mysql->query($query);
                             if ($result->num_rows) {
@@ -183,7 +184,7 @@
                 'createProductsDB',
                 'createCartsDB'
             ];
-            $mysql = new \mysqli(Page::MYSQL_SERVER, 'root', 'secret');
+            $mysql = new \mysqli(Page::MYSQL_SERVER, 'root', 'KisaragiEki4');
             foreach ($functions_of_init as $function) {
                 $this->$function($mysql);
             }
@@ -201,11 +202,12 @@
         private function createUsersDB(\mysqli $mysql): void
         {
             $connect_from = Page::CONNECT_FROM;
+            $hosting_user = Page::HOSTING_USER;
             $queries = [
-                'CREATE DATABASE IF NOT EXISTS Users',
-                "CREATE USER IF NOT EXISTS 'Users'@'$connect_from' IDENTIFIED WITH mysql_native_password BY 'secret_of_Users'",
-                "GRANT SELECT, INSERT ON Users.* TO 'Users'@'$connect_from'",
-                'USE Users',
+                "CREATE DATABASE IF NOT EXISTS {$hosting_user}Users",
+                "CREATE USER IF NOT EXISTS '{$hosting_user}Users'@'$connect_from' IDENTIFIED WITH mysql_native_password BY 'secret_of_Users'",
+                "GRANT SELECT, INSERT ON {$hosting_user}Users.* TO '{$hosting_user}Users'@'$connect_from'",
+                "USE {$hosting_user}Users",
                 'CREATE TABLE IF NOT EXISTS users(
                         ID SERIAL,
                         login VARCHAR(255) UNIQUE NOT NULL,
@@ -222,10 +224,11 @@
 
         private function createProductsDB(\mysqli $mysql): void {
             $connect_from = Page::CONNECT_FROM;
+            $hosting_user = Page::HOSTING_USER;
             $queries = [
-                'CREATE DATABASE IF NOT EXISTS Products',
-                "CREATE USER IF NOT EXISTS 'Admin'@'$connect_from' IDENTIFIED WITH mysql_native_password BY 'secret_of_Admin'",
-                'USE Products',
+                "CREATE DATABASE IF NOT EXISTS {$hosting_user}Products",
+                "CREATE USER IF NOT EXISTS '{$hosting_user}Admin'@'$connect_from' IDENTIFIED WITH mysql_native_password BY 'secret_of_Admin'",
+                "USE Products",
                 'CREATE TABLE IF NOT EXISTS all_products(
                     ID SERIAL,
                     product_name VARCHAR(255) UNIQUE NOT NULL,
@@ -235,9 +238,9 @@
                     product_price INT NOT NULL,
                     image_name TEXT NOT NULL
                 )',
-                "GRANT SELECT, INSERT, UPDATE, DELETE ON Products.* TO 'Admin'@'$connect_from'",
-                "CREATE USER IF NOT EXISTS 'Visitor'@'$connect_from' IDENTIFIED WITH mysql_native_password BY 'secret_of_Visitor'",
-                "GRANT SELECT ON Products.all_products TO 'Visitor'@'$connect_from'"
+                "GRANT SELECT, INSERT, UPDATE, DELETE ON {$hosting_user}Products.* TO '{$hosting_user}Admin'@'$connect_from'",
+                "CREATE USER IF NOT EXISTS '{$hosting_user}Visitor'@'$connect_from' IDENTIFIED WITH mysql_native_password BY 'secret_of_Visitor'",
+                "GRANT SELECT ON {$hosting_user}Products.all_products TO '{$hosting_user}Visitor'@'$connect_from'"
             ];
             foreach($queries as $query) {
                 $mysql->query($query);
@@ -246,6 +249,7 @@
 
         private function createCartsDB(\mysqli $mysql): void {
             $connect_from = Page::CONNECT_FROM;
+            $hosting_user = Page::HOSTING_USER;
             $queries = [
                 'CREATE DATABASE IF NOT EXISTS Carts',
                 "CREATE USER IF NOT EXISTS 'Cart'@'$connect_from' IDENTIFIED WITH mysql_native_password BY 'secret_of_Cart'",

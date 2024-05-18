@@ -31,7 +31,7 @@ class AdminForm {
         xhr.open('POST', `/product/${action}Product/${id}`);
         xhr.send(data);
         xhr.responseType = 'text';
-        xhr.onload = () => {
+        xhr.onloadend = () => {
             window.location.href = '/catalog/view';
         };
     }
@@ -51,7 +51,7 @@ class AdminForm {
         xhr.open('POST', `/product/deleteProduct/${id}`);
         xhr.send();
         xhr.responseType = 'text';
-        xhr.onload = () => {
+        xhr.onloadend = () => {
             window.location.href = '/catalog/view';
         };
     }
