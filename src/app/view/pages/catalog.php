@@ -102,8 +102,7 @@
                                             href="/product/view/?default_action=update&id=<?= $product->ID ?>">
                                             <h3><?= $product->name ?></h3>
                                         </a>
-                                        <p class="product-card__price" data-price="<?= $product->price ?>">
-                                            <?= $product->price ?></p>
+                                        <p class="product-card__price" data-price="<?= $product->price ?>"><?= $product->price ?></p>
                                         <p class="product-card__article Reiji_cart_buttons-multiple__IP"><?= $product->articul ?></p>
                                         <?php
                                             if(isset($this->login)) {
