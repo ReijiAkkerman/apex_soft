@@ -12,6 +12,7 @@
 
         public function view(): void {
             (new model_Cart)->getAllProducts($this->login);
+            $product_amount_mark = true;
             $classname = __CLASS__;
             $class_array = explode('\\', $classname);
             $class = end($class_array);

@@ -107,6 +107,6 @@
         }
 
         private function createMysqlConnection(): void {
-            $this->mysql_connection = new \mysqli(Page::MYSQL_SERVER, 'Cart', 'secret_of_Cart', 'Carts');
+            $this->mysql_connection = new \mysqli(Page::MYSQL_SERVER, Page::HOSTING_USER . 'Cart', 'secret_of_Cart', Page::HOSTING_USER . 'Carts');
         }
     }

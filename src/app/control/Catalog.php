@@ -20,6 +20,7 @@
                 (new Product)->getAllProducts($this->login);
             else 
                 (new Product)->getAllProducts();
+            $product_amount_mark = true;
             $classname = __CLASS__;
             $class_array = explode('\\', $classname);
             $class = end($class_array);

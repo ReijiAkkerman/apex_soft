@@ -251,9 +251,9 @@
             $connect_from = Page::CONNECT_FROM;
             $hosting_user = Page::HOSTING_USER;
             $queries = [
-                'CREATE DATABASE IF NOT EXISTS Carts',
-                "CREATE USER IF NOT EXISTS 'Cart'@'$connect_from' IDENTIFIED WITH mysql_native_password BY 'secret_of_Cart'",
-                "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP ON Carts.* TO 'Cart'@'$connect_from'"
+                "CREATE DATABASE IF NOT EXISTS {$hosting_user}Carts",
+                "CREATE USER IF NOT EXISTS '{$hosting_user}Cart'@'$connect_from' IDENTIFIED WITH mysql_native_password BY 'secret_of_Cart'",
+                "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP ON {$hosting_user}Carts.* TO '{$hosting_user}Cart'@'$connect_from'"
             ];
             foreach($queries as $query) {
                 $mysql->query($query);
@@ -269,7 +269,7 @@
          */
 
         private function createUserCart(): void {
-            $mysql = new \mysqli(Page::MYSQL_SERVER, 'Cart', 'secret_of_Cart', 'Carts');
+            $mysql = new \mysqli(Page::MYSQL_SERVER, Page::HOSTING_USER . 'Cart', 'secret_of_Cart', Page::HOSTING_USER . 'Carts');
             $query = "CREATE TABLE {$this->login}(
                 productID INT NOT NULL,
                 amount INT NOT NULL

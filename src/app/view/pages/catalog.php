@@ -77,7 +77,7 @@
                         </div>
                         <div class="catalog__products">
                             <?php foreach ($GLOBALS['products'] as $product) { ?>
-                                <article class="product-card Reiji_product Reiji_id-<?= $product->ID ?>" data-type="<?= $product->type ?>">
+                                <article class="product-card Reiji_product Reiji_id-<?= $product->ID ?>" data-type="<?= $product->type ?>" data-price="<?= $product->price ?>">
                                     <?php if ($this->admin) { ?>
                                     <div class="product-card__checkmark Reiji_id-<?= $product->ID ?> Reiji_delete-button"
                                         id="delete-button">

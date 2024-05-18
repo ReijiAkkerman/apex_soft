@@ -188,8 +188,18 @@ class Auth {
             let login = document.querySelector('.Reiji_showAuthForm-button');
             login.addEventListener('click', Header.openForm);
         };
-        xhr.onloadend = () => { 
-            window.location.href = '/main/view';
+        xhr.onloadend = () => {
+            let path = window.location.pathname.split('/')[1];
+            let accepted_path_array = [
+                'catalog',
+                'main',
+                'contacts',
+                'info'
+            ];
+            if (accepted_path_array.includes(path))
+                ;
+            else 
+                window.location.href = '/main/view';
         };
     }
 

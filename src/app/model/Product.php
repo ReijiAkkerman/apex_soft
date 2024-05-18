@@ -28,7 +28,7 @@ namespace project\model;
         }
 
         public function createProduct(): void {
-            $this->createMysqlConnection(Page::HOSTING_USER . 'Admin');
+            $this->createMysqlConnection('Admin');
 
             $this->getName();
             $this->getType();
@@ -43,7 +43,7 @@ namespace project\model;
         }
 
         public function updateProduct(int $id): void {
-            $this->createMysqlConnection(Page::HOSTING_USER . 'Admin');
+            $this->createMysqlConnection('Admin');
 
             $this->getID($id);
             $this->getName();
@@ -69,7 +69,7 @@ namespace project\model;
                     return false;
             };
 
-            $this->createMysqlConnection(Page::HOSTING_USER . 'Admin');
+            $this->createMysqlConnection('Admin');
 
             $this->getID($id);
             $this->imageName = $getImageName($this->mysql_connection, $this->ID);
@@ -89,7 +89,7 @@ namespace project\model;
         public function getAllProducts(string $user = ''): void {
             $cart = new Cart;
             $GLOBALS['products'] = [];
-            $this->createMysqlConnection(Page::HOSTING_USER . 'Visitor');
+            $this->createMysqlConnection('Visitor');
             $query = "SELECT * FROM all_products";
             $result = $this->mysql_connection->query($query);
             if($result->num_rows) {
@@ -109,7 +109,7 @@ namespace project\model;
         }
 
         public function getProduct(int $id): void {
-            $this->createMysqlConnection(Page::HOSTING_USER . 'Visitor');
+            $this->createMysqlConnection('Visitor');
             $query = "SELECT * FROM all_products WHERE ID=$id";
             $result = $this->mysql_connection->query($query);
             if($result->num_rows) {
@@ -138,7 +138,7 @@ namespace project\model;
 
         private function createMysqlConnection(string $for): void {
             try {
-                $this->mysql_connection = new \mysqli(Page::MYSQL_SERVER, $for, 'secret_of_' . $for, Page::HOSTING_USER . 'Products');
+                $this->mysql_connection = new \mysqli(Page::MYSQL_SERVER, Page::HOSTING_USER . $for, 'secret_of_' . $for, Page::HOSTING_USER . 'Products');
             } catch (\mysqli_sql_exception $e) {
                 echo $e->getMessage();
                 exit;
@@ -246,7 +246,7 @@ namespace project\model;
                 }
             } else {
                 $this->imageName = $this->getProductImageName();
-                if($this->imageName === false) 
+                if($this->imageName == false) 
                     $this->imageName = Product::DEFAULT_IMAGE_NAME;
             }
         }

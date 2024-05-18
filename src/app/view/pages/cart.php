@@ -38,6 +38,7 @@
                     <?php $cost = 0 ?>
                     <?php $products = 0 ?>
                     <?php foreach($GLOBALS['products'] as $product) { ?>
+                    <?php if($product->amount) { ?>
                     <?php $products += $product->amount ?>
                     <div class="basket__product">
                         <div class="basket__product-description item">
@@ -58,6 +59,7 @@
                             <button class="basket__product-remove btn Reiji_delete_product Reiji_id-<?= $product->ID ?>">Удалить товар</button>
                         </div>
                     </div>
+                    <?php } ?>
                     <?php } ?>
                 </div>
                 <aside class="right__column">
