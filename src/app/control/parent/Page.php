@@ -253,7 +253,20 @@
             $queries = [
                 "CREATE DATABASE IF NOT EXISTS {$hosting_user}Carts",
                 "CREATE USER IF NOT EXISTS '{$hosting_user}Cart'@'$connect_from' IDENTIFIED WITH mysql_native_password BY 'secret_of_Cart'",
-                "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP ON {$hosting_user}Carts.* TO '{$hosting_user}Cart'@'$connect_from'"
+                "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE ON {$hosting_user}Carts.* TO '{$hosting_user}Cart'@'$connect_from'"
+            ];
+            foreach($queries as $query) {
+                $mysql->query($query);
+            }
+        }
+
+        private function createOrdersDB(\mysqli $mysql): void {
+            $connect_from = Page::CONNECT_FROM;
+            $hosting_user = Page::HOSTING_USER;
+            $queries = [
+                "CREATE DATABASE IF NOT EXISTS {$hosting_user}Orders",
+                "CREATE USER IF NOT EXISTS '{$hosting_user}Orders'@'$connect_from' IDENTIFIED WITH mysql_native_password BY 'secret_of_Orders'",
+                "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE ON {$hosting_user}Orders.* TO '{$hosting_user}Orders'@'$connect_from'"
             ];
             foreach($queries as $query) {
                 $mysql->query($query);
@@ -393,8 +406,7 @@
         {
             setcookie('id', '', time() - 1, '/');
             setcookie('confirmation', '', time() - 1, '/');
-            if($this->admin)
-                setcookie('is_admin', '', time() - 1, '/');
+            setcookie('is_admin', '', time() - 1, '/');
         }
 
         protected function sendData(): void

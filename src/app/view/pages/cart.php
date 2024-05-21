@@ -72,12 +72,20 @@
                             <div class="subtotal-title">Итоговая цена</div>
                             <div class="subtotal-value final-value Reiji_total_price" id="basket-subtotal"><?= $cost ?></div>
                         </div>
-                        <button class="summary-buy" id="buy">Купить</button>
+                        <button class="summary-buy" id="buy">Заказать</button>
                     </div>
                 </aside>
             </div>
         </section>
     </main>
+    <section>
+        <form>
+            <input type="text" name="fullname" placeholder="Как обращаться?">
+            <input type="text" name="email" placeholder="Электронная почта">
+            <input type="text" name="phone_number" placeholder="Номер телефона">
+            <button>Оформить заказ</button>
+        </form>
+    </section>
     <footer></footer>
     <script type="module" src="/src/js/Reiji/async/Cart.js"></script>
 </body>
