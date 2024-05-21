@@ -86,7 +86,7 @@
             <button>Оформить заказ</button>
         </form>
     </section>
-    <footer></footer>
+    <?php include_once __DIR__ . '/components/footer.php' ?>
     <script type="module" src="/src/js/Reiji/async/Cart.js"></script>
 </body>
 
