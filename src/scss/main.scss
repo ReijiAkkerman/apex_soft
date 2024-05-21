@@ -8,6 +8,7 @@
     // .hero__swiper
 
     &__swiper {
+        height: calc(500px + 250px);
         // .hero__swiper-prev
 
         &-prev {}
@@ -68,15 +69,47 @@
     // .hero__slide
 
     &__slide {
-        padding: 18.229svh 0 18.229svh 0;
+        padding: 125px 0 125px 0;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: rgba(0, 0, 0, .3);
+        position: relative;
+        top: 0;
+        left: 0;
+
+        &:before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            display: block;
+            background-color: rgba(0, 0, 0, .2);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
 
         &[data-slide="1"] {
-            background-image: url("/src/assets/img/data-slide-second.jpg");
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-color: rgba(0, 0, 0, .3);
+            background-image: url("/src/assets/img/1C-Web-Service.png");
         }
+
+        &[data-slide="2"] {
+            background-image: url("/src/assets/img/1C-Fresh.png");
+        }
+
+        &[data-slide="3"] {
+            background-image: url("/src/assets/img/Programm-Product.png");
+        }
+
+        &[data-slide="4"] {
+            background-image: url("/src/assets/img/Official-Partner.png");
+        }
+
+        &[data-slide="5"] {
+            background-image: url("/src/assets/img/Info-Support.png");
+        }
+
     }
 
 }

@@ -1,0 +1,67 @@
+<?php
+    namespace project\control;
+
+    use project\control\parent\Page;
+    use project\control\traits\View;
+    use project\control\interfaces\iCatalog;
+
+    use project\model\Product;
+    use project\model\Cart;
+
+    final class Catalog extends Page implements iCatalog {
+        public string $error_message;
+
+        public function __construct() {
+            $this->constructor();
+        }
+
+        public function view(): void {
+            if(isset($this->login))
+                (new Product)->getAllProducts($this->login);
+            else 
+                (new Product)->getAllProducts();
+            $classname = __CLASS__;
+            $class_array = explode('\\', $classname);
+            $class = end($class_array);
+            require_once __DIR__ . '/../view/pages/' . lcfirst($class) . '.php';
+        }
+
+        public function deleteProduct(array $args): void {
+            $id = (int)$args[0];
+            $access_permitted = $this->checkAccessRights();
+            if($access_permitted) 
+                (new Product)->deleteProduct($id);
+            else {
+                $this->sendData();
+                exit;
+            }
+        }
+
+        public function setProductAmount(array $args): void {
+            $product_id = (int)$args[0];
+            $amount = (int)$args[1];
+            (new Cart)->setProductAmount($this->login, $product_id, $amount);
+        }
+
+        public function getProductsNumbers(): void {
+            (new Cart)->getProductsNumbers($this->login);
+        }
+
+
+
+
+
+        /**
+         * Вспомогательные функции
+         */
+
+        private function checkAccessRights(): bool {
+            if($this->admin) {
+                return true;
+            }
+            else {
+                $this->error_message = 'У Вас нет прав на редактирование товаров!';
+                return false;
+            }
+        }
+    }

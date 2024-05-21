@@ -2,8 +2,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="/src/js/swiperSlider.js"></script>
 <script defer src="/src/js/nouislider-min.js"></script>
+<script defer type="module" src="/src/js/header.js"></script>
 <script defer src="/src/js/swiperSlider.js"></script>
-<script defer src="/src/js/header.js"></script>
 <script defer src="/src/js/catalog.js"></script>
 <script defer src="/src/js/swiper.js"></script>
 <script defer src="/src/js/cart.js"></script>
@@ -22,3 +22,4 @@
 <link rel="stylesheet" href="/src/css/product.css">
 <link rel="stylesheet" href="/src/css/cart.css">
 <link rel="stylesheet" href="/src/css/contacts.css">
+<link rel="stylesheet" href="/src/css/footer.css">

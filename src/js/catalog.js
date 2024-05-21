@@ -38,7 +38,7 @@ if (dropdownButton) {
             } else {
                 productCards.forEach(function (card) {
                     if (selectedCategory === card.dataset.type) {
-                        card.style.display = 'flex';
+                        card.style.display = 'block';
                     } else {
                         card.style.display = 'none';
                     }
@@ -58,6 +58,7 @@ addButtons.forEach((addButton, index) => {
     addButton.addEventListener('click', () => {
         addButton.style.display = 'none'; // скрываем кнопку addButton
         cardQuantity[index].style.display = 'flex'; // показываем форму cardQuantity
+        console.log(Date.now());
     });
 });
 
@@ -72,51 +73,45 @@ addButtons.forEach((addButton, index) => {
     });
 });
 
-quantityControls.forEach((quantityControl) => {
-    quantityControl.addEventListener('click', () => {
-        const currentQuantity = parseInt(quantityControl.parentElement.querySelector('.quantity__current').value);
-        const operation = quantityControl.dataset.quantity;
+// quantityControls.forEach((quantityControl) => {
+//     quantityControl.addEventListener('click', () => {
+//         const currentQuantity = parseInt(quantityControl.parentElement.querySelector('.quantity__current').value);
+//         const operation = quantityControl.dataset.quantity;
 
-        let newQuantity;
+//         let newQuantity;
 
-        if (operation === 'plus') {
-            newQuantity = currentQuantity + 1;
-        } else if (operation === 'minus') {
-            newQuantity = currentQuantity - 1;
+//         if (operation === 'plus') {
+//             newQuantity = currentQuantity + 1;
+//         } else if (operation === 'minus') {
+//             newQuantity = currentQuantity - 1;
 
-            // проверяем, чтобы количество не было меньше 0
-            if (newQuantity < 0) {
-                newQuantity = 0;
-            }
-        }
+//             // проверяем, чтобы количество не было меньше 0
+//             if (newQuantity < 0) {
+//                 newQuantity = 0;
+//             }
+//         }
 
-        quantityControl.parentElement.querySelector('.quantity__current').value = newQuantity;
+//         quantityControl.parentElement.querySelector('.quantity__current').value = newQuantity;
 
-        // обновляем сумму всех значений из .quantity__current у которых открыта .product-card__quantity
-        let totalQuantity = 0;
-        productCards.forEach((productCard) => {
-            const productCardQuantity = productCard.querySelector('.product-card__quantity');
-            if (productCardQuantity.style.display === 'flex') {
-                const quantityCurrent = productCardQuantity.querySelector('.quantity__current');
-                totalQuantity += parseInt(quantityCurrent.value);
-            }
-        });
-        basketCount.textContent = totalQuantity;
+//         // обновляем сумму всех значений из .quantity__current у которых открыта .product-card__quantity
+//         let totalQuantity = 0;
+//         quantityCurrentArray.forEach((quantity) => {
+//             if (quantity.parentElement.style.display === 'flex') {
+//                 totalQuantity += parseInt(quantity.value);
+//             }
+//         });
+//         basketCount.textContent = totalQuantity;
 
-        // проверяем, чтобы количество не было равно 0
-        const productCard = quantityControl.closest('.product-card');
-        const productCardQuantity = productCard.querySelector('.product-card__quantity');
-        const productCardAdd = productCard.querySelector('.product-card__add');
-        if (newQuantity === 0) {
-            productCardQuantity.style.display = 'none';
-            productCardAdd.style.display = 'flex';
-        } else {
-            productCardQuantity.style.display = 'flex';
-            productCardAdd.style.display = 'none';
-        }
-    });
-});
-
+//         // проверяем, чтобы количество не было равно 0
+//         if (newQuantity === 0) {
+//             quantityControl.parentElement.parentElement.querySelector('.product-card__quantity').style.display = 'none';
+//             quantityControl.parentElement.parentElement.querySelector('.product-card__add').style.display = 'block';
+//         } else {
+//             quantityControl.parentElement.parentElement.querySelector('.product-card__quantity').style.display = 'flex';
+//             quantityControl.parentElement.parentElement.querySelector('.product-card__add').style.display = 'none';
+//         }
+//     });
+// });
 
 const rangeSlider = document.querySelector(".filter__item-slider");
 const filterButton = document.querySelector(".filter__item-button");
@@ -161,7 +156,7 @@ if (rangeSlider) {
             const cardPrice = parseInt(card.querySelector(".product-card__price").dataset.price);
 
             if (cardPrice >= minPrice && cardPrice <= maxPrice) {
-                card.style.display = "flex";
+                card.style.display = "block";
             } else {
                 card.style.display = "none";
             }

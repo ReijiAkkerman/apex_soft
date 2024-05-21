@@ -35,62 +35,49 @@
                             <li class="basket__item basket__item--subtotal  subtotal">Итоговая цена</li>
                         </ul>
                     </div>
+                    <?php $cost = 0 ?>
+                    <?php $products = 0 ?>
+                    <?php foreach($GLOBALS['products'] as $product) { ?>
+                    <?php $products += $product->amount ?>
                     <div class="basket__product">
                         <div class="basket__product-description item">
                             <div class="basket__picture">
-                                <img src="../src/assets/img/cart.jpg" alt="Placholder Image 2" class="basket__image">
+                                <img src="/images/<?= $product->imageName ?>" alt="Placholder Image 2" class="basket__image">
                             </div>
                             <div class="basket__details">
-                                <p class="basket__details-text"><span class="basket__details-quantity"></span> x 1С :
-                                    Бухгалтерия 8 ПРОФ</p>
-                                <p class="basket__details-article">Артикул - 232321939</p>
+                                <p class="basket__details-text"><?= $product->name ?></p>
+                                <p class="basket__details-article">Артикул - <?= $product->articul ?></p>
                             </div>
                         </div>
-                        <div class="basket__product-price">2600</div>
+                        <div class="basket__product-price"><?= $product->price ?></div>
                         <form class="basket__product-quantity">
-                            <input type="number" value="" min="1" class="quantity-field">
+                            <input type="number" value="<?= $product->amount ?>" step="1" class="quantity-field Reiji_product_amount Reiji_id-<?= $product->ID ?>">
                         </form>
                         <div class="basket__product-wrapper">
-                            <span class="basket__product-subtotal">2600</span>
-                            <button class="basket__product-remove btn">Удалить товар</button>
+                            <span class="basket__product-subtotal Reiji_product_price"><?php $cost += $product->price * $product->amount; echo $product->price * $product->amount ?></span>
+                            <button class="basket__product-remove btn Reiji_delete_product Reiji_id-<?= $product->ID ?>">Удалить товар</button>
                         </div>
                     </div>
-                    <div class="basket__product">
-                        <div class="basket__product-description item">
-                            <div class="basket__picture">
-                                <img src="../src/assets/img/cart.jpg" alt="Placholder Image 2" class="basket__image">
-                            </div>
-                            <div class="basket__details">
-                                <p class="basket__details-text"><span class="basket__details-quantity"></span> x 1С :
-                                    Бухгалтерия 8 ПРОФ</p>
-                                <p class="basket__details-article">Артикул - 232321939</p>
-                            </div>
-                        </div>
-                        <div class="basket__product-price">2600</div>
-                        <form class="basket__product-quantity">
-                            <input type="number" value="" min="1" class="quantity-field">
-                        </form>
-                        <div class="basket__product-wrapper">
-                            <span class="basket__product-subtotal">2600</span>
-                            <button class="basket__product-remove btn">Удалить товар</button>
-                        </div>
-                    </div>
+                    <?php } ?>
                 </div>
                 <aside class="right__column">
                     <div class="summary">
-                        <div class="summary-total-items"><span class="total-items"></span> <span
-                                class="total-items-text">товара в вашей корзине</span></div>
+                        <div class="summary-total-items">
+                            <span class="total-items"><?= $products ?></span>
+                            <span class="total-items-text">товара в вашей корзине</span>
+                        </div>
                         <div class="summary-subtotal">
                             <div class="subtotal-title">Итоговая цена</div>
-                            <div class="subtotal-value final-value" id="basket-subtotal"></div>
+                            <div class="subtotal-value final-value Reiji_total_price" id="basket-subtotal"><?= $cost ?></div>
                         </div>
-                        <button class="summary-buy">Купить</button>
+                        <button class="summary-buy" id="buy">Купить</button>
                     </div>
                 </aside>
             </div>
         </section>
     </main>
     <footer></footer>
+    <script type="module" src="/src/js/Reiji/async/Cart.js"></script>
 </body>
 
 </html>

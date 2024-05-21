@@ -1,42 +1,11 @@
+
+
 const quantityFields = document.querySelectorAll('.quantity-field');
 const totalItemsElement = document.querySelector('.total-items');
-const basketSubtotalElement = document.querySelector('#basket-subtotal');
-if (quantityFields && totalItemsElement && basketSubtotalElement) {
-    quantityFields.forEach(function (quantityField) {
-        quantityField.value = 1;
-    });
 
-    const productElements = document.querySelectorAll('.basket__product');
-
-    productElements.forEach(function (product) {
-        const detailsQuantityElement = product.querySelector('.basket__details-quantity');
-
-        detailsQuantityElement.textContent = 1;
-    });
-
-    // Пересчитать значение .total-items после выставления начальных значений
-    const totalItems = Array.from(quantityFields)
-        .reduce((accumulator, currentField) => {
-            const currentQuantity = parseInt(currentField.value, 10);
-            return accumulator + currentQuantity;
-        }, 0);
-    totalItemsElement.textContent = totalItems;
-
-    const total = Array.from(quantityFields)
-        .reduce((accumulator, currentField) => {
-            const currentProduct = currentField.closest('.basket__product');
-            if (currentProduct) {
-                const currentPriceElement = currentProduct.querySelector('.basket__product-price');
-                const currentPrice = parseFloat(currentPriceElement.textContent.replace(/\D/g, ''));
-                const currentQuantity = parseInt(currentField.value, 10);
-                const currentSubtotal = currentPrice * currentQuantity;
-                return accumulator + currentSubtotal;
-            }
-            return accumulator;
-        }, 0);
-
-    basketSubtotalElement.textContent = total.toFixed(2);
-
+if (quantityFields && totalItemsElement) {
+    
+    totalItemsElement.textContent = quantityFields.length;
     const removeButtons = document.querySelectorAll('.basket__product-remove');
 
     removeButtons.forEach(function (removeButton) {

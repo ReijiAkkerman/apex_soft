@@ -8,7 +8,11 @@ let aboutSwiper = new Swiper(".hero__swiper", {
     spaceBetween: 30,
     speed: 800,
     direction: 'horizontal',
-    loop: false,
+    loop: true,
+    autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+    },
     navigation: {
         nextEl: '.hero__swiper-next',
         prevEl: '.hero__swiper-prev',

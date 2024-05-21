@@ -32,7 +32,6 @@ class AdminForm {
         xhr.send(data);
         xhr.responseType = 'text';
         xhr.onload = () => {
-            alert(xhr.response);
             // window.location.href = '/catalog/view';
         };
     }
@@ -53,7 +52,6 @@ class AdminForm {
         xhr.send();
         xhr.responseType = 'text';
         xhr.onload = () => {
-            alert(xhr.response);
             // window.location.href = '/catalog/view';
         };
     }
@@ -187,7 +185,8 @@ class AdminForm {
 
     static hideAddButton() {
         let element = document.querySelector('#add_button');
-        element.remove();
+        if(element !== null)
+            element.remove();
     }
 
     static showAddButton() {

@@ -1,6 +1,9 @@
-body.active {
-  scroll-behavior: smooth;
-  scrollbar-gutter: stable;
+input {
+  width: 0;
+  height: 0;
+  border: none;
+  outline: none;
+};
   overflow: hidden;
 }
 

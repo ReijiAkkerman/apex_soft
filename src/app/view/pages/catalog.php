@@ -77,22 +77,22 @@
                         </div>
                         <div class="catalog__products">
                             <?php foreach ($GLOBALS['products'] as $product) { ?>
-                                <article class="product-card" data-type="<?= $product->type ?>">
+                                <article class="product-card Reiji_product Reiji_id-<?= $product->ID ?>" data-type="<?= $product->type ?>">
                                     <?php if ($this->admin) { ?>
-                                        <div class="product-card__checkmark Reiji_id-<?= $product->ID ?> Reiji_delete-button"
-                                            id="delete-button">
-                                            <svg class="product-card__icon" width="64" version="1.1"
-                                                xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 0 64 64"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64">
-                                                <g>
-                                                    <path fill="#013784"
-                                                        d="M28.941,31.786L0.613,60.114c-0.787,0.787-0.787,2.062,0,2.849c0.393,0.394,0.909,0.59,1.424,0.59   c0.516,0,1.031-0.196,1.424-0.59l28.541-28.541l28.541,28.541c0.394,0.394,0.909,0.59,1.424,0.59c0.515,0,1.031-0.196,1.424-0.59   c0.787-0.787,0.787-2.062,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.062-0.786-2.848,0   L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z">
-                                                    </path>
-                                                </g>
-                                            </svg>
-                                        </div>
+                                    <div class="product-card__checkmark Reiji_id-<?= $product->ID ?> Reiji_delete-button"
+                                        id="delete-button">
+                                        <svg class="product-card__icon" width="64" version="1.1"
+                                            xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 0 64 64"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64">
+                                            <g>
+                                                <path fill="#013784"
+                                                    d="M28.941,31.786L0.613,60.114c-0.787,0.787-0.787,2.062,0,2.849c0.393,0.394,0.909,0.59,1.424,0.59   c0.516,0,1.031-0.196,1.424-0.59l28.541-28.541l28.541,28.541c0.394,0.394,0.909,0.59,1.424,0.59c0.515,0,1.031-0.196,1.424-0.59   c0.787-0.787,0.787-2.062,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.062-0.786-2.848,0   L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z">
+                                                </path>
+                                            </g>
+                                        </svg>
+                                    </div>
                                     <?php } ?>
-                                    <div class="product-card__body">
+                                    <div class="product-card__body Reiji_cart_buttons-single__IP">
                                         <a class="product-card__picture"
                                             href="/product/view?default_action=update&id=<?= $product->ID ?>">
                                             <img src="/images/<?= $product->imageName ?>" alt=""
@@ -104,14 +104,32 @@
                                         </a>
                                         <p class="product-card__price" data-price="<?= $product->price ?>">
                                             <?= $product->price ?></p>
-                                        <p class="product-card__article"><?= $product->articul ?></p>
-                                        <div class="product-card__quantity">
-                                            <div class="quantity__control" data-quantity="minus">-</div>
-                                            <input class="quantity__current" type="text" value="1"></input>
-                                            <div class="quantity__control" data-quantity="plus">+</div>
+                                        <p class="product-card__article Reiji_cart_buttons-multiple__IP"><?= $product->articul ?></p>
+                                        <?php
+                                            if(isset($this->login)) {
+                                        ?>
+                                        <div class="product-card__quantity Reiji_cart_buttons-multiple Reiji_cart_actions" <?php
+                                            if($product->amount)
+                                                echo 'style="display:flex;"';
+                                            else 
+                                                echo 'style="display:none;"';
+                                        ?>>
+                                            <div class="quantity__control Reiji_product_amount--sub" data-quantity="minus">-</div>
+                                            <input class="quantity__current Reiji_product_amount Reiji_id-<?= $product->ID ?>" type="text" value="<?= $product->amount ?>"></input>
+                                            <div class="quantity__control Reiji_product_amount--add" data-quantity="plus">+</div>
                                         </div>
+                                        <?php } ?>
                                     </div>
-                                    <button class="product-card__add btn">Добавить</button>
+                                    <?php 
+                                        if(isset($this->login)) {
+                                    ?>
+                                    <button class="product-card__add btn Reiji_product_amount-add Reiji_cart_buttons-single Reiji_cart_actions" <?php
+                                        if($product->amount)
+                                            echo 'style="display:none;"';
+                                        else 
+                                            echo 'style="display:block;"';
+                                    ?>>Добавить</button>
+                                    <?php } ?>
                                 </article>
                             <?php } ?>
                         </div>
@@ -122,10 +140,21 @@
     </main>
     <footer></footer>
     <script type="module" src="/src/js/Reiji/async/AdminForm.js"></script>
+    <script type="module" src="/src/js/Reiji/async/Cart.js"></script>
     <template class="Reiji_add_button">
         <div class="catalog__control-item" id="add_button">
             <button class="catalog__control-button btn"><a href="/product/view">Добавить</a></button>
         </div>
+    </template>
+    <template class="Reiji_cart_buttons multiple">
+        <div class="product-card__quantity Reiji_cart_buttons-multiple Reiji_cart_actions" style="display:none;">
+            <div class="quantity__control Reiji_product_amount--sub" data-quantity="minus">-</div>
+            <input class="quantity__current Reiji_product_amount" type="text"></input>
+            <div class="quantity__control Reiji_product_amount--add" data-quantity="plus">+</div>
+        </div>
+    </template>
+    <template class="Reiji_cart_buttons single">
+        <button class="product-card__add btn Reiji_product_amount-add Reiji_cart_buttons-single Reiji_cart_actions" style="display:none;">Добавить</button>
     </template>
 </body>
 
