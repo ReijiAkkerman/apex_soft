@@ -18,7 +18,7 @@
                     <div class="hero__slide swiper-slide" data-slide="">
                         <div class="hero__swiper-slide">
                             <div class="hero__container">
-                                <h1 class="hero__swiper-title">Продажа программных продуктов компании «1С»</h1>
+                                <h1 class="hero__swiper-title">1С:Веб сервис</h1>
                                 <p class="hero__swiper-descr">
                                     Работайте в 1С через веб сервис.
                                     Автоматическое обновление,
@@ -45,10 +45,10 @@
                     <div class="hero__slide swiper-slide" data-slide="">
                         <div class="hero__swiper-slide">
                             <div class="hero__container">
-                                <h1 class="hero__swiper-title">Официальный партнер 1С франчайзинг</h1>
+                                <h1 class="hero__swiper-title">Продажа программных продуктов компании «1С»</h1>
                                 <p class="hero__swiper-descr">
-                                    Автоматизация вашего бизнеса на базе программных продуктов компании 1С. Широкий
-                                    спектр услуг по сопровождению программных продуктов компании 1С
+                                    Свыше 200 программ «1С» для эффективной работы вашего бизнеса, внедрение и
+                                    сопровождение программных продуктов
                                 </p>
                                 <button class="hero__swiper-button btn">Перейти в каталог</button>
                             </div>
@@ -57,10 +57,10 @@
                     <div class="hero__slide swiper-slide" data-slide="">
                         <div class="hero__swiper-slide">
                             <div class="hero__container">
-                                <h1 class="hero__swiper-title">Продажа программных продуктов компании «1С»</h1>
+                                <h1 class="hero__swiper-title">Официальный партнер 1С франчайзинг</h1>
                                 <p class="hero__swiper-descr">
-                                    Свыше 200 программ «1С» для эффективной работы вашего бизнеса, внедрение и
-                                    сопровождение программных продуктов
+                                    Автоматизация вашего бизнеса на базе программных продуктов компании 1С. Широкий
+                                    спектр услуг по сопровождению программных продуктов компании 1С
                                 </p>
                                 <button class="hero__swiper-button btn">Перейти в каталог</button>
                             </div>

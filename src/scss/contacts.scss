@@ -1,0 +1,170 @@
+.contacts__map {
+    &>* {
+        box-sizing: content-box;
+    }
+
+    iframe {
+        width: 100%;
+        height: 400px;
+
+    }
+}
+
+
+.contacts {
+
+    // .contacts__container
+
+    &__container {}
+
+    // .contacts__map
+
+    &__map {}
+
+    // .contacts__item
+
+    &__item {
+        display: grid;
+        gap: 1.563vw;
+        grid-template-columns: 26% 74%;
+        margin-top: 1.563vw;
+        border: 0.052vw solid #d5d2d2;
+        padding: 1.563vw;
+
+        // .contacts__item-picture
+
+        &-picture {
+            width: 18.229vw;
+            height: 300px;
+        }
+
+        // .contacts__item-image
+
+        &-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        // .contacts__item-control
+
+        &-control {
+            display: grid;
+            grid-template-columns: 17% 14% 63%;
+            gap: 1.563vw;
+        }
+
+        // .contacts__item-description
+
+        &-description {}
+
+        // .contacts__item-name
+
+        &-name {
+            font-size: 0.938vw;
+            font-weight: bold;
+            line-height: 0.938vw;
+            margin: 0 0 1.563vw 0;
+        }
+
+        // .contacts__item-time
+
+        &-time {
+            font-size: 0.729vw;
+            line-height: 0.833vw;
+            margin: 0;
+        }
+
+        // .contacts__item-phones
+
+        &-phones {}
+
+        // .contacts__item-phone
+
+        &-phone {
+            font-size: 0.833vw;
+            line-height: 0.938vw;
+            text-decoration: none;
+            color: var(--mainSubColor);
+            font-weight: bold;
+        }
+
+        // .contacts__item-route
+
+        &-route {}
+
+        // .contacs__item-path
+
+        &-path {
+            font-size: 0.833vw;
+            line-height: 0.938vw;
+            font-weight: bold;
+            margin: 0 0 1.563vw 0;
+        }
+
+        // .contacs__item-text
+
+        &-text {
+            font-size: 0.729vw;
+            line-height: 0.833vw;
+            font-weight: 500;
+            margin: 0 0 0.781vw 0;
+            padding: 0 0 0.781vw 0;
+            border-bottom: 0.052vw solid #d5d2d2;
+        }
+
+        //.contacts__item-items
+        &-items {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.521vw;
+
+            //.contacts__item-paragraph--bus
+            &--bus {
+                margin-bottom: 0.781vw;
+            }
+
+            //.contacts__item-paragraph--minibus
+            &--minibus {
+                margin-bottom: 0.781vw;
+            }
+
+            //.contacts__item-paragraph--trolleybuses
+            &--trolleybuses {}
+        }
+
+        //.contacts__item-paragraph
+        &-paragraph {
+            list-style: none;
+            padding: 0.521vw;
+            color: #fff;
+            font-size: 0.729vw;
+            line-height: 0.833vw;
+            border-radius: 1.042vw;
+            flex: 0 1 2.604vw;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        //.contacts__item-paragraph--bus
+        &-items--bus>&-paragraph {
+            background-color: #013784;
+        }
+
+        //.contacts__item-paragraph--bus
+        &-items--minibus>&-paragraph {
+            background-color: #ec252c;
+        }
+
+        //.contacts__item-paragraph--bus
+        &-items--trolleybuses>&-paragraph {
+            background-color: #0653c0;
+        }
+
+    }
+}
+
+.contacs {}

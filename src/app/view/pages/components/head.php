@@ -7,6 +7,7 @@
 <script defer src="/src/js/catalog.js"></script>
 <script defer src="/src/js/swiper.js"></script>
 <script defer src="/src/js/cart.js"></script>
+<script defer src="/src/js/order.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900"
     rel="stylesheet" />
 <link rel="stylesheet" href="/src/css/normalize.css">
@@ -21,3 +22,6 @@
 <link rel="stylesheet" href="/src/css/catalog.css">
 <link rel="stylesheet" href="/src/css/product.css">
 <link rel="stylesheet" href="/src/css/cart.css">
+<link rel="stylesheet" href="/src/css/contacts.css">
+<link rel="stylesheet" href="/src/css/order.css">
+<link rel="stylesheet" href="/src/css/footer.css">

@@ -33,7 +33,7 @@ if (dropdownButton) {
 
             if (selectedCategory === "Показать все") {
                 productCards.forEach(function (card) {
-                    card.style.display = 'block';
+                    card.style.display = 'flex';
                 });
             } else {
                 productCards.forEach(function (card) {
@@ -72,46 +72,6 @@ addButtons.forEach((addButton, index) => {
         basketCount.textContent = parseInt(basketCount.textContent) + 1;
     });
 });
-
-// quantityControls.forEach((quantityControl) => {
-//     quantityControl.addEventListener('click', () => {
-//         const currentQuantity = parseInt(quantityControl.parentElement.querySelector('.quantity__current').value);
-//         const operation = quantityControl.dataset.quantity;
-
-//         let newQuantity;
-
-//         if (operation === 'plus') {
-//             newQuantity = currentQuantity + 1;
-//         } else if (operation === 'minus') {
-//             newQuantity = currentQuantity - 1;
-
-//             // проверяем, чтобы количество не было меньше 0
-//             if (newQuantity < 0) {
-//                 newQuantity = 0;
-//             }
-//         }
-
-//         quantityControl.parentElement.querySelector('.quantity__current').value = newQuantity;
-
-//         // обновляем сумму всех значений из .quantity__current у которых открыта .product-card__quantity
-//         let totalQuantity = 0;
-//         quantityCurrentArray.forEach((quantity) => {
-//             if (quantity.parentElement.style.display === 'flex') {
-//                 totalQuantity += parseInt(quantity.value);
-//             }
-//         });
-//         basketCount.textContent = totalQuantity;
-
-//         // проверяем, чтобы количество не было равно 0
-//         if (newQuantity === 0) {
-//             quantityControl.parentElement.parentElement.querySelector('.product-card__quantity').style.display = 'none';
-//             quantityControl.parentElement.parentElement.querySelector('.product-card__add').style.display = 'block';
-//         } else {
-//             quantityControl.parentElement.parentElement.querySelector('.product-card__quantity').style.display = 'flex';
-//             quantityControl.parentElement.parentElement.querySelector('.product-card__add').style.display = 'none';
-//         }
-//     });
-// });
 
 const rangeSlider = document.querySelector(".filter__item-slider");
 const filterButton = document.querySelector(".filter__item-button");
