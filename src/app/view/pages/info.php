@@ -9,7 +9,7 @@
 <body>
     <?php require_once __DIR__ . '/components/header.php' ?>
     <main></main>
-    <footer></footer>
+    <?php include_once __DIR__ . '/components/footer.php' ?>
 </body>
 
 </html>

@@ -91,7 +91,7 @@
             </div>
         </section>
     </main>
-    <footer></footer>
+    <?php include_once __DIR__ . '/components/footer.php' ?>
 </body>
 
 </html>

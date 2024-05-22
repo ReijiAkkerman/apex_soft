@@ -10,7 +10,8 @@
     cursor: pointer;
 }
 
-.form {
+.form,
+.basket__section-form {
     input:invalid {
         background-color: #ffdddd;
     }

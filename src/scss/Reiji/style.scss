@@ -4,3 +4,14 @@ input {
     border: none;
     outline: none;
 }
+
+#error {
+    &_product_name,
+    &_product_type,
+    &_image,
+    &_product_price,
+    &_product_articul {
+        font-size: 14px;
+        color: #f00;
+    }
+}

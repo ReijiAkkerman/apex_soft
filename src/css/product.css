@@ -1,0 +1,137 @@
+.cart__content {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.563vw;
+  grid-template-areas: "i1 i2" "i3 i2" "i4 i4" "i5 i5";
+}
+.cart__content-picture {
+  max-height: 350px;
+  grid-area: i1;
+}
+.cart__content-picture {
+  max-height: 350px;
+  grid-area: i1;
+}
+.cart__content-image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.cart__content-image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.cart__content-body {
+  grid-area: i2;
+}
+.cart__content-inner {
+  grid-area: i3;
+}
+.cart__content-price {
+  grid-area: i3;
+  display: flex;
+  align-items: center;
+  gap: 0.781vw;
+}
+.cart__content-price h4 {
+  margin: 0;
+}
+.cart__content-articul {
+  grid-area: i4;
+  display: flex;
+  align-items: center;
+  gap: 0.781vw;
+}
+.cart__content-articul p {
+  margin: 0;
+}
+.cart-body {
+  grid-area: i2;
+}
+.cart-inner {
+  grid-area: i3;
+}
+.cart-price {
+  grid-area: i3;
+  display: flex;
+  align-items: center;
+  gap: 0.781vw;
+}
+.cart-price h4 {
+  margin: 0;
+}
+.cart-articul {
+  grid-area: i4;
+  display: flex;
+  align-items: center;
+  gap: 0.781vw;
+}
+.cart-articul p {
+  margin: 0;
+}
+.cart__name {
+  font-size: 1.25vw;
+  line-height: 1.458vw;
+}
+.cart__category {
+  font-size: 1.042vw;
+  line-height: 1.146vw;
+}
+.cart__name {
+  font-size: 1.25vw;
+  line-height: 1.458vw;
+}
+.cart__category {
+  font-size: 1.042vw;
+  line-height: 1.146vw;
+}
+
+#admin_form {
+  grid-area: i5;
+  display: flex;
+  gap: 1.563vw;
+  flex-direction: row-reverse;
+}
+#admin_form button {
+  background-color: #013784;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1vw 1.9vw;
+  color: #fff;
+  border-radius: 1.042vw;
+  font-size: 0.833vw;
+  line-height: 0.938vw;
+  border: none;
+  cursor: pointer;
+}
+
+.admin__buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 12%);
+  gap: 0.521vw 1.563vw;
+  margin-top: 1.042vw;
+}
+
+.admin__button {
+  background-color: #013784;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1vw 1.9vw;
+  color: #fff;
+  border-radius: 1.042vw;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+#product_price,
+#product_articul {
+  width: 100%;
+}

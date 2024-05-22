@@ -2,8 +2,8 @@
     namespace project\control;
 
     use project\control\parent\Page;
-    use project\model\Cart as model_Cart;
     use project\control\interfaces\iCart;
+    use project\model\Cart as model_Cart;
 
     class Cart extends Page implements iCart {
         public function __construct() {
@@ -12,6 +12,7 @@
 
         public function view(): void {
             (new model_Cart)->getAllProducts($this->login);
+            $product_amount_mark = true;
             $classname = __CLASS__;
             $class_array = explode('\\', $classname);
             $class = end($class_array);

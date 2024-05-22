@@ -30,9 +30,40 @@ class AdminForm {
         let xhr = new XMLHttpRequest();
         xhr.open('POST', `/product/${action}Product/${id}`);
         xhr.send(data);
-        xhr.responseType = 'text';
+        xhr.responseType = 'json';
+        xhr.error_occurred = false;
         xhr.onload = () => {
-            // window.location.href = '/catalog/view';
+            // alert(xhr.response);
+            let error_fields_ids = [
+                '#error_product_name',
+                '#error_product_type',
+                '#error_image',
+                '#error_product_price',
+                '#error_product_articul'
+            ];
+            for(let i = 0; i < error_fields_ids.length; i++) {
+                let element = document.querySelector(error_fields_ids[i]);
+                element.textContent = '';
+                element.style.display = 'none';
+            }
+            if(xhr.response.hasOwnProperty('error_message')) {
+                xhr.error_occurred = true;
+                if(xhr.response['error_message'].includes('|')) {
+                    let str_array = xhr.response['error_message'].split('|');
+                    let insertion_place_id = '#error_' + str_array[0];
+                    let content = str_array[1];
+                    let insertion_place = document.querySelector(insertion_place_id);
+                    insertion_place.style.display = 'block';
+                    insertion_place.textContent = content;
+                }
+                else {
+                    alert(xhr.response['error_message']);
+                }
+            }
+        };
+        xhr.onloadend = () => {
+            if(!xhr.error_occurred)
+                window.location.href = '/catalog/view';
         };
     }
 
@@ -51,8 +82,8 @@ class AdminForm {
         xhr.open('POST', `/product/deleteProduct/${id}`);
         xhr.send();
         xhr.responseType = 'text';
-        xhr.onload = () => {
-            // window.location.href = '/catalog/view';
+        xhr.onloadend = () => {
+            window.location.href = '/catalog/view';
         };
     }
 

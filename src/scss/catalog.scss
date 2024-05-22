@@ -3,10 +3,7 @@
 .page__title {
     font-size: 1.875vw;
     line-height: 2.188vw;
-}
-.page__title {
-    font-size: 1.875vw;
-    line-height: 2.188vw;
+    margin: 1.563vw 0;
 }
 
 .panel__wrapper {
@@ -167,76 +164,78 @@
 
     &__item {
         cursor: pointer;
-        // .filter__item-name
-    &__item {
-        cursor: pointer;
-        // .filter__item-name
 
-        &-name {
-            font-size: 0.833vw;
-            line-height: 0.938vw;
-            font-weight: 500;
-            margin: 0;
-        }
+        // .filter__item-name
+        &__item {
+            cursor: pointer;
+            // .filter__item-name
 
-        //.filter__item-price
-        &-price {
-            display: flex;
-            flex-direction: column;
-            gap: 1.563vw;
-            border-top: 1px solid var(--mainSubColor);
-            border-bottom: 1px solid var(--mainSubColor);
-            padding: 1.042vw 0;
+            &-name {
+                font-size: 0.833vw;
+                line-height: 0.938vw;
+                font-weight: 500;
+                margin: 0;
+            }
 
             //.filter__item-price
-            &>input {
-                width: fit-content;
-                height: auto;
-                border: 0.052vw solid var(--mainSubColor);
+            &-price {
+                display: flex;
+                flex-direction: column;
+                gap: 1.563vw;
+                border-top: 1px solid var(--mainSubColor);
+                border-bottom: 1px solid var(--mainSubColor);
+                padding: 1.042vw 0;
+
+                //.filter__item-price
+                &>input {
+                    width: fit-content;
+                    height: auto;
+                    border: 0.052vw solid var(--mainSubColor);
+                }
+
+                &-min,
+                &-max {
+                    width: 100%;
+                    height: auto;
+                    border: 1px solid var(--mainSubColor);
+                }
+
+                //.filter__item-price-min
+                &-min {
+                    margin-right: 1.042vw;
+                }
+
+                //.filter__item-price-max
+                &-max {}
             }
 
-            &-min,
-            &-max {
+            // .filter__item-form
+            &-form {
+                display: flex;
+                margin-bottom: 1.563vw;
+                font-size: 0.833vw;
+                line-height: 0.938vw;
+            }
+
+            // .filter__item-slider
+            &-slider {
+                margin-bottom: 1.563vw;
+            }
+
+            // .filter__item-button
+            &-button {
+                background-color: #013784;
+                border: none;
+                padding: 1vw 1.9vw;
+                cursor: pointer;
+                border-radius: 1.042vw;
+                font-size: 0.833vw;
+                line-height: 0.938vw;
+                color: #fff;
                 width: 100%;
-                height: auto;
-                border: 1px solid var(--mainSubColor);
             }
-
-            //.filter__item-price-min
-            &-min {
-                margin-right: 1.042vw;
-            }
-
-            //.filter__item-price-max
-            &-max {}
         }
 
-        // .filter__item-form
-        &-form {
-            display: flex;
-            margin-bottom: 1.563vw;
-            font-size: 0.833vw;
-            line-height: 0.938vw;
-        }
-
-        // .filter__item-slider
-        &-slider {
-            margin-bottom: 1.563vw;
-        }
-
-        // .filter__item-button
-        &-button {
-            background-color: #013784;
-            border: none;
-            padding: 1vw 1.9vw;
-            cursor: pointer;
-            border-radius: 1.042vw;
-            font-size: 0.833vw;
-            line-height: 0.938vw;
-            color: #fff;
-            width: 100%;
-        }
-    }
         &-name {
             font-size: 0.833vw;
             line-height: 0.938vw;
@@ -352,6 +351,7 @@
         flex-direction: column;
         flex: 1;
     }
+
     &__body {
         align-items: start;
         display: flex;
@@ -380,6 +380,7 @@
         h3 {
             margin: 0;
         }
+
         margin: 0;
         text-decoration: none;
         align-items: start;
@@ -431,7 +432,6 @@
     }
 
     //.product-card__quantity
-    //.product-card__quantity
     &__quantity {
         display: none;
         align-items: center;
@@ -448,7 +448,7 @@
 
     //.product-card__price
     &__price {
-        &:after{
+        &:after {
             content: "₽";
             margin-left: 0.26vw;
         }
@@ -546,13 +546,10 @@
     width: 20px;
     height: auto;
     border: none;
-}
-
-
-.quantity__current {
     font-size: 0.833vw;
     line-height: 0.938vw;
 }
+
 
 .noUi-target {
     background: #0653c0;

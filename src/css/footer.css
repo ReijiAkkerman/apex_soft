@@ -1,3 +1,6 @@
+.footer {
+  margin-top: 1.563vw;
+}
 .footer__container {
   display: flex;
   justify-content: space-between;
@@ -38,6 +41,11 @@
   color: var(--mainColorIcon);
   font-size: 1.146vw;
   margin-right: 0.521vw;
+}
+.footer__wrapper-price {
+  font-size: 0.833vw;
+  line-height: 0.938vw;
+  margin: 0 0 1.042vw 0;
 }
 .footer__wrapper-button {
   background-color: #013784;

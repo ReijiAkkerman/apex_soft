@@ -5,4 +5,9 @@ input {
   outline: none;
 }
 
+#error_product_name, #error_product_type, #error_image, #error_product_price, #error_product_articul {
+  font-size: 14px;
+  color: #f00;
+}
+
 /*# sourceMappingURL=style.css.map */

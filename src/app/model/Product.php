@@ -138,7 +138,7 @@ namespace project\model;
 
         private function createMysqlConnection(string $for): void {
             try {
-                $this->mysql_connection = new \mysqli(Page::MYSQL_SERVER, $for, 'secret_of_' . $for, 'Products');
+                $this->mysql_connection = new \mysqli(Page::MYSQL_SERVER, Page::HOSTING_USER . $for, 'secret_of_' . $for, Page::HOSTING_USER . 'Products');
             } catch (\mysqli_sql_exception $e) {
                 echo $e->getMessage();
                 exit;
@@ -245,7 +245,9 @@ namespace project\model;
                     exit;
                 }
             } else {
-                $this->imageName = Product::DEFAULT_IMAGE_NAME;
+                $this->imageName = $this->getProductImageName();
+                if($this->imageName == false) 
+                    $this->imageName = Product::DEFAULT_IMAGE_NAME;
             }
         }
 
@@ -458,6 +460,19 @@ namespace project\model;
         /**
          * Функции для записи данных
          */
+
+        private function getProductImageName(): string {
+            $query = "SELECT image_name FROM all_products WHERE ID={$this->ID}";
+            $result = $this->mysql_connection->query($query);
+            if($result->num_rows) {
+                foreach($result as $row) {
+                    return $row['image_name'];
+                }
+            }
+            else {
+                return false;
+            }
+        }
 
         private function saveImage(): void {
             $dirname = __DIR__ . '/../../../images/';

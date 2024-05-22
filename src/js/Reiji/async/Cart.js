@@ -229,7 +229,7 @@ class Cart {
                     let button_insertion_place = products[i].querySelector('.Reiji_cart_buttons-single__IP');
                     button_insertion_place.after(_button);
                 }
-                if(xhr.response.length) {
+                if(xhr.response.length && (typeof xhr.response[counter] !== 'undefined')) {
                     if(product_id == xhr.response[counter]['ID']) {
                         if(xhr.response[counter]['amount'] > 0) {
                             let buttons = products[i].querySelector('.Reiji_cart_buttons-multiple');
@@ -272,7 +272,7 @@ class Cart {
     }
 
     static buy() {
-        alert('Заявка принята!');
+        // alert('Заявка принята!');
     }
 }
 

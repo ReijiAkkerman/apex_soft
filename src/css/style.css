@@ -3,10 +3,9 @@ input {
   height: 0;
   border: none;
   outline: none;
-};
-  overflow: hidden;
 }
 
-* {
-  box-sizing: border-box;
+#error_product_name, #error_product_type, #error_image, #error_product_price, #error_product_articul {
+  font-size: 14px;
+  color: #f00;
 }

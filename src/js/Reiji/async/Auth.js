@@ -184,11 +184,23 @@ class Auth {
             AuthPopup.hideCartButton();
             if((window.location.pathname.split('/')[1]) == 'catalog')
                 AdminForm.hideAddButton();
+            Cart.hideCartButtons();
+            let login = document.querySelector('.Reiji_showAuthForm-button');
+            login.addEventListener('click', Header.openForm);
         };
-        Cart.hideCartButtons();
-        let login = document.querySelector('.Reiji_showAuthForm-button');
-        login.addEventListener('click', Header.openForm);
-        // window.location.href = '/main/view';
+        xhr.onloadend = () => {
+            let path = window.location.pathname.split('/')[1];
+            let accepted_path_array = [
+                'catalog',
+                'main',
+                'contacts',
+                'info'
+            ];
+            if (accepted_path_array.includes(path))
+                ;
+            else 
+                window.location.href = '/main/view';
+        };
     }
 
     applyFormerFieldStyle() {

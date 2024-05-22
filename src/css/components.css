@@ -29,13 +29,16 @@ body {
   cursor: pointer;
 }
 
-.form input:invalid {
+.form input:invalid,
+.basket__section-form input:invalid {
   background-color: #ffdddd;
 }
-.form input:valid {
+.form input:valid,
+.basket__section-form input:valid {
   background-color: #ddffdd;
 }
-.form input:required {
+.form input:required,
+.basket__section-form input:required {
   border-color: #800000;
   border-width: 3px;
 }

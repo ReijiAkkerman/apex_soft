@@ -77,7 +77,7 @@
                         </div>
                         <div class="catalog__products">
                             <?php foreach ($GLOBALS['products'] as $product) { ?>
-                                <article class="product-card Reiji_product Reiji_id-<?= $product->ID ?>" data-type="<?= $product->type ?>">
+                                <article class="product-card Reiji_product Reiji_id-<?= $product->ID ?>" data-type="<?= $product->type ?>" data-price="<?= $product->price ?>">
                                     <?php if ($this->admin) { ?>
                                     <div class="product-card__checkmark Reiji_id-<?= $product->ID ?> Reiji_delete-button"
                                         id="delete-button">
@@ -102,8 +102,7 @@
                                             href="/product/view/?default_action=update&id=<?= $product->ID ?>">
                                             <h3><?= $product->name ?></h3>
                                         </a>
-                                        <p class="product-card__price" data-price="<?= $product->price ?>">
-                                            <?= $product->price ?></p>
+                                        <p class="product-card__price" data-price="<?= $product->price ?>"><?= $product->price ?></p>
                                         <p class="product-card__article Reiji_cart_buttons-multiple__IP"><?= $product->articul ?></p>
                                         <?php
                                             if(isset($this->login)) {
@@ -138,7 +137,7 @@
             </div>
         </section>
     </main>
-    <footer></footer>
+    <?php include_once __DIR__ . '/components/footer.php' ?>
     <script type="module" src="/src/js/Reiji/async/AdminForm.js"></script>
     <script type="module" src="/src/js/Reiji/async/Cart.js"></script>
     <template class="Reiji_add_button">
