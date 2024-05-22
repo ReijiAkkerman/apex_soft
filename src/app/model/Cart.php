@@ -27,6 +27,19 @@
             $this->mysql_connection->close();
         }
 
+        public function deleteProductAtAll(int $id): void {
+            $this->createMysqlConnection();
+            $query = "SHOW TABLES";
+            $result = $this->mysql_connection->query($query);
+            if($result->num_rows) {
+                foreach($result as $row) {
+                    $query = "DELETE FROM {$row['Tables_in_Carts']} WHERE productID=$id";
+                    $this->mysql_connection->query($query);
+                }
+            }
+            $this->mysql_connection->close();
+        }
+
         public function getProductAmount(string $user, int $product_id): int {
             $this->createMysqlConnection();
             $query = "SELECT amount FROM $user WHERE productID=$product_id";

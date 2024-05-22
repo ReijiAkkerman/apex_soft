@@ -1,10 +1,11 @@
 <?php
-namespace project\model;
+    namespace project\model;
 
     use project\control\parent\Page;
     use project\model\enum\Regex;
     use project\model\interfaces\iProduct;
     use project\model\ProductData;
+    use project\model\Cart;
 
     class Product extends ProductData implements iProduct {
         private const DEFAULT_IMAGE_NAME = '0.png';
@@ -69,6 +70,7 @@ namespace project\model;
                     return false;
             };
 
+            $cart = new Cart();
             $this->createMysqlConnection('Admin');
 
             $this->getID($id);
@@ -76,6 +78,7 @@ namespace project\model;
             if ($this->imageName) {
                 $this->deleteImage();
                 $this->deleteData($id);
+                $cart->deleteProductAtAll($this->ID);
             } else {
                 $this->error_message = "Указанный товар не найден!";
                 $this->unsetData();
