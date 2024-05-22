@@ -134,7 +134,7 @@
                     </div>
                 </div> -->
             </div>
-            <a href="/order/view" class="basket__section-button">Оформить заказ</a>
+            <button class="basket__section-button">Оформить заказ</button>
         </form>
     </section>
     <?php include_once __DIR__ . '/components/footer.php' ?>

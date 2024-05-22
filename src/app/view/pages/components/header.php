@@ -161,10 +161,10 @@
                             </ul>
                         </li>
                         <li class="nav__item nav__item--dropdown">
-                            <a href="/contacts/view" class="nav__link nav__link--bottom">Контакты</a>
+                            <a href="/order/view" class="nav__link nav__link--bottom">История заказов</a>
                         </li>
                         <li class="nav__item nav__item--dropdown">
-                            <a href="/order/view" class="nav__link nav__link--bottom">История заказов</a>
+                            <a href="/contacts/view" class="nav__link nav__link--bottom">Контакты</a>
                         </li>
                         <li class="nav__item nav__item--bottom">
                             <a href="/info/view" class="nav__link nav__link--bottom">Информация</a>
