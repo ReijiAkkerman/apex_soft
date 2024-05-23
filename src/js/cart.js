@@ -113,7 +113,7 @@ if (quantityFields && totalItemsElement) {
         }
     });
     document.addEventListener('DOMContentLoaded', () => {
-        const form = document.querySelector('.basket__section-form .basket__section-items');
+        const form = document.querySelector('.basket__section-items');
 
         // Функция для добавления товара в форму
         function addProductToForm(product) {
@@ -128,6 +128,7 @@ if (quantityFields && totalItemsElement) {
                 <div class="basket__section-description">
                     <p class="basket__section-name">${product.name}</p>
                     <p class="basket__section-articul">Артикул - ${product.articul}</p>
+                    <p class="basket__section-quantity">Количество: ${product.quantity} шт.</p>
                 </div>
             `;
 
@@ -151,6 +152,7 @@ if (quantityFields && totalItemsElement) {
                     image: productElement.querySelector('.basket__image').src,
                     name: productElement.querySelector('.basket__details-text').textContent,
                     articul: productElement.querySelector('.basket__details-article').textContent.split(' - ')[1],
+                    quantity: productElement.querySelector('.quantity-field').value
                 };
 
                 if (event.target.checked) {

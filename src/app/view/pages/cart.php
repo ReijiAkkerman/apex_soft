@@ -113,26 +113,8 @@
                 <span>Введите свой номер телефона</span>
                 <input type="text" class="basket__section-input" name="phone_number" placeholder="Номер телефона">
             </label>
+            <p class="basket__section-title">Ваш заказ</p>
             <div class="basket__section-items">
-                <!-- <div class="basket__section-item">
-                    <div class="basket__section-picture">
-                        <img src="/images/1.jpeg" alt="" class="basket__section-image">
-                    </div>
-                    <div class="basket__section-description">
-                        <p class="basket__section-name">1C битрикс</p>
-                        <p class="basket__section-articul">Артикул - 12312312312</p>
-                    </div>
-                </div>
-                <div class="basket__section-item">
-                    <div class="basket__section-picture">
-                        <img src="/images/0.png" alt="" class="basket__section-image">
-                    </div>
-                    <div class="basket__section-description">
-                        <p class="basket__section-name">
-                            Название товара-09988123</p>
-                        <p class="basket__section-articul">Артикул - 0000000000</p>
-                    </div>
-                </div> -->
             </div>
             <button class="basket__section-button">Оформить заказ</button>
         </form>

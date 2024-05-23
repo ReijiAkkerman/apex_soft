@@ -3,21 +3,15 @@
   grid-auto-columns: 1fr;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.563vw;
-  grid-template-areas: "i1 i2" "i3 i2" "i4 i4" "i5 i5";
+  grid-template-areas: "i1 i2" "i5 i6";
 }
 .cart__content-picture {
-  max-height: 350px;
   grid-area: i1;
+  color: #446;
 }
-.cart__content-picture {
-  max-height: 350px;
-  grid-area: i1;
-}
-.cart__content-image {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+.cart__content-images {
+  max-width: 100%;
+  height: auto;
 }
 .cart__content-image {
   width: 100%;
@@ -27,27 +21,34 @@
 }
 .cart__content-body {
   grid-area: i2;
+  word-break: break-all;
+  color: #446;
 }
 .cart__content-inner {
   grid-area: i3;
 }
 .cart__content-price {
-  grid-area: i3;
   display: flex;
   align-items: center;
   gap: 0.781vw;
+  margin-top: 1.042vw;
+  margin-bottom: 1.042vw;
 }
 .cart__content-price h4 {
   margin: 0;
+  font-weight: 500;
 }
 .cart__content-articul {
-  grid-area: i4;
   display: flex;
   align-items: center;
   gap: 0.781vw;
 }
+.cart__content-articul p:first-child {
+  font-weight: 500;
+}
 .cart__content-articul p {
   margin: 0;
+  color: #446;
 }
 .cart-body {
   grid-area: i2;
@@ -76,18 +77,12 @@
 .cart__name {
   font-size: 1.25vw;
   line-height: 1.458vw;
+  color: #446;
 }
 .cart__category {
   font-size: 1.042vw;
   line-height: 1.146vw;
-}
-.cart__name {
-  font-size: 1.25vw;
-  line-height: 1.458vw;
-}
-.cart__category {
-  font-size: 1.042vw;
-  line-height: 1.146vw;
+  color: #446;
 }
 
 #admin_form {

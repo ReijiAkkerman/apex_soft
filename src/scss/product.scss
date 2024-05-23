@@ -18,22 +18,21 @@
         gap: 1.563vw;
         grid-template-areas:
             "i1 i2"
-            "i3 i2"
-            "i4 i4"
-            "i5 i5";
+            "i5 i6";
         // .cart__content-picture
 
         &-picture {
-            max-height: 350px;
             grid-area: i1;
+            color: #446;
         }
 
-        &-picture {
-            max-height: 350px;
-            grid-area: i1;
+        // .cart__content-images
+
+        &-images {
+            max-width: 100%;
+            height: auto;
         }
 
-        // .cart__content-image
         // .cart__content-image
 
         &-image {
@@ -41,21 +40,12 @@
             height: 100%;
             object-fit: contain;
         }
-
-        &-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        // .cart__content-body
-        // .cart__content-body
-
-        &-body {}
 
         //.cart__content-body
         &-body {
             grid-area: i2;
+            word-break: break-all;
+            color: #446;
         }
 
         //.card__content-inner
@@ -68,25 +58,29 @@
 
         //.cart__content-price
         &-price {
-            grid-area: i3;
             display: flex;
             align-items: center;
             gap: 0.781vw;
+            margin-top: 1.042vw;
+            margin-bottom: 1.042vw;
 
             h4 {
                 margin: 0;
+                font-weight: 500;
             }
         }
 
         //.cart__content-articul
         &-articul {
-            grid-area: i4;
             display: flex;
             align-items: center;
             gap: 0.781vw;
-
+            p:first-child{
+                font-weight: 500;
+            }
             p {
                 margin: 0;
+                color: #446;
             }
         }
     }
@@ -130,7 +124,6 @@
         }
     }
 
-
     // .cart__filter
 
     &__filter {}
@@ -139,24 +132,14 @@
     &__name {
         font-size: 1.25vw;
         line-height: 1.458vw;
+        color: #446;
     }
 
     //.cart__category
     &__category {
         font-size: 1.042vw;
         line-height: 1.146vw;
-    }
-
-    //.cart__name
-    &__name {
-        font-size: 1.25vw;
-        line-height: 1.458vw;
-    }
-
-    //.cart__category
-    &__category {
-        font-size: 1.042vw;
-        line-height: 1.146vw;
+        color: #446;
     }
 }
 

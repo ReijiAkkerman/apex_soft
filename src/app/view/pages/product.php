@@ -38,18 +38,21 @@
                     </div>
                 <?php } ?>
                 <p id="error_product_name" style="display:none;"></p>
-                <h1 class="page__title cart__name" <?php if ($this->admin) echo 'contenteditable="true"' ?> id="product_name"><?php
-                    if (isset($product))
-                        echo $product->name;
-                    else
-                        echo 'Название товара';
+                <h1 class="page__title cart__name" <?php if ($this->admin)
+                    echo 'contenteditable="true"' ?>
+                        id="product_name"><?php
+                if (isset($product))
+                    echo $product->name;
+                else
+                    echo 'Название товара';
                 ?></h1>
                 <p id="error_product_type" style="display:none;"></p>
-                <h2 <?php if ($this->admin) echo 'contenteditable="true"' ?> class="cart__category" id="product_type"><?php
-                    if (isset($product))
-                        echo $product->type;
-                    else
-                        echo 'Тип товара';
+                <h2 <?php if ($this->admin)
+                    echo 'contenteditable="true"' ?> class="cart__category" id="product_type"><?php
+                if (isset($product))
+                    echo $product->type;
+                else
+                    echo 'Тип товара';
                 ?></h2>
             </div>
         </div>
@@ -59,39 +62,45 @@
                     <div class="cart__content">
                         <div class="cart__content-picture" id="add_image">
                             <p id="error_image"></p>
-                            <img src="/images/<?php
+                            <div class="cart__content-images">
+                                <img src="/images/<?php
                                 if (isset($product->imageName))
                                     echo $product->imageName;
                                 else
                                     echo '0.png';
-                            ?>" alt="" class="cart__content-image" id="image">
+                                ?>" alt="" class="cart__content-image" id="image">
+                            </div>
+                            <div class="cart__content-price">
+                                <p id="error_product_price" style="display:none;"></p>
+                                <h4 class="cart__content-price-title Reiji_place_for_price">Цена:</h4>
+                                <h4 class="cart__content-price-value" id="product_price" <?php if ($this->admin)
+                                    echo 'contenteditable="true"' ?>><?php
+                                if (isset($product->price))
+                                    echo $product->price;
+                                else
+                                    echo '0';
+                                ?></h4>
+                            </div>
+                            <div class="cart__content-articul">
+                                <p id="error_product_articul" style="display:none;"></p>
+                                <p class="Reiji_place_for_articul">Артикул:</p>
+                                <p id="product_articul" <?php if ($this->admin)
+                                    echo 'contenteditable="true"' ?>><?php
+                                if (isset($product->articul))
+                                    echo $product->articul;
+                                else
+                                    echo '0000000000';
+                                ?></p>
+                            </div>
                         </div>
-                        <div class="cart__content-body" id="product_description" <?php if ($this->admin) echo 'contenteditable="true"' ?>><?php
-                            if (isset($product))
-                                echo $product->description;
-                            else 
-                                echo '<h3>Введите текст</h3>'?>
-                        </div>
-                        <div class="cart__content-price">
-                            <p id="error_product_price" style="display:none;"></p>
-                            <h4 class="cart__content-price-title Reiji_place_for_price">Цена:</h4>
-                            <h4 class="cart__content-price-value" id="product_price" <?php if($this->admin) echo 'contenteditable="true"' ?>><?php
-                            if (isset($product->price))
-                                echo $product->price;
-                            else
-                                echo '0';
-                            ?></h4>
-                        </div>
-                        <div class="cart__content-articul">
-                            <p id="error_product_articul" style="display:none;"></p>
-                            <p class="Reiji_place_for_articul">Артикул:</p>
-                            <p id="product_articul" <?php if($this->admin) echo 'contenteditable="true"' ?>><?php
-                            if (isset($product->articul))
-                                echo $product->articul;
-                            else
-                                echo '0000000000';
-                            ?></p>
-                        </div>
+                        <div class="cart__content-body" id="product_description" <?php if ($this->admin)
+                            echo 'contenteditable="true"' ?>><?php
+                        if (isset($product))
+                            echo $product->description;
+                        else
+                            echo '<h3>Введите текст</h3>' ?>
+                            </div>
+
                         <?php if ($this->admin) { ?>
                             <form id="admin_form" class="card__content-form" enctype="multipart/form-data">
                                 <input type="text" name="product_name">

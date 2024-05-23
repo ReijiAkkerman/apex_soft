@@ -120,7 +120,8 @@
   align-items: center;
 }
 .basket__section-form {
-  width: 50%;
+  width: 960px;
+  min-width: 960px;
   margin: 0 auto;
   background-color: #ecf0f3;
   border-radius: 0.625vw;
@@ -138,7 +139,7 @@
   margin-bottom: 1.042vw;
 }
 .basket__section-input {
-  width: 350px;
+  width: 100%;
   height: 2.083vw;
   margin: 0.208vw 0;
   padding-left: 1.302vw;
@@ -166,6 +167,7 @@
   line-height: 0.938vw;
   margin-top: 1.042vw;
   text-decoration: none;
+  border: none;
 }
 .basket__section-close {
   display: flex;
@@ -173,27 +175,47 @@
   flex: 0 1 1.042vw;
   cursor: pointer;
 }
+.basket__section-title {
+  font-size: 0.833vw;
+  line-height: 0.938vw;
+  margin: 1.042vw 0 1.042vw 0;
+}
 .basket__section-items {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.563vw;
-  margin-top: 1.042vw;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(18.229vw, 1fr);
+  overflow-x: auto;
+  gap: 1.821vw;
 }
 .basket__section-item {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.563vw;
+  grid-template-columns: auto 1fr;
+  gap: 0.521vw;
+  padding-bottom: 0.721vw;
 }
 .basket__section-picture {
-  max-width: 100%;
-  height: auto;
+  display: flex;
 }
 .basket__section-image {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  max-width: 150px;
+  height: 100px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
+.basket__section-description {
+  font-size: 0.729vw;
+  line-height: 0.833vw;
+}
+.basket__section-name {
+  margin: 0 0 0.521vw 0;
+  word-break: break-all;
+  max-width: 9.896vw;
+}
+.basket__section-articul {
+  margin: 0;
+  word-break: break-all;
+}
+
 .summary {
   background-color: #013784;
   padding: 0.521vw;
