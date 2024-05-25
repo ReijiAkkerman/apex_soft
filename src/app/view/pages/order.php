@@ -46,7 +46,8 @@
                                 <p class="order__item-phone-user">+7 930 824-45-80
                                 </p>
                             </div>
-                            <p class="order__item-action-price">Стоимость: <span class="order__item-price-total">300</span>
+                            <p class="order__item-action-price">Стоимость: <span
+                                    class="order__item-price-total">300</span>
                             </p>
                         </div>
                     </div>
@@ -63,20 +64,22 @@
                                     <p class="order__item-articul">Артикул: 1325186</p>
                                 </div>
                                 <div class="order__item-block">
-                                    <p class="order__item-block-price">Цена: <span class="order__item-price-product">299</span>
+                                    <p class="order__item-block-price">Цена: <span
+                                            class="order__item-price-product">299</span>
                                     </p>
                                     <div class="order__item-block-count">
-                                        <div class="order__item-quantity Reiji_cart_buttons-multiple Reiji_cart_actions">
+                                        <div
+                                            class="order__item-quantity Reiji_cart_buttons-multiple Reiji_cart_actions">
                                             <div class="quantity__control Reiji_product_amount--sub"
                                                 data-quantity="minus">-</div>
-                                            <input class="quantity__current Reiji_product_amount"
-                                                type="text">
+                                            <input class="quantity__current Reiji_product_amount" type="text">
                                             <div class="quantity__control Reiji_product_amount--add"
                                                 data-quantity="plus">+</div>
                                         </div>
                                         x
                                         <span class="order__item-price-count">299</span>
                                     </div>
+                                    <button class="order__item-remove btn">Удалить товар</button>
                                 </div>
                             </div>
                             <div class="order__item-product">
@@ -90,20 +93,22 @@
                                     <p class="order__item-articul">Артикул: 1325186</p>
                                 </div>
                                 <div class="order__item-block">
-                                    <p class="order__item-block-price">Цена: <span class="order__item-price-product">299</span>
+                                    <p class="order__item-block-price">Цена: <span
+                                            class="order__item-price-product">299</span>
                                     </p>
                                     <div class="order__item-block-count">
-                                        <div class="order__item-quantity Reiji_cart_buttons-multiple Reiji_cart_actions">
+                                        <div
+                                            class="order__item-quantity Reiji_cart_buttons-multiple Reiji_cart_actions">
                                             <div class="quantity__control Reiji_product_amount--sub"
                                                 data-quantity="minus">-</div>
-                                            <input class="quantity__current Reiji_product_amount"
-                                                type="text">
+                                            <input class="quantity__current Reiji_product_amount" type="text">
                                             <div class="quantity__control Reiji_product_amount--add"
                                                 data-quantity="plus">+</div>
                                         </div>
                                         x
                                         <span class="order__item-price-count">299</span>
                                     </div>
+                                    <button class="order__item-remove btn">Удалить товар</button>
                                 </div>
                             </div>
                             <div class="order__item-product">
@@ -117,20 +122,22 @@
                                     <p class="order__item-articul">Артикул: 1325186</p>
                                 </div>
                                 <div class="order__item-block">
-                                    <p class="order__item-block-price">Цена: <span class="order__item-price-product">299</span>
+                                    <p class="order__item-block-price">Цена: <span
+                                            class="order__item-price-product">299</span>
                                     </p>
                                     <div class="order__item-block-count">
-                                        <div class="order__item-quantity Reiji_cart_buttons-multiple Reiji_cart_actions">
+                                        <div
+                                            class="order__item-quantity Reiji_cart_buttons-multiple Reiji_cart_actions">
                                             <div class="quantity__control Reiji_product_amount--sub"
                                                 data-quantity="minus">-</div>
-                                            <input class="quantity__current Reiji_product_amount"
-                                                type="text">
+                                            <input class="quantity__current Reiji_product_amount" type="text">
                                             <div class="quantity__control Reiji_product_amount--add"
                                                 data-quantity="plus">+</div>
                                         </div>
                                         x
                                         <span class="order__item-price-count">299</span>
                                     </div>
+                                    <button class="order__item-remove btn">Удалить товар</button>
                                 </div>
                             </div>
                         </div>

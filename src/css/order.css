@@ -3,6 +3,9 @@
   border: 0.052vw solid #d5d2d2;
   border-radius: 1.042vw;
 }
+.order__item:not(:last-of-type) {
+  margin-bottom: 1.042vw;
+}
 .order__item-panel {
   display: flex;
   flex-direction: column;
@@ -169,7 +172,7 @@
   align-items: center;
   text-align: right;
 }
-.order__item-button {
+.order__item-remove, .order__item-button {
   margin-left: auto;
   background-color: #013784;
   width: -moz-fit-content;
@@ -181,6 +184,9 @@
   border-radius: 1.042vw;
   font-size: 0.833vw;
   line-height: 0.938vw;
+}
+.order__item-remove {
+  margin-top: 0.521vw;
 }
 .order__item-price {
   font-size: 0.729vw;
@@ -217,7 +223,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.563vw;
+  gap: 1vw;
   margin: 0;
   cursor: pointer;
 }
@@ -239,4 +245,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.order__item-quantity .quantity__control.disabled {
+  background-color: #4e6c96;
 }
