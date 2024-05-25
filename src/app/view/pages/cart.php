@@ -100,18 +100,18 @@
             </svg>
             <label for="">
                 <span>Введите свое имя</span>
-                <p class="form__error-text _login" style="display:none;"></p>
-                <input type="text" class="basket__section-input" name="recipient_name" placeholder="Как обращаться?">
+                <p class="form__error-text" id="recipient_name" style="display:none;"></p>
+                <input type="text" class="basket__section-input" name="recipient_name" placeholder="Как обращаться?" pattern="^[a-zA-Z0-9а-яА-Я ]{3,100}$">
             </label>
             <label for="">
                 <span>Введите свою электронную почту</span>
-                <p class="form__error-text _login" style="display:none;"></p>
-                <input type="text" class="basket__section-input" name="recipient_email" placeholder="Электронная почта">
+                <p class="form__error-text" id="recipient_email" style="display:none;"></p>
+                <input type="text" class="basket__section-input" name="recipient_email" placeholder="Электронная почта" pattern="^[a-z][a-z0-9]{1,99}@[a-z]{2,20}\.[a-z]{2,10}$">
             </label>
             <label for="">
                 <span>Введите свой номер телефона</span>
-                <p class="form__error-text _login" style="display:none;"></p>
-                <input type="text" value="+7" class="basket__section-input" name="recipient_phone" placeholder="Номер телефона">
+                <p class="form__error-text" id="recipient_phone" style="display:none;"></p>
+                <input type="text" value="+7" class="basket__section-input" name="recipient_phone" placeholder="Номер телефона" pattern="^\+[0-9]{1,3}[0-9]{10}$">
             </label>
             <p class="basket__section-title">Ваш заказ</p>
             <div class="basket__section-items">

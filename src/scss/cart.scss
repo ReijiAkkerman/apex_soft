@@ -399,3 +399,20 @@
 .quantity {}
 
 .subtotal {}
+
+
+
+
+
+p.form__error-text {
+    text-align: left;
+    font-size: 0.7vw;
+    margin-bottom: 0.26vw;
+    width: 100%;
+    margin-left: 2.344vw;
+}
+
+p.form__error-text,
+    input.formerror-field {
+        color: #800000;
+    }

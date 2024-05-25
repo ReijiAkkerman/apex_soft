@@ -277,8 +277,8 @@
                     productsIDs TEXT,
                     recipient VARCHAR(255),
                     recipient_email VARCHAR(255),
-                    recipient_phone VARCHAR(20),
-                    FOREIGN KEY (ID) REFERENCES Users.users(ID)
+                    recipient_phone VARCHAR(20)
+                    -- FOREIGN KEY (ID) REFERENCES Users.users(ID)
                 )",
                 "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE ON {$hosting_user}Orders.all_orders TO '{$hosting_user}Orders'@'$connect_from'"
             ];
@@ -300,8 +300,8 @@
             $mysql = new \mysqli(Page::MYSQL_SERVER, Page::HOSTING_USER . 'Cart', 'secret_of_Cart', Page::HOSTING_USER . 'Carts');
             $query = "CREATE TABLE {$this->login}(
                 productID BIGINT UNSIGNED NOT NULL,
-                amount INT NOT NULL,
-                FOREIGN KEY(productID) REFERENCES {$hosting_user}Products.all_products(productID)
+                amount INT NOT NULL
+                -- FOREIGN KEY(productID) REFERENCES {$hosting_user}Products.all_products(productID)
             )";
             $mysql->query($query);
             $mysql->close();

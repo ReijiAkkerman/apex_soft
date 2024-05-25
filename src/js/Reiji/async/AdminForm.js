@@ -82,6 +82,9 @@ class AdminForm {
         xhr.open('POST', `/product/deleteProduct/${id}`);
         xhr.send();
         xhr.responseType = 'text';
+        xhr.onload = () => {
+            alert(xhr.response);
+        }
         xhr.onloadend = () => {
             window.location.href = '/catalog/view';
         };

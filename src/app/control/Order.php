@@ -25,15 +25,21 @@
             (new model_Order)->createOrder($this->ID);
         }
 
-        public function cancelOrder(): void {
-
+        public function cancelOrder(array $args): void {
+            $orderID = (int)$args[0];
+            (new model_Order)->cancelOrder($orderID);
         }
 
-        public function changeProductAmount(): void {
-
+        public function changeProductAmount(array $args): void {
+            $orderID = (int)$args[0];
+            $productID = (int)$args[1];
+            $product_amount = (int)$args[2];
+            (new model_Order)->changeProductAmount($orderID, $productID, $product_amount);
         }
 
-        public function deleteProductFromOrder(): void {
-            
+        public function deleteProductFromOrder(array $args): void {
+            $orderID = (int)$args[0];
+            $productID = (int)$args[1];
+            (new model_Order)->deleteProductFromOrder($orderID, $productID);
         }
     }

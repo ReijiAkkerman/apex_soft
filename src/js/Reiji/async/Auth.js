@@ -67,6 +67,8 @@ class Auth {
                         Cart.showCartButtons();
                         let login = document.querySelector('.Reiji_showAuthForm-button');
                         login.removeEventListener('click', Header.openForm);
+                        let orders = document.querySelector('#order_story');
+                        orders.style.display = 'block';
                     }
                     else {
                         Auth.viewParseError(xhr.response);
@@ -154,6 +156,8 @@ class Auth {
                         Cart.showCartButtons();
                         let login = document.querySelector('.Reiji_showAuthForm-button');
                         login.removeEventListener('click', Header.openForm);
+                        let orders = document.querySelector('#order_story');
+                        orders.style.display = 'block';
                     }
                     else {
                         Auth.viewParseError(xhr.response);
@@ -187,6 +191,8 @@ class Auth {
             Cart.hideCartButtons();
             let login = document.querySelector('.Reiji_showAuthForm-button');
             login.addEventListener('click', Header.openForm);
+            let orders = document.querySelector('#order_story');
+            orders.style.display = 'none';
         };
         xhr.onloadend = () => {
             let path = window.location.pathname.split('/')[1];

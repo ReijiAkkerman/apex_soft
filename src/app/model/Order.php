@@ -5,6 +5,7 @@
     use project\model\interfaces\iOrder;
     use project\model\enum\OrderRegex;
     use project\model\Product;
+    use project\model\Email;
 
     class Order implements iOrder {
         private \mysqli $order_mysql_connection;
@@ -13,6 +14,9 @@
         private string $order;
         private \mysqli_result $orders;
         private array $order_products;
+
+        private string $title;
+        private string $message;
         
         public int $order_ID;
         public string $order_time;
@@ -27,26 +31,62 @@
 
 
 
-        public function createOrder($user): void {
+        public function createOrder(int $userID): void {
             $this->getRecipientName();
             $this->getRecipientEmail();
             $this->getRecipientPhone();
             $this->getProductsForOrder();
             $this->createMysqlConnection__order();
-            $this->saveOrder($user, 'Оформлен');
+            $this->saveOrder($userID, 'Оформлен');
             $this->order_mysql_connection->close();
-            
+            $this->title = 'Оформление заказа';
+            $this->message = 'Спасибо за оформление заказана сайе https://aniproject.ru. Вы получили это письмо так как при оформлении заказа указывалась эта электронная почта. Если заказ делали не Вы - просто игнорируйте данное сообщение. Команда 1c-apexsoft.';
+            Email::sendEmail(
+                $this->recipient_email,
+                $this->recipient_name,
+                $this->title,
+                $this->message
+            );
         }
 
-        public function cancelOrder(): void {
-
+        public function cancelOrder(int $orderID): void {
+            $this->createMysqlConnection__order();
+            $query = "UPDATE all_orders SET order_status='Отменён' WHERE orderID=$orderID";
+            $this->order_mysql_connection->query($query);
+            $this->order_mysql_connection->close();
         }
 
-        public function deleteProductFromOrder(): void {
-            
+        public function changeProductAmount(int $orderID, int $productID, int $product_amount): void {
+            $this->createMysqlConnection__order();
+            $this->order = $this->getProducts($orderID);
+            $this->getChangedProducts($productID, $product_amount);
+            $this->updateOrder($orderID);
+            $this->order_mysql_connection->close();
         }
 
-        public function getAllOrders($userID): void {
+        public function deleteProductFromOrder(int $orderID, int $productID): void {
+            $this->createMysqlConnection__order();
+            $products = $this->getProducts($orderID);
+            $products_items = explode(',', $products);
+            $array = [];
+            foreach($products_items as $product) {
+                $temp = explode('=', $product);
+                $array[$temp[0]] = $temp[1];
+            }
+            unset($array[$productID]);
+            $products = '';
+            foreach($array as $key => $value) {
+                $products = $key . '=' . $value . ',';
+            }
+            $this->order = rtrim($products, ',');
+            if($this->order)
+                $this->updateOrder($orderID);
+            else 
+                $this->deleteOrder($orderID);
+            $this->order_mysql_connection->close();
+        }
+
+        public function getAllOrders(int $userID): void {
             $this->createMysqlConnection__order();
             $this->getOrders($userID);
             $Product = new Product();
@@ -75,7 +115,29 @@
         }
 
         public function deleteProductAtAll(): void {
-
+            $this->createMysqlConnection__order();
+            $query = "SELECT orderID FROM all_orders";
+            $result = $this->order_mysql_connection->query($query);
+            foreach($result as $row) {
+                $products = $this->getProducts($row['orderID']);
+                $products_items = explode(',', $products);
+                $array = [];
+                foreach($products_items as $product) {
+                    $temp = explode('=', $product);
+                    $array[$temp[0]] = $temp[1];
+                }
+                unset($array[$row['orderID']]);
+                $products = '';
+                foreach($array as $key => $value) {
+                    $products = $key . '=' . $value . ',';
+                }
+                $this->order = rtrim($products, ',');
+                if($this->order)
+                    $this->updateOrder($row['orderID']);
+                else 
+                    $this->deleteOrder($row['orderID']);
+            }
+            $this->order_mysql_connection->close();
         }
 
 
@@ -87,6 +149,7 @@
             if($productsStringIsGood) 
                 $this->order = $_POST['products'];
             else {
+                $this->unsetData();
                 $this->sendData();
                 exit;
             }
@@ -126,6 +189,24 @@
             }
         }
 
+        private function getChangedProducts(int $productID, int $product_amount): void {
+            $products_items = explode(',', $this->order);
+            $array = [];
+            foreach($products_items as $product) {
+                $temp = explode('=', $product);
+                $array[$temp[0]] = $temp[1];
+            }
+            if($product_amount)
+                $array[$productID] = $product_amount;
+            else 
+                $array[$productID] = 1;
+            $this->order = '';
+            foreach($array as $key => $value) {
+                $this->order = $key . '=' . $value . ',';
+            }
+            $this->order = rtrim($this->order, ',');
+        }
+
 
 
 
@@ -139,6 +220,7 @@
             if($nameIsGood) 
                 $this->recipient_name = $_POST['recipient_name'];
             else {
+                $this->unsetData();
                 $this->sendData();
                 exit;
             }
@@ -149,6 +231,7 @@
             if($emailIsGood) 
                 $this->recipient_email = $_POST['recipient_email'];
             else {
+                $this->unsetData();
                 $this->sendData();
                 exit;
             }
@@ -159,6 +242,7 @@
             if($phoneIsGood)
                 $this->recipient_phone = $_POST['recipient_phone'];
             else {
+                $this->unsetData();
                 $this->sendData();
                 exit;
             }
@@ -219,7 +303,7 @@
                 return false;
             }
             else {
-                $this->erorr_message = 'recipient_email|Почта получателя не указана!';
+                $this->error_message = 'recipient_email|Почта получателя не указана!';
                 return false;
             }
         }
@@ -236,7 +320,7 @@
                     return false;
                 }
                 else {
-                    $this->erorr_message = 'Во время обработки номера телефона получателя возникла ошибка!';
+                    $this->error_message = 'Во время обработки номера телефона получателя возникла ошибка!';
                     return false;
                 }
             }
@@ -266,7 +350,7 @@
 
 
 
-        private function saveOrder($userID, $order_status): void {
+        private function saveOrder(int $userID, string $order_status): void {
             $order_time = time();
             $query = "INSERT INTO all_orders(
                 ID,
@@ -288,9 +372,27 @@
             $this->order_mysql_connection->query($query);
         }
 
+        private function updateOrder(int $orderID): void {
+            $query = "UPDATE all_orders SET productsIDs='{$this->order}', order_status='Изменён' WHERE orderID=$orderID";
+            $this->order_mysql_connection->query($query);
+        }
+
+        private function deleteOrder(int $orderID): void {
+            $query = "DELETE FROM all_orders WHERE orderID=$orderID";
+            $this->order_mysql_connection->query($query);
+        }
+
         private function getOrders($userID): void {
             $query = "SELECT * FROM all_orders WHERE ID={$userID}";
             $this->orders = $this->order_mysql_connection->query($query);
+        }
+
+        private function getProducts(int $orderID): string {
+            $query = "SELECT productsIDs FROM all_orders WHERE orderID=$orderID";
+            $result = $this->order_mysql_connection->query($query);
+            foreach($result as $row) {
+                return $row['productsIDs'];
+            }
         }
 
 

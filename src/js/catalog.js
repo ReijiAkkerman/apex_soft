@@ -52,8 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     addButtons.forEach((addButton, index) => {
         addButton.addEventListener('click', () => {
-            addButton.style.display = 'none'; // скрываем кнопку addButton
-            cardQuantity[index].style.display = 'flex'; // показываем форму cardQuantity
+            addButton.style.display = 'none';
+            cardQuantity[index].style.display = 'flex';
             console.log(Date.now());
         });
     });
@@ -103,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Filter products by price on button click
         filterButton.addEventListener("click", () => {
             const minPrice = parseInt(inputMin.value);
             const maxPrice = parseInt(inputMax.value);
@@ -120,7 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Обработчик кликов на .filter__item для фильтрации по категориям
     filterItems.forEach(filterItem => {
         filterItem.addEventListener('click', () => {
             const filterValue = filterItem.dataset.category;

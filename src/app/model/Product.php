@@ -6,6 +6,7 @@
     use project\model\interfaces\iProduct;
     use project\model\ProductData;
     use project\model\Cart;
+    use project\model\Order;
 
     class Product extends ProductData implements iProduct {
         private const DEFAULT_IMAGE_NAME = '0.png';
@@ -71,6 +72,7 @@
             };
 
             $cart = new Cart();
+            $order = new Order();
             $this->createMysqlConnection('Admin');
 
             $this->getID($id);
@@ -79,6 +81,7 @@
                 $this->deleteImage();
                 $this->deleteData($id);
                 $cart->deleteProductAtAll($this->ID);
+                $order->deleteProductAtAll();
             } else {
                 $this->error_message = "Указанный товар не найден!";
                 $this->unsetData();
