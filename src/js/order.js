@@ -1,35 +1,37 @@
-const hideIcon = document.querySelector(".icon-cheveron-down");
-const orderItemBody = document.querySelector(".order__item-body");
-const orderProducts = document.querySelector(".order__item-products");
+const hideIcon = document.querySelectorAll(".icon-cheveron-down");
+const orderItemBody = document.querySelectorAll(".order__item-body");
+const orderProducts = document.querySelectorAll(".order__item-products");
 
 if (hideIcon) {
-    hideIcon.addEventListener("click", () => {
-        hideIcon.classList.toggle("active");
+    for(let i = 0; i < hideIcon.length; i++) {
+        hideIcon[i].addEventListener("click", () => {
+            hideIcon[i].classList.toggle("active");
 
-        if (orderItemBody.classList.contains("active")) {
-            orderItemBody.style.height = `${orderItemBody.scrollHeight}px`;
-            orderProducts.style.height = `${orderProducts.scrollHeight}px`;
-            setTimeout(() => {
-                orderItemBody.style.height = "";
-                orderProducts.style.height = "";
-            }, 320);
-        } else {
-            orderItemBody.style.height = `${orderItemBody.scrollHeight}px`;
-            orderProducts.style.height = `${orderProducts.scrollHeight}px`;
-            setTimeout(() => {
-                orderItemBody.style.height = "auto";
-                orderProducts.style.height = "auto";
-            }, 0);
-        }
+            if (orderItemBody[i].classList.contains("active")) {
+                orderItemBody[i].style.height = `${orderItemBody.scrollHeight}px`;
+                orderProducts[i].style.height = `${orderProducts.scrollHeight}px`;
+                setTimeout(() => {
+                    orderItemBody[i].style.height = "";
+                    orderProducts[i].style.height = "";
+                }, 320);
+            } else {
+                orderItemBody[i].style.height = `${orderItemBody.scrollHeight}px`;
+                orderProducts[i].style.height = `${orderProducts.scrollHeight}px`;
+                setTimeout(() => {
+                    orderItemBody[i].style.height = "auto";
+                    orderProducts[i].style.height = "auto";
+                }, 0);
+            }
 
-        orderItemBody.classList.toggle("active");
-        orderProducts.classList.toggle("active");
-    });
+            orderItemBody[i].classList.toggle("active");
+            orderProducts[i].classList.toggle("active");
+        });
+    }
 }
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const totalPriceElement = document.querySelector('.order__item-price-total');
+    const totalPriceElement = document.querySelectorAll('.order__item-price-total');
 
     function updateTotalPrice(quantityInput, priceProduct, priceProductCount) {
         const quantity = parseInt(quantityInput.value, 10);
@@ -44,7 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.order__item-price-product').forEach(priceProduct => {
             overallTotal += parseFloat(priceProduct.textContent);
         });
-        totalPriceElement.textContent = overallTotal.toFixed(2);
+        for(let i = 0; i < totalPriceElement.length; i++) {
+            totalPriceElement[i].textContent = overallTotal.toFixed(2);
+        }
     }
 
     document.querySelectorAll('.order__item-product').forEach(orderItem => {

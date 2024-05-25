@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             addButton.style.display = 'none';
             cardQuantity[index].style.display = 'flex';
             quantityCurrent[index].value = 1;
-            basketCount.textContent = parseInt(basketCount.textContent) + 1;
+            // basketCount.textContent = parseInt(basketCount.textContent) + 1;
         });
     });
 

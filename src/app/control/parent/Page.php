@@ -8,7 +8,7 @@
 
     abstract class Page implements Auth
     {
-        public const MYSQL_SERVER = 'mysql';
+        public const MYSQL_SERVER = '172.19.0.2';
         public const CONNECT_FROM = EVERYWHERE;
         public const HOSTING_USER = '';
 
@@ -182,9 +182,10 @@
             $functions_of_init = [
                 'createUsersDB',
                 'createProductsDB',
-                'createCartsDB'
+                'createCartsDB',
+                'createOrdersDB'
             ];
-            $mysql = new \mysqli(Page::MYSQL_SERVER, 'root', 'KisaragiEki4');
+            $mysql = new \mysqli(Page::MYSQL_SERVER, 'root', 'secret');
             foreach ($functions_of_init as $function) {
                 $this->$function($mysql);
             }
@@ -230,7 +231,7 @@
                 "CREATE USER IF NOT EXISTS '{$hosting_user}Admin'@'$connect_from' IDENTIFIED WITH mysql_native_password BY 'secret_of_Admin'",
                 "USE Products",
                 'CREATE TABLE IF NOT EXISTS all_products(
-                    ID SERIAL,
+                    productID SERIAL,
                     product_name VARCHAR(255) UNIQUE NOT NULL,
                     product_type VARCHAR(255) NOT NULL,
                     product_description TEXT,
@@ -253,7 +254,8 @@
             $queries = [
                 "CREATE DATABASE IF NOT EXISTS {$hosting_user}Carts",
                 "CREATE USER IF NOT EXISTS '{$hosting_user}Cart'@'$connect_from' IDENTIFIED WITH mysql_native_password BY 'secret_of_Cart'",
-                "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE ON {$hosting_user}Carts.* TO '{$hosting_user}Cart'@'$connect_from'"
+                "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE ON {$hosting_user}Carts.* TO '{$hosting_user}Cart'@'$connect_from'",
+                "GRANT REFERENCES ON {$hosting_user}Products.all_products TO '{$hosting_user}Cart'@'$connect_from'"
             ];
             foreach($queries as $query) {
                 $mysql->query($query);
@@ -266,7 +268,19 @@
             $queries = [
                 "CREATE DATABASE IF NOT EXISTS {$hosting_user}Orders",
                 "CREATE USER IF NOT EXISTS '{$hosting_user}Orders'@'$connect_from' IDENTIFIED WITH mysql_native_password BY 'secret_of_Orders'",
-                "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE ON {$hosting_user}Orders.* TO '{$hosting_user}Orders'@'$connect_from'"
+                "USE Orders",
+                "CREATE TABLE all_orders(
+                    ID BIGINT UNSIGNED NOT NULL,
+                    orderID SERIAL,
+                    order_time INT,
+                    order_status VARCHAR(255),
+                    productsIDs TEXT,
+                    recipient VARCHAR(255),
+                    recipient_email VARCHAR(255),
+                    recipient_phone VARCHAR(20),
+                    FOREIGN KEY (ID) REFERENCES Users.users(ID)
+                )",
+                "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE ON {$hosting_user}Orders.all_orders TO '{$hosting_user}Orders'@'$connect_from'"
             ];
             foreach($queries as $query) {
                 $mysql->query($query);
@@ -278,14 +292,16 @@
 
 
         /**
-         * Метод отвечающий за создание таблицы для товаров 
+         * Методы отвечающие за создание таблиц для новых пользователей 
          */
 
         private function createUserCart(): void {
+            $hosting_user = Page::HOSTING_USER;
             $mysql = new \mysqli(Page::MYSQL_SERVER, Page::HOSTING_USER . 'Cart', 'secret_of_Cart', Page::HOSTING_USER . 'Carts');
             $query = "CREATE TABLE {$this->login}(
-                productID INT NOT NULL,
-                amount INT NOT NULL
+                productID BIGINT UNSIGNED NOT NULL,
+                amount INT NOT NULL,
+                FOREIGN KEY(productID) REFERENCES {$hosting_user}Products.all_products(productID)
             )";
             $mysql->query($query);
             $mysql->close();

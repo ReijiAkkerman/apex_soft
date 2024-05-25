@@ -60,9 +60,9 @@
             <div class="cart__container">
                 <div class="cart__wrapper">
                     <div class="cart__content">
-                        <div class="cart__content-picture" id="add_image">
+                        <div class="cart__content-picture">
                             <p id="error_image"></p>
-                            <div class="cart__content-images">
+                            <div class="cart__content-images" id="add_image">
                                 <img src="/images/<?php
                                 if (isset($product->imageName))
                                     echo $product->imageName;

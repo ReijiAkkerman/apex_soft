@@ -60,7 +60,7 @@
 
         public function deleteProduct(int $id): void {
             $getImageName = function (\mysqli $mysql, int $id): string|false {
-                $query = "SELECT image_name FROM all_products WHERE ID=$id";
+                $query = "SELECT image_name FROM all_products WHERE productID=$id";
                 $result = $mysql->query($query);
                 if ($result->num_rows) {
                     foreach ($result as $row) {
@@ -97,7 +97,7 @@
             $result = $this->mysql_connection->query($query);
             if($result->num_rows) {
                 foreach($result as $row) {
-                    $this->ID = (int)$row['ID'];
+                    $this->ID = (int)$row['productID'];
                     $this->name = $row['product_name'];
                     $this->type = $row['product_type'];
                     $this->imageName = $row['image_name'];
@@ -113,11 +113,11 @@
 
         public function getProduct(int $id): void {
             $this->createMysqlConnection('Visitor');
-            $query = "SELECT * FROM all_products WHERE ID=$id";
+            $query = "SELECT * FROM all_products WHERE productID=$id";
             $result = $this->mysql_connection->query($query);
             if($result->num_rows) {
                 foreach($result as $row) {
-                    $this->ID = (int)$row['ID'];
+                    $this->ID = (int)$row['productID'];
                     $this->name = $row['product_name'];
                     $this->type = $row['product_type'];
                     $this->description = $row['product_description'];
@@ -266,7 +266,7 @@
             if ($id) {
                 $this->ID = $id;
             } else {
-                $query = "SELECT max(ID) AS lastID FROM all_products";
+                $query = "SELECT max(productID) AS lastID FROM all_products";
                 $result = $this->mysql_connection->query($query);
                 foreach ($result as $row) {
                     if ($row['lastID'] === null)
@@ -379,7 +379,7 @@
 
         private function isNameExists(string $name, int $id = 0): bool {
             if ($id)
-                $query = "SELECT product_name FROM all_products WHERE product_name='$name' && ID!={$this->ID}";
+                $query = "SELECT product_name FROM all_products WHERE product_name='$name' && productID!={$this->ID}";
             else
                 $query = "SELECT product_name FROM all_products WHERE product_name='$name'";
             $result = $this->mysql_connection->query($query);
@@ -392,7 +392,7 @@
 
         private function isArticulExists(string $articul, int $id = 0): bool {
             if ($id)
-                $query = "SELECT product_articul FROM all_products WHERE product_articul='$articul' && ID!={$this->ID}";
+                $query = "SELECT product_articul FROM all_products WHERE product_articul='$articul' && productID!={$this->ID}";
             else
                 $query = "SELECT product_articul FROM all_products WHERE product_articul='$articul'";
             $result = $this->mysql_connection->query($query);
@@ -465,7 +465,7 @@
          */
 
         private function getProductImageName(): string {
-            $query = "SELECT image_name FROM all_products WHERE ID={$this->ID}";
+            $query = "SELECT image_name FROM all_products WHERE productID={$this->ID}";
             $result = $this->mysql_connection->query($query);
             if($result->num_rows) {
                 foreach($result as $row) {
@@ -506,7 +506,7 @@
                         image_name = ?,
                         product_articul = ?,
                         product_price = ?
-                    WHERE ID=?";
+                    WHERE productID=?";
                 $stmt = $this->mysql_connection->prepare($query);
                 $stmt->bind_param(
                     'sssssii',
@@ -549,7 +549,7 @@
         }
 
         private function deleteData(int $id): void {
-            $query = "DELETE FROM all_products WHERE ID=$id";
+            $query = "DELETE FROM all_products WHERE productID=$id";
             $this->mysql_connection->query($query);
         }
 
