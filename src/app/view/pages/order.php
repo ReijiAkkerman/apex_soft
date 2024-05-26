@@ -58,7 +58,7 @@
                             <?php foreach($GLOBALS['products'][$order->order_ID] as $product) { ?>
                             <div class="order__item-product">
                                 <div class="order__item-picture">
-                                    <img src="/images/0.png" alt="" class="order__item-image">
+                                    <img src="/images/<?= $product->imageName ?>" alt="" class="order__item-image">
                                 </div>
                                 <div class="order__item-description">
                                     <p class="order__item-name"><?= $product->name ?></p>
