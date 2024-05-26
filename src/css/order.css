@@ -233,6 +233,7 @@
   border: none;
   font-size: 0.833vw;
   line-height: 0.938vw;
+  text-align: center;
 }
 .order__item-quantity .quantity__control {
   padding: 0.521vw;

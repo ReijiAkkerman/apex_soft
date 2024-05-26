@@ -76,7 +76,6 @@
                                             <div class="quantity__control Reiji_product_amount--add"
                                                 data-quantity="plus">+</div>
                                         </div>
-                                        x
                                         <span class="order__item-price-count">299</span>
                                     </div>
                                     <button class="order__item-remove btn">Удалить товар</button>
