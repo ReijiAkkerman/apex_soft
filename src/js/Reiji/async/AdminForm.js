@@ -46,7 +46,7 @@ class AdminForm {
                 element.textContent = '';
                 element.style.display = 'none';
             }
-            if(xhr.response.hasOwnProperty('error_message')) {
+            if((xhr.response !== null) && (xhr.response.hasOwnProperty('error_message'))) {
                 xhr.error_occurred = true;
                 if(xhr.response['error_message'].includes('|')) {
                     let str_array = xhr.response['error_message'].split('|');
