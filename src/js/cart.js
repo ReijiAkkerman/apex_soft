@@ -112,6 +112,7 @@ if (quantityFields && totalItemsElement) {
             closeForm();
         }
     });
+    
     document.addEventListener('DOMContentLoaded', () => {
         const form = document.querySelector('.basket__section-items');
 

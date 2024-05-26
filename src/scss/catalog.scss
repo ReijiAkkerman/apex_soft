@@ -385,16 +385,11 @@
 
     //.product-card__picture
     &__picture {
+        display: flex;
+        margin: 0 auto 1.042vw auto;
         max-width: 18.229vw;
         max-height: 18.229vw;
         height: 15.625vw;
-        display: flex;
-        margin: 0 0 1.042vw 0;
-        max-width: 18.229vw;
-        max-height: 18.229vw;
-        height: 15.625vw;
-        display: flex;
-        margin: 0 0 1.042vw 0;
     }
 
     //.product-card__image

@@ -76,6 +76,11 @@
         &-price {
             font-size: 0.833vw;
             line-height: 0.938vw;
+
+            &:after {
+                content: "₽";
+                margin-left: 0.208vw;
+            }
         }
 
         // .basket__product-quantity
@@ -84,7 +89,12 @@
 
         // .basket__product-subtotal
 
-        &-subtotal {}
+        &-subtotal {
+            &:after {
+                content: "₽";
+                margin-left: 0.208vw;
+            }
+        }
 
         // .basket__product-remove
 
@@ -136,6 +146,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            text-align: center;
 
         }
     }
@@ -155,7 +166,7 @@
     &__image {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
     }
 
     // .basket__details
@@ -349,7 +360,7 @@
     color: #fff;
     display: flex;
     flex-direction: column;
-    gap: 1.563vw;
+    gap: 0.781vw;
     font-size: 0.833vw;
     line-height: 0.938vw;
 
@@ -368,6 +379,13 @@
         position: relative;
         top: 0;
         right: 0;
+    }
+}
+
+.subtotal-value {
+    &::after {
+        content: "₽";
+        margin-left: 0.208vw;
     }
 }
 
@@ -400,11 +418,12 @@
 
 .quantity {}
 
-.subtotal {}
-
-
-
-
+.subtotal {
+    //.subtotal-title
+    &-title{
+        margin-bottom: 0.521vw;
+    }
+}
 
 p.form__error-text {
     text-align: left;
@@ -415,6 +434,6 @@ p.form__error-text {
 }
 
 p.form__error-text,
-    input.formerror-field {
-        color: #800000;
-    }
+input.formerror-field {
+    color: #800000;
+}
