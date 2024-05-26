@@ -265,9 +265,6 @@ body.active {
 .nav__item--bottom:not(:last-child) {
   margin-right: 13.021vw;
 }
-.nav__item--dropdown {
-  margin-right: 13.021vw;
-}
 .nav__link {
   display: flex;
   align-items: center;

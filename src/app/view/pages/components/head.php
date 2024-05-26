@@ -24,4 +24,5 @@
 <link rel="stylesheet" href="/src/css/cart.css">
 <link rel="stylesheet" href="/src/css/contacts.css">
 <link rel="stylesheet" href="/src/css/order.css">
+<link rel="stylesheet" href="/src/css/info.css">
 <link rel="stylesheet" href="/src/css/footer.css">

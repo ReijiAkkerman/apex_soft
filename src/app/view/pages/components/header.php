@@ -160,26 +160,14 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav__item nav__item--dropdown" id="order_story" <?php if(!(isset($this->ID) && $this->ID)) echo 'style="display:none;"'?>>
-                            <a href="/order/view" class="nav__link nav__link--bottom">История заказов</a>
-                        </li>
-                        <li class="nav__item nav__item--dropdown">
-                            <a href="/contacts/view" class="nav__link nav__link--bottom">Контакты</a>
+                        <li class="nav__item nav__item--bottom" id="order_story" <?php if(!(isset($this->ID) && $this->ID)) echo 'style="display:none;"'?>>
+                            <a href="/order/view" class="nav__link">История заказов</a>
                         </li>
                         <li class="nav__item nav__item--bottom">
-                            <a href="/info/view" class="nav__link nav__link--bottom">Информация</a>
-                            <ul class="nav__list-description description description--info">
-                                <li class="description-list description-list--info">
-                                    <p class="description-list__title">Статьи</p>
-                                </li>
-                                <li class="description-list description-list--info">
-                                    <p class="description-list__title">Новости</p>
-                                </li>
-                                <li class="description-list description-list--info">
-                                    <p class="description-list__title">Разработки на 1С</p>
-                                </li>
-                            </ul>
-
+                            <a href="/contacts/view" class="nav__link">Контакты</a>
+                        </li>
+                        <li class="nav__item nav__item--bottom">
+                            <a href="/info/view" class="nav__link">Информация</a>
                         </li>
                     </ul>
                 </nav>
