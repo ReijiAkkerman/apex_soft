@@ -51,10 +51,10 @@ class Order {
         let data = new FormData(form);
         xhr.open('POST', '/order/createOrder');
         xhr.send(data);
-        xhr.responseType = 'json';
+        xhr.responseType = 'text';
         xhr.redirect = false;
         xhr.onload = () => {
-            // alert(xhr.response);
+            alert(xhr.response);
             if(xhr.response !== null && xhr.response.hasOwnProperty('error_message')) {
                 if(xhr.response['error_message']) {
                     if(xhr.response['error_message'].includes('|')) {

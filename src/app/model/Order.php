@@ -63,8 +63,7 @@
 
         public function changeProductAmount(int $orderID, int $productID, int $product_amount): void {
             $this->createMysqlConnection__order();
-            $this->order = $this->getProducts($orderID);
-            $this->getChangedProducts($productID, $product_amount);
+            $this->getChangedProduct($productID, $product_amount);
             $this->updateOrder($orderID);
             $this->order_mysql_connection->close();
         }
@@ -81,7 +80,7 @@
             unset($array[$productID]);
             $products = '';
             foreach($array as $key => $value) {
-                $products = $key . '=' . $value . ',';
+                $products .= $key . '=' . $value . ',';
             }
             $this->order = rtrim($products, ',');
             if($this->order)
@@ -197,7 +196,7 @@
             }
         }
 
-        private function getChangedProducts(int $productID, int $product_amount): void {
+        private function getChangedProduct(int $productID, int $product_amount): void {
             $products_items = explode(',', $this->order);
             $array = [];
             foreach($products_items as $product) {
@@ -210,7 +209,7 @@
                 $array[$productID] = 1;
             $this->order = '';
             foreach($array as $key => $value) {
-                $this->order = $key . '=' . $value . ',';
+                $this->order .= $key . '=' . $value . ',';
             }
             $this->order = rtrim($this->order, ',');
         }

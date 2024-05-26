@@ -45,7 +45,7 @@
                                 <div class="basket__product">
                                     <div class="basket__product-description item">
                                         <div class="basket__picture">
-                                            <img src="/images/<?= $product->imageName ?>" alt="Placholder Image 2"
+                                            <img src="/images/<?= $product->imageName ?>?id=<?php echo rand(0, 400000000) ?>" alt="Placholder Image 2"
                                                 class="basket__image">
                                         </div>
                                         <div class="basket__details">
