@@ -63,7 +63,6 @@
 
         public function changeProductAmount(int $orderID, int $productID, int $product_amount): void {
             $this->createMysqlConnection__order();
-            $this->order = $this->getProducts($orderID);
             $this->getChangedProduct($productID, $product_amount);
             $this->updateOrder($orderID);
             $this->order_mysql_connection->close();

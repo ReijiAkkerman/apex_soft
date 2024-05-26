@@ -68,7 +68,7 @@
                                     echo $product->imageName;
                                 else
                                     echo '0.png';
-                                ?>" alt="" class="cart__content-image" id="image">
+                                ?>?id=<?php echo rand(0, 400000000) ?>" alt="" class="cart__content-image" id="image">
                             </div>
                             <div class="cart__content-price">
                                 <p id="error_product_price" style="display:none;"></p>

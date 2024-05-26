@@ -96,7 +96,7 @@
                                     <div class="product-card__body Reiji_cart_buttons-single__IP">
                                         <a class="product-card__picture"
                                             href="/product/view?default_action=update&id=<?= $product->ID ?>">
-                                            <img src="/images/<?= $product->imageName ?>" alt=""
+                                            <img src="/images/<?= $product->imageName ?>?id=<?php echo rand(0, 400000000) ?>" alt=""
                                                 class="product-card__image">
                                         </a>
                                         <a class="product-card__name"
