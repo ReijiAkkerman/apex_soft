@@ -99,6 +99,7 @@ class Order {
         xhr.onload = () => {
             let element = document.querySelector(`#order_id-${order_id}`);
             let order_status = element.querySelector('.Reiji_order_status');
+            element.dataset['status'] = 'Отменён';
             order_status.textContent = 'Отменён';
         };
     }
@@ -128,6 +129,10 @@ class Order {
         xhr.send();
         xhr.responseType = 'json';
         xhr.onload = () => {
+            let element = document.querySelector(`#order_id-${order_id}`);
+            let order_status = element.querySelector('.Reiji_order_status');
+            element.dataset['status'] = 'Изменён';
+            order_status.textContent = 'Изменён';
             if((xhr.response === null) || (!xhr.response)) {
                 let element = document.querySelector(`#order_id-${order_id}`);
                 element.remove();
@@ -136,8 +141,7 @@ class Order {
     }
 
     changeProductAmount__add() {
-        let add_button = document.querySelector('.Reiji_product_amount--add');
-        let input = add_button.previousElementSibling;
+        let input = this.previousElementSibling;
         let product_amount = input.value;
         let product_id = (function (element) {
             let classname;
@@ -164,13 +168,13 @@ class Order {
         xhr.onload = () => {
             let element = document.querySelector(`#order_id-${order_id}`);
             let order_status = element.querySelector('.Reiji_order_status');
+            element.dataset['status'] = 'Изменён';
             order_status.textContent = 'Изменён';
         };
     }
 
     changeProductAmount__sub() {
-        let sub_button = document.querySelector('.Reiji_product_amount--sub');
-        let input = sub_button.nextElementSibling;
+        let input = this.nextElementSibling;
         let product_amount = input.value;
         let product_id = (function (element) {
             let classname;
@@ -197,6 +201,7 @@ class Order {
         xhr.onload = () => {
             let element = document.querySelector(`#order_id-${order_id}`);
             let order_status = element.querySelector('.Reiji_order_status');
+            element.dataset['status'] = 'Изменён';
             order_status.textContent = 'Изменён';
         };
     }
@@ -228,6 +233,7 @@ class Order {
         xhr.onload = () => {
             let element = document.querySelector(`#order_id-${order_id}`);
             let order_status = element.querySelector('.Reiji_order_status');
+            element.dataset['status'] = 'Изменён';
             order_status.textContent = 'Изменён';
         };
     }

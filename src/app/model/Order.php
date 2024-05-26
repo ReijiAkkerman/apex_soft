@@ -63,6 +63,7 @@
 
         public function changeProductAmount(int $orderID, int $productID, int $product_amount): void {
             $this->createMysqlConnection__order();
+            $this->order = $this->getProducts($orderID);
             $this->getChangedProduct($productID, $product_amount);
             $this->updateOrder($orderID);
             $this->order_mysql_connection->close();
@@ -206,7 +207,7 @@
             if($product_amount)
                 $array[$productID] = $product_amount;
             else 
-                $array[$productID] = 1;
+                $array[$productID] = '1';
             $this->order = '';
             foreach($array as $key => $value) {
                 $this->order .= $key . '=' . $value . ',';
