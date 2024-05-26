@@ -69,6 +69,12 @@ class Auth {
                         login.removeEventListener('click', Header.openForm);
                         let orders = document.querySelector('#order_story');
                         orders.style.display = 'block';
+                        if((window.location.pathname.split('/')[1]) == 'catalog') {
+                            let elements = document.querySelectorAll('.Reiji_delete-button');
+                            for(let i = 0; i < elements.length; i++) {
+                                elements[i].style.display = 'block';
+                            }
+                        }
                     }
                     else {
                         Auth.viewParseError(xhr.response);
@@ -158,6 +164,12 @@ class Auth {
                         login.removeEventListener('click', Header.openForm);
                         let orders = document.querySelector('#order_story');
                         orders.style.display = 'block';
+                        if((window.location.pathname.split('/')[1]) == 'catalog') {
+                            let elements = document.querySelectorAll('.Reiji_delete-button');
+                            for(let i = 0; i < elements.length; i++) {
+                                elements[i].style.display = 'block';
+                            }
+                        }
                     }
                     else {
                         Auth.viewParseError(xhr.response);
@@ -193,6 +205,12 @@ class Auth {
             login.addEventListener('click', Header.openForm);
             let orders = document.querySelector('#order_story');
             orders.style.display = 'none';
+            if((window.location.pathname.split('/')[1]) == 'catalog') {
+                let elements = document.querySelectorAll('.Reiji_delete-button');
+                for(let i = 0; i < elements.length; i++) {
+                    elements[i].style.display = 'none';
+                }
+            }
         };
         xhr.onloadend = () => {
             let path = window.location.pathname.split('/')[1];
