@@ -83,7 +83,7 @@ class AdminForm {
         xhr.send();
         xhr.responseType = 'text';
         xhr.onload = () => {
-            alert(xhr.response);
+            // alert(xhr.response);
         }
         xhr.onloadend = () => {
             window.location.href = '/catalog/view';

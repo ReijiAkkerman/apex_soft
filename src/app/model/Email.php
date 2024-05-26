@@ -15,14 +15,14 @@
 
             $mail->isSMTP();
             $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-            $mail->Host = 'server109.hosting.reg.ru';
+            $mail->Host = 'mail.hosting.reg.ru';
             $mail->Port = 587;
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->SMTPAuth = true;
             $mail->Username = 'admin@aniproject.ru';
-            $mail->Password = 'secret';
+            $mail->Password = 'KisaragiEki4.';
 
-            $mail->setFrom('admin@aniproject.ru', 'Система оповещения сайта 1c-apexsoft.ru');
+            $mail->setFrom('admin@aniproject.ru', '1c-apexsoft.ru');
             $mail->addAddress($from_email, $from_name);
             $mail->Charset = 'UTF-8';
             $mail->Subject = '=?UTF-8?B?' . base64_encode($title) . '?=';
