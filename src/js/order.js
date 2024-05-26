@@ -62,29 +62,36 @@ document.addEventListener('DOMContentLoaded', () => {
             const priceProductCount = product.querySelector('.order__item-price-count');
 
             // quantityInput.value = 1;
+
             if (quantityInput.value <= 1) {
-                subButton.classList.add('disabled');
-            }
-
-            addButton.addEventListener('click', () => {
-                let currentValue = parseInt(quantityInput.value, 10);
-                quantityInput.value = currentValue + 1;
-                if (quantityInput.value > 1) {
-                    subButton.classList.remove('disabled');
-                }
-                updateTotalPrice(quantityInput, priceProduct, priceProductCount);
-            });
-
-            subButton.addEventListener('click', () => {
-                let currentValue = parseInt(quantityInput.value, 10);
-                if (currentValue > 1) {
-                    quantityInput.value = currentValue - 1;
-                    updateTotalPrice(quantityInput, priceProduct, priceProductCount);
-                }
-                if (currentValue === 2) { 
+                if (subButton !== null) {
                     subButton.classList.add('disabled');
                 }
-            });
+            }
+
+            if (addButton !== null) {
+                addButton.addEventListener('click', () => {
+                    let currentValue = parseInt(quantityInput.value, 10);
+                    quantityInput.value = currentValue + 1;
+                    if (quantityInput.value > 1) {
+                        subButton.classList.remove('disabled');
+                    }
+                    updateTotalPrice(quantityInput, priceProduct, priceProductCount);
+                });
+            }
+
+            if (subButton !== null) {
+                subButton.addEventListener('click', () => {
+                    let currentValue = parseInt(quantityInput.value, 10);
+                    if (currentValue > 1) {
+                        quantityInput.value = currentValue - 1;
+                        updateTotalPrice(quantityInput, priceProduct, priceProductCount);
+                    }
+                    if (currentValue === 2) {
+                        subButton.classList.add('disabled');
+                    }
+                });
+            }
 
             updateTotalPrice(quantityInput, priceProduct, priceProductCount);
 
@@ -102,7 +109,23 @@ document.addEventListener('DOMContentLoaded', () => {
         if (deleteButton) {
             deleteButton.addEventListener('click', (event) => {
                 event.preventDefault();
-                orderItem.remove();
+                deleteButton.remove();
+
+                orderItem.querySelectorAll('.quantity__control').forEach(control => {
+                    control.style.display = 'none';
+                });
+                orderItem.querySelectorAll('.quantity__current').forEach(current => {
+                    current.setAttribute("readonly", "")
+                });
+
+                orderItem.querySelectorAll('.order__item-block-count').forEach(quantity => {
+                    quantity.classList.add('remove');
+                });
+
+                orderItem.querySelectorAll('.order__item-remove').forEach(removeButton => {
+                    removeButton.classList.add('disabled');
+                    removeButton.style.display = 'none';
+                });
             });
         }
     });

@@ -255,11 +255,15 @@
                 text-align: right;
                 width: 200px;
 
+                &.remove {
+                    justify-content: end;
+                }
+
                 pre {
                     margin: 0;
                 }
 
-                > div:last-of-type {
+                >div:last-of-type {
                     display: flex;
                     justify-content: end;
                 }
@@ -361,6 +365,7 @@
         border: none;
         font-size: 0.833vw;
         line-height: 0.938vw;
+        text-align: center;
     }
 
     .quantity__control {
@@ -374,7 +379,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        &.disabled{
+
+        &.disabled {
             background-color: #4e6c96;
         }
     }

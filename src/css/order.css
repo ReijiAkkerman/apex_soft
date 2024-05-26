@@ -78,6 +78,7 @@
 .order__item-status {
   margin: 0;
   background-color: #013784;
+  width: -moz-fit-content;
   width: fit-content;
   display: flex;
   align-items: center;
@@ -136,7 +137,8 @@
 .order__item-image {
   width: 100px;
   max-height: 100px;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   aspect-ratio: 1/1;
 }
 .order__item-description {
@@ -172,6 +174,9 @@
   text-align: right;
   width: 200px;
 }
+.order__item-block-count.remove {
+  justify-content: end;
+}
 .order__item-block-count pre {
   margin: 0;
 }
@@ -182,6 +187,7 @@
 .order__item-remove, .order__item-button {
   margin-left: auto;
   background-color: #013784;
+  width: -moz-fit-content;
   width: fit-content;
   display: flex;
   align-items: center;
@@ -239,6 +245,7 @@
   border: none;
   font-size: 0.833vw;
   line-height: 0.938vw;
+  text-align: center;
 }
 .order__item-quantity .quantity__control {
   padding: 0.521vw;
@@ -255,5 +262,3 @@
 .order__item-quantity .quantity__control.disabled {
   background-color: #4e6c96;
 }
-
-/*# sourceMappingURL=order.css.map */
