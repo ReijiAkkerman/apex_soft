@@ -189,6 +189,7 @@
 
 
         private function getOrderProducts(string $products): void {
+            $this->order_products = [];
             $temp_array = explode(',', $products);
             foreach($temp_array as $product) {
                 $temp = explode('=', $product);
