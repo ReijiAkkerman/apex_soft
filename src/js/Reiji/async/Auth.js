@@ -72,7 +72,10 @@ class Auth {
                         if((window.location.pathname.split('/')[1]) == 'catalog') {
                             let elements = document.querySelectorAll('.Reiji_delete-button');
                             for(let i = 0; i < elements.length; i++) {
-                                elements[i].style.display = 'block';
+                                if(Auth.getCookie('is_admin')) {
+                                    elements[i].removeAttribute('style');
+                                    elements[i].classList.add('product-card__checkmark');
+                                }
                             }
                         }
                     }
@@ -167,7 +170,10 @@ class Auth {
                         if((window.location.pathname.split('/')[1]) == 'catalog') {
                             let elements = document.querySelectorAll('.Reiji_delete-button');
                             for(let i = 0; i < elements.length; i++) {
-                                elements[i].style.display = 'block';
+                                if(Auth.getCookie('is_admin')) {
+                                    elements[i].removeAttribute('style');
+                                    elements[i].classList.add('product-card__checkmark');
+                                }
                             }
                         }
                     }
@@ -208,6 +214,7 @@ class Auth {
             if((window.location.pathname.split('/')[1]) == 'catalog') {
                 let elements = document.querySelectorAll('.Reiji_delete-button');
                 for(let i = 0; i < elements.length; i++) {
+                    elements[i].classList.remove('product-card__checkmark');
                     elements[i].style.display = 'none';
                 }
             }
