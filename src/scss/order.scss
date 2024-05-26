@@ -249,9 +249,24 @@
             &-count {
                 margin: 0;
                 display: flex;
+                justify-content: space-between;
                 gap: 0.26vw;
                 align-items: center;
                 text-align: right;
+                width: 200px;
+
+                &.remove {
+                    justify-content: end;
+                }
+
+                pre {
+                    margin: 0;
+                }
+
+                >div:last-of-type {
+                    display: flex;
+                    justify-content: end;
+                }
             }
 
         }
@@ -364,7 +379,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        &.disabled{
+
+        &.disabled {
             background-color: #4e6c96;
         }
     }

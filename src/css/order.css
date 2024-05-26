@@ -168,9 +168,21 @@
 .order__item-block-count {
   margin: 0;
   display: flex;
+  justify-content: space-between;
   gap: 0.26vw;
   align-items: center;
   text-align: right;
+  width: 200px;
+}
+.order__item-block-count.remove {
+  justify-content: end;
+}
+.order__item-block-count pre {
+  margin: 0;
+}
+.order__item-block-count > div:last-of-type {
+  display: flex;
+  justify-content: end;
 }
 .order__item-remove, .order__item-button {
   margin-left: auto;

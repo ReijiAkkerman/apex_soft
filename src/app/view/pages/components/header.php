@@ -160,7 +160,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav__item nav__item--dropdown">
+                        <li class="nav__item nav__item--dropdown" id="order_story" <?php if(!(isset($this->ID) && $this->ID)) echo 'style="display:none;"'?>>
                             <a href="/order/view" class="nav__link nav__link--bottom">История заказов</a>
                         </li>
                         <li class="nav__item nav__item--dropdown">

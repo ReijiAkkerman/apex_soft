@@ -26,24 +26,26 @@
         </div>
         <section class="order">
             <div class="order__container">
-                <form action="" class="order__item">
+                <?php foreach($GLOBALS['orders'] as $order) { ?>
+                <form action="" class="order__item" id="order_id-<?= $order->order_ID ?>" data-status="<?= $order->order_status ?>">
                     <div class="order__item-panel">
                         <div class="order__item-control">
                             <span class="icon-cheveron-down"></span>
-                            <p class="order__item-order">Заказ Г-11379069</p>
-                            <p class="order__item-date">от 21.05.2024</p>
-                            <p class="order__item-status">Оформлен</p>
-                            <button class="btn order__item-button">Удалить заказ</button>
-
+                            <p class="order__item-order">Заказ №<?= $order->order_ID ?></p>
+                            <p class="order__item-date">от <?= $order->order_time ?></p>
+                            <p class="order__item-status Reiji_order_status"><?= $order->order_status ?></p>
+                            <?php if($order->order_status != 'Отменён') { ?>
+                            <button class="btn order__item-button Reiji_cancel_order Reiji_order_id-<?= $order->order_ID ?>">Отменить заказ</button>
+                            <?php } ?>
                         </div>
                         <div class="order__item-action">
                             <div class="order__item-action-block">
                                 <p class="order__item-user-text">Имя получателя:</p>
-                                <p class="order__item-user-name">Bebebab123</p>
+                                <p class="order__item-user-name"><?= $order->recipient_name ?></p>
                             </div>
                             <div class="order__item-phone">
                                 <p class="order__item-phone-text">Телефон получателя:</p>
-                                <p class="order__item-phone-user">+7 930 824-45-80
+                                <p class="order__item-phone-user"><?= $order->recipient_phone ?>
                                 </p>
                             </div>
                             <p class="order__item-action-price">Стоимость: <span
@@ -53,99 +55,51 @@
                     </div>
                     <div class="order__item-body">
                         <div class="order__item-products">
+                            <?php foreach($GLOBALS['products'][$order->order_ID] as $product) { ?>
                             <div class="order__item-product">
                                 <div class="order__item-picture">
-                                    <img src="/images/0.png" alt="" class="order__item-image">
+                                    <img src="/images/<?= $product->imageName ?>" alt="" class="order__item-image">
                                 </div>
                                 <div class="order__item-description">
-                                    <p class="order__item-name">Карта памяти Smartbuy microSDHC 16 ГБ
-                                        [SB16GBSDCL10-01]
-                                    </p>
-                                    <p class="order__item-articul">Артикул: 1325186</p>
+                                    <p class="order__item-name"><?= $product->name ?></p>
+                                    <p class="order__item-articul">Артикул: <?= $product->articul ?></p>
                                 </div>
                                 <div class="order__item-block">
                                     <p class="order__item-block-price">Цена: <span
                                             class="order__item-price-product">299</span>
                                     </p>
                                     <div class="order__item-block-count">
-                                        <div
-                                            class="order__item-quantity Reiji_cart_buttons-multiple Reiji_cart_actions">
-                                            <div class="quantity__control Reiji_product_amount--sub"
+                                        <div class="order__item-quantity Reiji_cart_buttons-multiple Reiji_cart_actions">
+                                            <?php if($order->order_status != 'Отменён') { ?>
+                                            <div class="quantity__control Reiji_product_amount--sub Reiji_product_id-<?= $product->ID ?> Reiji_order_id-<?= $order->order_ID ?>"
                                                 data-quantity="minus">-</div>
-                                            <input class="quantity__current Reiji_product_amount" type="text">
-                                            <div class="quantity__control Reiji_product_amount--add"
+                                            <?php } ?>
+                                            <input class="quantity__current Reiji_order_id-<?= $order->order_ID ?> Reiji_product_id-<?= $product->ID ?> Reiji_product_amount<?php if($order->order_status == 'Отменён') echo '--inactive' ?>" type="text" value="<?= $product->amount ?>" min="1" <?php if($order->order_status == 'Отменён') echo 'readonly' ?>>
+                                            <?php if($order->order_status != 'Отменён') { ?>
+                                            <div class="quantity__control Reiji_product_amount--add Reiji_product_id-<?= $product->ID ?> Reiji_order_id-<?= $order->order_ID ?>"
                                                 data-quantity="plus">+</div>
+                                            <?php } ?>
                                         </div>
-                                        <span class="order__item-price-count">299</span>
+                                        <div>
+                                            <pre>x </pre>
+                                            <span class="order__item-price-count"><?= $product->price ?></span>
+                                        </div>
                                     </div>
-                                    <button class="order__item-remove btn">Удалить товар</button>
+                                    <?php if($order->order_status != 'Отменён') { ?>
+                                    <button class="order__item-remove Reiji_delete_product Reiji_product_id-<?= $product->ID ?> Reiji_order_id-<?= $order->order_ID ?> btn">Удалить товар</button>
+                                    <?php } ?>
                                 </div>
                             </div>
-                            <div class="order__item-product">
-                                <div class="order__item-picture">
-                                    <img src="/images/0.png" alt="" class="order__item-image">
-                                </div>
-                                <div class="order__item-description">
-                                    <p class="order__item-name">Карта памяти Smartbuy microSDHC 16 ГБ
-                                        [SB16GBSDCL10-01]
-                                    </p>
-                                    <p class="order__item-articul">Артикул: 1325186</p>
-                                </div>
-                                <div class="order__item-block">
-                                    <p class="order__item-block-price">Цена: <span
-                                            class="order__item-price-product">299</span>
-                                    </p>
-                                    <div class="order__item-block-count">
-                                        <div
-                                            class="order__item-quantity Reiji_cart_buttons-multiple Reiji_cart_actions">
-                                            <div class="quantity__control Reiji_product_amount--sub"
-                                                data-quantity="minus">-</div>
-                                            <input class="quantity__current Reiji_product_amount" type="text">
-                                            <div class="quantity__control Reiji_product_amount--add"
-                                                data-quantity="plus">+</div>
-                                        </div>
-                                        x
-                                        <span class="order__item-price-count">299</span>
-                                    </div>
-                                    <button class="order__item-remove btn">Удалить товар</button>
-                                </div>
-                            </div>
-                            <div class="order__item-product">
-                                <div class="order__item-picture">
-                                    <img src="/images/0.png" alt="" class="order__item-image">
-                                </div>
-                                <div class="order__item-description">
-                                    <p class="order__item-name">Карта памяти Smartbuy microSDHC 16 ГБ
-                                        [SB16GBSDCL10-01]
-                                    </p>
-                                    <p class="order__item-articul">Артикул: 1325186</p>
-                                </div>
-                                <div class="order__item-block">
-                                    <p class="order__item-block-price">Цена: <span
-                                            class="order__item-price-product">299</span>
-                                    </p>
-                                    <div class="order__item-block-count">
-                                        <div
-                                            class="order__item-quantity Reiji_cart_buttons-multiple Reiji_cart_actions">
-                                            <div class="quantity__control Reiji_product_amount--sub"
-                                                data-quantity="minus">-</div>
-                                            <input class="quantity__current Reiji_product_amount" type="text">
-                                            <div class="quantity__control Reiji_product_amount--add"
-                                                data-quantity="plus">+</div>
-                                        </div>
-                                        x
-                                        <span class="order__item-price-count">299</span>
-                                    </div>
-                                    <button class="order__item-remove btn">Удалить товар</button>
-                                </div>
-                            </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </form>
+                <?php } ?>
             </div>
         </section>
     </main>
     <?php include_once __DIR__ . '/components/footer.php' ?>
+    <script type="module" src="/src/js/Reiji/async/Order.js"></script>
 </body>
 
 </html>

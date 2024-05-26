@@ -14,7 +14,7 @@
                 <nav class="page__breadcrumbs breadcrumbs">
                     <ul class="breadcrumbs__list">
                         <li class="breadcrumbs__item">
-                            <a href="../main/view" class="breadcrumbs__link">Главная</a>
+                            <a href="/main/view" class="breadcrumbs__link">Главная</a>
                         </li>
                         <li class="breadcrumbs__item">
                             <span class="breadcrumbs__current">Корзина</span>
@@ -36,7 +36,7 @@
                             <li class="basket__item basket__item--subtotal  subtotal">Выбрать</li>
                         </ul>
                     </div>
-                    <form action="" class="basket__wrapper">
+                    <form class="basket__wrapper Reiji_cart_form">
                         <?php $cost = 0 ?>
                         <?php $products = 0 ?>
                         <?php foreach ($GLOBALS['products'] as $product) { ?>
@@ -63,12 +63,10 @@
                                         echo $product->price * $product->amount ?></span>
                                     </div>
                                     <label class="basket__product-checkbox">
-                                        <input class="basket__product-input" type="checkbox">
+                                        <input class="basket__product-input Reiji_id-<?= $product->ID ?>" type="checkbox">
                                         <span class="basket__product-box"></span>
                                     </label>
-                                    <button
-                                        class="basket__product-remove btn Reiji_delete_product Reiji_id-<?= $product->ID ?>">Удалить
-                                        товар</button>
+                                    <button class="basket__product-remove btn Reiji_delete_product Reiji_id-<?= $product->ID ?>">Удалить товар</button>
                                 </div>
                             <?php } ?>
                         <?php } ?>
@@ -82,8 +80,7 @@
                         </div>
                         <div class="summary-subtotal">
                             <div class="subtotal-title">Итоговая цена</div>
-                            <div class="subtotal-value final-value Reiji_total_price" id="basket-subtotal"><?= $cost ?>
-                            </div>
+                            <div class="subtotal-value final-value Reiji_total_price" id="basket-subtotal"><?= $cost ?></div>
                         </div>
                         <button class="summary-buy btn" id="buy">Заказать</button>
                     </div>
@@ -92,7 +89,7 @@
         </section>
     </main>
     <section class="basket__section">
-        <form class="basket__section-form">
+        <form class="basket__section-form Reiji_order_form">
             <svg class="basket__section-close" width="64" version="1.1" xmlns="http://www.w3.org/2000/svg" height="64"
                 viewBox="0 0 64 64" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64">
                 <g>
@@ -103,24 +100,29 @@
             </svg>
             <label for="">
                 <span>Введите свое имя</span>
-                <input type="text" class="basket__section-input" name="fullname" placeholder="Как обращаться?">
+                <p class="form__error-text" id="recipient_name" style="display:none;"></p>
+                <input type="text" class="basket__section-input" name="recipient_name" placeholder="Как обращаться?" pattern="^[a-zA-Z0-9а-яА-Я ]{3,100}$">
             </label>
             <label for="">
                 <span>Введите свою электронную почту</span>
-                <input type="text" class="basket__section-input" name="email" placeholder="Электронная почта">
+                <p class="form__error-text" id="recipient_email" style="display:none;"></p>
+                <input type="text" class="basket__section-input" name="recipient_email" placeholder="Электронная почта" pattern="^[a-z][a-z0-9\-]{1,99}@[a-z]{2,20}\.[a-z]{2,10}$">
             </label>
             <label for="">
                 <span>Введите свой номер телефона</span>
-                <input type="text" class="basket__section-input" name="phone_number" placeholder="Номер телефона">
+                <p class="form__error-text" id="recipient_phone" style="display:none;"></p>
+                <input type="text" value="+7" class="basket__section-input" name="recipient_phone" placeholder="Номер телефона" pattern="^\+[0-9]{1,3}[0-9]{10}$">
             </label>
             <p class="basket__section-title">Ваш заказ</p>
             <div class="basket__section-items">
             </div>
-            <button class="basket__section-button">Оформить заказ</button>
+            <input type="hidden" name="products" class="Reiji_cart_hidden_field">
+            <button class="basket__section-button" id="createOrder">Оформить заказ</button>
         </form>
     </section>
     <?php include_once __DIR__ . '/components/footer.php' ?>
     <script type="module" src="/src/js/Reiji/async/Cart.js"></script>
+    <script type="module" src="/src/js/Reiji/async/Order.js"></script>
 </body>
 
 </html>
