@@ -39,6 +39,11 @@
             $this->createMysqlConnection__order();
             $this->saveOrder($userID, 'Оформлен');
             $this->order_mysql_connection->close();
+            $products_array = $this->getOrderedProducts();
+            $cart = new Cart();
+            foreach($products_array as $productID) {
+                $cart->deleteProductAtAll($productID);
+            }
             $this->title = 'Оформление заказа';
             $this->message = 'Спасибо за оформление заказана сайе https://aniproject.ru. Вы получили это письмо так как при оформлении заказа указывалась эта электронная почта. Если заказ делали не Вы - просто игнорируйте данное сообщение. Команда 1c-apexsoft.';
             Email::sendEmail(
@@ -84,6 +89,8 @@
             else 
                 $this->deleteOrder($orderID);
             $this->order_mysql_connection->close();
+            $data = json_encode($this->order, JSON_UNESCAPED_UNICODE);
+            echo $data;
         }
 
         public function getAllOrders(int $userID): void {
@@ -205,6 +212,16 @@
                 $this->order = $key . '=' . $value . ',';
             }
             $this->order = rtrim($this->order, ',');
+        }
+
+        private function getOrderedProducts(): array {
+            $products = explode(',', $this->order);
+            $array = [];
+            foreach($products as $product) {
+                $temp = explode('=', $product);
+                $array[] = $temp[0];
+            }
+            return $array;
         }
 
 

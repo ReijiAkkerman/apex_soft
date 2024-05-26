@@ -68,7 +68,7 @@
                                     <p class="order__item-block-price">Цена: <span
                                             class="order__item-price-product">299</span>
                                     </p>
-                                    <div class="order__item-block-count">
+                                    <div class="order__item-block-count <?php if($order->order_status == 'Отменён') echo 'remove' ?>">
                                         <div class="order__item-quantity Reiji_cart_buttons-multiple Reiji_cart_actions">
                                             <?php if($order->order_status != 'Отменён') { ?>
                                             <div class="quantity__control Reiji_product_amount--sub Reiji_product_id-<?= $product->ID ?> Reiji_order_id-<?= $order->order_ID ?>"

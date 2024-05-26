@@ -106,7 +106,7 @@
             <label for="">
                 <span>Введите свою электронную почту</span>
                 <p class="form__error-text" id="recipient_email" style="display:none;"></p>
-                <input type="text" class="basket__section-input" name="recipient_email" placeholder="Электронная почта" pattern="^[a-z][a-z0-9-]{1,99}@[a-z]{2,20}\.[a-z]{2,10}$">
+                <input type="text" class="basket__section-input" name="recipient_email" placeholder="Электронная почта" pattern="^[a-z][a-z0-9\-]{1,99}@[a-z]{2,20}\.[a-z]{2,10}$">
             </label>
             <label for="">
                 <span>Введите свой номер телефона</span>
