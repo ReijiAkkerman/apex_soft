@@ -8,6 +8,7 @@
 <script defer src="/src/js/swiper.js"></script>
 <script defer src="/src/js/cart.js"></script>
 <script defer src="/src/js/order.js"></script>
+<script defer src="/src/js/info.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900"
     rel="stylesheet" />
 <link rel="stylesheet" href="/src/css/normalize.css">

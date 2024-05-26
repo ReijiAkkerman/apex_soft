@@ -51,19 +51,25 @@ class Order {
         let data = new FormData(form);
         xhr.open('POST', '/order/createOrder');
         xhr.send(data);
-        xhr.responseType = 'text';
+        xhr.responseType = 'json';
         xhr.redirect = false;
         xhr.onload = () => {
-            alert(xhr.response);
+            // alert(xhr.response);
             if(xhr.response !== null && xhr.response.hasOwnProperty('error_message')) {
                 if(xhr.response['error_message']) {
                     if(xhr.response['error_message'].includes('|')) {
+                        let preloader = document.querySelector('.preloader');
+                        preloader.style.zIndex = '-1';
+                        preloader.style.opacity = '0';
                         let temp_array = xhr.response['error_message'].split('|');
                         let element = document.querySelector('#' + temp_array[0]);
                         element.textContent = temp_array[1];
                         element.style.display = 'block';
                     }
                     else {
+                        let preloader = document.querySelector('.preloader');
+                        preloader.style.zIndex = '-1';
+                        preloader.style.opacity = '0';
                         alert(xhr.response['error_message']);
                     }
                 }

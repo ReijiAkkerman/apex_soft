@@ -8,6 +8,12 @@
 
 <body>
     <?php require_once __DIR__ . '/components/header.php' ?>
+    <div class="preloader" style="z-index: -1; opacity:0;">
+        <div class="preloader__row">
+            <div class="preloader__item"></div>
+            <div class="preloader__item"></div>
+        </div>
+    </div>
     <main>
         <div class="page__header">
             <div class="page__container">
@@ -45,8 +51,8 @@
                                 <div class="basket__product">
                                     <div class="basket__product-description item">
                                         <div class="basket__picture">
-                                            <img src="/images/<?= $product->imageName ?>?id=<?php echo rand(0, 400000000) ?>" alt="Placholder Image 2"
-                                                class="basket__image">
+                                            <img src="/images/<?= $product->imageName ?>?id=<?php echo rand(0, 400000000) ?>"
+                                                alt="Placholder Image 2" class="basket__image">
                                         </div>
                                         <div class="basket__details">
                                             <p class="basket__details-text"><?= $product->name ?></p>
@@ -66,7 +72,9 @@
                                         <input class="basket__product-input Reiji_id-<?= $product->ID ?>" type="checkbox">
                                         <span class="basket__product-box"></span>
                                     </label>
-                                    <button class="basket__product-remove btn Reiji_delete_product Reiji_id-<?= $product->ID ?>">Удалить товар</button>
+                                    <button
+                                        class="basket__product-remove btn Reiji_delete_product Reiji_id-<?= $product->ID ?>">Удалить
+                                        товар</button>
                                 </div>
                             <?php } ?>
                         <?php } ?>
@@ -80,7 +88,8 @@
                         </div>
                         <div class="summary-subtotal">
                             <div class="subtotal-title">Итоговая цена</div>
-                            <div class="subtotal-value final-value Reiji_total_price" id="basket-subtotal"><?= $cost ?></div>
+                            <div class="subtotal-value final-value Reiji_total_price" id="basket-subtotal"><?= $cost ?>
+                            </div>
                         </div>
                         <button class="summary-buy btn" id="buy">Заказать</button>
                     </div>
@@ -101,17 +110,20 @@
             <label for="">
                 <span>Введите свое имя</span>
                 <p class="form__error-text" id="recipient_name" style="display:none;"></p>
-                <input type="text" class="basket__section-input" name="recipient_name" placeholder="Как обращаться?" pattern="^[a-zA-Z0-9а-яА-Я ]{3,100}$">
+                <input type="text" class="basket__section-input" name="recipient_name" placeholder="Как обращаться?"
+                    pattern="^[a-zA-Z0-9а-яА-Я ]{3,100}$">
             </label>
             <label for="">
                 <span>Введите свою электронную почту</span>
                 <p class="form__error-text" id="recipient_email" style="display:none;"></p>
-                <input type="text" class="basket__section-input" name="recipient_email" placeholder="Электронная почта" pattern="^[a-z][a-z0-9\-]{1,99}@[a-z]{2,20}\.[a-z]{2,10}$">
+                <input type="text" class="basket__section-input" name="recipient_email" placeholder="Электронная почта"
+                    pattern="^[a-z][a-z0-9\-.]{1,99}@[a-z]{2,20}\.[a-z]{2,10}$">
             </label>
             <label for="">
                 <span>Введите свой номер телефона</span>
                 <p class="form__error-text" id="recipient_phone" style="display:none;"></p>
-                <input type="text" value="+7" class="basket__section-input" name="recipient_phone" placeholder="Номер телефона" pattern="^\+[0-9]{1,3}[0-9]{10}$">
+                <input type="text" value="+7" class="basket__section-input" name="recipient_phone"
+                    placeholder="Номер телефона" pattern="^\+[0-9]{1,3}[0-9]{10}$">
             </label>
             <p class="basket__section-title">Ваш заказ</p>
             <div class="basket__section-items">

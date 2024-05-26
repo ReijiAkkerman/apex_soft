@@ -138,14 +138,14 @@ body.active {
 
             span {
                 position: absolute;
-                width: 0.729vw;
-                height: 0.729vw;
+                width: 0.781vw;
+                height: 0.781vw;
                 font-size: 0.521vw;
                 background: #013784;
                 border-radius: 50%;
                 display: flex;
                 top: 0;
-                right: 0;
+                right: -0.26vw;
                 justify-content: center;
                 align-items: center;
                 color: #fff;
@@ -167,6 +167,12 @@ body.active {
         height: 1.563vw;
         flex: 0 0 1.563vw;
         cursor: pointer;
+    }
+
+    @media(max-width: 991px){
+        &__top{
+            padding: 3.027vw 0;
+        }
     }
 
 }

@@ -32,21 +32,21 @@
                         <div class="order__status-item">
                             <p class="order__status-name">Изменён</p>
                             <label class="basket__product-checkbox" data-sort="Изменён">
-                                <input class="basket__product-input" type="checkbox">
+                                <input class="basket__product-input" type="checkbox" checked>
                                 <span class="basket__product-box"></span>
                             </label>
                         </div>
                         <div class="order__status-item">
                             <p class="order__status-name">Оформлен</p>
                             <label class="basket__product-checkbox" data-sort="Оформлен">
-                                <input class="basket__product-input" type="checkbox">
+                                <input class="basket__product-input" type="checkbox" checked>
                                 <span class="basket__product-box"></span>
                             </label>
                         </div>
                         <div class="order__status-item">
                             <p class="order__status-name">Отменён</p>
                             <label class="basket__product-checkbox" data-sort="Отменён">
-                                <input class="basket__product-input" type="checkbox">
+                                <input class="basket__product-input" type="checkbox" checked>
                                 <span class="basket__product-box"></span>
                             </label>
                         </div>

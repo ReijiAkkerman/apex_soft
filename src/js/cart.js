@@ -112,7 +112,7 @@ if (quantityFields && totalItemsElement) {
             closeForm();
         }
     });
-    
+
     document.addEventListener('DOMContentLoaded', () => {
         const form = document.querySelector('.basket__section-items');
 
@@ -165,3 +165,30 @@ if (quantityFields && totalItemsElement) {
         });
     });
 }
+
+const basketPreloader = document.querySelector(".basket__section-button");
+
+function preloader() {
+    let preloader = document.querySelector(".preloader");
+
+    preloader.style.zIndex = "20";
+    preloader.style.opacity = "1";
+}
+
+function stopPreloader(e) {
+    e.stopPropagation();
+}
+
+if (basketPreloader) {
+    basketPreloader.addEventListener("click", stopPreloader);
+    basketPreloader.addEventListener("click", preloader);
+}
+
+
+// window.onload = function () {
+//     document.body.classList.add('loaded_hiding');
+//     window.setTimeout(function () {
+//         document.body.classList.add('loaded');
+//         document.body.classList.remove('loaded_hiding');
+//     }, 500000);
+// }
