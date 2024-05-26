@@ -128,8 +128,10 @@ class Order {
         xhr.send();
         xhr.responseType = 'json';
         xhr.onload = () => {
-            let element = document.querySelector(`#order_id-${order_id}`);
-            element.remove();
+            if((xhr.response === null) || (!xhr.response)) {
+                let element = document.querySelector(`#order_id-${order_id}`);
+                element.remove();
+            }
         };
     }
 
