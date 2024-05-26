@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const priceProduct = product.querySelector('.order__item-price-product');
             const priceProductCount = product.querySelector('.order__item-price-count');
 
-            quantityInput.value = 1;
+            // quantityInput.value = 1;
 
             if (quantityInput.value <= 1) {
                 if (subButton !== null) {
@@ -113,6 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 orderItem.querySelectorAll('.quantity__control').forEach(control => {
                     control.style.display = 'none';
+                });
+                orderItem.querySelectorAll('.quantity__current').forEach(current => {
+                    current.setAttribute("readonly", "")
                 });
 
                 orderItem.querySelectorAll('.order__item-block-count').forEach(quantity => {
