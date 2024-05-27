@@ -130,3 +130,42 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const checkboxes = document.querySelectorAll('.basket__product-checkbox input');
+    const orderItemsContainer = document.querySelector('.order__container');
+    if (orderItemsContainer) {
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const selectedStatus = [];
+                checkboxes.forEach(cb => {
+                    if (cb.checked) {
+                        selectedStatus.push(cb.parentElement.getAttribute('data-sort'));
+                    }
+                });
+                sortOrders(selectedStatus);
+            });
+        });
+
+        function sortOrders(selectedStatus) {
+            const orderItems = Array.from(orderItemsContainer.querySelectorAll('.order__item'));
+            orderItems.forEach(order => {
+                order.style.display = 'none';
+            });
+
+            if (selectedStatus.length === 0) {
+                orderItems.forEach(order => {
+                    order.style.display = 'block';
+                });
+            } else {
+                selectedStatus.forEach(status => {
+                    orderItems.forEach(order => {
+                        if (order.getAttribute('data-status') === status) {
+                            order.style.display = 'block';
+                        }
+                    });
+                });
+            }
+        }
+    }
+});

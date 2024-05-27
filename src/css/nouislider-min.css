@@ -88,8 +88,8 @@
 .noUi-horizontal .noUi-handle {
     width: 0.938vw;
     height: 0.938vw;
-    right: -9px;
-    top: -9px;
+    right: -0.469vw;
+    top: -0.469vw;
     border-radius: 50%;
 }
 
@@ -146,11 +146,11 @@
     content: "";
     position: absolute;
     background-color: #141414;
-    width: 12px;
-    height: 12px;
+    width: 0.625vw;
+    height: 0.625vw;
     border-radius: 50%;
-    top: 3px;
-    left: 3px;
+    top: 0.156vw;
+    left: 0.156vw;
 }
 
 .noUi-active {}

@@ -4,21 +4,15 @@
             <a href="/" class="logo footer__logo" aria-label="Логотип Апекс Софт"><img src="/src/assets/img/logo.png"
                     alt="Логотип компании «Апекс-софт»"></a>
             <div class="footer__wrapper-menu">
-                <a href="/catalog/view" class="footer__wrapper-name">
-                    Каталог
-                </a>
                 <ul class="footer__wrapper-items">
-                    <li class="footer__wrapper-item"><a href="#" class="footer__wrapper-link">Программы</a></li>
-                    <li class="footer__wrapper-item"><a href="#" class="footer__wrapper-link">Услуги</a></li>
-                    <li class="footer__wrapper-item"><a href="#" class="footer__wrapper-link">Сервисы</a></li>
-                </ul>
-            </div>
-            <div class="footer__wrapper-menu">
-                <ul class="footer__wrapper-items">
+                    <li class="footer__wrapper-item"><a href="/catalog/view" class="footer__wrapper-link">
+                            Каталог
+                        </a></li>
                     <li class="footer__wrapper-item"><a href="#" class="footer__wrapper-link">Контакты</a></li>
                     <li class="footer__wrapper-item"><a href="#" class="footer__wrapper-link">История заказов</a>
                     </li>
-                    <li class="footer__wrapper-item"><a href="/info/view" class="footer__wrapper-link">Информация</a></li>
+                    <li class="footer__wrapper-item"><a href="/info/view" class="footer__wrapper-link">Информация</a>
+                    </li>
                 </ul>
             </div>
             <div class="footer__wrapper-menu">
@@ -42,7 +36,8 @@
                 </div>
                 <div class="footer__wrapper-price">
                     <p>Ознакомьтесь со стоимостью услуг</p>
-                    <button class="footer__wrapper-button btn">Скачать прайс лист</button>
+                    <a href="/src/assets/files/price1c.xls" target="_self" class="footer__wrapper-button btn">Скачать
+                        прайс лист</a>
                 </div>
             </div>
         </div>

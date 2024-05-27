@@ -1,0 +1,118 @@
+.article {
+    &:not(:last-child) {
+        margin-bottom: 1.563vw;
+    }
+
+    // .article__wrapper
+
+    &__wrapper {
+
+
+        // .article__wrapper-head
+
+        &-head {
+            display: grid;
+            grid-template-columns: 18% auto;
+            gap: 1.563vw;
+            margin-bottom: 1.042vw;
+        }
+
+        // .article__wrapper-picture
+
+        &-picture {
+            max-width: 13.021vw;
+            height: 13.021vw;
+        }
+
+        // .article__wrapper-image
+        &-image {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: contain;
+        }
+
+        // .article__wrapper-description
+
+        &-description {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height .5s ease, opacity .5s ease, padding .5s ease;
+            border: 0.052vw solid #dfdede;
+            border-radius: 1.042vw;
+
+            &.active {
+                max-height: 100%;
+                opacity: 1;
+                border: 0.052vw solid #dfdede;
+                padding: 1.042vw;
+            }
+        }
+
+        // .article__wrapper-right
+
+        &-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        // .article__wrapper-title
+
+        &-title {
+            font-size: 1.25vw;
+            line-height: 1.458vw;
+            font-weight: 600;
+            margin: 0 0 auto 0;
+            cursor: pointer;
+        }
+
+        // .article__wrapper-button
+
+        &-button {
+            background-color: #013784;
+            width: -moz-fit-content;
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            padding: 1vw 1.9vw;
+            color: #fff;
+            border-radius: 1.042vw;
+            font-size: 0.833vw;
+            line-height: 0.938vw;
+        }
+
+        // .article__wrapper-text
+        &-text {
+            font-size: 0.833vw;
+            line-height: 0.938vw;
+            margin: 0;
+
+            &:not(:last-of-type) {
+                margin: 0 0 1.042vw 0;
+            }
+
+            a {
+                font-size: 0.833vw;
+                line-height: 0.938vw;
+                color: #000;
+                text-decoration: none;
+            }
+        }
+
+        //.article__wrapper-block
+        &-block {
+            max-width: 50%;
+            margin: 0 auto 1.042vw auto;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+    }
+
+    @media(max-width: 991px) {}
+}
