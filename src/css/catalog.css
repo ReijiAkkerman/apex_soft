@@ -1,10 +1,4 @@
 @charset "UTF-8";
-.page__title {
-  font-size: 1.875vw;
-  line-height: 2.188vw;
-  margin: 1.563vw 0;
-}
-
 .panel__wrapper {
   position: fixed;
   top: 0;
