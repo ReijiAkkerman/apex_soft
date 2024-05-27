@@ -1,7 +1,21 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-@import "variables.scss";
+// @import "variables.scss";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Montserrat";
+    box-sizing: border-box;
+
+    &.active {
+        overflow: hidden;
+    }
+
+}
+
 .btn {
     background-color: unset;
     padding: 0;
@@ -81,6 +95,8 @@
     &__link {
         text-decoration: none;
         color: var(--mainSubColor);
+        font-size: 0.833vw;
+        line-height: 0.938vw;
 
         &:after {
             content: "|";
@@ -93,4 +109,39 @@
     // .breadcrumbs__current
 
     &__current {}
+
+    @media(max-width:991px) {
+        // .breadcrumbs__link
+
+        &__link {
+            font-size: 1.615vw;
+            line-height: 1.816vw;
+
+            &:after {
+                font-size: 1.615vw;
+                margin: 0 0.505vw;
+            }
+        }
+
+        // .breadcrumbs__item
+
+        &__item {
+            font-size: 1.615vw;
+            line-height: 1.816vw;
+        }
+    }
+
+}
+
+
+.page__title {
+    font-size: 1.875vw;
+    line-height: 2.188vw;
+    margin: 1.563vw 0;
+
+    @media(max-width:991px) {
+        font-size: 2.825vw;
+        line-height: 3.229vw;
+        margin: 2.018vw 0;
+    }
 }

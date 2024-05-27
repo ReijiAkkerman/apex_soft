@@ -8,15 +8,23 @@
     --colorBorder: #EFEFEF;
     --colorMainSlideBorder: rgba(191, 191, 191, .5);
     --mainFont: "Montserrat";
-    --content-width: 76.458vw;
-    --container-offset: 0 0.833vw;
+    --content-width: 76.458vw; //1467.994px
+    --container-offset: 0 0.833vw; //15.994px
+    --content-width-mobile: 90.817vw; //1467.994px
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-[class*="__container"] {
+[class*=__container] {
     max-width: var(--content-width);
     margin: 0 auto;
     padding: var(--container-offset);
+}
+
+@media (max-width: 991px) {
+    [class*=__container] {
+        max-width: var(--content-width-mobile);
+    }
 }
 
 body {
