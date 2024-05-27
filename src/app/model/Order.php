@@ -31,7 +31,7 @@
 
 
 
-        public function createOrder(int $userID): void {
+        public function createOrder(int $userID, string $user): void {
             $this->getRecipientName();
             $this->getRecipientEmail();
             $this->getRecipientPhone();
@@ -42,7 +42,7 @@
             $products_array = $this->getOrderedProducts();
             $cart = new Cart();
             foreach($products_array as $productID) {
-                $cart->deleteProductAtAll($productID);
+                $cart->deleteProduct($user, $productID);
             }
             $this->title = 'Оформление заказа';
             $this->message = 'Спасибо за оформление заказана сайе https://aniproject.ru. Вы получили это письмо так как при оформлении заказа указывалась эта электронная почта. Если заказ делали не Вы - просто игнорируйте данное сообщение. Команда 1c-apexsoft.';
