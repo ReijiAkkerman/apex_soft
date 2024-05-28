@@ -28,12 +28,13 @@
         }
 
         public function deleteProductAtAll(int $id): void {
+            $row_str = 'Tables_in_' . Page::HOSTING_USER . 'Carts';
             $this->createMysqlConnection();
             $query = "SHOW TABLES";
             $result = $this->mysql_connection->query($query);
             if($result->num_rows) {
                 foreach($result as $row) {
-                    $query = "DELETE FROM {$row['Tables_in_Carts']} WHERE productID=$id";
+                    $query = "DELETE FROM {$row[$row_str]} WHERE productID=$id";
                     $this->mysql_connection->query($query);
                 }
             }
