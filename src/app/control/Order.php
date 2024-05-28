@@ -22,7 +22,7 @@
         }
 
         public function createOrder(): void {
-            (new model_Order)->createOrder($this->ID);
+            (new model_Order)->createOrder($this->ID, $this->login);
         }
 
         public function cancelOrder(array $args): void {
