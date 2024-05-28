@@ -1,7 +1,7 @@
 @use "sass:math";
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-@import "variables.scss";
-@import "components.scss";
+// @import "variables.scss";
+// @import "components.scss";
 
 * {
     box-sizing: border-box;
@@ -802,29 +802,68 @@ $transition: 1.25s;
 }
 
 @media(max-width: 1024px) {
+
     .header__cabinet-form {
-        width: 80.727vw;
-        min-width: 31.25vw;
+        width: 650px;
+        min-width: 650px;
+        // scale: .9;
     }
 
-    .form-header__cabinet {
-        width: 40.363vw;
+    .form__title {
+        font-size: 2.825vw;
+        line-height: 3.229vw;
+        margin: 0 0 2.018vw 0;
+    }
 
-        &--left {
-            left: calc(100% - 40.363vw);
-        }
-
-        &--right {
-            left: calc(100% - 60.545vw);
-        }
+    .form__input {
+        width: 25.227vw;
+        height: 4.036vw;
+        padding-left: 1.514vw;
     }
 
     .switch {
-        width: 40.363vw;
+        width: 320px;
+        padding: 1.009vw;
+
+        &__container {
+            width: 320px;
+            padding: 1.009vw;
+        }
     }
 
+    .form-header__cabinet {
+        width: 340px;
+
+        &--left {
+            left: calc(100% - 340px);
+        }
+
+        &--right {
+            left: calc(100% - 650px);
+        }
+    }
+
+
     .is-txr {
-        width: 40.363vw;
+        left: calc(100% - 320px);
+    }
+
+    .is-gx {
+        animation: is-gx $transition;
+    }
+
+    @keyframes is-gx {
+
+        0%,
+        10%,
+        100% {
+            width: 320px;
+        }
+
+        30%,
+        50% {
+            width: 650px;
+        }
     }
 }
 

@@ -9,6 +9,17 @@ body.active {
   overflow: hidden;
 }
 
+[class*=__container] {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: var(--container-offset);
+}
+
+@media (max-width: 991px) {
+  [class*=__container] {
+    max-width: var(--content-width-mobile);
+  }
+}
 .btn {
   background-color: unset;
   padding: 0;

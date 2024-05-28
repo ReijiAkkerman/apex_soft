@@ -15,19 +15,3 @@
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-[class*=__container] {
-    max-width: var(--content-width);
-    margin: 0 auto;
-    padding: var(--container-offset);
-}
-
-@media (max-width: 991px) {
-    [class*=__container] {
-        max-width: var(--content-width-mobile);
-    }
-}
-
-body {
-    font-family: "Montserrat";
-    box-sizing: border-box;
-}
