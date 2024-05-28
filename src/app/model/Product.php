@@ -81,7 +81,7 @@
                 $this->deleteImage();
                 $this->deleteData($id);
                 $cart->deleteProductAtAll($this->ID);
-                $order->deleteProductAtAll();
+                $order->deleteProductAtAll($this->ID);
             } else {
                 $this->error_message = "Указанный товар не найден!";
                 $this->unsetData();
