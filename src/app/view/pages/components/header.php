@@ -74,7 +74,7 @@
                     <h2 class="form__title title">Войдите на сайт</h2>
                     <span class="form__span">Используйте свою учетную <br> запись</span>
                     <p class="form__error-text _login"></p>
-                    <input class="form__input" type="text" name="login" pattern="[A-Za-z0-9_]{8,50}" placeholder="Логин">
+                    <input class="form__input" type="text" name="login" pattern="[A-Za-z0-9_]{3,50}" placeholder="Логин">
                     <p class="form__error-text _password"></p>
                     <input class="form__input" type="password" name="password" pattern="[A-Za-z0-9_.]{5,50}"
                         placeholder="Пароль">
@@ -93,10 +93,10 @@
                     <h2 class="form__title title">Создайте аккаунт</h2>
                     <span class="form__span">Используйте свою учетную запись <br> электронной почты для регистрации</span>
                     <p class="form__error-text _login"></p>
-                    <input class="form__input " type="text" name="login" pattern="^[A-Za-z0-9_]{8,50}$" placeholder="Логин">
+                    <input class="form__input " type="text" name="login" pattern="^[A-Za-z0-9_]{3,50}$" placeholder="Логин">
                     <p class="form__error-text _name"></p>
                     <input class="form__input" type="text" name="name" pattern="^[A-Za-z0-9А-Яа-я]{3,100}$"
-                        placeholder="ФИО">
+                        placeholder="Имя пользователя">
                     <p class="form__error-text _password"></p>
                     <input class="form__input" type="password" name="password" pattern="^[A-Za-z0-9_.]{5,50}$"
                         placeholder="Пароль">

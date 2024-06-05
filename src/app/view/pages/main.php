@@ -25,7 +25,7 @@
                                     изменение конфигурации под
                                     ваши запросы, консультация.
                                 </p>
-                                <button class="hero__swiper-button btn">Перейти в каталог</button>
+                                <a class="hero__swiper-button btn" href="/catalog/view" style="text-decoration:none;">Перейти в каталог</a>
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                                     Ведите бухгалтерский и налоговый учет, сдавайте отчетность, контролируйте бизнес
                                     через Интернет!
                                 </p>
-                                <button class="hero__swiper-button btn">Перейти в каталог</button>
+                                <a class="hero__swiper-button btn" href="/catalog/view" style="text-decoration:none;">Перейти в каталог</a>
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                                     Свыше 200 программ «1С» для эффективной работы вашего бизнеса, внедрение и
                                     сопровождение программных продуктов
                                 </p>
-                                <button class="hero__swiper-button btn">Перейти в каталог</button>
+                                <a class="hero__swiper-button btn" href="/catalog/view" style="text-decoration:none;">Перейти в каталог</a>
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                                     Автоматизация вашего бизнеса на базе программных продуктов компании 1С. Широкий
                                     спектр услуг по сопровождению программных продуктов компании 1С
                                 </p>
-                                <button class="hero__swiper-button btn">Перейти в каталог</button>
+                                <a class="hero__swiper-button btn" href="/catalog/view">Перейти в каталог</a>
                             </div>
                         </div>
                     </div>

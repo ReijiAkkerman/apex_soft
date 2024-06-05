@@ -46,12 +46,12 @@
             }
             $this->title = 'Оформление заказа';
             $this->message = 'Спасибо за оформление заказана сайе https://aniproject.ru. Вы получили это письмо так как при оформлении заказа указывалась эта электронная почта. Если заказ делали не Вы - просто игнорируйте данное сообщение. Команда 1c-apexsoft.';
-            // Email::sendEmail(
-            //     $this->recipient_email,
-            //     $this->recipient_name,
-            //     $this->title,
-            //     $this->message
-            // );
+            Email::sendEmail(
+                $this->recipient_email,
+                $this->recipient_name,
+                $this->title,
+                $this->message
+            );
         }
 
         public function cancelOrder(int $orderID): void {
@@ -136,7 +136,7 @@
                 unset($array[$productID]);
                 $products = '';
                 foreach($array as $key => $value) {
-                    $products = $key . '=' . $value . ',';
+                    $products .= $key . '=' . $value . ',';
                 }
                 $this->order = rtrim($products, ',');
                 if($this->order)
