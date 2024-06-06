@@ -4,17 +4,34 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
     font-family: "Montserrat";
     box-sizing: border-box;
+    overflow-x: hidden;
 
     &.active {
         overflow: hidden;
     }
 
 }
+
+[class*=__container] {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: var(--container-offset);
+}
+
+@media (max-width: 991px) {
+    [class*=__container] {
+        max-width: var(--content-width-table);
+    }
+}
+
+@media (max-width: 500px) {
+    [class*=__container] {
+        max-width: var(--content-width-mobile);
+    }
+}
+
 
 .btn {
     background-color: unset;
@@ -63,6 +80,12 @@ body {
     input.form__error-field {
         color: #800000;
     }
+
+    @media(max-width:991px) {
+        font-size: 20px;
+        line-height: 24px;
+    }
+
 }
 
 .page {
@@ -95,12 +118,10 @@ body {
     &__link {
         text-decoration: none;
         color: var(--mainSubColor);
-        font-size: 0.833vw;
-        line-height: 0.938vw;
 
         &:after {
             content: "|";
-            font-size: 0.833vw;
+            font-size: 0.938vw;
             margin: 0 0.26vw;
 
         }
@@ -111,14 +132,12 @@ body {
     &__current {}
 
     @media(max-width:991px) {
-        // .breadcrumbs__link
 
+        // .breadcrumbs__link
         &__link {
-            font-size: 1.615vw;
-            line-height: 1.816vw;
 
             &:after {
-                font-size: 1.615vw;
+                font-size: 1.816vw;
                 margin: 0 0.505vw;
             }
         }
@@ -126,8 +145,27 @@ body {
         // .breadcrumbs__item
 
         &__item {
-            font-size: 1.615vw;
-            line-height: 1.816vw;
+            font-size: 1.816vw;
+            line-height: 2.422vw;
+        }
+    }
+
+    @media(max-width:500px) {
+
+        // .breadcrumbs__link
+        &__link {
+
+            &:after {
+                font-size: 4.4vw;
+                margin: 0 1vw;
+            }
+        }
+
+        // .breadcrumbs__item
+
+        &__item {
+            font-size: 4.4vw;
+            line-height: 4.8vw;
         }
     }
 
@@ -140,8 +178,14 @@ body {
     margin: 1.563vw 0;
 
     @media(max-width:991px) {
-        font-size: 2.825vw;
-        line-height: 3.229vw;
+        font-size: 3.229vw;
+        line-height: 3.835vw;
         margin: 2.018vw 0;
+    }
+
+    @media(max-width:500px) {
+        font-size: 5.2vw;
+        line-height: 5.6vw;
+        margin: 4vw 0;
     }
 }

@@ -87,7 +87,8 @@
                                 <?php foreach ($GLOBALS['products'][$order->order_ID] as $product) { ?>
                                     <div class="order__item-product">
                                         <div class="order__item-picture">
-                                            <img src="/images/<?= $product->imageName ?>?id=<?php echo rand(0, 400000000) ?>" alt="" class="order__item-image">
+                                            <img src="/images/<?= $product->imageName ?>?id=<?php echo rand(0, 400000000) ?>"
+                                                alt="" class="order__item-image">
                                         </div>
                                         <div class="order__item-description">
                                             <p class="order__item-name"><?= $product->name ?></p>

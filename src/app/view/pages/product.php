@@ -70,7 +70,7 @@
                                     echo '0.png';
                                 ?>?id=<?php echo rand(0, 400000000) ?>" alt="" class="cart__content-image" id="image">
                             </div>
-                            <div class="cart__content-price">
+                            <div class="cart__content-price" data-ta="cart__content,3,500">
                                 <p id="error_product_price" style="display:none;"></p>
                                 <h4 class="cart__content-price-title Reiji_place_for_price">Цена:</h4>
                                 <h4 class="cart__content-price-value" id="product_price" <?php if ($this->admin)
@@ -81,7 +81,7 @@
                                     echo '0';
                                 ?></h4>
                             </div>
-                            <div class="cart__content-articul">
+                            <div class="cart__content-articul" data-ta="cart__content,4,500">
                                 <p id="error_product_articul" style="display:none;"></p>
                                 <p class="Reiji_place_for_articul">Артикул:</p>
                                 <p id="product_articul" <?php if ($this->admin)

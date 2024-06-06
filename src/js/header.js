@@ -1,19 +1,52 @@
-import {Header} from './_Header.js';
-import {Auth} from './Reiji/async/Auth.js';
+import { Header } from './_Header.js';
+import { Auth } from './Reiji/async/Auth.js';
 
 const headerForm = document.querySelector(".header__cabinet-button");
 const userCabinet = document.querySelector(".header__cabinet-form");
+const userCabinetMobile = document.querySelector(".header__cabinet-form--mobile");
+const userCabinetLoginSide = document.querySelector(".form-header__cabinet--login");
+const userCabinetRegSide = document.querySelector(".form-header__cabinet--registr");
 const bodyPage = document.querySelector("body");
 const wrapperForm = document.querySelector(".header__cabinet-wrapper");
 const formCloseElements = document.querySelectorAll(".form__close");
+const formLinkAuth = document.querySelector(".form-auth");
+const formLinkReg = document.querySelector(".form-registr");
+
+
 
 formCloseElements.forEach((formClose) => {
     formClose.addEventListener("click", Header.handleFormCloseClick);
 });
-if(!Auth.getCookie('id'))
+if (!Auth.getCookie('id')) {
     headerForm.addEventListener("click", Header.openForm);
+    headerForm.addEventListener("click", closeBurgerMenu);
+    userCabinet.addEventListener("click", function (e) {
+        e.stopPropagation();
+    })
+    userCabinetMobile.addEventListener("click", function (e) {
+        e.stopPropagation();
+    })
+
+}
+
+
+
+if (window.screen.width <= 991) {
+    headerForm.addEventListener("click", Header.openFormMobile);
+    headerForm.addEventListener("click", Header.openFormSide);
+    formLinkReg.addEventListener("click", Header.openRegSide);
+    formLinkAuth.addEventListener("click", Header.openAuthSide);
+
+    wrapperForm.addEventListener("click", function (e) {
+        closeBurgerMenuFull();
+        e.stopPropagation();
+    })
+
+}
+
 
 document.addEventListener("keydown", Header.handleEscKeyDown);
+
 
 
 const showMoreButtons = document.querySelectorAll(".description-list__button");
@@ -37,6 +70,49 @@ showMoreButtons.forEach(button => {
     });
 });
 
+const burger = document.querySelector(".burger");
+const headerNav = document.querySelector(".header__nav--top");
+
+burger.addEventListener("click", () => {
+    burger.classList.add("active");
+    headerNav.classList.add("active");
+    bodyPage.classList.add("active");
+    wrapperForm.classList.add("active");
+})
+
+wrapperForm.addEventListener("click", closeBurgerMenu);
+
+function closeBurgerMenu(e) {
+    burger.classList.remove("active");
+    headerNav.classList.remove("active");
+    bodyPage.classList.remove("active");
+}
+
+function closeBurgerMenuFull(e) {
+    burger.classList.remove("active");
+    headerNav.classList.remove("active");
+    bodyPage.classList.remove("active");
+    wrapperForm.classList.remove("active");
+    (function (userCabinet, userCabinetMobile) {
+        userCabinet.classList.remove("active");
+        userCabinetMobile.classList.remove("active");
+    })(userCabinet, userCabinetMobile);
+
+}
+
+
+tippy('[name="login"]', {
+    content: 'Буквы латинского алфавита, цифры и знак нижнего подчеркивания. От 3 до 50 символов.',
+});
+
+
+tippy('[name="password"]', {
+    content: 'Буквы латинского алфавита, цифры, точки и знак нижнего подчеркавния. От 5 до 50 символов.',
+});
+
+tippy('[name="name"]', {
+    content: 'Буквы латиницы, кирилицы и цифры. От 3 до 100 символов.',
+});
 
 let switchCtn = document.querySelector("#switch-cnt");
 let switchC1 = document.querySelector("#switch-c1");
@@ -76,4 +152,4 @@ let mainF = (e) => {
 
 window.addEventListener("load", mainF);
 
-export {headerForm, userCabinet, bodyPage, wrapperForm};
+export { headerForm, userCabinet, userCabinetMobile, userCabinetLoginSide, userCabinetRegSide, headerNav, burger, bodyPage, wrapperForm };

@@ -38,7 +38,7 @@
                             <li class="basket__item basket__item--name item item-heading">Товар</li>
                             <li class="basket__item basket__item--price price">Цена</li>
                             <li class="basket__item basket__item--quantity quantity">Количество</li>
-                            <li class="basket__item basket__item--subtotal  subtotal">Итоговая цена</li>
+                            <li class="basket__item basket__item--subtotal  subtotal">Итого</li>
                             <li class="basket__item basket__item--subtotal  subtotal">Выбрать</li>
                         </ul>
                     </div>
@@ -59,15 +59,21 @@
                                             <p class="basket__details-article">Артикул - <?= $product->articul ?></p>
                                         </div>
                                     </div>
-                                    <div class="basket__product-price"><?= $product->price ?></div>
+                                    <div class="basket__product-price">
+                                        <p>Цена товара:</p>
+                                        <?= $product->price ?>
+                                    </div>
                                     <div class="basket__product-quantity">
+                                        <p>Количество:</p>
                                         <input type="number" value="<?= $product->amount ?>" step="1"
                                             class="quantity-field Reiji_product_amount Reiji_id-<?= $product->ID ?>">
                                     </div>
                                     <div class="basket__product-wrapper">
+                                        <p>Итого:</p>
                                         <span class="basket__product-subtotal Reiji_product_price"><?php $cost += $product->price * $product->amount;
                                         echo $product->price * $product->amount ?></span>
                                     </div>
+                                    <span class="basket__product-name">Выбрать товар</span>
                                     <label class="basket__product-checkbox">
                                         <input class="basket__product-input Reiji_id-<?= $product->ID ?>" type="checkbox">
                                         <span class="basket__product-box"></span>
@@ -83,11 +89,11 @@
                 <aside class="right__column">
                     <div class="summary">
                         <div class="summary-total-items">
+                            <span class="total-items-text">Количество:</span>
                             <span class="total-items"><?= $products ?></span>
-                            <span class="total-items-text">товара в вашей корзине</span>
                         </div>
                         <div class="summary-subtotal">
-                            <div class="subtotal-title">Итоговая цена</div>
+                            <div class="subtotal-title">Итоговая цена:</div>
                             <div class="subtotal-value final-value Reiji_total_price" id="basket-subtotal"><?= $cost ?>
                             </div>
                         </div>
@@ -116,13 +122,14 @@
             <label for="">
                 <span>Введите свою электронную почту</span>
                 <p class="form__error-text" id="recipient_email" style="display:none;"></p>
-                <input type="text" class="basket__section-input" name="recipient_email" placeholder="Электронная почта" pattern="^[a-z][a-z0-9\-.]{1,99}@[a-z]{2,20}\.[a-z]{2,10}$">
+                <input type="text" class="basket__section-input" name="recipient_email" placeholder="Электронная почта"
+                    pattern="^[a-z][a-z0-9\-._]{1,99}@[a-z]{2,20}\.[a-z]{2,10}$">
             </label>
             <label for="">
                 <span>Введите свой номер телефона</span>
                 <p class="form__error-text" id="recipient_phone" style="display:none;"></p>
                 <input type="text" value="+7" class="basket__section-input" name="recipient_phone"
-                    placeholder="Номер телефона" pattern="^\+[0-9]{1,3}[0-9]{10}$">
+                    placeholder="+70000000000" pattern="^\+[0-9]{1,3}[0-9]{10}$">
             </label>
             <p class="basket__section-title">Ваш заказ</p>
             <div class="basket__section-items">
