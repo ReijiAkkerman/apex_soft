@@ -8,7 +8,7 @@
 
     abstract class Page implements Auth
     {
-        public const MYSQL_SERVER = 'mysql';
+        public const MYSQL_SERVER = '172.18.0.2';
         public const CONNECT_FROM = EVERYWHERE;
         public const HOSTING_USER = '';
 

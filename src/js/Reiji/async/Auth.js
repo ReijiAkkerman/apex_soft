@@ -2,6 +2,7 @@ import {AuthPopup} from './AuthPopup.js';
 import {AdminForm} from './AdminForm.js';
 import {Cart} from './Cart.js';
 import {Header} from './../../_Header.js';
+import { closeBurgerMenu } from '../../header.js';
 // import {openForm} from '../../header.js';
 
 class Auth {
@@ -68,6 +69,7 @@ class Auth {
                         let login = document.querySelector('.Reiji_showAuthForm-button');
                         login.removeEventListener('click', Header.openForm);
                         login.removeEventListener('click', Header.openFormMobile);
+                        login.removeEventListener('click', closeBurgerMenu);
                         let orders = document.querySelector('#order_story');
                         orders.style.display = 'block';
                         if((window.location.pathname.split('/')[1]) == 'catalog') {
@@ -167,6 +169,7 @@ class Auth {
                         let login = document.querySelector('.Reiji_showAuthForm-button');
                         login.removeEventListener('click', Header.openForm);
                         login.removeEventListener('click', Header.openFormMobile);
+                        login.removeEventListener('click', closeBurgerMenu);
                         let orders = document.querySelector('#order_story');
                         orders.style.display = 'block';
                         if((window.location.pathname.split('/')[1]) == 'catalog') {
@@ -251,6 +254,7 @@ class Auth {
                         let login = document.querySelector('.Reiji_showAuthForm-button');
                         login.removeEventListener('click', Header.openForm);
                         login.removeEventListener('click', Header.openFormMobile);
+                        login.removeEventListener('click', closeBurgerMenu);
                         let orders = document.querySelector('#order_story');
                         orders.style.display = 'block';
                         if((window.location.pathname.split('/')[1]) == 'catalog') {
@@ -350,6 +354,7 @@ class Auth {
                         let login = document.querySelector('.Reiji_showAuthForm-button');
                         login.removeEventListener('click', Header.openForm);
                         login.removeEventListener('click', Header.openFormMobile);
+                        login.removeEventListener('click', closeBurgerMenu);
                         let orders = document.querySelector('#order_story');
                         orders.style.display = 'block';
                         if((window.location.pathname.split('/')[1]) == 'catalog') {
@@ -395,6 +400,7 @@ class Auth {
             let login = document.querySelector('.Reiji_showAuthForm-button');
             login.addEventListener('click', Header.openForm);
             login.addEventListener('click', Header.openFormMobile);
+            login.addEventListener('click', closeBurgerMenu);
             let orders = document.querySelector('#order_story');
             orders.style.display = 'none';
             if((window.location.pathname.split('/')[1]) == 'catalog') {

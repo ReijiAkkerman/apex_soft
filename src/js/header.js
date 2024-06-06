@@ -149,4 +149,4 @@ let mainF = (e) => {
 
 window.addEventListener("load", mainF);
 
-export { headerForm, userCabinet, userCabinetMobile, userCabinetLoginSide, userCabinetRegSide, headerNav, burger, bodyPage, wrapperForm };
+export { headerForm, userCabinet, userCabinetMobile, userCabinetLoginSide, userCabinetRegSide, headerNav, burger, bodyPage, wrapperForm, closeBurgerMenu };
