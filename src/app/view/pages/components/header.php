@@ -126,9 +126,9 @@
         <div class="header__cabiner-form header__cabinet-form--mobile form-header form-header--mobile">
             <div class="form-header__cabinet form-header__cabinet--login">
                 <form class="form form--left Reiji_login1">
-                    <h2 class="switch__title title">Привет, друг !</h2>
+                    <!-- <h2 class="switch__title title">Привет, друг !</h2>
                     <p class="switch__description">Введите свои личные данные и начните путешествие вместе с нами
-                    </p>
+                    </p> -->
                     <h2 class="form__title title">Войдите на сайт</h2>
                     <span class="form__span">Используйте свою учетную <br> запись</span>
                     <p class="form__error-text _login"></p>
@@ -142,15 +142,15 @@
             </div>
             <div class="form-header__cabinet form-header__cabinet--registr">
                 <form class="form form--right Reiji_registration1">
-                    <h2 class="switch__title title">Добро пожаловать!</h2>
+                    <!-- <h2 class="switch__title title">Добро пожаловать!</h2>
                     <p class="switch__description">Чтобы оставаться на связи с нами, пожалуйста, войдите, используя
-                        свои личные данные.</p>
+                        свои личные данные.</p> -->
                     <h2 class="form__title title">Создайте аккаунт</h2>
                     <span class="form__span">Используйте свою учетную запись <br> электронной почты для регистрации</span>
                     <p class="form__error-text _login"></p>
                     <input class="form__input" type="text" name="login" pattern="^[A-Za-z0-9_]{3,50}$" placeholder="Логин">
                     <p class="form__error-text _name"></p>
-                    <input class="form__input" type="text" pattern="^[A-Za-z0-9А-Яа-я]{3,100}$"
+                    <input class="form__input" type="text" name="name" pattern="^[A-Za-z0-9А-Яа-я]{3,100}$"
                         placeholder="Имя пользователя">
                     <p class="form__error-text _password"></p>
                     <input class="form__input" type="password" name="password" pattern="^[A-Za-z0-9_.]{5,50}$"
