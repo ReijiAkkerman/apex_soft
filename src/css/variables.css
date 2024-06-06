@@ -9,5 +9,6 @@
   --mainFont: "Montserrat";
   --content-width: 76.458vw;
   --container-offset: 0 0.833vw;
-  --content-width-mobile: 90.817vw;
+  --content-width-table: 90.817vw;
+  --content-width-mobile: 96vw;
 }

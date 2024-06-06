@@ -3,17 +3,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const articleButtons = document.querySelectorAll(".article__wrapper-button");
     const articleDescriptions = document.querySelectorAll(".article__wrapper-description");
 
+    function pxToVw(px) {
+        const vw = window.innerHeight / 100;
+        return px / vw;
+    }
+
     function toggleDescription(description) {
         if (description.classList.contains('active')) {
-            description.style.maxHeight = `${description.scrollHeight}px`;
+            const maxHeightVw = pxToVw(description.scrollHeight);
+            description.style.maxHeight = `${maxHeightVw}vw`;
             // Force reflow
             description.offsetHeight;
             description.classList.remove('active');
             description.style.maxHeight = 0;
         } else {
-            description.style.maxHeight = `${description.scrollHeight}px`;
+            const maxHeightVw = pxToVw(description.scrollHeight);
+            description.style.maxHeight = `${maxHeightVw}vw`;
             description.classList.add('active');
-            description.style.maxHeight = `${description.scrollHeight}px`;
+            description.style.maxHeight = `${maxHeightVw}vw`;
         }
     }
 

@@ -54,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
         addButton.addEventListener('click', () => {
             addButton.style.display = 'none';
             cardQuantity[index].style.display = 'flex';
-            console.log(Date.now());
         });
     });
 
@@ -65,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
             addButton.style.display = 'none';
             cardQuantity[index].style.display = 'flex';
             quantityCurrent[index].value = 1;
-            // basketCount.textContent = parseInt(basketCount.textContent) + 1;
         });
     });
 

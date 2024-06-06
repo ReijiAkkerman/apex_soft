@@ -136,7 +136,7 @@
                 unset($array[$productID]);
                 $products = '';
                 foreach($array as $key => $value) {
-                    $products = $key . '=' . $value . ',';
+                    $products .= $key . '=' . $value . ',';
                 }
                 $this->order = rtrim($products, ',');
                 if($this->order)

@@ -184,11 +184,11 @@ if (basketPreloader) {
     basketPreloader.addEventListener("click", preloader);
 }
 
+tippy('[name="recipient_name"]', {
+    content: 'Буквы латиницы, кириллицы, цифры и пробел. От 3 до 100 символов.',
+});
 
-// window.onload = function () {
-//     document.body.classList.add('loaded_hiding');
-//     window.setTimeout(function () {
-//         document.body.classList.add('loaded');
-//         document.body.classList.remove('loaded_hiding');
-//     }, 500000);
-// }
+
+tippy('[name="recipient_email"]', {
+    content: 'Начинается с буквы латинского алфавита, цифры, знак нижнего подчеркивания, точка и тире.',
+});

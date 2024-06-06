@@ -16,6 +16,7 @@
                             class="nav__link icon-mail">info@1capexsoft.ru</a>
                     </li>
                 </ul>
+                <div class="header__nav-mobile"></div>
             </nav>
             <div class="header__basket" id="cart-button" <?php if (!isset($this->name))
                 echo 'style="display:none;"' ?>>
@@ -25,7 +26,7 @@
                     <?php } ?>
                 </a>
             </div>
-            <div class="header__cabinet Reiji_nav_for_exit-button">
+            <div class="header__cabinet Reiji_nav_for_exit-button" data-da="header__nav-mobile,1,991">
                 <button class="header__cabinet-button icon-user btn Reiji_showAuthForm-button">
                     <p id="username"><?php
                     if (isset($this->name))
@@ -35,18 +36,20 @@
                     ?></p>
                 </button>
             </div>
-            <div class="header__logout icon-log-out" id="exit-button" <?php if (!isset($this->name))
+            <div class="header__logout icon-log-out" id="exit-button" data-da="header__nav-mobile,2,991" <?php if (!isset($this->name))
                 echo 'style="display:none;"' ?>></div>
+                <button class=" btn-reset burger" aria-label="Открыть меню"><span class="burger__line"></span></button>
             </div>
         </div>
-        <div class="header__bottom">
+        <div class="header__bottom" data-ta="header__nav-mobile,0,500">
             <div class="container header__container header__container--bottom">
                 <nav class="nav header__nav header__nav--bottom">
                     <ul class="nav__list nav__list--bottom">
                         <li class="nav__item nav__item--bottom">
                             <a href="/catalog/view" class="nav__link">Каталог</a>
                         </li>
-                        <li class="nav__item nav__item--bottom" id="order_story" <?php if(!(isset($this->ID) && $this->ID)) echo 'style="display:none;"'?>>
+                        <li class="nav__item nav__item--bottom" id="order_story" <?php if (!(isset($this->ID) && $this->ID))
+                echo 'style="display:none;"' ?>>
                             <a href="/order/view" class="nav__link">История заказов</a>
                         </li>
                         <li class="nav__item nav__item--bottom">
@@ -93,10 +96,10 @@
                     <h2 class="form__title title">Создайте аккаунт</h2>
                     <span class="form__span">Используйте свою учетную запись <br> электронной почты для регистрации</span>
                     <p class="form__error-text _login"></p>
-                    <input class="form__input " type="text" name="login" pattern="^[A-Za-z0-9_]{8,50}$" placeholder="Логин">
+                    <input class="form__input" type="text" name="login" pattern="^[A-Za-z0-9_]{8,50}$" placeholder="Логин">
                     <p class="form__error-text _name"></p>
                     <input class="form__input" type="text" name="name" pattern="^[A-Za-z0-9А-Яа-я]{3,100}$"
-                        placeholder="ФИО">
+                        placeholder="Имя пользователя">
                     <p class="form__error-text _password"></p>
                     <input class="form__input" type="password" name="password" pattern="^[A-Za-z0-9_.]{5,50}$"
                         placeholder="Пароль">
@@ -118,6 +121,43 @@
                     </p>
                     <button class="switch__button button switch-btn">ЗАРЕГИСТРИРОВАТЬСЯ</button>
                 </div>
+            </div>
+        </div>
+        <div class="header__cabiner-form header__cabinet-form--mobile form-header form-header--mobile">
+            <div class="form-header__cabinet form-header__cabinet--login">
+                <form class="form form--left Reiji_login">
+                    <h2 class="switch__title title">Привет, друг !</h2>
+                    <p class="switch__description">Введите свои личные данные и начните путешествие вместе с нами
+                    </p>
+                    <h2 class="form__title title">Войдите на сайт</h2>
+                    <span class="form__span">Используйте свою учетную <br> запись</span>
+                    <p class="form__error-text _login"></p>
+                    <input class="form__input" type="text" name="login" pattern="[A-Za-z0-9_]{8,50}" placeholder="Логин">
+                    <p class="form__error-text _password"></p>
+                    <input class="form__input" type="password" name="password" pattern="[A-Za-z0-9_.]{5,50}"
+                        placeholder="Пароль">
+                    <button class="form__button button submit" id="login_button">ВОЙТИ</button>
+                    <p class="form__p">Первый раз? <span class="form-registr">Зарегистрируйтесь сейчас!</span></p>
+                </form>
+            </div>
+            <div class="form-header__cabinet form-header__cabinet--registr">
+                <form class="form form--right Reiji_registration">
+                    <h2 class="switch__title title">Добро пожаловать!</h2>
+                    <p class="switch__description">Чтобы оставаться на связи с нами, пожалуйста, войдите, используя
+                        свои личные данные.</p>
+                    <h2 class="form__title title">Создайте аккаунт</h2>
+                    <span class="form__span">Используйте свою учетную запись <br> электронной почты для регистрации</span>
+                    <p class="form__error-text _login"></p>
+                    <input class="form__input" type="text" name="login" pattern="^[A-Za-z0-9_]{8,50}$" placeholder="Логин">
+                    <p class="form__error-text _name"></p>
+                    <input class="form__input" type="text" pattern="^[A-Za-z0-9А-Яа-я]{3,100}$"
+                        placeholder="Имя пользователя">
+                    <p class="form__error-text _password"></p>
+                    <input class="form__input" type="password" name="password" pattern="^[A-Za-z0-9_.]{5,50}$"
+                        placeholder="Пароль">
+                    <button class="form__button button submit" id="registration_button">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+                    <p class="form-auth">Уже есть аккаунт?</p>
+                </form>
             </div>
         </div>
     </div>

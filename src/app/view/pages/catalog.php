@@ -79,8 +79,10 @@
                             <?php foreach ($GLOBALS['products'] as $product) { ?>
                                 <article class="product-card Reiji_product Reiji_id-<?= $product->ID ?>"
                                     data-type="<?= $product->type ?>" data-price="<?= $product->price ?>">
-                                        <div class="<?php if($this->admin) echo 'product-card__checkmark' ?> Reiji_id-<?= $product->ID ?> Reiji_delete-button"
-                                            id="delete-button" <?php if(!$this->admin) echo 'style="display:none;"' ?>>
+                                    <div class="<?php if ($this->admin)
+                                        echo 'product-card__checkmark' ?> Reiji_id-<?= $product->ID ?> Reiji_delete-button"
+                                        id="delete-button" <?php if (!$this->admin)
+                                            echo 'style="display:none;"' ?>>
                                             <svg class="product-card__icon" width="64" version="1.1"
                                                 xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 0 64 64"
                                                 xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64">
@@ -102,9 +104,11 @@
                                             <h3><?= $product->name ?></h3>
                                         </a>
                                         <p class="product-card__price" data-price="<?= $product->price ?>">
+                                            <span>Цена:</span>
                                             <?= $product->price ?>
                                         </p>
                                         <p class="product-card__article Reiji_cart_buttons-multiple__IP">
+                                            <span>Артикул:</span>
                                             <?= $product->articul ?>
                                         </p>
                                         <?php

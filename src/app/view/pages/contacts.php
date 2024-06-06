@@ -9,6 +9,21 @@
 <body>
     <?php require_once __DIR__ . '/components/header.php' ?>
     <main class="page page--contacts">
+        <div class="page__header">
+            <div class="page__container">
+                <nav class="page__breadcrumbs breadcrumbs">
+                    <ul class="breadcrumbs__list">
+                        <li class="breadcrumbs__item">
+                            <a href="/main/view" class="breadcrumbs__link">Главная</a>
+                        </li>
+                        <li class="breadcrumbs__item">
+                            <span class="breadcrumbs__current">Контакты</span>
+                        </li>
+                    </ul>
+                </nav>
+                <h1 class="page__title">Контакты</h1>
+            </div>
+        </div>
         <section class="contacts">
             <div class="contacts__container">
                 <div class="contacts__map" style="position:relative;overflow:hidden;"><a

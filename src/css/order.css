@@ -3,8 +3,8 @@
   margin-bottom: 1.563vw;
 }
 .order__status-title {
-  font-size: 0.938vw;
-  line-height: 1.146vw;
+  font-size: 1.146vw;
+  line-height: 1.354vw;
   margin: 0 0 1.042vw 0;
   font-weight: 500;
 }
@@ -15,17 +15,18 @@
 }
 .order__status-item {
   display: flex;
-  gap: 0.781vw;
+  gap: 10px;
   cursor: pointer;
 }
-.order__status-item .basket__product-checkbox {
-  padding: 1.042vw;
-  margin: -1.042vw;
-}
 .order__status-name {
-  font-size: 0.833vw;
-  line-height: 0.938vw;
+  font-size: 0.938vw;
+  line-height: 1.146vw;
   margin: 0;
+}
+.order .basket__product-box {
+  width: 1.042vw;
+  height: 1.042vw;
+  margin-top: 0;
 }
 .order__item {
   border: 0.052vw solid #d5d2d2;
@@ -47,8 +48,8 @@
 .order__item-action {
   display: flex;
   align-items: center;
-  font-size: 0.833vw;
-  line-height: 0.938vw;
+  font-size: 1.042vw;
+  line-height: 1.25vw;
 }
 .order__item-action-block {
   display: flex;
@@ -74,6 +75,8 @@
 .order__item-price-count {
   font-size: 0.729vw;
   line-height: 0.833vw;
+  display: flex;
+  align-items: center;
 }
 .order__item-price-count::after {
   content: "₽";
@@ -93,14 +96,14 @@
   content: "₽";
 }
 .order__item-order {
-  font-size: 0.833vw;
-  line-height: 0.938vw;
+  font-size: 1.042vw;
+  line-height: 1.25vw;
   font-weight: bold;
   margin: 0 0.26vw 0 0;
 }
 .order__item-date {
-  font-size: 0.833vw;
-  line-height: 0.938vw;
+  font-size: 0.938vw;
+  line-height: 1.146vw;
   margin: 0 0.521vw 0 0;
 }
 .order__item-status {
@@ -110,11 +113,11 @@
   width: fit-content;
   display: flex;
   align-items: center;
-  padding: 0.2vw 1vw;
+  padding: 0.521vw 1.042vw;
   color: #fff;
   border-radius: 1.042vw;
-  font-size: 0.833vw;
-  line-height: 0.938vw;
+  font-size: 1.042vw;
+  line-height: 1.25vw;
 }
 .order__item-body {
   overflow: hidden;
@@ -163,30 +166,31 @@
   display: flex;
 }
 .order__item-image {
-  width: 150px;
-  max-height: 150px;
+  width: 13.021vw;
+  max-height: 13.021vw;
   -o-object-fit: contain;
      object-fit: contain;
 }
 .order__item-description {
+  flex: 0 1 60%;
   margin-left: 0.781vw;
 }
 .order__item-name {
-  font-size: 0.833vw;
-  line-height: 0.938vw;
+  font-size: 1.25vw;
+  line-height: 1.354vw;
   margin: 0 0 0.781vw 0;
   font-weight: 500;
 }
 .order__item-articul {
-  font-size: 0.729vw;
-  line-height: 0.833vw;
+  font-size: 1.042vw;
+  line-height: 1.146vw;
   font-weight: 400;
   margin: 0;
 }
 .order__item-block {
   margin-left: auto;
-  font-size: 0.729vw;
-  line-height: 0.833vw;
+  font-size: 0.938vw;
+  line-height: 1.146vw;
 }
 .order__item-block-price {
   margin: 0 0 0.781vw 0;
@@ -199,17 +203,19 @@
   gap: 0.26vw;
   align-items: center;
   text-align: right;
-  width: 200px;
+  width: auto;
 }
 .order__item-block-count.remove {
   justify-content: end;
 }
 .order__item-block-count pre {
   margin: 0;
+  width: 10px;
 }
 .order__item-block-count > div:last-of-type {
   display: flex;
   justify-content: end;
+  gap: 0.26vw;
 }
 .order__item-remove, .order__item-button {
   margin-left: auto;
@@ -218,24 +224,25 @@
   width: fit-content;
   display: flex;
   align-items: center;
-  padding: 0.6vw 1vw;
+  padding: 0.521vw 1.042vw;
   color: #fff;
   border-radius: 1.042vw;
-  font-size: 0.833vw;
-  line-height: 0.938vw;
+  font-size: 1.042vw;
+  line-height: 1.25vw;
 }
 .order__item-remove {
   margin-top: 0.521vw;
-}
-.order__item-price {
-  font-size: 0.729vw;
-  line-height: 0.833vw;
-  margin-left: 0.26vw;
 }
 .order__item-price:first-child {
   font-size: 1.042vw;
   line-height: 1.25vw;
   font-weight: 500;
+}
+.order__item-price-count {
+  display: flex;
+  align-items: center;
+  font-size: 0.938vw;
+  line-height: 1.146vw;
 }
 .order__item-summary.hidden {
   display: none;
@@ -247,6 +254,9 @@
 }
 
 .icon-cheveron-down {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
@@ -267,7 +277,7 @@
   cursor: pointer;
 }
 .order__item-quantity .quantity__current {
-  width: 20px;
+  width: 30px;
   height: auto;
   border: none;
   font-size: 0.833vw;
@@ -288,4 +298,316 @@
 }
 .order__item-quantity .quantity__control.disabled {
   background-color: #4e6c96;
+}
+
+@media (max-width: 991px) {
+  .order__status {
+    margin-bottom: 3.027vw;
+  }
+  .order__status-title {
+    font-size: 2.422vw;
+    line-height: 2.624vw;
+    margin: 0 0 2.018vw 0;
+  }
+  .order__status-items {
+    gap: 1.514vw;
+  }
+  .order__status-name {
+    font-size: 2.018vw;
+    line-height: 2.422vw;
+  }
+  .order__item:not(:last-of-type) {
+    margin-bottom: 2.018vw;
+  }
+  .order__item-panel {
+    padding: 1.514vw;
+  }
+  .order__item-description {
+    margin-left: 0.505vw;
+  }
+  .order__item-control {
+    margin-bottom: 1.009vw;
+  }
+  .order__item-order {
+    font-size: 2.018vw;
+    line-height: 2.422vw;
+    margin: 0 0.505vw 0 0;
+  }
+  .order__item-date {
+    font-size: 2.018vw;
+    line-height: 2.422vw;
+    margin: 0 1.009vw 0 0;
+  }
+  .order__item-status {
+    padding: 1.009vw 2.018vw;
+    font-size: 1.816vw;
+    line-height: 2.22vw;
+  }
+  .order__item-action {
+    font-size: 2.018vw;
+    line-height: 2.422vw;
+    flex-wrap: wrap;
+  }
+  .order__item-action-block {
+    margin-right: 1.009vw;
+  }
+  .order__item-action-price {
+    font-size: 2.018vw;
+    line-height: 2.422vw;
+    margin: 2.018vw 0 0 auto;
+  }
+  .order__item-price-product, .order__item-price-total {
+    font-size: 1.816vw;
+    line-height: 2.22vw;
+    margin-left: 0.505vw;
+  }
+  .order__item-phone-text {
+    margin: 0 0.505vw 0 0;
+  }
+  .order__item-product {
+    gap: 1.514vw;
+    padding: 1.514vw;
+  }
+  .order__item-image {
+    width: 20.182vw;
+    max-height: 20.182vw;
+  }
+  .order__item-name {
+    font-size: 2.018vw;
+    line-height: 2.422vw;
+    margin: 0 0 1.009vw 0;
+  }
+  .order__item-articul {
+    font-size: 1.816vw;
+    line-height: 2.22vw;
+  }
+  .order__item-block {
+    font-size: 1.816vw;
+    line-height: 2.22vw;
+  }
+  .order__item-block-price {
+    margin: 0 0 1.514vw 0;
+  }
+  .order__item-block-count {
+    gap: 0.505vw;
+  }
+  .order__item-quantity {
+    gap: 1.009vw;
+  }
+  .order__item-price-count {
+    font-size: 1.816vw;
+    line-height: 2.422vw;
+  }
+  .order__item-remove {
+    margin-top: 2.018vw;
+  }
+  .order__item-button, .order__item-remove {
+    padding: 1.009vw 2.018vw;
+    font-size: 1.816vw;
+    line-height: 2.22vw;
+  }
+  .order .basket__product-box {
+    width: 2.018vw;
+    height: 2.018vw;
+  }
+  .order .basket__product-checkbox {
+    width: 2.018vw;
+  }
+  .icon-cheveron-down:before {
+    font-size: 3.027vw;
+  }
+  .order__item-quantity .quantity__control {
+    padding: 1.009vw;
+    font-size: 3.027vw;
+    line-height: 2.422vw;
+    width: 4.027vw;
+  }
+  .order__item-quantity .quantity__current {
+    font-size: 1.816vw;
+    line-height: 2.22vw;
+  }
+}
+@media (max-width: 500px) {
+  .order__status {
+    margin-bottom: 6vw;
+  }
+  .order__status-title {
+    font-size: 4.4vw;
+    line-height: 4.8vw;
+    margin: 0 0 4vw 0;
+  }
+  .order__status-items {
+    gap: 3vw;
+  }
+  .order__status-item {
+    align-items: center;
+  }
+  .order__status-name {
+    font-size: 4vw;
+    line-height: 4.4vw;
+  }
+  .order__item:not(:last-of-type) {
+    margin-bottom: 4vw;
+  }
+  .order__item-panel {
+    padding: 3vw;
+  }
+  .order__item-control {
+    margin-bottom: 4vw;
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    row-gap: 3vw;
+  }
+  .order__item-description {
+    margin-left: 0;
+    grid-row: 2;
+    grid-column: 1/span 2;
+  }
+  .order__item-order {
+    font-size: 4vw;
+    line-height: 4.8vw;
+    margin: 0 1vw 0 0;
+  }
+  .order__item-date {
+    font-size: 4vw;
+    line-height: 4.8vw;
+    margin: 0 2vw 0 0;
+  }
+  .order__item-status {
+    padding: 1vw 2vw;
+    font-size: 4vw;
+    line-height: 4.8vw;
+    grid-column: 4/span 2;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .order__item-action {
+    font-size: 4vw;
+    line-height: 4.8vw;
+    gap: 2vw;
+  }
+  .order__item-action-block {
+    margin-right: 1.009vw;
+  }
+  .order__item-action-price {
+    font-size: 4vw;
+    line-height: 4.8vw;
+    margin: 0;
+  }
+  .order__item-price-product, .order__item-price-total {
+    font-size: 3.8vw;
+    line-height: 4.8vw;
+    margin-left: 1vw;
+  }
+  .order__item-phone-text {
+    margin: 0 0.505vw 0 0;
+  }
+  .order__item-product {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0vw;
+    padding: 3vw 3vw 3vw 3vw;
+  }
+  .order__item-product:not(:last-of-type) {
+    border-bottom: 0.2vw solid #d5d2d2;
+  }
+  .order__item-picture {
+    grid-row: 1;
+    grid-column: 1/span 2;
+    max-height: 80vw;
+  }
+  .order__item-image {
+    width: 100%;
+    max-height: 100%;
+  }
+  .order__item-name {
+    font-size: 4.8vw;
+    line-height: 5.6vw;
+    margin: 0 0 2vw 0;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+            hyphens: auto;
+  }
+  .order__item-articul {
+    font-size: 4vw;
+    line-height: 4.8vw;
+    word-break: break-all;
+  }
+  .order__item-block {
+    font-size: 4vw;
+    line-height: 4.8vw;
+    grid-row: 3;
+    grid-column: 1/span 2;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    align-items: center;
+    margin-top: 3vw;
+    gap: 0;
+    row-gap: 3vw;
+  }
+  .order__item-block-price {
+    text-align: left;
+    margin: 0;
+  }
+  .order__item-block-count {
+    width: auto;
+    gap: 1vw;
+    justify-content: start;
+  }
+  .order__item-block-count > div:last-of-type {
+    font-size: 4vw;
+    line-height: 4.8vw;
+    gap: 1vw;
+  }
+  .order__item-quantity {
+    gap: 1vw;
+  }
+  .order__item-price-count {
+    font-size: 4vw;
+    line-height: 4.8vw;
+  }
+  .order__item-remove {
+    grid-row: 2;
+    grid-column: 1/span 2;
+    margin: 0 0 0 auto;
+  }
+  .order__item-button {
+    grid-row: 2;
+    width: 100%;
+    grid-column: 1/span 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .order__item-button, .order__item-remove {
+    padding: 2vw 4vw;
+    font-size: 4vw;
+    line-height: 4.8vw;
+  }
+  .order .basket__product-box {
+    width: 4vw;
+    height: 4vw;
+  }
+  .order .basket__product-checkbox {
+    width: 4vw;
+    height: 4vw;
+    margin: 0;
+  }
+  .icon-cheveron-down:before {
+    font-size: 6vw;
+  }
+  .order__item-quantity .quantity__control {
+    padding: 1vw;
+    font-size: 4vw;
+    line-height: 4.8vw;
+    width: 9.027vw;
+  }
+  .order__item-quantity .quantity__current {
+    font-size: 4vw;
+    line-height: 4.8vw;
+    width: 8vw;
+  }
 }
