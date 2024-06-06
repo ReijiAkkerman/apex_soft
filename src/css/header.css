@@ -764,7 +764,7 @@ body.active {
     width: 70.636vw;
     min-width: 70.636vw;
     height: 54.499vw;
-    min-height: 62.499lvw;
+    min-height: 51.499lvw;
     padding: 2.93vw;
   }
   .form {
@@ -834,6 +834,7 @@ body.active {
     font-size: 2.018vw;
     line-height: 2.422vw;
     margin: 0;
+    color: #013784;
   }
   .switch__title {
     margin: 0 0 1.514vw 0;
