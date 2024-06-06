@@ -17,37 +17,34 @@ const formLinkReg = document.querySelector(".form-registr");
 formCloseElements.forEach((formClose) => {
     formClose.addEventListener("click", Header.handleFormCloseClick);
 });
+
 if (!Auth.getCookie('id')) {
-    headerForm.addEventListener("click", Header.openForm);
-    headerForm.addEventListener("click", closeBurgerMenu);
-    userCabinet.addEventListener("click", function (e) {
-        e.stopPropagation();
-    })
-    userCabinetMobile.addEventListener("click", function (e) {
-        e.stopPropagation();
-    })
+
+    if (window.screen.width <= 991) {
+        headerForm.addEventListener("click", Header.openFormMobile);
+        headerForm.addEventListener("click", closeBurgerMenu);
+        headerForm.addEventListener("click", Header.openFormSide);
+        formLinkReg.addEventListener("click", Header.openRegSide);
+        formLinkAuth.addEventListener("click", Header.openAuthSide);
+        userCabinetMobile.addEventListener("click", function (e) {
+            e.stopPropagation();
+        })
+    } else {
+        headerForm.addEventListener("click", Header.openForm);
+        userCabinet.addEventListener("click", function (e) {
+            e.stopPropagation();
+        })
+
+    }
 
 }
 
-
-
-if (window.screen.width <= 991) {
-    headerForm.addEventListener("click", Header.openFormMobile);
-    headerForm.addEventListener("click", Header.openFormSide);
-    formLinkReg.addEventListener("click", Header.openRegSide);
-    formLinkAuth.addEventListener("click", Header.openAuthSide);
-
-    wrapperForm.addEventListener("click", function (e) {
-        closeBurgerMenuFull();
-        e.stopPropagation();
-    })
-
-}
-
+wrapperForm.addEventListener("click", function (e) {
+    closeBurgerMenuFull();
+    e.stopPropagation();
+})
 
 document.addEventListener("keydown", Header.handleEscKeyDown);
-
-
 
 const showMoreButtons = document.querySelectorAll(".description-list__button");
 
