@@ -70,6 +70,7 @@ class Auth {
                         login.removeEventListener('click', Header.openForm);
                         login.removeEventListener('click', Header.openFormMobile);
                         login.removeEventListener('click', closeBurgerMenu);
+                        login.removeEventListener("click", Header.openFormSide);
                         let orders = document.querySelector('#order_story');
                         orders.style.display = 'block';
                         if((window.location.pathname.split('/')[1]) == 'catalog') {
@@ -170,6 +171,7 @@ class Auth {
                         login.removeEventListener('click', Header.openForm);
                         login.removeEventListener('click', Header.openFormMobile);
                         login.removeEventListener('click', closeBurgerMenu);
+                        login.removeEventListener("click", Header.openFormSide);
                         let orders = document.querySelector('#order_story');
                         orders.style.display = 'block';
                         if((window.location.pathname.split('/')[1]) == 'catalog') {
@@ -255,6 +257,7 @@ class Auth {
                         login.removeEventListener('click', Header.openForm);
                         login.removeEventListener('click', Header.openFormMobile);
                         login.removeEventListener('click', closeBurgerMenu);
+                        login.removeEventListener("click", Header.openFormSide);
                         let orders = document.querySelector('#order_story');
                         orders.style.display = 'block';
                         if((window.location.pathname.split('/')[1]) == 'catalog') {
@@ -355,6 +358,7 @@ class Auth {
                         login.removeEventListener('click', Header.openForm);
                         login.removeEventListener('click', Header.openFormMobile);
                         login.removeEventListener('click', closeBurgerMenu);
+                        login.removeEventListener("click", Header.openFormSide);
                         let orders = document.querySelector('#order_story');
                         orders.style.display = 'block';
                         if((window.location.pathname.split('/')[1]) == 'catalog') {
@@ -401,6 +405,7 @@ class Auth {
             login.addEventListener('click', Header.openForm);
             login.addEventListener('click', Header.openFormMobile);
             login.addEventListener('click', closeBurgerMenu);
+            login.addEventListener("click", Header.openFormSide);
             let orders = document.querySelector('#order_story');
             orders.style.display = 'none';
             if((window.location.pathname.split('/')[1]) == 'catalog') {
