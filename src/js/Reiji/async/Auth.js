@@ -67,6 +67,7 @@ class Auth {
                         Cart.showCartButtons();
                         let login = document.querySelector('.Reiji_showAuthForm-button');
                         login.removeEventListener('click', Header.openForm);
+                        login.removeEventListener('click', Header.openFormMobile);
                         let orders = document.querySelector('#order_story');
                         orders.style.display = 'block';
                         if((window.location.pathname.split('/')[1]) == 'catalog') {
@@ -165,6 +166,7 @@ class Auth {
                         Cart.showCartButtons();
                         let login = document.querySelector('.Reiji_showAuthForm-button');
                         login.removeEventListener('click', Header.openForm);
+                        login.removeEventListener('click', Header.openFormMobile);
                         let orders = document.querySelector('#order_story');
                         orders.style.display = 'block';
                         if((window.location.pathname.split('/')[1]) == 'catalog') {
@@ -247,6 +249,7 @@ class Auth {
                         }
                         Cart.showCartButtons();
                         let login = document.querySelector('.Reiji_showAuthForm-button');
+                        login.removeEventListener('click', Header.openForm);
                         login.removeEventListener('click', Header.openFormMobile);
                         let orders = document.querySelector('#order_story');
                         orders.style.display = 'block';
@@ -345,6 +348,7 @@ class Auth {
                         }
                         Cart.showCartButtons();
                         let login = document.querySelector('.Reiji_showAuthForm-button');
+                        login.removeEventListener('click', Header.openForm);
                         login.removeEventListener('click', Header.openFormMobile);
                         let orders = document.querySelector('#order_story');
                         orders.style.display = 'block';
@@ -390,7 +394,6 @@ class Auth {
             Cart.hideCartButtons();
             let login = document.querySelector('.Reiji_showAuthForm-button');
             login.addEventListener('click', Header.openForm);
-            login = document.querySelector('.Reiji_showAuthForm-button');
             login.addEventListener('click', Header.openFormMobile);
             let orders = document.querySelector('#order_story');
             orders.style.display = 'none';

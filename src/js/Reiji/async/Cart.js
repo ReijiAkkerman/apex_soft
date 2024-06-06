@@ -267,7 +267,8 @@ class Cart {
                     button.addEventListener('click', cart.setProductAmount_add);
                 }
             }
-            Cart.summarizeProducts();
+            if(((window.location.pathname.split('/')[1]) == 'catalog') || ((window.location.pathname.split('/')[1]) == 'cart'))
+                Cart.summarizeProducts();
         };
     }
 
