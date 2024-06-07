@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     productCards.forEach(function (card) {
                         if (selectedCategory === card.dataset.type) {
-                            card.style.display = 'block';
+                            card.style.display = 'flex';
                         } else {
                             card.style.display = 'none';
                         }
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const cardPrice = parseInt(card.querySelector(".product-card__price").dataset.price);
 
                 if (cardPrice >= minPrice && cardPrice <= maxPrice) {
-                    card.style.display = "block";
+                    card.style.display = "flex";
                 } else {
                     card.style.display = "none";
                 }
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 productCards.forEach(card => {
                     if (card.dataset.type === filterValue) {
-                        card.style.display = 'block';
+                        card.style.display = 'flex';
                     } else {
                         card.style.display = 'none';
                     }
