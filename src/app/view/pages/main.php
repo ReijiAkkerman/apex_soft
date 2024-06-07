@@ -62,7 +62,7 @@
                                     Автоматизация вашего бизнеса на базе программных продуктов компании 1С. Широкий
                                     спектр услуг по сопровождению программных продуктов компании 1С
                                 </p>
-                                <a class="hero__swiper-button btn" href="/catalog/view">Перейти в каталог</a>
+                                <a class="hero__swiper-button btn" href="/catalog/view" style="text-decoration:none;">Перейти в каталог</a>
                             </div>
                         </div>
                     </div>
