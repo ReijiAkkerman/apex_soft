@@ -26,17 +26,19 @@ if (!Auth.getCookie('id')) {
         headerForm.addEventListener("click", Header.openFormSide);
         formLinkReg.addEventListener("click", Header.openRegSide);
         formLinkAuth.addEventListener("click", Header.openAuthSide);
-        userCabinetMobile.addEventListener("click", function (e) {
-            e.stopPropagation();
-        })
     } else {
         headerForm.addEventListener("click", Header.openForm);
-        userCabinet.addEventListener("click", function (e) {
-            e.stopPropagation();
-        })
-
     }
+}
 
+if (window.screen.width <= 991) {
+    userCabinetMobile.addEventListener("click", function (e) {
+        e.stopPropagation();
+    })
+} else {
+    userCabinet.addEventListener("click", function (e) {
+        e.stopPropagation();
+    })
 }
 
 wrapperForm.addEventListener("click", function (e) {
