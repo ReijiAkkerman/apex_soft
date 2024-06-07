@@ -12,6 +12,7 @@
 <script defer src="/src/js/order.js"></script>
 <script defer src="/src/js/dynamic_adapt.js"></script>
 <script defer src="/src/js/info.js"></script>
+<link type="image/x-icon" href="/src/assets/img/favicon.ico" rel="shortcut icon">
 <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900"
     rel="stylesheet" />
 <link rel="stylesheet" href="/src/css/normalize.css">
