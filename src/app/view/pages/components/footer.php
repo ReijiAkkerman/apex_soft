@@ -21,7 +21,7 @@
                             href="https://yandex.ru/maps/org/apeks_soft/1023193342/?indoorLevel=1&ll=34.344219%2C53.243368&z=17.05"
                             class="footer__wrapper-link icon-adress">Россия, г. Брянск, переулок Осоавиахима, 3А ,
                             офис 603</a></li>
-                    <li class="footer__wrapper-item"><a href="+74832320117" class="footer__wrapper-link icon-phone">+7
+                    <li class="footer__wrapper-item"><a href="tel:+74832320117" class="footer__wrapper-link icon-phone">+7
                             (4832) 320 - 117</a></li>
                     <li class="footer__wrapper-item"><a href="mailto:info@1capexsoft.ru" class=" footer__wrapper-link
                             icon-mail">info@1capexsoft.ru</a></li>
