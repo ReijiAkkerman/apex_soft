@@ -65,7 +65,7 @@
                                     </div>
                                     <div class="basket__product-quantity">
                                         <p>Количество:</p>
-                                        <input type="number" value="<?= $product->amount ?>" step="1" min=0
+                                        <input type="number" value="<?= $product->amount ?>" step="1" min=1
                                             class="quantity-field Reiji_product_amount Reiji_id-<?= $product->ID ?>">
                                     </div>
                                     <div class="basket__product-wrapper">

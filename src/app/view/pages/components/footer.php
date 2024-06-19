@@ -17,7 +17,7 @@
             </div>
             <div class="footer__wrapper-menu">
                 <ul class="footer__wrapper-items">
-                    <li class="footer__wrapper-item"><a
+                    <li class="footer__wrapper-item"><a target="_blank"
                             href="https://yandex.ru/maps/org/apeks_soft/1023193342/?indoorLevel=1&ll=34.344219%2C53.243368&z=17.05"
                             class="footer__wrapper-link icon-adress">Россия, г. Брянск, переулок Осоавиахима, 3А ,
                             офис 603</a></li>
