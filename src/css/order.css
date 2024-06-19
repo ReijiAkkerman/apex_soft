@@ -109,7 +109,6 @@
 .order__item-status {
   margin: 0;
   background-color: #013784;
-  width: -moz-fit-content;
   width: fit-content;
   display: flex;
   align-items: center;
@@ -168,8 +167,7 @@
 .order__item-image {
   width: 13.021vw;
   max-height: 13.021vw;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 .order__item-description {
   flex: 0 1 60%;
@@ -220,7 +218,6 @@
 .order__item-remove, .order__item-button {
   margin-left: auto;
   background-color: #013784;
-  width: -moz-fit-content;
   width: fit-content;
   display: flex;
   align-items: center;
@@ -527,8 +524,7 @@
     line-height: 5.6vw;
     margin: 0 0 2vw 0;
     word-break: break-word;
-    -webkit-hyphens: auto;
-            hyphens: auto;
+    hyphens: auto;
   }
   .order__item-articul {
     font-size: 4vw;
@@ -611,3 +607,5 @@
     width: 8vw;
   }
 }
+
+/*# sourceMappingURL=order.css.map */

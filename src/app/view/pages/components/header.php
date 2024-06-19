@@ -48,7 +48,7 @@
                         <li class="nav__item nav__item--bottom">
                             <a href="/catalog/view" class="nav__link">Каталог</a>
                         </li>
-                        <li class="nav__item nav__item--bottom" id="order_story" <?php if (!(isset($this->ID) && $this->ID))
+                        <li class="nav__item nav__item--bottom _order_story" id="order_story" <?php if (!(isset($this->ID) && $this->ID))
                 echo 'style="display:none;"' ?>>
                             <a href="/order/view" class="nav__link">История заказов</a>
                         </li>

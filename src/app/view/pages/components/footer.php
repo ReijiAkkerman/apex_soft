@@ -8,8 +8,8 @@
                     <li class="footer__wrapper-item"><a href="/catalog/view" class="footer__wrapper-link">
                             Каталог
                         </a></li>
-                    <li class="footer__wrapper-item"><a href="#" class="footer__wrapper-link">Контакты</a></li>
-                    <li class="footer__wrapper-item"><a href="#" class="footer__wrapper-link">История заказов</a>
+                    <li class="footer__wrapper-item"><a href="/contacts/view" class="footer__wrapper-link">Контакты</a></li>
+                    <li class="footer__wrapper-item _order_story" <?php if(!isset($this->name)) echo 'style="display:none;"' ?>><a href="/order/view" class="footer__wrapper-link">История заказов</a>
                     </li>
                     <li class="footer__wrapper-item"><a href="/info/view" class="footer__wrapper-link">Информация</a>
                     </li>

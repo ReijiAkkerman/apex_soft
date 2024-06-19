@@ -71,8 +71,9 @@ class Auth {
                         login.removeEventListener('click', Header.openFormMobile);
                         login.removeEventListener('click', closeBurgerMenu);
                         login.removeEventListener("click", Header.openFormSide);
-                        let orders = document.querySelector('#order_story');
-                        orders.style.display = 'block';
+                        let orders = document.querySelectorAll('._order_story');
+                        for(let i = 0; i < orders.length; i++)
+                        orders[i].style.display = 'block';
                         if((window.location.pathname.split('/')[1]) == 'catalog') {
                             let elements = document.querySelectorAll('.Reiji_delete-button');
                             for(let i = 0; i < elements.length; i++) {
@@ -172,8 +173,9 @@ class Auth {
                         login.removeEventListener('click', Header.openFormMobile);
                         login.removeEventListener('click', closeBurgerMenu);
                         login.removeEventListener("click", Header.openFormSide);
-                        let orders = document.querySelector('#order_story');
-                        orders.style.display = 'block';
+                        let orders = document.querySelectorAll('._order_story');
+                        for(let i = 0; i < orders.length; i++)
+                        orders[i].style.display = 'block';
                         if((window.location.pathname.split('/')[1]) == 'catalog') {
                             let elements = document.querySelectorAll('.Reiji_delete-button');
                             for(let i = 0; i < elements.length; i++) {
@@ -258,8 +260,9 @@ class Auth {
                         login.removeEventListener('click', Header.openFormMobile);
                         login.removeEventListener('click', closeBurgerMenu);
                         login.removeEventListener("click", Header.openFormSide);
-                        let orders = document.querySelector('#order_story');
-                        orders.style.display = 'block';
+                        let orders = document.querySelectorAll('._order_story');
+                        for(let i = 0; i < orders.length; i++)
+                        orders[i].style.display = 'block';
                         if((window.location.pathname.split('/')[1]) == 'catalog') {
                             let elements = document.querySelectorAll('.Reiji_delete-button');
                             for(let i = 0; i < elements.length; i++) {
@@ -359,8 +362,9 @@ class Auth {
                         login.removeEventListener('click', Header.openFormMobile);
                         login.removeEventListener('click', closeBurgerMenu);
                         login.removeEventListener("click", Header.openFormSide);
-                        let orders = document.querySelector('#order_story');
-                        orders.style.display = 'block';
+                        let orders = document.querySelectorAll('._order_story');
+                        for(let i = 0; i < orders.length; i++)
+                        orders[i].style.display = 'block';
                         if((window.location.pathname.split('/')[1]) == 'catalog') {
                             let elements = document.querySelectorAll('.Reiji_delete-button');
                             for(let i = 0; i < elements.length; i++) {
@@ -406,8 +410,9 @@ class Auth {
             login.addEventListener('click', Header.openFormMobile);
             login.addEventListener('click', closeBurgerMenu);
             login.addEventListener("click", Header.openFormSide);
-            let orders = document.querySelector('#order_story');
-            orders.style.display = 'none';
+            let orders = document.querySelectorAll('._order_story');
+            for(let i = 0; i < orders.length; i++)
+            orders[i].style.display = 'none';
             if((window.location.pathname.split('/')[1]) == 'catalog') {
                 let elements = document.querySelectorAll('.Reiji_delete-button');
                 for(let i = 0; i < elements.length; i++) {
