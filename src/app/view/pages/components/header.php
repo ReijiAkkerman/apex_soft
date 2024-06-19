@@ -5,7 +5,7 @@
                     alt="Логотип компании «Апекс-софт»"></a>
             <nav class="nav header__nav header__nav--top ">
                 <ul class="nav__list nav__list--top">
-                    <li class="nav__item nav__item--top"><a
+                    <li class="nav__item nav__item--top"><a target="_blank"
                             href="https://yandex.ru/maps/org/apeks_soft/1023193342/?indoorLevel=1&ll=34.344219%2C53.243368&z=17.05"
                             class="nav__link icon-adress">Россия, г. Брянск, переулок Осоавиахима, 3А , офис 603</a>
                     </li>
