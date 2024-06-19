@@ -70,8 +70,13 @@
                                     </div>
                                     <div class="basket__product-wrapper">
                                         <p>Итого:</p>
-                                        <span class="basket__product-subtotal Reiji_product_price"><?php $cost += $product->price * $product->amount;
-                                        echo $product->price * $product->amount ?></span>
+                                        <span class="basket__product-subtotal Reiji_product_price"><?php
+                                            if($product->amount > 0) {
+                                                $cost += $product->price * $product->amount;
+                                                echo $product->price * $product->amount;
+                                            }
+                                            else echo '0';
+                                        ?></span>
                                     </div>
                                     <span class="basket__product-name">Выбрать товар</span>
                                     <label class="basket__product-checkbox">

@@ -14,7 +14,9 @@ if (quantityFields && totalItemsElement) {
         const totalItems = Array.from(quantityFields)
             .reduce((accumulator, currentField) => {
                 const currentQuantity = parseInt(currentField.value, 10);
-                return accumulator + currentQuantity;
+                if(currentQuantity > 0)
+                    accumulator = accumulator + currentQuantity;
+                return accumulator;
             }, 0);
         totalItemsElement.textContent = totalItems;
     };
@@ -68,7 +70,11 @@ if (quantityFields && totalItemsElement) {
             const detailsQuantityElement = product.querySelector('.basket__details-quantity');
             const price = parseFloat(priceElement.textContent.replace(/\D/g, ''));
             const quantity = parseInt(this.value, 10);
-            const subtotal = price * quantity;
+            let subtotal;
+            if(quantity > 0)
+                subtotal = price * quantity;
+            else 
+                subtotal = 0;
             subtotalElement.textContent = subtotal.toFixed(2);
 
             // Проверка наличия элемента перед его использованием
